@@ -1,55 +1,53 @@
-# GRYFSMART — oprogramowanie i bootloadery
+# GRYFSMART — programator i instalator 2.0.0
 
-[Pobierz programator i instalator Windows 1.2.4](https://github.com/GRYF-SMART/gryfsmart-firmware/releases/latest/download/GRYFSMART-Tools.zip). Rozpakuj cały ZIP.
+[Pobierz oba programy i wsady](https://github.com/GRYF-SMART/gryfsmart-firmware/releases/latest/download/GRYFSMART-Tools.zip). Rozpakuj cały ZIP.
 
-| Moduł | Aplikacja | Procesor / zegar | Port bootloadera | Bootloader |
+- [Instalator bootloadera / USBasp](https://github.com/GRYF-SMART/gryfsmart-firmware/releases/latest/download/GRYFSMART-Instalator.zip)
+- [Programator aplikacji / USB, RS-232 i sieć do 35 modułów](https://github.com/GRYF-SMART/gryfsmart-firmware/releases/latest/download/GRYFSMART-Programator.zip)
+- [Najnowsze wydanie](https://github.com/GRYF-SMART/gryfsmart-firmware/releases/latest) — dostęp bez logowania, również osobne EXE.
+- [Manifest wersji i SHA-256](https://github.com/GRYF-SMART/gryfsmart-firmware/releases/latest/download/gryfsmart-update.json)
+
+| Model | Aplikacja | Procesor / zegar | Port logiczny 0 | Bootloader |
 |---|---|---|---|---|
-| ETH0606T | [0008-USB-TEMP5](https://github.com/GRYF-SMART/gryfsmart-firmware/releases/latest/download/ETH0606T-firmware.hex) | ATmega2560 / 16 MHz | USB USART0 lub RS-232 USART1 | [v10 dual](https://github.com/GRYF-SMART/gryfsmart-firmware/releases/latest/download/ETH0606T-bootloader.hex) |
-| R0808 | [0008](https://github.com/GRYF-SMART/gryfsmart-firmware/releases/latest/download/R0808-firmware.hex) | ATmega2560 / 18,432 MHz | USART0 | [v10 LED300/100](https://github.com/GRYF-SMART/gryfsmart-firmware/releases/latest/download/R0808-bootloader.hex) |
-| R0806T | [0015](https://github.com/GRYF-SMART/gryfsmart-firmware/releases/latest/download/R0806T-firmware.hex) | ATmega1284P / 18,432 MHz | USART0 | [v10 LED300/100](https://github.com/GRYF-SMART/gryfsmart-firmware/releases/latest/download/R0806T-bootloader.hex) |
-| S0804 | [0728](https://github.com/GRYF-SMART/gryfsmart-firmware/releases/latest/download/S0804-firmware.hex) | ATmega1284P / 18,432 MHz | USART0 | [v10 LED300/100](https://github.com/GRYF-SMART/gryfsmart-firmware/releases/latest/download/S0804-bootloader.hex) |
+| R0808 | [0009](https://github.com/GRYF-SMART/gryfsmart-firmware/releases/latest/download/R0808-firmware.hex) | ATmega2560 / 18,432 MHz | RS-232 USART3 | [v11-chain1](https://github.com/GRYF-SMART/gryfsmart-firmware/releases/latest/download/R0808-bootloader.hex) |
+| R0806T | [0016](https://github.com/GRYF-SMART/gryfsmart-firmware/releases/latest/download/R0806T-firmware.hex) | ATmega1284P / 18,432 MHz | USART0 | [v11-chain1](https://github.com/GRYF-SMART/gryfsmart-firmware/releases/latest/download/R0806T-bootloader.hex) |
+| S0804 | [0729](https://github.com/GRYF-SMART/gryfsmart-firmware/releases/latest/download/S0804-firmware.hex) | ATmega1284P / 18,432 MHz | USART0 | [v11-chain1](https://github.com/GRYF-SMART/gryfsmart-firmware/releases/latest/download/S0804-bootloader.hex) |
+| ETH0606T | [0008-USB-TEMP5](https://github.com/GRYF-SMART/gryfsmart-firmware/releases/latest/download/ETH0606T-firmware.hex) | ATmega2560 / 16 MHz | USB USART0; RS-232 USART1 | [v11-dual-faststart](https://github.com/GRYF-SMART/gryfsmart-firmware/releases/latest/download/ETH0606T-bootloader.hex) |
 
-[Wydanie](https://github.com/GRYF-SMART/gryfsmart-firmware/releases/latest) · [Parametry i SHA-256](https://github.com/GRYF-SMART/gryfsmart-firmware/releases/latest/download/gryfsmart-update.json). Dostęp bez logowania.
+Port 0 i port 1 są nazwami logicznymi. R0808 zachowuje port 0 na USART3, port 1 na USART1; R0806T i S0804 port 0 na USART0, port 1 na USART1. Nie zmieniono mapowania aplikacji. ETH jest obsługiwany osobno, poza łańcuchem.
 
-## Instalacja bootloadera przez USBasp / ISP
+## Pierwsze uruchomienie nowej obsługi
 
-Uruchom GRYFSMART-Instalator.exe, wybierz dokładny model i podłącz USBasp do ISP zgodnie ze schematem płytki. Używaj jednego źródła zasilania. Program dobiera procesor i bootloader, sprawdza SHA-256 oraz odczytuje EEPROM i fusebity do Dokumenty/GRYFSMART/Kopie-bootloadera.
+1. Dla każdego urządzenia zainstaluj właściwy bootloader v11 programem GRYFSMART-Instalator przez USBasp / ISP. Instalacja kasuje aplikację, wykonuje kopię EEPROM i fusebitów, przywraca EEPROM, ustawia obszar bootloadera 8 KiB oraz BOOTRST. Nie zmienia LOW/EXTENDED; wymagany właściwy kwarc. Kopia Flash nie jest wykonywana przez instalator.
+2. Odłącz USBasp i zresetuj urządzenie. Pusty moduł pozostanie w bootloaderze. Programem GRYFSMART-Programator wybierz dokładny model, jego port COM oraz lokalny HEX lub GitHub i wgraj aplikację. R0808 używa teraz właściwego logicznego portu 0 / USART3.
+3. Wszystkie urządzenia poprzedzające aktualizowany moduł muszą mieć nową aplikację CHAIN1. Stary firmware nie przekazuje nowych ramek. Pierwszą migrację wykonaj indywidualnie; późniejsze aktualizacje aplikacji można wykonywać przez łańcuch.
 
-Kliknięcie „Wgraj bootloader” kasuje dotychczasową aplikację Flash, bez jej kopii. Instalator przywraca EEPROM, ustawia BOOTRST i obszar bootloadera 8 KiB oraz weryfikuje zapis. LOW i EXTENDED pozostają bez zmian; płytka musi mieć właściwy kwarc i konfigurację zegara. Po instalacji odłącz USBasp, zresetuj moduł i wgraj aplikację programatorem.
+## Sieć do 35 modułów
 
-## Wgrywanie aplikacji przez USB / RS-232
+Połącz PC z portem 0 pierwszego modułu, port 1 pierwszego z portem 0 drugiego itd. Używaj połączeń i poziomów elektrycznych właściwych dla płytek. Komunikacja: 115200, 8N1, bez kontroli przepływu. Zamknij Hercules i inne programy korzystające z COM.
 
-Uruchom GRYFSMART-Programator.exe, wybierz moduł i COM. Wszystkie bootloadery używają STK500v2, 115200, 8N1.
+W programatorze wybierz „Sieć — do 35 modułów”, COM i „Wykryj moduły”. Tabela pokazuje pozycję, model, ID, wersję aplikacji, APP/BOOT, wersję bootloadera w trybie BOOT oraz maski wejść i wyjść. W aplikacji wersja bootloadera jest oznaczona UNKNOWN, ponieważ nie jest potwierdzana odczytem. „Porównaj z GitHub” pobiera wersje najnowszego stabilnego wydania.
 
-- ETH0606T: jeden bootloader v10 obsługuje USB na USART0 i RS-232 na USART1. Pierwszy odebrany bajt wybiera port do resetu lub uruchomienia aplikacji. Programuj przez jeden port naraz. Na USB firmware 0008 obsługuje AUTO / AT+BOOT=1 (zakończ CR). Dla starszej aplikacji wyłącz AUTO i naciśnij RESET podczas oczekiwania. Na RS-232 aplikacja 0006+ obsługuje AUTO / AT+BOOT=1. Stary v8 obsługiwał tylko USART1; instalator USBasp dodaje obsługę USB.
-- R0808, R0806T, S0804: użyj portu 0 / USART0. Kliknij „Sprawdź bootloader” lub „Wgraj aplikację”, następnie naciśnij RESET podczas oczekiwania. AUTO jest wyłączone dla tych modułów.
+Zaznacz wiersz i wybierz „Zgraj wsad + EEPROM” albo „Aktualizuj wybrany”. Źródłem HEX może być komputer lub GitHub. GitHub dobiera plik do wykrytego modelu i sprawdza SHA-256. Przed aktualizacją sieciową program sprawdza topologię i zapisuje kopię aplikacji HEX, EEPROM BIN oraz opis w Dokumenty/GRYFSMART/Kopie. Logi operacji: Dokumenty/GRYFSMART/Siec. Kopia EEPROM wykonana podczas pracy może zawierać zmiany bieżących liczników; nie jest atomowym zdjęciem całego urządzenia. Odczyt nie obejmuje chronionego obszaru bootloadera.
 
-ETH RS-232: XS2 pin 1 GND, pin 2 TX modułu do RX adaptera, pin 3 RX modułu do TX adaptera. Przy MAX232 użyj adaptera RS-232. USB korzysta z wbudowanego konwertera. Pinout i poziomy elektryczne innych modułów sprawdź na ich schemacie.
+Adresowanie odbywa się po pozycji, a nie ID; powtarzające się ID są dozwolone. Nie przepinaj urządzeń w trakcie operacji. Wyjścia aktualizowanego modułu są wyłączane. Pozostałe moduły wykonują lokalne sterowanie i przekazują ramki serwisowe; ich zwykłe raporty szeregowe są wyciszane na czas obsługi. Sieć nie gwarantuje w tym czasie przekazania zwykłych zdarzeń między urządzeniami.
 
-Źródło „Plik z komputera” pozwala wskazać HEX. „GitHub — najnowszy HEX” automatycznie pobiera aplikację wybranego modułu, także po zmianie modelu. Program sprawdza model, zegar, SHA-256, format i granicę bootloadera. Pobieranie nie uruchamia zapisu. Zamknij inne programy korzystające z COM. Log: Dokumenty/GRYFSMART/RS232.
+Każda ramka ma CRC16, numer żądania i potwierdzenie. Program zapisuje kompletne strony Flash, weryfikuje zapis i CRC32 całego obszaru aplikacji przed uruchomieniem. Zapis nie zmienia konfiguracji EEPROM; ostatnie 16 bajtów EEPROM (4080–4095) są zarezerwowane dla stanu aktualizacji.
 
-## Testy i zawartość
+W terminalu `AT+Discovery` lub `AT+ModuleInfo`, zakończone CR, zwracają informacje lokalnego modułu bez zmiany ID i bez zapisu EEPROM. Program skanuje dalsze pozycje parametryzowaną wersją tych komend. Odczyt pełnego wsadu i aktualizacja odległych pozycji mogą trwać długo: ramki przechodzą kolejno przez każde urządzenie.
 
-Sprawdzono kompilacje, protokół, sygnatury, adresowanie Flash, ochronę bootloadera i wybór UART w emulatorze oraz pobieranie i wybór modułu w testach Windows. Model operacji SPM nie zastępuje testu fizycznej pamięci. Nowych bootloaderów nie testowano na fizycznych modułach.
+## Reset, wejście do bootloadera i odzyskiwanie
 
-R0808, R0806T i S0804: RUN oraz RXTX migają jednocześnie: oczekiwanie 300 ms ON / 300 ms OFF; wgrywanie aplikacji i jej weryfikacja 100 ms ON / 100 ms OFF. Szybkie miganie zaczyna się po poprawnym żądaniu zapisu Flash. Sam test połączenia go nie włącza. Po sekundzie bez operacji Flash wraca wolne miganie, a po uruchomieniu aplikacji kończy się sygnalizacja bootloadera. ETH0606T zachowuje dotychczasową animację. Pozostałe bootloadery nie przełączają portu wyjść przekaźnikowych. ETH0606T 0008 włącza USART0 i obsługę komend AT przez USB. Pozostałe aplikacje zachowują wersje i sumy. ETH TEMP5 wymaga potwierdzenia pomiarów pięciu czujników na płytce.
+Poprawna aplikacja uruchamia się po resecie bez okna oczekiwania bootloadera. Do bootloadera przechodzi się komendą `AT+BOOT=1` zakończoną CR lub poleceniem programu. Pusty wsad albo aktualizacja CHAIN1 przerwana przed potwierdzeniem CRC pozostają w trybie odzyskiwania. RESET nie służy już do wejścia w bootloader przy poprawnej aplikacji.
 
-Paczka zawiera oba programy Windows, cztery aplikacje, cztery bootloadery, AVRDUDE i odpowiadające źródła bootloadera GPL. Prywatne źródła aplikacji nie są publikowane.
+Po przerwaniu aktualizacji wykonaj skanowanie, wybierz moduł BOOT i ponów aktualizację od początku. Najpierw napraw pierwsze urządzenie BOOT w linii: jego bootloader nie przekazuje ramek do dalszych urządzeń. Kopie nie są automatycznie przywracane, a EEPROM nie jest nadpisywany podczas aktualizacji aplikacji. Bootloader aktualizuje się lokalnie przez ISP, nie przez sieć.
 
-[Źródła bootloadera i licencja](https://github.com/GRYF-SMART/gryfsmart-firmware/releases/latest/download/GRYFSMART-Bootloader-source.zip). AVRDUDE 8.3: GPL w avrdude-8.3/COPYING; [wydanie i źródła](https://github.com/avrdudes/avrdude/releases/tag/v8.3).
+Nowy programator dla R0808/R0806T/S0804 używa CHAIN1 także przy bezpośrednim podłączeniu jednego modułu. Zachowane binarne STK500v2 służy kompatybilności, ale sam zapis zewnętrznym AVRDUDE nie wykonuje transakcji CHAIN1 i nie potwierdza jej znacznika odzyskiwania. Do normalnej aktualizacji i odzyskiwania używaj programu 2.0.0.
 
-Najnowsze pliki lokalne znajdują się w BOOTLOADER: ETH0606T-firmware.hex (0008-USB-TEMP5) i ETH0606T-bootloader.hex (v10-dual). Starszy bootloader v8 trzeba zastąpić przez USBasp. Po instalacji bootloadera ponownie wgraj aplikację.
+RUN i RXTX w bootloaderach R0808/R0806T/S0804: zmiana stanu co 0,3 s podczas oczekiwania oraz co 0,1 s podczas zapisu/weryfikacji. Po sekundzie bez operacji Flash wraca wolne miganie. ETH zachowuje animację oraz STK500v2 na USB USART0 i RS-232 USART1; `AT+BOOT=1` przez USB wymaga aplikacji 0008. Firmware ETH nie został zmieniony w wydaniu 2.0.0.
 
-## Potwierdzenie uruchomienia bootloadera
+## Walidacja i źródła
 
-ETH bootloader v10 wysyła komunikat `GRYFSMART ETH0606T BOOTLOADER v10 ACTIVE` na USB (USART0) oraz RS-232 (USART1), od razu po uruchomieniu i okresowo podczas oczekiwania. Po rozpoczęciu transmisji programowania komunikaty tekstowe ustają, aby nie zakłócać STK500v2. Działa także po AT+BOOT=1 z USB. BootOK=1 pochodzi z aplikacji i oznacza przyjęcie żądania, a nie potwierdzenie połączenia STK500v2.
+Wydanie jest sprawdzane testami klienta Windows oraz wykonywaniem skompilowanych HEX-ów w emulatorze AVR, w tym łańcuchem 35 modułów, ochroną obszaru bootloadera, CRC, przerwaniem aktualizacji i startem po resecie. Nie wykonano testu na fizycznych modułach ani fizycznej linii 35 urządzeń. Emulator operacji pamięci nie zastępuje próby na sprzęcie.
 
-Jeśli nie wiadomo, jaki bootloader jest zainstalowany: wgraj v10 przez GRYFSMART-Instalator.exe i USBasp, następnie aplikację 0008 przez GRYFSMART-Programator.exe. Pierwszy krok kasuje aplikację i zachowuje EEPROM. Zamknij Hercules na tym samym COM przed testem programatora. Nowego bootloadera nie wgra sam plik firmware.hex.
-
-## Dwa programy do pobrania
-
-- [GRYFSMART-Instalator.zip](https://github.com/GRYF-SMART/gryfsmart-firmware/releases/latest/download/GRYFSMART-Instalator.zip) — instalacja bootloaderów przez USBasp, zawiera wszystkie bootloadery i AVRDUDE.
-- [GRYFSMART-Programator.zip](https://github.com/GRYF-SMART/gryfsmart-firmware/releases/latest/download/GRYFSMART-Programator.zip) — wgrywanie aplikacji przez USB / RS-232, zawiera aplikacje i AVRDUDE.
-
-Rozpakuj wybraną paczkę w całości. Pojedyncze EXE również są dostępne w wydaniu, ale wymagają plików z właściwej paczki.
-Nowa sygnalizacja wymaga ponownego wgrania bootloadera, nie samej aplikacji. Instalacja bootloadera kasuje aplikację, zachowuje EEPROM; następnie wgraj aplikację programatorem.
+Paczka zawiera oba programy Windows, AVRDUDE, aplikacje i bootloadery. [Odpowiadające źródła bootloaderów na licencji GPL](https://github.com/GRYF-SMART/gryfsmart-firmware/releases/latest/download/GRYFSMART-Bootloader-source.zip) zawierają instrukcję kompilacji. Prywatne źródła aplikacji modułów nie są publikowane.
