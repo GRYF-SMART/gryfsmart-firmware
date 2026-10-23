@@ -1,10 +1,12 @@
 # Dokumentacja poleceń GRYFSMART
 
-Instrukcje modułów opisują firmware opublikowane w wydaniu **2.0.1**; wspólna instrukcja identyfikacji wskazuje zachowanie bieżących źródeł. Komendy podaje się jako tekst ASCII bez spacji i kończy znakiem CR (`\r`; terminal może wysyłać CRLF). Liczby są dziesiętne, chyba że opis komendy podaje HEX — tak jest dla parametrów Discovery/CHAIN1. Typowe łącze serwisowe: **115200 bit/s, 8 bitów danych, bez parzystości, 1 bit stopu (8N1), bez kontroli przepływu**. Zamknij inne programy korzystające z danego portu COM.
+Instrukcje obejmują wydanie narzędzi **2.0.1** i aktualizację aplikacji **R0806T 0018 / S0804 0731** z odczytami wejść. Wersję odniesienia podaje opis danego modułu. Komendy podaje się jako tekst ASCII bez spacji i kończy znakiem CR (`\r`; terminal może wysyłać CRLF). Liczby są dziesiętne, chyba że opis komendy podaje HEX — tak jest dla parametrów Discovery/CHAIN1. Typowe łącze serwisowe: **115200 bit/s, 8 bitów danych, bez parzystości, 1 bit stopu (8N1), bez kontroli przepływu**. Zamknij inne programy korzystające z danego portu COM.
 
 ## Wybierz moduł
 
 Wspólny opis **Search / Find, Discovery i Info**, z formatami ramek, parametrami odpowiedzi i przykładem adresowania trzech modułów: [Identyfikacja i adresowanie](komendy-wspolne.md).
+
+Pełny opis wejść bez konfiguracji reguł: **[Komendy wejściowe — I, PS, PL, KeyTime, GetInputs, GetKeyTime, SaveConfig, Defaults i KEYERROR](wejscia-komendy.md)**. Instrukcja zawiera sekwencje krótkiego/długiego naciśnięcia, jednostki czasu, sumy kontrolne oraz zasady wysyłania i przekazywania raportów.
 
 | Moduł | Najważniejsze funkcje | Dokument |
 |---|---|---|
