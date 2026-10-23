@@ -4,6 +4,16 @@ Instrukcje obejmują wydanie narzędzi **2.0.1** i aktualizację aplikacji **R08
 
 ## Wybierz moduł
 
+Wspólna obsługa przekaźników **R0808, R0806T i ETH0606T**: [SetOut, GetOut oraz raporty O=/o=](wyjscia-komendy.md). R0808 od 0011 ma lokalny GetOut i raport po zmianie; instrukcja wskazuje również różnice formatów w pozostałych modułach.
+
+```text
+Ustawienie: AT+SetOut=ID,A1,...,AN<CR>
+Odczyt:     AT+GetOut=ID<CR>
+Stan:       O=ID,S1,...,SN<CR><LF>
+```
+
+Powyższy format stanu jest używany przez R0808 0011; warianty o=/O= oraz CR/CRLF w R0806T i ETH opisuje wspólna instrukcja.
+
 Wspólny opis **Search / Find, Discovery i Info**, z formatami ramek, parametrami odpowiedzi i przykładem adresowania trzech modułów: [Identyfikacja i adresowanie](komendy-wspolne.md).
 
 Pełny opis wejść bez konfiguracji reguł: **[Komendy wejściowe — I, PS, PL, KeyTime, GetInputs, GetKeyTime, SaveConfig, Defaults i KEYERROR](wejscia-komendy.md)**. Instrukcja zawiera sekwencje krótkiego/długiego naciśnięcia, jednostki czasu, sumy kontrolne oraz zasady wysyłania i przekazywania raportów.
