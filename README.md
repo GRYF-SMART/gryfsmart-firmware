@@ -1,40 +1,39 @@
-﻿# GRYFSMART — publiczne oprogramowanie modułów
+# GRYFSMART — oprogramowanie i bootloadery
 
-Pliki HEX dostępne bez logowania. Najnowsze stabilne wydanie:
-https://github.com/GRYF-SMART/gryfsmart-firmware/releases/latest
+[Pobierz programator i instalator Windows 1.2.0](https://github.com/GRYF-SMART/gryfsmart-firmware/releases/latest/download/GRYFSMART-Tools.zip). Rozpakuj cały ZIP.
 
-| Moduł | Wersja | Procesor | Kwarc | Pobieranie |
+| Moduł | Aplikacja | Procesor / zegar | Port bootloadera | Bootloader |
 |---|---|---|---|---|
-| ETH0606T | 0007-TEMP5 | ATmega2560 | 16 MHz | [HEX](https://github.com/GRYF-SMART/gryfsmart-firmware/releases/latest/download/ETH0606T-firmware.hex) |
-| R0808 | 0008 | ATmega2560 | 18,432 MHz | [HEX](https://github.com/GRYF-SMART/gryfsmart-firmware/releases/latest/download/R0808-firmware.hex) |
-| R0806T | 0015 | ATmega1284P | 18,432 MHz | [HEX](https://github.com/GRYF-SMART/gryfsmart-firmware/releases/latest/download/R0806T-firmware.hex) |
-| S0804 | 0728 | ATmega1284P | 18,432 MHz | [HEX](https://github.com/GRYF-SMART/gryfsmart-firmware/releases/latest/download/S0804-firmware.hex) |
+| ETH0606T | [0007-TEMP5](https://github.com/GRYF-SMART/gryfsmart-firmware/releases/latest/download/ETH0606T-firmware.hex) | ATmega2560 / 16 MHz | USB USART0 lub RS-232 USART1 | [v9 dual](https://github.com/GRYF-SMART/gryfsmart-firmware/releases/latest/download/ETH0606T-bootloader.hex) |
+| R0808 | [0008](https://github.com/GRYF-SMART/gryfsmart-firmware/releases/latest/download/R0808-firmware.hex) | ATmega2560 / 18,432 MHz | USART0 | [v8](https://github.com/GRYF-SMART/gryfsmart-firmware/releases/latest/download/R0808-bootloader.hex) |
+| R0806T | [0015](https://github.com/GRYF-SMART/gryfsmart-firmware/releases/latest/download/R0806T-firmware.hex) | ATmega1284P / 18,432 MHz | USART0 | [v8](https://github.com/GRYF-SMART/gryfsmart-firmware/releases/latest/download/R0806T-bootloader.hex) |
+| S0804 | [0728](https://github.com/GRYF-SMART/gryfsmart-firmware/releases/latest/download/S0804-firmware.hex) | ATmega1284P / 18,432 MHz | USART0 | [v8](https://github.com/GRYF-SMART/gryfsmart-firmware/releases/latest/download/S0804-bootloader.hex) |
 
-[Rozpakuj i uruchom programator Windows](https://github.com/GRYF-SMART/gryfsmart-firmware/releases/latest/download/GRYFSMART-Tools.zip).
-[Suma SHA-256, wersja i parametry każdego pliku](https://github.com/GRYF-SMART/gryfsmart-firmware/releases/latest/download/gryfsmart-update.json).
+[Wydanie](https://github.com/GRYF-SMART/gryfsmart-firmware/releases/latest) · [Parametry i SHA-256](https://github.com/GRYF-SMART/gryfsmart-firmware/releases/latest/download/gryfsmart-update.json). Dostęp bez logowania.
 
-## Programator 1.1.3
+## Instalacja bootloadera przez USBasp / ISP
 
-GRYFSMART-Programator.exe ma logo, wybór modułu, Pobierz najnowszy HEX oraz Pobierz program z GitHub. Obecnie programuje wyłącznie ETH0606T, 16 MHz, przez RS-232 i zainstalowany bootloader v8. R0808, R0806 i S0804 są oznaczone jako w przygotowaniu. Udostępnienie ich wsadów nie włącza obsługi tych modułów w programatorze. R0806 w liście oznacza planowaną rodzinę; dostępny plik jest konkretnie dla R0806T.
+Uruchom GRYFSMART-Instalator.exe, wybierz dokładny model i podłącz USBasp do ISP zgodnie ze schematem płytki. Używaj jednego źródła zasilania. Program dobiera procesor i bootloader, sprawdza SHA-256 oraz odczytuje EEPROM i fusebity do Dokumenty/GRYFSMART/Kopie-bootloadera.
 
-ETH0606T: XS2 pin 1 GND, pin 2 TX modułu do RX adaptera, pin 3 RX modułu do TX adaptera. Użyj adaptera RS-232 do MAX232, 115200 8N1. Nie jest to UART TTL ani port CH340 na płytce.
+Kliknięcie „Wgraj bootloader” kasuje dotychczasową aplikację Flash, bez jej kopii. Instalator przywraca EEPROM, ustawia BOOTRST i obszar bootloadera 8 KiB oraz weryfikuje zapis. LOW i EXTENDED pozostają bez zmian; płytka musi mieć właściwy kwarc i konfigurację zegara. Po instalacji odłącz USBasp, zresetuj moduł i wgraj aplikację programatorem.
 
-Wybierz ETH0606T, COM i aktualny HEX (program domyślnie wybiera ETH0606T-firmware.hex). Program najpierw uzgadnia STK500v2, potwierdzając odpowiedź AVRISP_2, numer ramki i checksum. Jeśli bootloader działa już po komendzie z terminala, nie trzeba ponownie resetować modułu. AUTO jest domyślnie włączone i w razie potrzeby wysyła AT+BOOT=1 do aplikacji 0006+. Bez odpowiedzi program czeka do 20 sekund na S101 RESET. Log AVRDUDE pojawia się na bieżąco. Zamknij inne programy korzystające z COM. Samo pobieranie pliku nie programuje urządzenia. Pobraną nową paczkę programu rozpakuj po zamknięciu poprzedniej wersji.
+## Wgrywanie aplikacji przez USB / RS-232
 
-Paczka publiczna zawiera programator aplikacji, a nie instalator ISP. Pierwsza instalacja bootloadera wymaga osobnego narzędzia USBasp.
+Uruchom GRYFSMART-Programator.exe, wybierz moduł i COM. Wszystkie bootloadery używają STK500v2, 115200, 8N1.
 
-## Zakres wydania
+- ETH0606T: jeden bootloader v9 obsługuje USB na USART0 i RS-232 na USART1. Pierwszy odebrany bajt wybiera port do resetu lub uruchomienia aplikacji. Programuj przez jeden port naraz. Na USB wyłącz AUTO i naciśnij RESET podczas oczekiwania. Na RS-232 aplikacja 0006+ obsługuje AUTO / AT+BOOT=1. Stary v8 obsługiwał tylko USART1; instalator USBasp dodaje obsługę USB.
+- R0808, R0806T, S0804: użyj portu 0 / USART0. Kliknij „Sprawdź bootloader” lub „Wgraj aplikację”, następnie naciśnij RESET podczas oczekiwania. AUTO jest wyłączone dla tych modułów.
 
-HEX-y zawierają aplikację Flash bez EEPROM i fusebitów. Używaj pliku dla dokładnego modelu, procesora i kwarcu. ETH0606T 0007-TEMP5 dodaje pięć czujników DS18B20 i podgląd WWW. R0808 0008 ma dwa DS18B20; wariant sterowania RS485 DE=PE2/PH3. R0806T 0015 i S0804 0728 obsługują przekazywanie ReadTemp/TempScan do R0808. S0804 migruje EEPROM v2 do v3, ale konfigurację reguł v1 trzeba odtworzyć.
+ETH RS-232: XS2 pin 1 GND, pin 2 TX modułu do RX adaptera, pin 3 RX modułu do TX adaptera. Przy MAX232 użyj adaptera RS-232. USB korzysta z wbudowanego konwertera. Pinout i poziomy elektryczne innych modułów sprawdź na ich schemacie.
 
-Wydanie zawiera istniejące wsady sprawdzone sumami z metadanych kompilacji. Nie wykonano programowania ani testów na fizycznych modułach podczas publikacji. Dla ETH0606T zasilanie pasożytnicze i pomiary pięciu czujników wymagają potwierdzenia na płytce.
+Źródło „Plik z komputera” pozwala wskazać HEX. „GitHub — najnowszy HEX” automatycznie pobiera aplikację wybranego modułu, także po zmianie modelu. Program sprawdza model, zegar, SHA-256, format i granicę bootloadera. Pobieranie nie uruchamia zapisu. Zamknij inne programy korzystające z COM. Log: Dokumenty/GRYFSMART/RS232.
 
-AVRDUDE 8.3: licencja GPL w avrdude-8.3/COPYING; wydanie i odpowiadające źródła: https://github.com/avrdudes/avrdude/releases/tag/v8.3 oraz https://github.com/avrdudes/avrdude/tree/v8.3.
+## Testy i zawartość
 
-Wersja 1.1.2: poprawiono wykrywanie aktywnego bootloadera i uzgadnianie protokołu przed przekazaniem COM do AVRDUDE. Sprawdzono binarne połączenie oraz odczyt sygnatury ATmega2560 na fizycznym COM2; nie wykonywano zapisu Flash. Testy parsera i aktualizacji: 119 sprawdzeń.
+Sprawdzono kompilacje, protokół, sygnatury, adresowanie Flash, ochronę bootloadera i wybór UART w emulatorze oraz pobieranie i wybór modułu w testach Windows. Model operacji SPM nie zastępuje testu fizycznej pamięci. Nowych bootloaderów nie testowano na fizycznych modułach.
 
-## Źródło HEX — wersja 1.1.3
+Animacja LED występuje tylko w ETH0606T. Pozostałe bootloadery nie przełączają portu wyjść przekaźnikowych. Aplikacje zachowują dotychczasowe wersje i sumy. ETH TEMP5 wymaga potwierdzenia pomiarów pięciu czujników na płytce.
 
-Wybierz „Plik z komputera”, aby wskazać własny HEX przyciskiem „Wybierz HEX”. Albo wybierz „GitHub — najnowszy HEX”: program od razu pobierze najnowszy wsad wybranego modułu. Każda kolejna zmiana modułu automatycznie pobiera jego właściwy plik. Status pokazuje model, wersję i potwierdzenie SHA-256. Dostępne pobieranie: ETH0606T, R0808, R0806T, S0804.
+Paczka zawiera oba programy Windows, cztery aplikacje, cztery bootloadery, AVRDUDE i odpowiadające źródła bootloadera GPL. Prywatne źródła aplikacji nie są publikowane.
 
-Zmiana wyboru natychmiast usuwa poprzedni plik z pola. Spóźniona odpowiedź poprzedniego pobierania jest pomijana. Przy braku internetu pojawia się błąd; można przełączyć się na plik lokalny. Samo pobieranie nie uruchamia programowania. Wgrywanie nadal dostępne wyłącznie dla ETH0606T.
+[Źródła bootloadera i licencja](https://github.com/GRYF-SMART/gryfsmart-firmware/releases/latest/download/GRYFSMART-Bootloader-source.zip). AVRDUDE 8.3: GPL w avrdude-8.3/COPYING; [wydanie i źródła](https://github.com/avrdudes/avrdude/releases/tag/v8.3).
