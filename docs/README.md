@@ -2,6 +2,14 @@
 
 Instrukcje obejmują narzędzia **2.0.1** oraz kolejne aktualizacje aplikacji opisane przy modułach. Nowe odczyty rolet wymagają S0804 **0732** i odpowiedniej wersji modułów pośrednich; dostępność funkcji sprawdzaj według wersji konkretnego wsadu, nie samego numeru narzędzia Windows. Komendy podaje się jako tekst ASCII bez spacji i kończy znakiem CR (`\r`; terminal może wysyłać CRLF). Liczby są dziesiętne, chyba że opis komendy podaje HEX — tak jest dla parametrów Discovery/CHAIN1. Typowe łącze serwisowe: **115200 bit/s, 8 bitów danych, bez parzystości, 1 bit stopu (8N1), bez kontroli przepływu**. Zamknij inne programy korzystające z danego portu COM.
 
+## Reguły RULE — osobno dla każdego modułu
+
+- [R0806T — 6 przekaźników, lokalny PWM i akcje zdalne](reguly-R0806T.md)
+- [R0808 — 8 przekaźników i akcje zdalne](reguly-R0808.md)
+- [ETH0606T — 6 wejść, 6 przekaźników i akcje zdalne](reguly-ETH0606T.md)
+- [S0804 — akcje czterech rolet i akcje zdalne](reguly-S0804.md)
+- [Porównanie komend, odczyty stanu i ograniczenia przekazywania](reguly-porownanie.md)
+
 ## Wybierz moduł
 
 **[S0804 — pełna obsługa rolet: RolTime, RolAct, STEP, procenty, StanRol oraz nowe GetRolTime/GetRolState](rolety-komendy.md)**. Instrukcja dzieli polecenia na parametry, sterowanie i statusy oraz opisuje przekazywanie przez R0808, R0806T i ETH0606T.
