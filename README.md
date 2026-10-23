@@ -1,4 +1,4 @@
-# GRYFSMART — programator i instalator 2.0.0
+﻿# GRYFSMART — programator i instalator 2.0.1
 
 [Pobierz oba programy i wsady](https://github.com/GRYF-SMART/gryfsmart-firmware/releases/latest/download/GRYFSMART-Tools.zip). Rozpakuj cały ZIP.
 
@@ -9,9 +9,9 @@
 
 | Model | Aplikacja | Procesor / zegar | Port logiczny 0 | Bootloader |
 |---|---|---|---|---|
-| R0808 | [0009](https://github.com/GRYF-SMART/gryfsmart-firmware/releases/latest/download/R0808-firmware.hex) | ATmega2560 / 18,432 MHz | RS-232 USART3 | [v11-chain1](https://github.com/GRYF-SMART/gryfsmart-firmware/releases/latest/download/R0808-bootloader.hex) |
-| R0806T | [0016](https://github.com/GRYF-SMART/gryfsmart-firmware/releases/latest/download/R0806T-firmware.hex) | ATmega1284P / 18,432 MHz | USART0 | [v11-chain1](https://github.com/GRYF-SMART/gryfsmart-firmware/releases/latest/download/R0806T-bootloader.hex) |
-| S0804 | [0729](https://github.com/GRYF-SMART/gryfsmart-firmware/releases/latest/download/S0804-firmware.hex) | ATmega1284P / 18,432 MHz | USART0 | [v11-chain1](https://github.com/GRYF-SMART/gryfsmart-firmware/releases/latest/download/S0804-bootloader.hex) |
+| R0808 | [0010](https://github.com/GRYF-SMART/gryfsmart-firmware/releases/latest/download/R0808-firmware.hex) | ATmega2560 / 18,432 MHz | RS-232 USART3 | [v11-chain1](https://github.com/GRYF-SMART/gryfsmart-firmware/releases/latest/download/R0808-bootloader.hex) |
+| R0806T | [0017](https://github.com/GRYF-SMART/gryfsmart-firmware/releases/latest/download/R0806T-firmware.hex) | ATmega1284P / 18,432 MHz | USART0 | [v11-chain1](https://github.com/GRYF-SMART/gryfsmart-firmware/releases/latest/download/R0806T-bootloader.hex) |
+| S0804 | [0730](https://github.com/GRYF-SMART/gryfsmart-firmware/releases/latest/download/S0804-firmware.hex) | ATmega1284P / 18,432 MHz | USART0 | [v11-chain1](https://github.com/GRYF-SMART/gryfsmart-firmware/releases/latest/download/S0804-bootloader.hex) |
 | ETH0606T | [0008-USB-TEMP5](https://github.com/GRYF-SMART/gryfsmart-firmware/releases/latest/download/ETH0606T-firmware.hex) | ATmega2560 / 16 MHz | USB USART0; RS-232 USART1 | [v11-dual-faststart](https://github.com/GRYF-SMART/gryfsmart-firmware/releases/latest/download/ETH0606T-bootloader.hex) |
 
 Port 0 i port 1 są nazwami logicznymi. R0808 zachowuje port 0 na USART3, port 1 na USART1; R0806T i S0804 port 0 na USART0, port 1 na USART1. Nie zmieniono mapowania aplikacji. ETH jest obsługiwany osobno, poza łańcuchem.
@@ -42,9 +42,9 @@ Poprawna aplikacja uruchamia się po resecie bez okna oczekiwania bootloadera. D
 
 Po przerwaniu aktualizacji wykonaj skanowanie, wybierz moduł BOOT i ponów aktualizację od początku. Najpierw napraw pierwsze urządzenie BOOT w linii: jego bootloader nie przekazuje ramek do dalszych urządzeń. Kopie nie są automatycznie przywracane, a EEPROM nie jest nadpisywany podczas aktualizacji aplikacji. Bootloader aktualizuje się lokalnie przez ISP, nie przez sieć.
 
-Nowy programator dla R0808/R0806T/S0804 używa CHAIN1 także przy bezpośrednim podłączeniu jednego modułu. Zachowane binarne STK500v2 służy kompatybilności, ale sam zapis zewnętrznym AVRDUDE nie wykonuje transakcji CHAIN1 i nie potwierdza jej znacznika odzyskiwania. Do normalnej aktualizacji i odzyskiwania używaj programu 2.0.0.
+Nowy programator dla R0808/R0806T/S0804 używa CHAIN1 także przy bezpośrednim podłączeniu jednego modułu. Zachowane binarne STK500v2 służy kompatybilności, ale sam zapis zewnętrznym AVRDUDE nie wykonuje transakcji CHAIN1 i nie potwierdza jej znacznika odzyskiwania. Do normalnej aktualizacji i odzyskiwania używaj programu 2.0.1.
 
-RUN i RXTX w bootloaderach R0808/R0806T/S0804: zmiana stanu co 0,3 s podczas oczekiwania oraz co 0,1 s podczas zapisu/weryfikacji. Po sekundzie bez operacji Flash wraca wolne miganie. ETH zachowuje animację oraz STK500v2 na USB USART0 i RS-232 USART1; `AT+BOOT=1` przez USB wymaga aplikacji 0008. Firmware ETH nie został zmieniony w wydaniu 2.0.0.
+RUN i RXTX w bootloaderach R0808/R0806T/S0804: zmiana stanu co 0,3 s podczas oczekiwania oraz co 0,1 s podczas zapisu/weryfikacji. Po sekundzie bez operacji Flash wraca wolne miganie. ETH zachowuje animację oraz STK500v2 na USB USART0 i RS-232 USART1; `AT+BOOT=1` przez USB wymaga aplikacji 0008. Firmware ETH nie został zmieniony w wydaniu 2.0.1.
 
 ## Walidacja i źródła
 
