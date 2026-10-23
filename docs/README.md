@@ -1,8 +1,10 @@
 # Dokumentacja poleceń GRYFSMART
 
-Instrukcje opisują firmware opublikowane w wydaniu **2.0.1**. Wszystkie komendy podaje się jako tekst ASCII, liczby dziesiętne bez spacji i kończy znakiem CR (`\r`; terminal może wysyłać CRLF). Typowe łącze serwisowe: **115200 bit/s, 8 bitów danych, bez parzystości, 1 bit stopu (8N1), bez kontroli przepływu**. Zamknij inne programy korzystające z danego portu COM.
+Instrukcje modułów opisują firmware opublikowane w wydaniu **2.0.1**; wspólna instrukcja identyfikacji wskazuje zachowanie bieżących źródeł. Komendy podaje się jako tekst ASCII bez spacji i kończy znakiem CR (`\r`; terminal może wysyłać CRLF). Liczby są dziesiętne, chyba że opis komendy podaje HEX — tak jest dla parametrów Discovery/CHAIN1. Typowe łącze serwisowe: **115200 bit/s, 8 bitów danych, bez parzystości, 1 bit stopu (8N1), bez kontroli przepływu**. Zamknij inne programy korzystające z danego portu COM.
 
 ## Wybierz moduł
+
+Wspólny opis **Search / Find, Discovery i Info**, z formatami ramek, parametrami odpowiedzi i przykładem adresowania trzech modułów: [Identyfikacja i adresowanie](komendy-wspolne.md).
 
 | Moduł | Najważniejsze funkcje | Dokument |
 |---|---|---|
@@ -20,7 +22,7 @@ Instrukcje opisują firmware opublikowane w wydaniu **2.0.1**. Wszystkie komendy
 
 ## Zasady bezpieczeństwa konfiguracji
 
-`AT+Search` rozdziela kolejne ID w liniowej sieci i zapisuje nowe ID w EEPROM. Nie jest odczytem ani skanowaniem bez skutków ubocznych. Użyj go tylko wtedy, gdy zamierzasz ponumerować moduły i znasz kierunek liczenia. Do odczytu sieciowego użyj programatora albo polecenia `AT+Discovery` w obsługiwanych modułach.
+`AT+Search=LICZNIK,DOCELOWE_ID` wybiera jedną pozycję w liniowej sieci i zapisuje jej nowe ID w EEPROM. Aby nadać adresy wszystkim N modułom, wyślij kolejno `AT+Search=0,1` do `AT+Search=0,N`, oczekując na każde `AT+Find=ID,WERSJA,TYP`. Jedno `AT+Search=0,N` adresuje tylko pozycję N. Do rozpoznania bez zmiany ID służy `AT+Discovery` w obsługiwanych modułach; szczegóły i odmienną obsługę ETH opisuje [wspólna instrukcja](komendy-wspolne.md).
 
 `AT+Defaults` czyści konfigurację roboczą. Po zmianach, które mają przetrwać utratę zasilania, wykonaj `AT+SaveConfig`. `AT+RST` resetuje wskazany moduł; `AT+BOOT=1` uruchamia tryb aktualizacji i wyłącza sterowanie wyjściami.
 
