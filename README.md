@@ -1,12 +1,14 @@
 # GRYFSMART — programator i instalator 2.0.1
 
+Aktualizacja aplikacji: **R0806T 0018 / S0804 0731** dodaje odczyt wejść  `AT+GetInputs` oraz progów  `AT+GetKeyTime` na obu UART-ach. [Opis R0806T](docs/R0806T-odczyt-wejsc.md) · [Opis S0804](docs/S0804-odczyt-wejsc.md).
+
 ## Dokumentacja komend modułów
 
 - [Wszystkie instrukcje i zasady wspólne](docs/README.md)
-- [R0808 — 8 wyjść, 8 wejść, 16 reguł, 1 temperatura, 2 porty RS485](docs/R0808.md)
-- [R0806T — 6 wyjść, 8 wejść, 1 PWM, 16 reguł, 1 temperatura](docs/R0806T.md)
-- [S0804 — 4 rolety, 8 wejść](docs/S0804.md)
-- [ETH0606T — 6 wyjść, 6 wejść,  USB/RS-232 i 5 temperatur](docs/ETH0606T.md)
+- [R0808 — 8 przekaźników, reguły, temperatura](docs/R0808.md)
+- [R0806T — przekaźniki, PWM i termostat](docs/R0806T.md)
+- [S0804 — rolety i reguły](docs/S0804.md)
+- [ETH0606T — USB/RS-232 i 5 czujników temperatury](docs/ETH0606T.md)
 
 [Pobierz oba programy i wsady](https://github.com/GRYF-SMART/gryfsmart-firmware/releases/latest/download/GRYFSMART-Tools.zip). Rozpakuj cały ZIP.
 
@@ -18,13 +20,21 @@
 | Model | Aplikacja | Procesor / zegar | Port logiczny 0 | Bootloader |
 |---|---|---|---|---|
 | R0808 | [0010](https://github.com/GRYF-SMART/gryfsmart-firmware/releases/latest/download/R0808-firmware.hex) | ATmega2560 / 18,432 MHz | RS-232 USART3 | [v11-chain1](https://github.com/GRYF-SMART/gryfsmart-firmware/releases/latest/download/R0808-bootloader.hex) |
-| R0806T | [0017](https://github.com/GRYF-SMART/gryfsmart-firmware/releases/latest/download/R0806T-firmware.hex) | ATmega1284P / 18,432 MHz | USART0 | [v11-chain1](https://github.com/GRYF-SMART/gryfsmart-firmware/releases/latest/download/R0806T-bootloader.hex) |
-| S0804 | [0730](https://github.com/GRYF-SMART/gryfsmart-firmware/releases/latest/download/S0804-firmware.hex) | ATmega1284P / 18,432 MHz | USART0 | [v11-chain1](https://github.com/GRYF-SMART/gryfsmart-firmware/releases/latest/download/S0804-bootloader.hex) |
+| R0806T | [0018](https://github.com/GRYF-SMART/gryfsmart-firmware/releases/latest/download/R0806T-firmware.hex) | ATmega1284P / 18,432 MHz | USART0 | [v11-chain1](https://github.com/GRYF-SMART/gryfsmart-firmware/releases/latest/download/R0806T-bootloader.hex) |
+| S0804 | [0731](https://github.com/GRYF-SMART/gryfsmart-firmware/releases/latest/download/S0804-firmware.hex) | ATmega1284P / 18,432 MHz | USART0 | [v11-chain1](https://github.com/GRYF-SMART/gryfsmart-firmware/releases/latest/download/S0804-bootloader.hex) |
 | ETH0606T | [0008-USB-TEMP5](https://github.com/GRYF-SMART/gryfsmart-firmware/releases/latest/download/ETH0606T-firmware.hex) | ATmega2560 / 16 MHz | USB USART0; RS-232 USART1 | [v11-dual-faststart](https://github.com/GRYF-SMART/gryfsmart-firmware/releases/latest/download/ETH0606T-bootloader.hex) |
+
+Port 0 i port 1 są nazwami logicznymi. R0808 zachowuje port 0 na USART3, port 1 na USART1; R0806T i S0804 port 0 na USART0, port 1 na USART1. Nie zmieniono mapowania aplikacji. ETH jest obsługiwany osobno, poza łańcuchem.
+
+## Pierwsze uruchomienie nowej obsługi
+
+1. Dla każdego urządzenia zainstaluj właściwy bootloader v11 programem GRYFSMART-Instalator przez USBasp / ISP. Instalacja kasuje aplikację, wykonuje kopię EEPROM i fusebitów, przywraca EEPROM, ustawia obszar bootloadera 8 KiB oraz BOOTRST. Nie zmienia LOW/EXTENDED; wymagany właściwy kwarc. Kopia Flash nie jest wykonywana przez instalator.
+2. Odłącz USBasp i zresetuj urządzenie. Pusty moduł pozostanie w bootloaderze. Programem GRYFSMART-Programator wybierz dokładny model, jego port COM oraz lokalny HEX lub GitHub i wgraj aplikację. R0808 używa teraz właściwego logicznego portu 0 / USART3.
+3. Wszystkie urządzenia poprzedzające aktualizowany moduł muszą mieć nową aplikację CHAIN1. Stary firmware nie przekazuje nowych ramek. Pierwszą migrację wykonaj indywidualnie; późniejsze aktualizacje aplikacji można wykonywać przez łańcuch.
 
 ## Sieć do 35 modułów
 
-Połącz PC z portem 0 pierwszego modułu, port 1 pierwszego z portem 0 drugiego itd. Używaj połączeń i poziomów elektrycznych właściwych dla płytek. Komunikacja: 115200, 8N1, bez kontroli przepływu. 
+Połącz PC z portem 0 pierwszego modułu, port 1 pierwszego z portem 0 drugiego itd. Używaj połączeń i poziomów elektrycznych właściwych dla płytek. Komunikacja: 115200, 8N1, bez kontroli przepływu. Zamknij Hercules i inne programy korzystające z COM.
 
 W programatorze wybierz „Sieć — do 35 modułów”, COM i „Wykryj moduły”. Tabela pokazuje pozycję, model, ID, wersję aplikacji, APP/BOOT, wersję bootloadera w trybie BOOT oraz maski wejść i wyjść. W aplikacji wersja bootloadera jest oznaczona UNKNOWN, ponieważ nie jest potwierdzana odczytem. „Porównaj z GitHub” pobiera wersje najnowszego stabilnego wydania.
 
