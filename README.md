@@ -13,7 +13,7 @@ https://github.com/GRYF-SMART/gryfsmart-firmware/releases/latest
 [Rozpakuj i uruchom programator Windows](https://github.com/GRYF-SMART/gryfsmart-firmware/releases/latest/download/GRYFSMART-Tools.zip).
 [Suma SHA-256, wersja i parametry każdego pliku](https://github.com/GRYF-SMART/gryfsmart-firmware/releases/latest/download/gryfsmart-update.json).
 
-## Programator 1.1.2
+## Programator 1.1.3
 
 GRYFSMART-Programator.exe ma logo, wybór modułu, Pobierz najnowszy HEX oraz Pobierz program z GitHub. Obecnie programuje wyłącznie ETH0606T, 16 MHz, przez RS-232 i zainstalowany bootloader v8. R0808, R0806 i S0804 są oznaczone jako w przygotowaniu. Udostępnienie ich wsadów nie włącza obsługi tych modułów w programatorze. R0806 w liście oznacza planowaną rodzinę; dostępny plik jest konkretnie dla R0806T.
 
@@ -32,3 +32,9 @@ Wydanie zawiera istniejące wsady sprawdzone sumami z metadanych kompilacji. Nie
 AVRDUDE 8.3: licencja GPL w avrdude-8.3/COPYING; wydanie i odpowiadające źródła: https://github.com/avrdudes/avrdude/releases/tag/v8.3 oraz https://github.com/avrdudes/avrdude/tree/v8.3.
 
 Wersja 1.1.2: poprawiono wykrywanie aktywnego bootloadera i uzgadnianie protokołu przed przekazaniem COM do AVRDUDE. Sprawdzono binarne połączenie oraz odczyt sygnatury ATmega2560 na fizycznym COM2; nie wykonywano zapisu Flash. Testy parsera i aktualizacji: 119 sprawdzeń.
+
+## Źródło HEX — wersja 1.1.3
+
+Wybierz „Plik z komputera”, aby wskazać własny HEX przyciskiem „Wybierz HEX”. Albo wybierz „GitHub — najnowszy HEX”: program od razu pobierze najnowszy wsad wybranego modułu. Każda kolejna zmiana modułu automatycznie pobiera jego właściwy plik. Status pokazuje model, wersję i potwierdzenie SHA-256. Dostępne pobieranie: ETH0606T, R0808, R0806T, S0804.
+
+Zmiana wyboru natychmiast usuwa poprzedni plik z pola. Spóźniona odpowiedź poprzedniego pobierania jest pomijana. Przy braku internetu pojawia się błąd; można przełączyć się na plik lokalny. Samo pobieranie nie uruchamia programowania. Wgrywanie nadal dostępne wyłącznie dla ETH0606T.
