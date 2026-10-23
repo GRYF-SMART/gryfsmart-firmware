@@ -1,13 +1,13 @@
 # GRYFSMART — oprogramowanie i bootloadery
 
-[Pobierz programator i instalator Windows 1.2.3](https://github.com/GRYF-SMART/gryfsmart-firmware/releases/latest/download/GRYFSMART-Tools.zip). Rozpakuj cały ZIP.
+[Pobierz programator i instalator Windows 1.2.4](https://github.com/GRYF-SMART/gryfsmart-firmware/releases/latest/download/GRYFSMART-Tools.zip). Rozpakuj cały ZIP.
 
 | Moduł | Aplikacja | Procesor / zegar | Port bootloadera | Bootloader |
 |---|---|---|---|---|
 | ETH0606T | [0008-USB-TEMP5](https://github.com/GRYF-SMART/gryfsmart-firmware/releases/latest/download/ETH0606T-firmware.hex) | ATmega2560 / 16 MHz | USB USART0 lub RS-232 USART1 | [v10 dual](https://github.com/GRYF-SMART/gryfsmart-firmware/releases/latest/download/ETH0606T-bootloader.hex) |
-| R0808 | [0008](https://github.com/GRYF-SMART/gryfsmart-firmware/releases/latest/download/R0808-firmware.hex) | ATmega2560 / 18,432 MHz | USART0 | [v9 LED300](https://github.com/GRYF-SMART/gryfsmart-firmware/releases/latest/download/R0808-bootloader.hex) |
-| R0806T | [0015](https://github.com/GRYF-SMART/gryfsmart-firmware/releases/latest/download/R0806T-firmware.hex) | ATmega1284P / 18,432 MHz | USART0 | [v9 LED300](https://github.com/GRYF-SMART/gryfsmart-firmware/releases/latest/download/R0806T-bootloader.hex) |
-| S0804 | [0728](https://github.com/GRYF-SMART/gryfsmart-firmware/releases/latest/download/S0804-firmware.hex) | ATmega1284P / 18,432 MHz | USART0 | [v9 LED300](https://github.com/GRYF-SMART/gryfsmart-firmware/releases/latest/download/S0804-bootloader.hex) |
+| R0808 | [0008](https://github.com/GRYF-SMART/gryfsmart-firmware/releases/latest/download/R0808-firmware.hex) | ATmega2560 / 18,432 MHz | USART0 | [v10 LED300/100](https://github.com/GRYF-SMART/gryfsmart-firmware/releases/latest/download/R0808-bootloader.hex) |
+| R0806T | [0015](https://github.com/GRYF-SMART/gryfsmart-firmware/releases/latest/download/R0806T-firmware.hex) | ATmega1284P / 18,432 MHz | USART0 | [v10 LED300/100](https://github.com/GRYF-SMART/gryfsmart-firmware/releases/latest/download/R0806T-bootloader.hex) |
+| S0804 | [0728](https://github.com/GRYF-SMART/gryfsmart-firmware/releases/latest/download/S0804-firmware.hex) | ATmega1284P / 18,432 MHz | USART0 | [v10 LED300/100](https://github.com/GRYF-SMART/gryfsmart-firmware/releases/latest/download/S0804-bootloader.hex) |
 
 [Wydanie](https://github.com/GRYF-SMART/gryfsmart-firmware/releases/latest) · [Parametry i SHA-256](https://github.com/GRYF-SMART/gryfsmart-firmware/releases/latest/download/gryfsmart-update.json). Dostęp bez logowania.
 
@@ -32,7 +32,7 @@ ETH RS-232: XS2 pin 1 GND, pin 2 TX modułu do RX adaptera, pin 3 RX modułu do 
 
 Sprawdzono kompilacje, protokół, sygnatury, adresowanie Flash, ochronę bootloadera i wybór UART w emulatorze oraz pobieranie i wybór modułu w testach Windows. Model operacji SPM nie zastępuje testu fizycznej pamięci. Nowych bootloaderów nie testowano na fizycznych modułach.
 
-R0808, R0806T i S0804: RUN oraz RXTX migają jednocześnie, 300 ms włączone / 300 ms wyłączone, przez czas działania bootloadera, także podczas programowania. ETH0606T zachowuje dotychczasową animację. Pozostałe bootloadery nie przełączają portu wyjść przekaźnikowych. ETH0606T 0008 włącza USART0 i obsługę komend AT przez USB. Pozostałe aplikacje zachowują wersje i sumy. ETH TEMP5 wymaga potwierdzenia pomiarów pięciu czujników na płytce.
+R0808, R0806T i S0804: RUN oraz RXTX migają jednocześnie: oczekiwanie 300 ms ON / 300 ms OFF; wgrywanie aplikacji i jej weryfikacja 100 ms ON / 100 ms OFF. Szybkie miganie zaczyna się po poprawnym żądaniu zapisu Flash. Sam test połączenia go nie włącza. Po sekundzie bez operacji Flash wraca wolne miganie, a po uruchomieniu aplikacji kończy się sygnalizacja bootloadera. ETH0606T zachowuje dotychczasową animację. Pozostałe bootloadery nie przełączają portu wyjść przekaźnikowych. ETH0606T 0008 włącza USART0 i obsługę komend AT przez USB. Pozostałe aplikacje zachowują wersje i sumy. ETH TEMP5 wymaga potwierdzenia pomiarów pięciu czujników na płytce.
 
 Paczka zawiera oba programy Windows, cztery aplikacje, cztery bootloadery, AVRDUDE i odpowiadające źródła bootloadera GPL. Prywatne źródła aplikacji nie są publikowane.
 
