@@ -1,4 +1,12 @@
-﻿# GRYFSMART — programator i instalator 2.0.1
+# GRYFSMART — programator i instalator 2.0.1
+
+## Dokumentacja komend modułów
+
+- [Wszystkie instrukcje i zasady wspólne](docs/README.md)
+- [R0808 — 8 przekaźników, reguły, temperatura](docs/R0808.md)
+- [R0806T — przekaźniki, PWM i termostat](docs/R0806T.md)
+- [S0804 — rolety i reguły](docs/S0804.md)
+- [ETH0606T — USB/RS-232 i 5 czujników temperatury](docs/ETH0606T.md)
 
 [Pobierz oba programy i wsady](https://github.com/GRYF-SMART/gryfsmart-firmware/releases/latest/download/GRYFSMART-Tools.zip). Rozpakuj cały ZIP.
 
