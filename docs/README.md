@@ -1,8 +1,10 @@
 # Dokumentacja poleceń GRYFSMART
 
-Instrukcje obejmują wydanie narzędzi **2.0.1** i aktualizację aplikacji **R0806T 0018 / S0804 0731** z odczytami wejść. Wersję odniesienia podaje opis danego modułu. Komendy podaje się jako tekst ASCII bez spacji i kończy znakiem CR (`\r`; terminal może wysyłać CRLF). Liczby są dziesiętne, chyba że opis komendy podaje HEX — tak jest dla parametrów Discovery/CHAIN1. Typowe łącze serwisowe: **115200 bit/s, 8 bitów danych, bez parzystości, 1 bit stopu (8N1), bez kontroli przepływu**. Zamknij inne programy korzystające z danego portu COM.
+Instrukcje obejmują narzędzia **2.0.1** oraz kolejne aktualizacje aplikacji opisane przy modułach. Nowe odczyty rolet wymagają S0804 **0732** i odpowiedniej wersji modułów pośrednich; dostępność funkcji sprawdzaj według wersji konkretnego wsadu, nie samego numeru narzędzia Windows. Komendy podaje się jako tekst ASCII bez spacji i kończy znakiem CR (`\r`; terminal może wysyłać CRLF). Liczby są dziesiętne, chyba że opis komendy podaje HEX — tak jest dla parametrów Discovery/CHAIN1. Typowe łącze serwisowe: **115200 bit/s, 8 bitów danych, bez parzystości, 1 bit stopu (8N1), bez kontroli przepływu**. Zamknij inne programy korzystające z danego portu COM.
 
 ## Wybierz moduł
+
+**[S0804 — pełna obsługa rolet: RolTime, RolAct, STEP, procenty, StanRol oraz nowe GetRolTime/GetRolState](rolety-komendy.md)**. Instrukcja dzieli polecenia na parametry, sterowanie i statusy oraz opisuje przekazywanie przez R0808, R0806T i ETH0606T.
 
 Wspólna obsługa przekaźników **R0808, R0806T i ETH0606T**: [SetOut, GetOut oraz raporty O=/o=](wyjscia-komendy.md). R0808 od 0011 ma lokalny GetOut i raport po zmianie; instrukcja wskazuje również różnice formatów w pozostałych modułach.
 

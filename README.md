@@ -5,6 +5,7 @@ Aktualizacja aplikacji: **R0806T 0018 / S0804 0731** dodaje odczyt wejść  `AT+
 ## Dokumentacja komend modułów
 
 - [Wszystkie instrukcje i zasady wspólne](docs/README.md)
+- [Rolety S0804 — sterowanie, procenty, czasy i nowe odczyty stanu](docs/rolety-komendy.md)
 - [Wyjścia przekaźnikowe — SetOut, GetOut, O=/o=](docs/wyjscia-komendy.md)
 - [Wejścia — I / PS / PL, konfiguracja czasów, GET i zapis](docs/wejscia-komendy.md)
 - [R0808 — 8 przekaźników, reguły, temperatura](docs/R0808.md)
