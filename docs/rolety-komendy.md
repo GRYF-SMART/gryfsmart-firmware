@@ -1,6 +1,6 @@
 # S0804 — parametry, sterowanie i odczyt stanu rolet
 
-S0804 obsługuje cztery rolety. Nowe komendy **GetRolTime** i **GetRolState** są dostępne od aplikacji **0732**. Odczyty i ich odpowiedzi przekazują R0808 **0012**, R0806T **0019** oraz ETH0606T **0009-USB-TEMP5**. Opis dotyczy nowych wersji aplikacji; sprawdź wersję pobieranego wsadu, ponieważ starsze publiczne wydanie nie zyskuje tych funkcji przez samą aktualizację dokumentacji.
+S0804 obsługuje cztery rolety. Dokumentacja dotyczy firmware **20**. GetRolTime, GetRolState i adresowane StanRol są przekazywane przez R0808, R0806T oraz bramkę ETH.
 
 ## 1. Zestawienie
 
@@ -17,7 +17,7 @@ S0804 obsługuje cztery rolety. Nowe komendy **GetRolTime** i **GetRolState** s�
 | Odpowiedź parametrów | `RolTime=ID,NR,OPEN,CLOSE,SUMA` | Odpowiedź GetRolTime |
 | Odpowiedź szczegółowa | `RolState=ID,NR,STAN,ZNANA,POZYCJA,CEL,POZOSTALO,SUMA` | Odpowiedź GetRolState |
 
-ID: 1–35, NR rolety: 1–4. Liczby są dziesiętne. SUMA jest zwykłą sumą wcześniejszych pól liczbowych. Łącze 115200 8N1; zapytanie kończ CR (0x0D), odpowiedź CRLF. W przykładach `<CR>` i `<LF>` oznaczają bajty, a TX/RX — kierunki względem terminala. Nie wpisuj dosłownego `<CR>`.
+ID: 1–35, NR rolety: 1–4. Liczby są dziesiętne. SUMA jest zwykłą sumą wcześniejszych pól liczbowych. [Zasady komunikacji](komendy-wspolne.md#zasady-komunikacji-i-struktura-sieci). W przykładach `<CR>` i `<LF>` oznaczają bajty, a TX/RX — kierunki względem terminala. Nie wpisuj dosłownego `<CR>`.
 
 Nowe odczyty wymagają ID 1–35. Wyjątek historyczny: StanRol=0 pyta lokalny S0804; nie jest broadcastem ani sposobem przejścia przez moduł przekaźnikowy.
 
@@ -36,7 +36,7 @@ RX: RuleOK=1<CR><LF>
 
 Suma: 1+1+200+220=422. Czasy zmieniają RAM. Zapisz je SaveConfig, jeśli mają przetrwać restart.
 
-## 3. GetRolTime — nowy odczyt czasów
+## 3. GetRolTime — odczyt czasów
 
 ```text
 TX: AT+GetRolTime=1,1,2<CR>
@@ -99,7 +99,7 @@ Po restarcie albo zmianie RolTime pozycja jest nieznana. Najpierw zakończ pełn
 
 Pozycja jest szacowana na podstawie czasu, bez czujnika położenia. Stan ZNANA=1 oznacza dostępne oszacowanie programu, a nie potwierdzenie rzeczywistej pozycji przez sensor.
 
-## 6. GetRolState — nowy odczyt szczegółowy
+## 6. GetRolState — odczyt szczegółowy
 
 ```text
 AT+GetRolState=ID,NR,SUMA<CR>
@@ -190,12 +190,12 @@ Defaults zatrzymuje rolety, usuwa czasy i ważność pozycji oraz przywraca szer
 
 ## 9. Przezroczystość modułów pośrednich
 
-| Urządzenie | Nowa wersja | Obsługa |
+| Urządzenie | Firmware | Obsługa |
 |---|---|---|
-| S0804 | 0732 | Wykonuje lokalne odczyty, przekazuje do innego ID |
-| R0806T | 0019 | Przekazuje GetRolTime, GetRolState i adresowane StanRol oraz odpowiedzi |
-| R0808 | 0012 | Przekazuje te same zapytania i odpowiedzi w parze portów |
-| ETH0606T | 0009-USB-TEMP5 | Przekazuje nowe odczyty między USB i RS-232; bramka TCP kieruje zapytania do dalszych ID i przekazuje odpowiedzi |
+| S0804 | 20 | Wykonuje lokalne odczyty, przekazuje do innego ID |
+| R0806T | 20 | Przekazuje GetRolTime, GetRolState i adresowane StanRol oraz odpowiedzi |
+| R0808 | 20 | Przekazuje te same zapytania i odpowiedzi w parze portów |
+| ETH0606T | 20 | Przekazuje nowe odczyty między USB i RS-232; bramka TCP kieruje zapytania do dalszych ID i przekazuje odpowiedzi |
 
 Moduły przekaźnikowe nie udają lokalnych rolet: zapytanie o własne ID zwraca błąd. Adresowany StanRol przechodzi przez moduły pośrednie; StanRol=0 jest odczytem tylko lokalnego S0804, nie komendą zdalnego skanowania.
 
@@ -227,6 +227,6 @@ TX: AT+GetRolState=0,1,1<CR>    ← ID=0 niedozwolone
 RX: RuleERROR=1<CR><LF>
 ```
 
-Poprawny odczyt zwraca dane bez dodatkowego RuleOK. Moduł pośredni może odrzucić błędny format, zakres lub sumę; ID błędu wskazuje wtedy odrzucający moduł. Brak wskazanego ID, starszy wsad lub przerwana linia mogą dać ciszę zamiast błędu — stosuj timeout i sprawdzaj ID, numer rolety, prefiks oraz sumę odpowiedzi.
+Poprawny odczyt zwraca dane bez dodatkowego RuleOK. Moduł pośredni może odrzucić błędny format, zakres lub sumę; ID błędu wskazuje wtedy odrzucający moduł. Brak wskazanego ID lub przerwana linia mogą dać ciszę zamiast błędu — stosuj timeout i sprawdzaj ID, numer rolety, prefiks oraz sumę odpowiedzi.
 
 Stare RolAct, RolTime i R= zachowują format. GetRolState nie dodaje czujnika położenia; jego procent i czas pozostają estymacją czasową, którą mogą zaburzać właściwości mechaniczne rolety.

@@ -2,7 +2,7 @@
 
 [Dokumentacja główna](README.md) · [Porównanie modułów i ograniczenia](reguly-porownanie.md)
 
-Opis sprawdzony względem bieżących źródeł (0019). Dostępność we wcześniejszych wsadach wymaga sprawdzenia ich wersji. Przykłady zakładają ID modułu **1** i regułę **1**. Każda wysyłana linia kończy się CR; zapis `<CR>` oznacza ten znak, nie dosłowny tekst.
+Firmware **20**. Przykłady zakładają ID modułu **1** i regułę **1**. Każda wysyłana linia kończy się CR; zapis `<CR>` oznacza ten znak, nie dosłowny tekst.
 
 ## Jak działa reguła
 
@@ -57,8 +57,9 @@ ID to moduł przechowujący regułę, CEL to adres odbiorcy akcji (1–35, inny 
 | 1 | A1,P1,...,A4,P4 | 4 rolety S0804; kody A/P jak wyżej w dokumentacji rolet |
 | 2 | O1,...,O6 | 6 przekaźników R0806T lub ETH0606T; akcje 0/1/2/3 |
 | 3 | O1,...,O8 | 8 przekaźników R0808; akcje 0/1/2/3 |
+| 4 | AKCJA,PROCENT,RAMPA | PWM innego R0806T; akcja 0–4, procent 0–100, rampa 0–50 × 0,1 s |
 
-R0806T nie obsługuje typu 4 we własnych slotach RuleRemote. Lokalny PWM konfiguruje RulePWM. Nie należy utożsamiać obsługi przekazywania obcych ramek typu 4 z obsługą takiej akcji przez własną regułę.
+Lokalny PWM konfiguruje RulePWM; zdalny PWM odbiorcy — RuleRemote typu 4. Obie akcje mogą działać w jednej regule.
 
 Typ 1 używa akcji rolet 0–7; procent może być niezerowy tylko przy akcji 7. Ten sam CEL nie może zajmować kilku slotów tej samej reguły, także przy różnych typach akcji.
 
@@ -71,7 +72,7 @@ TX: AT+GetRuleRemote=1,1,1,3<CR>
 RX: RuleRemote=1,1,1,2,2,1,0,0,0,0,0,8
 ```
 
-Po tym przykładzie wyślij ponownie Rule z EN=1. Sloty zdalne nie uruchamiają reguły odbiorcy: wykonawca wysyła do niego SetOut, RolAct. Potwierdzenie konfiguracji nie dowodzi odebrania ani wykonania przyszłej akcji przez odbiorcę.
+Po tym przykładzie wyślij ponownie Rule z EN=1. Sloty zdalne nie uruchamiają reguły odbiorcy: wykonawca wysyła do niego SetOut, RolAct lub PWM. Potwierdzenie konfiguracji nie dowodzi odebrania ani wykonania przyszłej akcji przez odbiorcę.
 
 Kasowanie i odczyt pustego slotu:
 
@@ -112,13 +113,16 @@ Po włączeniu reguły i wystąpieniu jej zdarzenia PWM przejdzie do 50% w 1 s. 
 
 Zmiany reguł są robocze w RAM; sam RuleOK nie oznacza trwałego zapisu EEPROM. Konfiguracja reguł podczas pracy wykonawcy może zostać odrzucona. RuleOK=ID oznacza przyjęcie komendy, RuleERROR=ID to ogólny błąd składni, zakresu, sumy lub stanu; odpowiedź nie zawiera numeru reguły ani kodu przyczyny. Defaults jest szerokim resetem konfiguracji, nie komendą usunięcia jednej reguły.
 
-**Co można odpytać:** GetRule zwraca konfigurację i EN; GetRuleRemote — sloty; GetRulePWM — lokalną akcję PWM. Stan wyjść odczytasz przez `AT+GetOut=1<CR>` — [format odpowiedzi i wersje](wyjscia-komendy.md). Bieżący PWM: `AT+GetPWM=1<CR>`. Wejścia: GetInputs i GetKeyTime — [opis i wymagane wersje](wejscia-komendy.md).
+**Co można odpytać:** GetRule zwraca konfigurację i EN; GetRuleRemote — sloty; GetRulePWM — lokalną akcję PWM. Stan wyjść odczytasz przez `AT+GetOut=1<CR>` — [format odpowiedzi](wyjscia-komendy.md). Bieżący PWM: `AT+GetPWM=1<CR>`. Wejścia: GetInputs i GetKeyTime — [opis](wejscia-komendy.md).
 
 **Czego nie można odpytać:** brak komendy RuleStatus/GetRuleStatus zwracającej aktywnie wykonywaną regułę, kolejkę, licznik uruchomień, ostatni błąd lub potwierdzenie zdalnych akcji. EN=1 oznacza uzbrojenie reguły, nie jej wykonywanie.
 
-## Ograniczenia wykonania
+## Wykonanie i transmisja
 
-Akcje wykonywane są etapami, po jednej na obieg pętli, a nie atomowo. Oczekujące uruchomienia przechowuje maska bitowa: powtarzające się wyzwolenia już oczekującej reguły mogą się scalić. Na początku wykonawca sprawdza dostępność UART; niedostępna kolejka może opóźnić także akcje lokalne, mimo że główna pętla nadal pracuje. Watchdog samej pętli tego nie wykryje. Nie ma gwarancji czasu reakcji ani potwierdzenia zakończenia całej sceny przez wszystkie urządzenia.
+Akcje lokalne wykonywane są po jednej na obieg pętli, niezależnie od UART i oczekujących transmisji wcześniejszej reguły. Wejścia mają osobną obsługę lokalną i kolejkę raportów. Akcje zdalne czekają na miejsce w UART. [Bufory i ograniczenia](reguly-uart-zmiany.md).
 
-Przed użyciem przez mieszaną linię sprawdź [ograniczenia przekazywania RULE](reguly-porownanie.md); obsługa komendy na docelowym module nie gwarantuje, że każdy pośrednik przepuści jej format.
+Wszystkie modele przekazują obce Rule, GetRule, RuleRemote, GetRuleRemote, RulePWM i GetRulePWM bez interpretacji układu akcji innego modelu. [Porównanie](reguly-porownanie.md).
 
+## Zdalny PWM
+
+[Parametry typu 4, przykład, włączenie i zapis EEPROM](R0806T-zdalny-PWM.md). Akcja 0 nie nadaje ramki; 1 włącza ostatni poziom odbiorcy, 2 wyłącza, 3 przełącza, 4 ustawia procent. Niezerowy procent jest dozwolony tylko dla akcji 4.

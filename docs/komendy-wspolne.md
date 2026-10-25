@@ -1,17 +1,70 @@
-# Wspólne komendy identyfikacji i adresowania GRYFSMART
+# Wspólne komendy GRYFSMART — sieć, stan i identyfikacja
 
-Dokument opisuje `AT+Search`, odpowiedź `AT+Find`, `AT+Discovery` oraz `AT+Info` na podstawie bieżących źródeł aplikacji. Obsługę w starszym wsadzie należy sprawdzić dla jego wersji. Przykładowe wersje i dane identyfikacyjne poniżej nie są odczytem z fizycznych urządzeń.
+Dokumentacja dotyczy firmware **20** wszystkich modułów. Przykładowe odpowiedzi nie są odczytem fizycznych urządzeń.
 
-## 1. Łącze i oznaczenia
 
-- Łącze serwisowe: **115200 bit/s, 8N1, bez kontroli przepływu**.
-- `<CR>` oznacza jeden bajt `0x0D`, a `<LF>` bajt `0x0A`. Nie wpisuj dosłownie znaków `<CR>` do terminala.
-- Komendę zakończ CR; odpowiedzi aplikacji są zakończone CRLF. Terminal może wysyłać CRLF.
-- `TX` to tekst wysłany przez terminal/sterownik, `RX` to odpowiedź odebrana przez niego.
-- W opisie modułu port wejściowy oznacza port, którym przyszła komenda. Moduły liniowe przekazują ją drugim portem, a odpowiedź wraca w stronę nadawcy.
-- **ID jest adresem logicznym modułu 1–35, a nie adresem IP.** Adres IP dotyczy osobno konfiguracji sieci Ethernet.
-- Liczby w Search i Info są dziesiętne. Parametry HOPS i SEQ w Discovery są **szesnastkowe**.
-- Te trzy komendy nie wymagają dodatkowego pola SUMA znanego z komend konfiguracji reguł.
+## Zasady komunikacji i struktura sieci
+
+Podstawą działania sieci GRYFSMART jest **liniowe przekazywanie rozkazów konfiguracyjnych, sterujących i statusowych**. Moduły R0808, R0806T i S0804 mają po dwa porty RS-232 używane do głównej linii: port logiczny 0 od strony sterownika i port logiczny 1 do następnego modułu.
+
+```text
+Sterownik / komputer
+        │
+        ▼
+ [port 0 — Moduł 1 — port 1]
+                         │
+                         ▼
+                  [port 0 — Moduł 2 — port 1]
+                                          │
+                                          ▼
+                                   [port 0 — Moduł 3 — port 1] ── …
+```
+
+**Maksymalna liczba modułów w jednej linii wynosi 35.** Adresy ID są liczbami 1–35. Nie są adresami IP. Do sterowania adresowanego nadaj modułom indywidualne ID.
+
+Po odebraniu polecenia moduł sprawdza, czy jest ono przeznaczone dla niego. Polecenie lokalne wykonuje i odsyła odpowiedź. Poprawne polecenie do innego ID przekazuje dalej; odpowiedzi i raporty statusowe są przekazywane wzdłuż linii. Nie każde polecenie wybiera odbiorcę przez ID: Discovery wybiera pozycję przez liczbę przejść, a Search używa licznika i nadaje ID — szczegóły poniżej. Discovery/CHAIN1 ma określony kierunek port 0 → port 1.
+
+Domyślne parametry głównej linii RS-232:
+
+**115200 bit/s, 8 bitów danych, bez parzystości, 1 bit stopu (8N1), bez kontroli przepływu. Zamknij inne programy korzystające z danego portu COM.**
+
+Jeżeli moduł udostępnia dodatkowe porty, inne interfejsy lub konfigurowalną prędkość, szczegóły i wyjątki są podane w dokumentacji tego modułu. Numer portu logicznego nie musi odpowiadać numerowi sprzętowego USART.
+
+**ETH0606T ma jeden port RS-232 i może pracować jako bramka Ethernet/TCP ↔ RS-232.** Ma również interfejs USB/USART0. Nie jest kolejnym symetrycznym modułem o dwóch portach RS-232. Obsługę USB, Ethernetu i kierunki przekazywania opisuje [instrukcja ETH0606T](ETH0606T.md).
+
+Komendy są **ciągami znaków ASCII zakończonymi znakiem CR** (`\r`, bajt `0x0D`), zwykle wysyłanym po naciśnięciu Enter w odpowiednio ustawionym terminalu. Zapis `<CR>` w przykładach oznacza znak końca polecenia; nie wpisuj dosłownie tych czterech znaków.
+
+```text
+AT+GetOut=1<CR>
+```
+
+Odpowiedzi i powiadomienia również są ciągami ASCII. Zakończenie odpowiedzi jest opisane przy danej komendzie: zwykle CRLF (`\r\n`), a niektóre raporty R0806T mają samo CR. Terminal odbiorczy powinien obsługiwać oba warianty. Enter wysyłający CRLF również może być używany w obsługiwanym terminalu.
+
+`TX` oznacza wysyłanie, `RX` odbiór. Odpowiedzi na zapytania i samoczynne raporty mogą się przeplatać. Sprawdzaj prefiks, ID i sumę, jeśli występuje; nie zakładaj, że kolejna odebrana linia jest odpowiedzią na ostatnio wysłany rozkaz.
+
+## Sieć i stan
+
+```text
+AT+Loop=0<CR>
+AT+LoopReset=0<CR>
+AT+ResetStats=0<CR>
+AT+Discovery<CR>
+AT+Discovery=4,05<CR>
+AT+ModuleInfo<CR>
+AT+Search=1,5<CR>
+```
+
+`Loop` pokazuje liczbę obiegów oraz minimum, średnią i maksimum czasu pętli w mikrosekundach, a także licznik nasycenia: `LOOP=ID,N=...,MIN_US=...,AVG_US=...,MAX_US=...,SAT=0`. `LoopReset` zeruje pomiar i odpowiada `LoopOK=ID`. ID=0 oznacza moduł lokalny. `ResetStats` odczytuje liczbę startów, przyczyny resetów i stan zapisu diagnostyki; nie zeruje tych liczników.
+
+`Discovery` i `ModuleInfo` odczytują informacje bez zapisu EEPROM w R0808, R0806T i S0804. Format parametryzowany to `HOPS_HEX,SEKWENCJA_HEX`: pozycja 5 wymaga hops=4; przykład `4,05` używa sekwencji 05. Odpowiedź `Chain=SEKWENCJA,OK,MODEL;FW;ID;APP;MCU;UNKNOWN;WEJŚCIA;WYJŚCIA;CHAIN1` zawiera model, wersję, ID, MCU i maski IO. **ETH0606T nie implementuje Discovery/ModuleInfo/CHAIN1**; używa Info i osobnych zasad bramkowania opisanych poniżej.
+
+**Search nadaje ID jednej wskazanej pozycji i zapisuje je do EEPROM.** W zapisie `AT+Search=LICZNIK,ILE` drugie pole jest docelową pozycją i nowym ID, a nie liczbą modułów numerowanych jednym wywołaniem. Z początku linii wysyłaj `AT+Search=0,N`. W ramce `AT+Search=1,5` licznik uwzględnia już jedną pozycję; taka ramka występuje przy przekazywaniu wewnątrz linii. Aby nadać ID całej linii, wykonaj osobne wywołanie dla każdej pozycji. Search służy wyłącznie do celowego nadawania ID, nie do skanowania.
+
+`AT+RST=ID` resetuje wskazany moduł. `AT+BOOT=1` wyłącza sterowanie i uruchamia bootloader. W R/S komendę podaje się na porcie logicznym 0: R0808 USART3, R0806T i S0804 USART0. ETH obsługuje ją przez USB/USART0 i RS-232/USART1. Zwykły reset poprawnej aplikacji uruchamia ją bez oczekiwania w bootloaderze.
+
+## 1. Zestawienie identyfikacji i adresowania
+
+Liczby Search i Info są dziesiętne, a HOPS i SEQ w Discovery — szesnastkowe. Te komendy nie mają dodatkowego pola SUMA.
 
 | Komenda | Cel | Wybór modułu | Zapis EEPROM |
 |---|---|---|---|
@@ -59,7 +112,7 @@ Moduły pośrednie przekazują odpowiedź Find w stronę sterownika. Zapis adres
 | Pole | Znaczenie | Przykład |
 |---|---|---|
 | `ID` | Nadany adres logiczny | `3` |
-| `WERSJA_FW` | Wersja oprogramowania, z zachowaniem zer na początku | `0730` |
+| `WERSJA_FW` | Wersja oprogramowania, z zachowaniem zer na początku | `20` |
 | `TYP` | Numeryczny typ modułu | `3` dla S0804 |
 
 | Typ | Model |
@@ -69,7 +122,7 @@ Moduły pośrednie przekazują odpowiedź Find w stronę sterownika. Zapis adres
 | 5 | R0808 |
 | 6 | ETH0606T |
 
-Nazwa pola `MAC` w starszym kodzie przechowuje tutaj wersję firmware, a nie ethernetowy adres MAC. Odpowiedź ma znak `=`: `AT+Find=...`, nie `AT+Find-...`.
+Nazwa pola `MAC` w strukturze modułu przechowuje tutaj wersję firmware, a nie ethernetowy adres MAC. Odpowiedź ma znak `=`: `AT+Find=...`, nie `AT+Find-...`.
 
 ### 2.4. Przykład: trzy moduły w linii
 
@@ -78,14 +131,14 @@ Terminal ── M1: R0808 ── M2: R0806T ── M3: S0804
               ID=1          ID=2          ID=3
 ```
 
-Powyższe ID są wynikiem procedury. Przed jej wykonaniem mogą być inne lub powtarzać się. Wersje w przykładzie: R0808 0010, R0806T 0017, S0804 0730.
+Powyższe ID są wynikiem procedury. Przed jej wykonaniem mogą być inne lub powtarzać się. Wersje w przykładzie: R0808 20, R0806T 20, S0804 20.
 
 **Krok 1 — adresowanie pierwszego modułu:**
 
 ```text
 Terminal TX → M1:  AT+Search=0,1<CR>
 M1: licznik 0 → 1; zapis ID=1 do EEPROM
-Terminal RX ← M1:  AT+Find=1,0010,5<CR><LF>
+Terminal RX ← M1:  AT+Find=1,20,5<CR><LF>
 ```
 
 M2 i M3 nie otrzymują tej komendy.
@@ -96,8 +149,8 @@ M2 i M3 nie otrzymują tej komendy.
 Terminal TX → M1:  AT+Search=0,2<CR>
 M1 TX → M2:       AT+Search=1,2<CR><LF>
 M2: licznik 1 → 2; zapis ID=2 do EEPROM
-M2 TX → M1:       AT+Find=2,0017,4<CR><LF>
-Terminal RX ← M1:  AT+Find=2,0017,4<CR><LF>
+M2 TX → M1:       AT+Find=2,20,4<CR><LF>
+Terminal RX ← M1:  AT+Find=2,20,4<CR><LF>
 ```
 
 M1 tylko przekazuje ramki, nie zapisuje ponownie swojego ID. M3 nie otrzymuje Search.
@@ -109,9 +162,9 @@ Terminal TX → M1:  AT+Search=0,3<CR>
 M1 TX → M2:       AT+Search=1,3<CR><LF>
 M2 TX → M3:       AT+Search=2,3<CR><LF>
 M3: licznik 2 → 3; zapis ID=3 do EEPROM
-M3 TX → M2:       AT+Find=3,0730,3<CR><LF>
-M2 TX → M1:       AT+Find=3,0730,3<CR><LF>
-Terminal RX ← M1:  AT+Find=3,0730,3<CR><LF>
+M3 TX → M2:       AT+Find=3,20,3<CR><LF>
+M2 TX → M1:       AT+Find=3,20,3<CR><LF>
+Terminal RX ← M1:  AT+Find=3,20,3<CR><LF>
 ```
 
 Samo `AT+Search=0,3` adresuje tylko trzeci moduł, a nie wszystkie trzy. Liczenie zależy od strony podłączenia terminala, nie od dotychczasowych ID.
@@ -136,7 +189,7 @@ Przykład dla lokalnego S0804 o zapisanym ID=3, wejściach i wyjściach równych
 
 ```text
 TX: AT+Discovery<CR>
-RX: Chain=0,OK,S0804;0730;3;APP;ATmega1284P;UNKNOWN;0;0;CHAIN1*129B<CR><LF>
+RX: Chain=0,OK,S0804;20;3;APP;ATmega1284P;UNKNOWN;0;0;CHAIN1*03A2<CR><LF>
 ```
 
 ### 3.2. Zapytanie do pozycji w linii
@@ -158,7 +211,7 @@ Na tej samej linii trzech modułów:
 Terminal TX → M1:  AT+Discovery=2,03<CR>
 M1 TX → M2:       AT+Discovery=1,03<CR><LF>
 M2 TX → M3:       AT+Discovery=0,03<CR><LF>
-M3 TX → M2:       Chain=03,OK,S0804;0730;3;APP;ATmega1284P;UNKNOWN;0;0;CHAIN1*F784<CR><LF>
+M3 TX → M2:       Chain=03,OK,S0804;20;3;APP;ATmega1284P;UNKNOWN;0;0;CHAIN1*4DFB<CR><LF>
 M2 TX → M1:       ta sama odpowiedź Chain
 Terminal RX ← M1:  ta sama odpowiedź Chain
 ```
@@ -190,7 +243,7 @@ CRC w przykładach jest policzone dla dokładnie podanych danych. Zmiana ID, wer
 
 ### 3.4. Skanowanie całej linii
 
-Sterownik pyta kolejno `AT+Discovery=0,01`, `AT+Discovery=1,02`, `AT+Discovery=2,03`, itd., za każdym razem czekając na odpowiedź. Wynik daje pozycję, model i dotychczasowe ID bez ich zmiany. Brak odpowiedzi może oznaczać koniec linii, ale też przerwę albo starsze urządzenie bez CHAIN1.
+Sterownik pyta kolejno `AT+Discovery=0,01`, `AT+Discovery=1,02`, `AT+Discovery=2,03`, itd., za każdym razem czekając na odpowiedź. Wynik daje pozycję, model i dotychczasowe ID bez ich zmiany. Brak odpowiedzi może oznaczać koniec linii, ale też przerwę albo urządzenie bez CHAIN1.
 
 Discovery nie modyfikuje konfiguracji ani wyjść, lecz aktywuje czasowe wyciszanie zwykłych ramek nadawczych przez mechanizm serwisowy `chain_quiet()`. Nie używaj go jako częstego odpytywania podczas sterowania: „bez zapisu EEPROM” nie oznacza braku wpływu na bieżącą komunikację.
 
@@ -232,7 +285,7 @@ ETH0606T dodatkowo wstawia `F_CPU=16000000` po polu MCU.
 Terminal TX → M1:  AT+Info=3<CR>
 M1 TX → M2:       AT+Info=3<CR><LF>
 M2 TX → M3:       AT+Info=3<CR><LF>
-M3 TX → M2:       ID=3,FW=0730,MODEL=S0804,MCU=ATmega1284P,PCB=UNKNOWN,GIT=unknown,DIRTY=unknown,UTC=unknown,SIG=1E9705,CAL=80,SERIAL=000000000000000000,STATUS=EMPTY<CR><LF>
+M3 TX → M2:       ID=3,FW=20,MODEL=S0804,MCU=ATmega1284P,PCB=UNKNOWN,GIT=unknown,DIRTY=unknown,UTC=unknown,SIG=1E9705,CAL=80,SERIAL=000000000000000000,STATUS=EMPTY<CR><LF>
 M2 TX → M1:       ta sama odpowiedź ID=...
 Terminal RX ← M1:  ta sama odpowiedź ID=...
 ```

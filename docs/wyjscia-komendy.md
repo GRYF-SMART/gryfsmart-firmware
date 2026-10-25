@@ -8,9 +8,9 @@ Odczyt:     AT+GetOut=ID<CR>
 Stan:       O=ID,S1,...,SN<CR><LF>
 ```
 
-**R0808 od wersji 0011 realizuje powyższy format odpowiedzi zarówno na zapytanie, jak i po zmianie wyjść.** Istniejące R0806T i ETH0606T mają różnice w wielkości litery O/o oraz zakończeniu ramki, opisane w tabeli poniżej. Ta aktualizacja zmienia program tylko R0808. S0804 i sterowanie roletami są poza zakresem dokumentu.
+**R0808 realizuje powyższy format odpowiedzi zarówno na zapytanie, jak i po zmianie wyjść.** Istniejące R0806T i ETH0606T mają różnice w wielkości litery O/o oraz zakończeniu ramki, opisane w tabeli poniżej. S0804 i sterowanie roletami są poza zakresem dokumentu.
 
-Opis R0808 dotyczy **nowej aplikacji 0011**. Starsza 0010 nie obsługuje lokalnego GetOut ani automatycznych raportów wyjść. Przy pobieraniu wsadu sprawdź wersję w manifeście wydania; samo opublikowanie tej instrukcji nie zmienia plików starszego wydania. R0806T opisano dla 0018, ETH0606T dla 0008-USB-TEMP5.
+Dokumentacja dotyczy firmware **20** wszystkich trzech modułów.
 
 ## 1. Parametry wspólne
 
@@ -19,13 +19,13 @@ Opis R0808 dotyczy **nowej aplikacji 0011**. Starsza 0010 nie obsługuje lokalne
 - A1..AN: akcje dla kolejnych wyjść WY1..WYN.
 - S1..SN: stany sterowania kolejnych przekaźników: 0 = wyłączony, 1 = włączony.
 - Liczby dziesiętne, bez spacji; brak dodatkowego pola SUMA w obu komendach i w raporcie.
-- Łącze serwisowe: 115200 bit/s, 8N1, bez kontroli przepływu. ETH udostępnia też bramkę TCP.
+- [Parametry i zasady komunikacji](komendy-wspolne.md#zasady-komunikacji-i-struktura-sieci).
 - `<CR>` to bajt 0x0D, `<LF>` to 0x0A. Nie wpisuj dosłownie znaków `<CR>` do terminala.
 - TX/RX w przykładach oznaczają odpowiednio wysłanie i odebranie przez terminal/sterownik.
 
 ## 2. Aktualne formaty — porównanie modułów
 
-| Funkcja | R0808 0011 | R0806T 0018 | ETH0606T 0008-USB-TEMP5 |
+| Funkcja | R0808 20 | R0806T 20 | ETH0606T 20 |
 |---|---|---|---|
 | Liczba przekaźników | 8 | 6 | 6 |
 | SetOut | ID + 8 akcji | ID + 6 akcji | ID + 6 akcji |
@@ -119,7 +119,7 @@ W każdym przypadku po ID następują stany WY1, WY2 itd. To osobne pola, a nie 
 
 ## 5. Kiedy wychodzi automatyczne O=/o=
 
-### 5.1. R0808 od 0011
+### 5.1. R0808 od 20
 
 Każda rzeczywista zmiana całej maski wyjść wykonana przez obsługę przekaźników tworzy jeden raport. Dotyczy to SetOut oraz lokalnych akcji zmieniających wyjścia. Jeden SetOut zmieniający kilka wyjść daje jeden raport wynikowy, nie osobny raport dla każdego zmienionego bitu.
 

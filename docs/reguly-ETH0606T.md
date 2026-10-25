@@ -2,7 +2,7 @@
 
 [Dokumentacja główna](README.md) · [Porównanie modułów i ograniczenia](reguly-porownanie.md)
 
-Opis sprawdzony względem bieżących źródeł (0009). Dostępność we wcześniejszych wsadach wymaga sprawdzenia ich wersji. Przykłady zakładają ID modułu **1** i regułę **1**. Każda wysyłana linia kończy się CR; zapis `<CR>` oznacza ten znak, nie dosłowny tekst.
+Firmware **20**. Przykłady zakładają ID modułu **1** i regułę **1**. Każda wysyłana linia kończy się CR; zapis `<CR>` oznacza ten znak, nie dosłowny tekst.
 
 ## Jak działa reguła
 
@@ -92,13 +92,12 @@ SLOT=0, CEL=0, TYP=0 kasuje wszystkie cztery sloty tej reguły: `AT+RuleRemote=1
 
 Zmiany reguł są robocze w RAM; sam RuleOK nie oznacza trwałego zapisu EEPROM. Konfiguracja reguł podczas pracy wykonawcy może zostać odrzucona. RuleOK=ID oznacza przyjęcie komendy, RuleERROR=ID to ogólny błąd składni, zakresu, sumy lub stanu; odpowiedź nie zawiera numeru reguły ani kodu przyczyny. Defaults jest szerokim resetem konfiguracji, nie komendą usunięcia jednej reguły.
 
-**Co można odpytać:** GetRule zwraca konfigurację i EN; GetRuleRemote — sloty. Stan wyjść odczytasz przez `AT+GetOut=1<CR>` — [format odpowiedzi i wersje](wyjscia-komendy.md). Wejścia: GetInputs i GetKeyTime — [opis i wymagane wersje](wejscia-komendy.md).
+**Co można odpytać:** GetRule zwraca konfigurację i EN; GetRuleRemote — sloty. Stan wyjść odczytasz przez `AT+GetOut=1<CR>` — [format odpowiedzi](wyjscia-komendy.md). Wejścia: GetInputs i GetKeyTime — [opis](wejscia-komendy.md).
 
 **Czego nie można odpytać:** brak komendy RuleStatus/GetRuleStatus zwracającej aktywnie wykonywaną regułę, kolejkę, licznik uruchomień, ostatni błąd lub potwierdzenie zdalnych akcji. EN=1 oznacza uzbrojenie reguły, nie jej wykonywanie.
 
-## Ograniczenia wykonania
+## Wykonanie i transmisja
 
-Akcje wykonywane są etapami, po jednej na obieg pętli, a nie atomowo. Oczekujące uruchomienia przechowuje maska bitowa: powtarzające się wyzwolenia już oczekującej reguły mogą się scalić. Na początku wykonawca sprawdza dostępność UART; niedostępna kolejka może opóźnić także akcje lokalne, mimo że główna pętla nadal pracuje. Watchdog samej pętli tego nie wykryje. Nie ma gwarancji czasu reakcji ani potwierdzenia zakończenia całej sceny przez wszystkie urządzenia.
+Akcje lokalne wykonywane są po jednej na obieg pętli, niezależnie od UART i oczekujących transmisji wcześniejszej reguły. Wejścia mają osobną obsługę lokalną i kolejkę raportów. Akcje zdalne czekają na miejsce w UART. [Bufory i ograniczenia](reguly-uart-zmiany.md).
 
-Przed użyciem przez mieszaną linię sprawdź [ograniczenia przekazywania RULE](reguly-porownanie.md); obsługa komendy na docelowym module nie gwarantuje, że każdy pośrednik przepuści jej format.
-
+Wszystkie modele przekazują obce Rule, GetRule, RuleRemote, GetRuleRemote, RulePWM i GetRulePWM bez interpretacji układu akcji innego modelu. [Porównanie](reguly-porownanie.md).

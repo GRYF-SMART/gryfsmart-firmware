@@ -1,19 +1,19 @@
 # Wejścia GRYFSMART — komendy, odczyty i raporty I / PS / PL
 
-Kompletna instrukcja protokołu wejść przyciskowych, bez opisu komend RULE i konfiguracji reguł. Obejmuje ustawianie parametrów, odczyt GET, utrwalanie konfiguracji i raporty o zdarzeniach. Opis odpowiada aplikacjom w wydaniu z odczytami wejść: R0806T **0018**, S0804 **0731**, R0808 **0010** oraz ETH0606T **0008-USB-TEMP5**.
+Kompletna instrukcja protokołu wejść przyciskowych, bez opisu komend RULE i konfiguracji reguł. Obejmuje ustawianie parametrów, odczyt GET, utrwalanie konfiguracji i raporty o zdarzeniach. Dokumentacja dotyczy firmware **20** wszystkich czterech modeli.
 
 ## 1. Moduły i podstawowe zasady
 
 | Moduł | Liczba wejść | Numery wejść | KeyTime / GetInputs / GetKeyTime |
 |---|---:|---|---|
 | R0808 | 8 | 1–8 | Obsługiwane |
-| R0806T | 8 | 1–8 | Wszystkie obsługiwane od 0018; KeyTime był dostępny wcześniej |
-| S0804 | 8 | 1–8 | Wszystkie obsługiwane od 0731; KeyTime był dostępny wcześniej |
+| R0806T | 8 | 1–8 | Wszystkie obsługiwane |
+| S0804 | 8 | 1–8 | Wszystkie obsługiwane |
 | ETH0606T | 6 | 1–6 | Obsługiwane |
 
 R0806T ma sześć wyjść przekaźnikowych, ale **osiem wejść**. Liczby wejść i wyjść nie są identyczne we wszystkich modelach.
 
-- Łącze serwisowe: **115200 bit/s, 8N1, bez kontroli przepływu**. ETH może także udostępniać protokół przez bramkę TCP.
+- [Parametry i zasady komunikacji](komendy-wspolne.md#zasady-komunikacji-i-struktura-sieci).
 - ID to adres logiczny modułu **1–35**, a nie jego adres IP ani numer wejścia.
 - Wszystkie liczby w tej instrukcji są dziesiętne. Wysyłaj komendy bez spacji.
 - `<CR>` oznacza jeden bajt 0x0D, `<LF>` — 0x0A; nie wysyłaj dosłownego napisu `<CR>`.
@@ -335,7 +335,7 @@ ID=3 jest zachowane na całej drodze. Analogicznie przesyłane są PL= i I=. Odb
 
 Celowe wysłanie z terminala `PS=ID,WE`, `PL=ID,WE` lub `I=...` do parsera modułu liniowego może spowodować przekazanie tekstu dalej. **Nie jest to komenda do symulowania przycisku**. Raporty te nie są lokalnymi poleceniami sterowania.
 
-Odpowiedzi GetKeyTime (`KeyTime=...`), SaveOK/SaveERROR i KEYERROR również są przekazywane przez moduły liniowe. Starsze moduły bez obsługi GetInputs/GetKeyTime lub odpowiedzi KeyTime mogą zatrzymać komunikację; w szczególności wymagane są R0806T 0018 i S0804 0731.
+Odpowiedzi GetKeyTime (`KeyTime=...`), SaveOK/SaveERROR i KEYERROR również są przekazywane przez moduły liniowe. Wszystkie moduły z firmware 20 obsługują przekazywanie odczytów wejść i ich odpowiedzi.
 
 ### 13.3. ETH jako bramka
 
