@@ -1,6 +1,8 @@
+<p><img src="assets/logo.svg" alt="Logo GRYF" width="320"></p>
+
 # Dokumentacja poleceń GRYFSMART
 
-**Aktualny numer firmware wszystkich modułów: 20.** Kolejne aktualizacje są numerowane 21, 22, 23… Numer aplikacji jest niezależny od wersji narzędzi Windows i bootloadera.
+**Aktualna wersja oprogramowania wszystkich modułów: 20.** Kolejne aktualizacje są numerowane 21, 22, 23… Wersja oprogramowania jest niezależna od wersji narzędzi Windows i bootloadera.
 
 [Sposób działania sieci, dwa porty linii, prędkość, limit 35 modułów i ramki ASCII](komendy-wspolne.md#zasady-komunikacji-i-struktura-sieci).
 
@@ -13,7 +15,7 @@
 
 ## Moduły
 
-| Moduł | Firmware | Główna instrukcja | Reguły |
+| Moduł | Wersja oprogramowania | Główna instrukcja | Reguły |
 |---|---|---|---|
 | R0806T | 20 | [6 przekaźników, PWM, termostat, wejścia i ich odczyty](R0806T.md) | [RULE i zdalny PWM typu 4](reguly-R0806T.md) |
 | R0808 | 20 | [8 przekaźników, wejścia i temperatura](R0808.md) | [RULE](reguly-R0808.md) |
@@ -22,7 +24,7 @@
 
 [S0804 — pełna instrukcja parametrów, sterowania, procentów i statusów rolet](rolety-komendy.md).
 
-[Porównanie reguł wszystkich modułów](reguly-porownanie.md) · [Zdalny PWM w R0806T](R0806T-zdalny-PWM.md) · [Lokalne sterowanie i bufory transmisji](reguly-uart-zmiany.md).
+[Porównanie reguł wszystkich modułów](reguly-porownanie.md) · [Zdalny PWM w R0806T](R0806T.md#zdalny-pwm-przez-ruleremote) · [Lokalne sterowanie i bufory transmisji](reguly-uart-zmiany.md).
 
 ## Odpowiedzi i zapis
 

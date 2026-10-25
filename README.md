@@ -1,6 +1,8 @@
-# GRYFSMART — firmware i narzędzia serwisowe
+<p><img src="docs/assets/logo.svg" alt="Logo GRYF" width="320"></p>
 
-**Bieżący numer firmware wszystkich modułów: 20.** Kolejne numery aplikacji to 21, 22, 23… Numer programu Windows i bootloadera jest niezależny od numeru aplikacji modułu.
+# GRYFSMART — oprogramowanie i narzędzia serwisowe
+
+**Bieżąca wersja oprogramowania wszystkich modułów: 20.** Kolejne wersje oprogramowania to 21, 22, 23… Wersje narzędzi Windows i bootloadera są niezależne od wersji oprogramowania modułu.
 
 ## Dokumentacja poleceń GRYFSMART
 
@@ -15,7 +17,7 @@
 - [Wyjścia — SetOut, GetOut i raporty stanu](docs/wyjscia-komendy.md)
 - [Rolety — parametry, sterowanie i statusy](docs/rolety-komendy.md)
 
-R0806T obsługuje RuleRemote typu 4, czyli sterowanie PWM innego modułu. [Format i przykład](docs/R0806T-zdalny-PWM.md).
+R0806T obsługuje RuleRemote typu 4, czyli sterowanie PWM innego modułu. [Format i przykład](docs/R0806T.md#zdalny-pwm-przez-ruleremote).
 
 ## Narzędzia i pobieranie
 
@@ -25,9 +27,9 @@ R0806T obsługuje RuleRemote typu 4, czyli sterowanie PWM innego modułu. [Forma
 - [Pełna paczka narzędzi](https://github.com/GRYF-SMART/gryfsmart-firmware/releases/latest/download/GRYFSMART-Tools.zip)
 - [Manifest opublikowanych plików i SHA-256](https://github.com/GRYF-SMART/gryfsmart-firmware/releases/latest/download/gryfsmart-update.json)
 
-Przed wgrywaniem sprawdź model, numer aplikacji i SHA-256 w manifeście konkretnego wydania. Dokumentacja opisuje firmware 20; aktualizacja dokumentacji nie zastępuje publikacji paczki binarnej.
+Przed wgrywaniem sprawdź model, wersja oprogramowania i SHA-256 w manifeście konkretnego wydania. Dokumentacja opisuje oprogramowania w wersji 20; aktualizacja dokumentacji nie zastępuje publikacji paczki binarnej.
 
-| Moduł | Firmware | MCU / zegar | Port serwisowy |
+| Moduł | Wersja oprogramowania | MCU / zegar | Port serwisowy |
 |---|---|---|---|
 | R0806T | 20 | ATmega1284P / 18,432 MHz | port logiczny 0 = USART0 |
 | R0808 | 20 | ATmega2560 / 18,432 MHz | port logiczny 0 = USART3 |

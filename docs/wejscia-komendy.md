@@ -1,6 +1,6 @@
 # Wejścia GRYFSMART — komendy, odczyty i raporty I / PS / PL
 
-Kompletna instrukcja protokołu wejść przyciskowych, bez opisu komend RULE i konfiguracji reguł. Obejmuje ustawianie parametrów, odczyt GET, utrwalanie konfiguracji i raporty o zdarzeniach. Dokumentacja dotyczy firmware **20** wszystkich czterech modeli.
+Kompletna instrukcja protokołu wejść przyciskowych, bez opisu komend RULE i konfiguracji reguł. Obejmuje ustawianie parametrów, odczyt GET, utrwalanie konfiguracji i raporty o zdarzeniach. Dokumentacja dotyczy oprogramowania w wersji **20** wszystkich czterech modeli.
 
 ## 1. Moduły i podstawowe zasady
 
@@ -335,7 +335,7 @@ ID=3 jest zachowane na całej drodze. Analogicznie przesyłane są PL= i I=. Odb
 
 Celowe wysłanie z terminala `PS=ID,WE`, `PL=ID,WE` lub `I=...` do parsera modułu liniowego może spowodować przekazanie tekstu dalej. **Nie jest to komenda do symulowania przycisku**. Raporty te nie są lokalnymi poleceniami sterowania.
 
-Odpowiedzi GetKeyTime (`KeyTime=...`), SaveOK/SaveERROR i KEYERROR również są przekazywane przez moduły liniowe. Wszystkie moduły z firmware 20 obsługują przekazywanie odczytów wejść i ich odpowiedzi.
+Odpowiedzi GetKeyTime (`KeyTime=...`), SaveOK/SaveERROR i KEYERROR również są przekazywane przez moduły liniowe. Wszystkie moduły z oprogramowania w wersji 20 obsługują przekazywanie odczytów wejść i ich odpowiedzi.
 
 ### 13.3. ETH jako bramka
 
@@ -387,7 +387,7 @@ TX: AT+GetInputs=1,1<CR>           ← GetInputs nie ma pola SUMA
 RX: RuleERROR=1<CR><LF>
 ```
 
-Przykłady dotyczą poleceń obsługiwanych przez właściwą wersję firmware. Stary wsad bez danej komendy może nie odpowiedzieć. Również brak modułu o wskazanym ID lub przerwa w linii nie musi dać jawnego błędu. Sterownik powinien stosować timeout, sprawdzać prefiks i ID, a dla KeyTime również sumę.
+Przykłady dotyczą poleceń obsługiwanych przez właściwą wersję oprogramowania. Stary wsad bez danej komendy może nie odpowiedzieć. Również brak modułu o wskazanym ID lub przerwa w linii nie musi dać jawnego błędu. Sterownik powinien stosować timeout, sprawdzać prefiks i ID, a dla KeyTime również sumę.
 
 ## 16. Szybka procedura uruchomienia wejścia
 

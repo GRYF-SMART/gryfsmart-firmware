@@ -1,6 +1,6 @@
 # S0804 — parametry, sterowanie i odczyt stanu rolet
 
-S0804 obsługuje cztery rolety. Dokumentacja dotyczy firmware **20**. GetRolTime, GetRolState i adresowane StanRol są przekazywane przez R0808, R0806T oraz bramkę ETH.
+S0804 obsługuje cztery rolety. Dokumentacja dotyczy oprogramowania w wersji **20**. GetRolTime, GetRolState i adresowane StanRol są przekazywane przez R0808, R0806T oraz bramkę ETH.
 
 ## 1. Zestawienie
 
@@ -190,7 +190,7 @@ Defaults zatrzymuje rolety, usuwa czasy i ważność pozycji oraz przywraca szer
 
 ## 9. Przezroczystość modułów pośrednich
 
-| Urządzenie | Firmware | Obsługa |
+| Urządzenie | Wersja oprogramowania | Obsługa |
 |---|---|---|
 | S0804 | 20 | Wykonuje lokalne odczyty, przekazuje do innego ID |
 | R0806T | 20 | Przekazuje GetRolTime, GetRolState i adresowane StanRol oraz odpowiedzi |

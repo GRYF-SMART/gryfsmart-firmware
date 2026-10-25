@@ -2,7 +2,7 @@
 
 [Dokumentacja główna](README.md) · [Porównanie modułów i ograniczenia](reguly-porownanie.md)
 
-Firmware **20**. Przykłady zakładają ID modułu **1** i regułę **1**. Każda wysyłana linia kończy się CR; zapis `<CR>` oznacza ten znak, nie dosłowny tekst.
+Wersja oprogramowania: **20**. Przykłady zakładają ID modułu **1** i regułę **1**. Każda wysyłana linia kończy się CR; zapis `<CR>` oznacza ten znak, nie dosłowny tekst.
 
 ## Jak działa reguła
 

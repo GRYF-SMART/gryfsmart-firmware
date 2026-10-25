@@ -2,7 +2,7 @@
 
 [Dokumentacja główna](README.md) · [Porównanie modułów i ograniczenia](reguly-porownanie.md)
 
-Firmware **20**. Przykłady zakładają ID modułu **1** i regułę **1**. Każda wysyłana linia kończy się CR; zapis `<CR>` oznacza ten znak, nie dosłowny tekst.
+Wersja oprogramowania: **20**. Przykłady zakładają ID modułu **1** i regułę **1**. Każda wysyłana linia kończy się CR; zapis `<CR>` oznacza ten znak, nie dosłowny tekst.
 
 ## Jak działa reguła
 
@@ -125,4 +125,4 @@ Wszystkie modele przekazują obce Rule, GetRule, RuleRemote, GetRuleRemote, Rule
 
 ## Zdalny PWM
 
-[Parametry typu 4, przykład, włączenie i zapis EEPROM](R0806T-zdalny-PWM.md). Akcja 0 nie nadaje ramki; 1 włącza ostatni poziom odbiorcy, 2 wyłącza, 3 przełącza, 4 ustawia procent. Niezerowy procent jest dozwolony tylko dla akcji 4.
+[Parametry typu 4, przykład, włączenie i zapis EEPROM](R0806T.md#zdalny-pwm-przez-ruleremote). Akcja 0 nie nadaje ramki; 1 włącza ostatni poziom odbiorcy, 2 wyłącza, 3 przełącza, 4 ustawia procent. Niezerowy procent jest dozwolony tylko dla akcji 4.

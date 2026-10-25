@@ -1,6 +1,6 @@
 # Wspólne komendy GRYFSMART — sieć, stan i identyfikacja
 
-Dokumentacja dotyczy firmware **20** wszystkich modułów. Przykładowe odpowiedzi nie są odczytem fizycznych urządzeń.
+Dokumentacja dotyczy oprogramowania w wersji **20** wszystkich modułów. Przykładowe odpowiedzi nie są odczytem fizycznych urządzeń.
 
 
 ## Zasady komunikacji i struktura sieci
@@ -122,7 +122,7 @@ Moduły pośrednie przekazują odpowiedź Find w stronę sterownika. Zapis adres
 | 5 | R0808 |
 | 6 | ETH0606T |
 
-Nazwa pola `MAC` w strukturze modułu przechowuje tutaj wersję firmware, a nie ethernetowy adres MAC. Odpowiedź ma znak `=`: `AT+Find=...`, nie `AT+Find-...`.
+Nazwa pola `MAC` w strukturze modułu przechowuje tutaj wersję oprogramowania, a nie ethernetowy adres MAC. Odpowiedź ma znak `=`: `AT+Find=...`, nie `AT+Find-...`.
 
 ### 2.4. Przykład: trzy moduły w linii
 
@@ -229,7 +229,7 @@ Chain=SEQ,OK,MODEL;FW;ID;TRYB;MCU;UNKNOWN;WEJSCIA;WYJSCIA;CHAIN1*CRC16<CR><LF>
 | `SEQ` | Numer zapytania; przy komendzie bez parametrów 0 |
 | `OK` | Zapytanie obsłużone |
 | `MODEL` | R0808, R0806T albo S0804 |
-| `FW` | Wersja firmware |
+| `FW` | Wersja oprogramowania |
 | `ID` | Aktualny adres logiczny, dziesiętnie |
 | `TRYB` | `APP` w odpowiedzi działającej aplikacji; bootloader ma osobną implementację |
 | `MCU` | Typ mikrokontrolera |
@@ -271,7 +271,7 @@ ETH0606T dodatkowo wstawia `F_CPU=16000000` po polu MCU.
 
 | Pole | Znaczenie |
 |---|---|
-| `ID`, `FW`, `MODEL`, `MCU` | Adres, wersja aplikacji, model modułu i mikrokontroler |
+| `ID`, `FW`, `MODEL`, `MCU` | Adres, wersja oprogramowania, model modułu i mikrokontroler |
 | `PCB` | Zadeklarowana przy kompilacji rewizja PCB; nie jest automatycznym rozpoznaniem płytki |
 | `GIT`, `DIRTY`, `UTC` | Metadane kompilacji: rewizja źródeł, stan zmian i data/czas kompilacji |
 | `SIG` | Sygnatura mikrokontrolera, HEX |
@@ -301,7 +301,7 @@ Przykłady linii M1–M3 dotyczą bezpośredniego podłączenia do R0808/R0806T/
 - Lokalny parser ETH przyjmuje Search i zapisuje ID tylko wtedy, gdy LICZNIK+1 jest równy DOCELOWE_ID; nie realizuje przekazywania Search jak moduł liniowy.
 - W ścieżce bramki TCP ETH jest pozycją/ID 1. `AT+Search=0,1` wykonuje odczyt Find urządzenia ETH. Dla kolejnych pozycji bramka przekazuje przez RS-232 np. `AT+Search=1,3` po odebraniu z TCP `AT+Search=0,3`.
 - Bramka TCP kieruje adresowane zapytania `AT+Info=2..35` do RS-232. Odczyt lokalny Info dotyczy ETH.
-- Aktualne ETH nie obsługuje Discovery/CHAIN1. Nie przenoś przykładu Discovery przez tę bramkę bez osobnego potwierdzenia obsługi w danym firmware.
+- Aktualne ETH nie obsługuje Discovery/CHAIN1. Nie przenoś przykładu Discovery przez tę bramkę bez osobnego potwierdzenia obsługi w danym oprogramowaniu.
 
 ## 6. Podstawa opisu
 

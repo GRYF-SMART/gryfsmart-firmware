@@ -1,6 +1,6 @@
 # RULE — porównanie modułów
 
-Dokumentacja bieżącego firmware **20**. Kolejne wersje aplikacji otrzymują numery 21, 22 itd.
+Dokumentacja bieżącego oprogramowania w wersji **20**. Kolejne wersje oprogramowania otrzymują numery 21, 22 itd.
 
 Osobne instrukcje: [R0806T](reguly-R0806T.md), [R0808](reguly-R0808.md), [ETH0606T](reguly-ETH0606T.md), [S0804](reguly-S0804.md).
 
@@ -19,7 +19,7 @@ Każdy moduł ma 16 reguł, EN=0/1, maski zdarzeń 1/2/4/8 i cztery sloty zdalne
 
 Typy RuleRemote: 0 kasowanie, 1 cztery rolety, 2 sześć przekaźników, 3 osiem przekaźników, 4 PWM. Dla typu 4 dane to AKCJA,PROCENT,RAMPA. Akcje: 0 bez działania, 1 włącz ostatni poziom odbiorcy, 2 wyłącz, 3 przełącz, 4 ustaw procent. Niezerowy procent jest dozwolony wyłącznie dla akcji 4. Rampa 0–50 oznacza 0–5 s.
 
-R0806T może jednocześnie sterować lokalnym PWM przez RulePWM i zdalnym PWM przez RuleRemote. [Przykład i trwałość konfiguracji](R0806T-zdalny-PWM.md).
+R0806T może jednocześnie sterować lokalnym PWM przez RulePWM i zdalnym PWM przez RuleRemote. [Przykład i trwałość konfiguracji](R0806T.md#zdalny-pwm-przez-ruleremote).
 
 Różnice liczby wejść i wyjść wynikają ze sprzętu. R0808 i S0804 mają po 20 pól, lecz inne znaczenie ostatnich ośmiu wartości. Konfigurator musi znać model odbiorcy.
 
