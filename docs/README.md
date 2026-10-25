@@ -6,6 +6,10 @@
 
 [Sposób działania sieci, dwa porty linii, prędkość, limit 35 modułów i ramki ASCII](komendy-wspolne.md#zasady-komunikacji-i-struktura-sieci).
 
+## Przykłady konfiguracji i sterowania
+
+[PRZYKLADY — pięć modułów: R0808, R0806T, R0806T, S0804, S0804](PRZYKLADY.md). Jedenaście przykładów: adresowanie, informacje, progi wejść, reguły, rolety, sterowanie z terminala, raporty do RTI/Home Assistant/PC oraz odczyty wejść, wyjść, PWM i szczegółowego stanu rolet. Każdy z komendami i odpowiedziami.
+
 ## Komendy wspólne
 
 - [Sieć i stan — Loop, LoopReset, ResetStats, Discovery, ModuleInfo, Search, reset i bootloader](komendy-wspolne.md#sieć-i-stan)

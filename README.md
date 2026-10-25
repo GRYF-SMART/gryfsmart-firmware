@@ -7,6 +7,7 @@
 ## Dokumentacja poleceń GRYFSMART
 
 - [Wszystkie instrukcje](docs/README.md)
+- [PRZYKLADY — konfiguracja i sterowanie linią pięciu modułów](docs/PRZYKLADY.md)
 - [Komendy wspólne: sieć, stan, diagnostyka pętli, identyfikacja i adresowanie](docs/komendy-wspolne.md)
 - [R0806T — przekaźniki, lokalny i zdalny PWM, termostat oraz odczyty wejść](docs/R0806T.md)
 - [R0808 — przekaźniki, wejścia i temperatura](docs/R0808.md)
