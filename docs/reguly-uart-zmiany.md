@@ -1,6 +1,6 @@
 # RULE: przezroczyste przekazywanie i lokalne sterowanie niezależne od UART
 
-Dokumentacja wykonawcy reguł w oprogramowania w wersji **20** wszystkich czterech modułów.
+Dokumentacja wykonawcy reguł w oprogramowania w wersji **21** wszystkich czterech modułów.
 
 ## Przekazywanie komend
 

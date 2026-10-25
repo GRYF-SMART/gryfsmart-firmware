@@ -1,6 +1,6 @@
 # S0804 — parametry, sterowanie i odczyt stanu rolet
 
-S0804 obsługuje cztery rolety. Dokumentacja dotyczy oprogramowania w wersji **20**. GetRolTime, GetRolState i adresowane StanRol są przekazywane przez R0808, R0806T oraz bramkę ETH.
+S0804 obsługuje cztery rolety. Dokumentacja dotyczy oprogramowania w wersji **21**. GetRolTime, GetRolState i adresowane StanRol są przekazywane przez R0808, R0806T oraz bramkę ETH.
 
 ## 1. Zestawienie
 
@@ -192,10 +192,10 @@ Defaults zatrzymuje rolety, usuwa czasy i ważność pozycji oraz przywraca szer
 
 | Urządzenie | Wersja oprogramowania | Obsługa |
 |---|---|---|
-| S0804 | 20 | Wykonuje lokalne odczyty, przekazuje do innego ID |
-| R0806T | 20 | Przekazuje GetRolTime, GetRolState i adresowane StanRol oraz odpowiedzi |
-| R0808 | 20 | Przekazuje te same zapytania i odpowiedzi w parze portów |
-| ETH0606T | 20 | Przekazuje nowe odczyty między USB i RS-232; bramka TCP kieruje zapytania do dalszych ID i przekazuje odpowiedzi |
+| S0804 | 21 | Wykonuje lokalne odczyty, przekazuje do innego ID |
+| R0806T | 21 | Przekazuje GetRolTime, GetRolState i adresowane StanRol oraz odpowiedzi |
+| R0808 | 21 | Przekazuje te same zapytania i odpowiedzi w parze portów |
+| ETH0606T | 21 | Przekazuje nowe odczyty między USB i RS-232; bramka TCP kieruje zapytania do dalszych ID i przekazuje odpowiedzi |
 
 Moduły przekaźnikowe nie udają lokalnych rolet: zapytanie o własne ID zwraca błąd. Adresowany StanRol przechodzi przez moduły pośrednie; StanRol=0 jest odczytem tylko lokalnego S0804, nie komendą zdalnego skanowania.
 

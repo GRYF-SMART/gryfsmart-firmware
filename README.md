@@ -2,7 +2,7 @@
 
 # GRYFSMART — oprogramowanie i narzędzia serwisowe
 
-**Bieżąca wersja oprogramowania wszystkich modułów: 20.** Kolejne wersje oprogramowania to 21, 22, 23… Wersje narzędzi Windows i bootloadera są niezależne od wersji oprogramowania modułu.
+**Bieżąca wersja oprogramowania wszystkich modułów: 21.** Kolejne wersje oprogramowania to 22, 23, 24… Wersje narzędzi Windows i bootloadera są niezależne od wersji oprogramowania modułu.
 
 ## Dokumentacja poleceń GRYFSMART
 
@@ -28,14 +28,14 @@ R0806T obsługuje RuleRemote typu 4, czyli sterowanie PWM innego modułu. [Forma
 - [Pełna paczka narzędzi](https://github.com/GRYF-SMART/gryfsmart-firmware/releases/latest/download/GRYFSMART-Tools.zip)
 - [Manifest opublikowanych plików i SHA-256](https://github.com/GRYF-SMART/gryfsmart-firmware/releases/latest/download/gryfsmart-update.json)
 
-Przed wgrywaniem sprawdź model, wersja oprogramowania i SHA-256 w manifeście konkretnego wydania. Dokumentacja opisuje oprogramowania w wersji 20; aktualizacja dokumentacji nie zastępuje publikacji paczki binarnej.
+Przed wgrywaniem sprawdź model, wersję oprogramowania i SHA-256 w manifeście konkretnego wydania. Dokumentacja opisuje oprogramowanie w wersji 21; aktualizacja dokumentacji nie zastępuje publikacji paczki binarnej.
 
 | Moduł | Wersja oprogramowania | MCU / zegar | Port serwisowy |
 |---|---|---|---|
-| R0806T | 20 | ATmega1284P / 18,432 MHz | port logiczny 0 = USART0 |
-| R0808 | 20 | ATmega2560 / 18,432 MHz | port logiczny 0 = USART3 |
-| S0804 | 20 | ATmega1284P / 18,432 MHz | port logiczny 0 = USART0 |
-| ETH0606T | 20 | ATmega2560 / 16 MHz | USB USART0, RS-232 USART1 |
+| R0806T | 21 | ATmega1284P / 18,432 MHz | port logiczny 0 = USART0 |
+| R0808 | 21 | ATmega2560 / 18,432 MHz | port logiczny 0 = USART3 |
+| S0804 | 21 | ATmega1284P / 18,432 MHz | port logiczny 0 = USART0 |
+| ETH0606T | 21 | ATmega2560 / 16 MHz | USB USART0, RS-232 USART1 |
 
 Pierwsza instalacja bootloadera wymaga ISP/USBasp. Późniejsze aktualizacje aplikacji przez RS-232/USB wymagają już zainstalowanego bootloadera. Bootloader zajmuje ostatnie 8 KiB Flash.
 

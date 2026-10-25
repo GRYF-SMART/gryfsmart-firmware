@@ -1,6 +1,6 @@
 # Wspólne komendy GRYFSMART — sieć, stan i identyfikacja
 
-Dokumentacja dotyczy oprogramowania w wersji **20** wszystkich modułów. Przykładowe odpowiedzi nie są odczytem fizycznych urządzeń.
+Dokumentacja dotyczy oprogramowania w wersji **21** wszystkich modułów. Przykładowe odpowiedzi nie są odczytem fizycznych urządzeń.
 
 
 ## Zasady komunikacji i struktura sieci
@@ -102,27 +102,33 @@ Każdy moduł liniowy R0808/R0806T/S0804:
 4. Po poprawnym zapisie/weryfikacji odsyła odpowiedź portem, którym przyszła komenda:
 
 ```text
-AT+Find=ID,WERSJA_FW,TYP<CR><LF>
+AT+Find=ID,WERSJA_FW,MODEL<CR><LF>
 ```
 
 Moduły pośrednie przekazują odpowiedź Find w stronę sterownika. Zapis adresu nie zapisuje całej konfiguracji reguł i czasów; nie wymaga dodatkowego SaveConfig do utrwalenia samego ID.
 
 ### 2.3. Parametry odpowiedzi AT+Find
 
+Format odpowiedzi w wersji oprogramowania **21**:
+
+    AT+Find=ID,WERSJA,MODEL<CR><LF>
+
 | Pole | Znaczenie | Przykład |
 |---|---|---|
-| `ID` | Nadany adres logiczny | `3` |
-| `WERSJA_FW` | Wersja oprogramowania, z zachowaniem zer na początku | `20` |
-| `TYP` | Numeryczny typ modułu | `3` dla S0804 |
+| ID | Nadany lub odczytany adres logiczny 1–35 | 3 |
+| WERSJA | Wersja oprogramowania modułu | 21 |
+| MODEL | Tekstowa nazwa modelu | R0806T |
 
-| Typ | Model |
-|---|---|
-| 3 | S0804 |
-| 4 | R0806T |
-| 5 | R0808 |
-| 6 | ETH0606T |
+Pole MODEL przyjmuje dokładnie jedną z nazw: **R0808, R0806T, S0804, ETH0606T**. Nie jest już liczbą. Nie należy utożsamiać tego pola z liczbowym TYP w RuleRemote — typy akcji reguł pozostają bez zmian.
 
-Nazwa pola `MAC` w strukturze modułu przechowuje tutaj wersję oprogramowania, a nie ethernetowy adres MAC. Odpowiedź ma znak `=`: `AT+Find=...`, nie `AT+Find-...`.
+Find jest odpowiedzią na zakończone nadawanie ID przez Search. Jest też osobnym odczytem: AT+Find lub AT+Find=0 pyta moduł lokalny; AT+Find=ID pyta wskazany adres. R/S przekazuje zapytanie do innego ID dalej. ETH ma osobne zasady bramkowania opisane poniżej. Sam odczyt Find nie zmienia EEPROM.
+
+    TX: AT+Find=2<CR>
+    RX: AT+Find=2,21,R0806T<CR><LF>
+
+Nowe moduły nadają nazwę modelu. Parsery odbiorcze przyjmują również starszy liczbowy format, aby móc odebrać odpowiedź urządzenia jeszcze niezaktualizowanego. Ramka Find z trzema polami jest odpowiedzią — pośrednik nie traktuje jej jako polecenia ponownego nadania ID.
+
+Nazwa pola MAC w wewnętrznej strukturze modułu przechowuje wersję oprogramowania, nie adres Ethernet MAC. Odpowiedź ma znak równości: AT+Find=..., nie AT+Find-....
 
 ### 2.4. Przykład: trzy moduły w linii
 
@@ -131,14 +137,14 @@ Terminal ── M1: R0808 ── M2: R0806T ── M3: S0804
               ID=1          ID=2          ID=3
 ```
 
-Powyższe ID są wynikiem procedury. Przed jej wykonaniem mogą być inne lub powtarzać się. Wersje w przykładzie: R0808 20, R0806T 20, S0804 20.
+Powyższe ID są wynikiem procedury. Przed jej wykonaniem mogą być inne lub powtarzać się. Wersje w przykładzie: R0808 21, R0806T 21, S0804 21.
 
 **Krok 1 — adresowanie pierwszego modułu:**
 
 ```text
 Terminal TX → M1:  AT+Search=0,1<CR>
 M1: licznik 0 → 1; zapis ID=1 do EEPROM
-Terminal RX ← M1:  AT+Find=1,20,5<CR><LF>
+Terminal RX ← M1:  AT+Find=1,21,R0808<CR><LF>
 ```
 
 M2 i M3 nie otrzymują tej komendy.
@@ -149,8 +155,8 @@ M2 i M3 nie otrzymują tej komendy.
 Terminal TX → M1:  AT+Search=0,2<CR>
 M1 TX → M2:       AT+Search=1,2<CR><LF>
 M2: licznik 1 → 2; zapis ID=2 do EEPROM
-M2 TX → M1:       AT+Find=2,20,4<CR><LF>
-Terminal RX ← M1:  AT+Find=2,20,4<CR><LF>
+M2 TX → M1:       AT+Find=2,21,R0806T<CR><LF>
+Terminal RX ← M1:  AT+Find=2,21,R0806T<CR><LF>
 ```
 
 M1 tylko przekazuje ramki, nie zapisuje ponownie swojego ID. M3 nie otrzymuje Search.
@@ -162,9 +168,9 @@ Terminal TX → M1:  AT+Search=0,3<CR>
 M1 TX → M2:       AT+Search=1,3<CR><LF>
 M2 TX → M3:       AT+Search=2,3<CR><LF>
 M3: licznik 2 → 3; zapis ID=3 do EEPROM
-M3 TX → M2:       AT+Find=3,20,3<CR><LF>
-M2 TX → M1:       AT+Find=3,20,3<CR><LF>
-Terminal RX ← M1:  AT+Find=3,20,3<CR><LF>
+M3 TX → M2:       AT+Find=3,21,S0804<CR><LF>
+M2 TX → M1:       AT+Find=3,21,S0804<CR><LF>
+Terminal RX ← M1:  AT+Find=3,21,S0804<CR><LF>
 ```
 
 Samo `AT+Search=0,3` adresuje tylko trzeci moduł, a nie wszystkie trzy. Liczenie zależy od strony podłączenia terminala, nie od dotychczasowych ID.
@@ -189,7 +195,7 @@ Przykład dla lokalnego S0804 o zapisanym ID=3, wejściach i wyjściach równych
 
 ```text
 TX: AT+Discovery<CR>
-RX: Chain=0,OK,S0804;20;3;APP;ATmega1284P;UNKNOWN;0;0;CHAIN1*03A2<CR><LF>
+RX: Chain=0,OK,S0804;21;3;APP;ATmega1284P;UNKNOWN;0;0;CHAIN1*E739<CR><LF>
 ```
 
 ### 3.2. Zapytanie do pozycji w linii
@@ -211,7 +217,7 @@ Na tej samej linii trzech modułów:
 Terminal TX → M1:  AT+Discovery=2,03<CR>
 M1 TX → M2:       AT+Discovery=1,03<CR><LF>
 M2 TX → M3:       AT+Discovery=0,03<CR><LF>
-M3 TX → M2:       Chain=03,OK,S0804;20;3;APP;ATmega1284P;UNKNOWN;0;0;CHAIN1*4DFB<CR><LF>
+M3 TX → M2:       Chain=03,OK,S0804;21;3;APP;ATmega1284P;UNKNOWN;0;0;CHAIN1*A960<CR><LF>
 M2 TX → M1:       ta sama odpowiedź Chain
 Terminal RX ← M1:  ta sama odpowiedź Chain
 ```
@@ -285,7 +291,7 @@ ETH0606T dodatkowo wstawia `F_CPU=16000000` po polu MCU.
 Terminal TX → M1:  AT+Info=3<CR>
 M1 TX → M2:       AT+Info=3<CR><LF>
 M2 TX → M3:       AT+Info=3<CR><LF>
-M3 TX → M2:       ID=3,FW=20,MODEL=S0804,MCU=ATmega1284P,PCB=UNKNOWN,GIT=unknown,DIRTY=unknown,UTC=unknown,SIG=1E9705,CAL=80,SERIAL=000000000000000000,STATUS=EMPTY<CR><LF>
+M3 TX → M2:       ID=3,FW=21,MODEL=S0804,MCU=ATmega1284P,PCB=UNKNOWN,GIT=unknown,DIRTY=unknown,UTC=unknown,SIG=1E9705,CAL=80,SERIAL=000000000000000000,STATUS=EMPTY<CR><LF>
 M2 TX → M1:       ta sama odpowiedź ID=...
 Terminal RX ← M1:  ta sama odpowiedź ID=...
 ```

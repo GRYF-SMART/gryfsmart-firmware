@@ -2,7 +2,7 @@
 
 # PRZYKLADY
 
-Praktyczne przykłady dla **wersji oprogramowania 20** i pięciu modułów podłączonych w tej kolejności:
+Praktyczne przykłady dla **wersji oprogramowania 21** i pięciu modułów podłączonych w tej kolejności:
 
 ```text
 Komputer → R0808 → R0806T → R0806T → S0804 → S0804
@@ -43,28 +43,28 @@ Pokazano istotne odpowiedzi; w międzyczasie mogą nadejść raporty wejść, wy
 
 ## Przykład 1. Rozpoznanie pięciu modułów i zapis ich ID do EEPROM
 
-Search wybiera moduł według pozycji, nadaje mu ID i zapisuje **ten adres w EEPROM tego modułu**. Odpowiedź Find podaje nadane ID, wersję oprogramowania oraz typ urządzenia. Dotychczasowe ID mogą być inne albo powtarzać się.
+Search wybiera moduł według pozycji, nadaje mu ID i zapisuje **ten adres w EEPROM tego modułu**. Odpowiedź Find podaje nadane ID, wersję oprogramowania oraz nazwę modelu. Dotychczasowe ID mogą być inne albo powtarzać się.
 
 **Jedna komenda Search adresuje jedną pozycję.** Aby nadać adresy całej linii, wyślij pięć poleceń, po każdym czekając na Find:
 
 ```text
 TX: AT+Search=0,1<CR>
-RX: AT+Find=1,20,5<CR><LF>
+RX: AT+Find=1,21,R0808<CR><LF>
 
 TX: AT+Search=0,2<CR>
-RX: AT+Find=2,20,4<CR><LF>
+RX: AT+Find=2,21,R0806T<CR><LF>
 
 TX: AT+Search=0,3<CR>
-RX: AT+Find=3,20,4<CR><LF>
+RX: AT+Find=3,21,R0806T<CR><LF>
 
 TX: AT+Search=0,4<CR>
-RX: AT+Find=4,20,3<CR><LF>
+RX: AT+Find=4,21,S0804<CR><LF>
 
 TX: AT+Search=0,5<CR>
-RX: AT+Find=5,20,3<CR><LF>
+RX: AT+Find=5,21,S0804<CR><LF>
 ```
 
-Typ 5 oznacza R0808, typ 4 R0806T, typ 3 S0804. Po tej sekwencji otrzymujesz ID 1–5 zgodne z tabelą. Nie jest potrzebne osobne SaveConfig do utrwalenia nadanego przez Search ID. Search nie służy do cyklicznego skanowania — zmienia zapisane adresy.
+Pole MODEL podaje wprost nazwę: R0808, R0806T lub S0804. Po tej sekwencji otrzymujesz ID 1–5 zgodne z tabelą. Nie jest potrzebne osobne SaveConfig do utrwalenia nadanego przez Search ID. Search nie służy do cyklicznego skanowania — zmienia zapisane adresy.
 
 Przykładowo polecenie Search=0,5 przechodzi przez moduły z licznikami 1, 2, 3, 4; dopiero piąty zapisuje ID=5 i odpowiada. Nie nadaje ono automatycznie ID pozostałym czterem.
 
@@ -72,25 +72,25 @@ Przykładowo polecenie Search=0,5 przechodzi przez moduły z licznikami 1, 2, 3,
 
 ## Przykład 2. Szczegółowe informacje o każdym module
 
-Po nadaniu indywidualnych ID użyj **AT+Info=ID**. To najpełniejszy odczyt identyfikacyjny: model, wersja oprogramowania, MCU, rewizja PCB, dane kompilacji, sygnatura i odczytane dane fabryczne. Nie zmienia EEPROM ani wyjść.
+Po nadaniu indywidualnych ID użyj **AT+Info=ID**. To najpełniejszy odczyt identyfikacyjny: model, wersję oprogramowania, MCU, rewizja PCB, dane kompilacji, sygnatura i odczytane dane fabryczne. Nie zmienia EEPROM ani wyjść.
 
 W odpowiedziach poniżej pola zapisane jako <PCB1>, <GIT1> itd. oznaczają **rzeczywiste wartości zwracane przez dany egzemplarz**, nie gotowe numery seryjne. Polecenia TX są gotowe do wysłania; wzorców RX nie wysyła się do urządzeń.
 
 ```text
 TX: AT+Info=1<CR>
-RX: ID=1,FW=20,MODEL=R0808,MCU=ATmega2560,PCB=<PCB1>,GIT=<GIT1>,DIRTY=<DIRTY1>,UTC=<UTC1>,SIG=1E9801,CAL=<CAL1>,SERIAL=<SERIAL1>,STATUS=<STATUS1><CR><LF>
+RX: ID=1,FW=21,MODEL=R0808,MCU=ATmega2560,PCB=<PCB1>,GIT=<GIT1>,DIRTY=<DIRTY1>,UTC=<UTC1>,SIG=1E9801,CAL=<CAL1>,SERIAL=<SERIAL1>,STATUS=<STATUS1><CR><LF>
 
 TX: AT+Info=2<CR>
-RX: ID=2,FW=20,MODEL=R0806T,MCU=ATmega1284P,PCB=<PCB2>,GIT=<GIT2>,DIRTY=<DIRTY2>,UTC=<UTC2>,SIG=1E9705,CAL=<CAL2>,SERIAL=<SERIAL2>,STATUS=<STATUS2><CR><LF>
+RX: ID=2,FW=21,MODEL=R0806T,MCU=ATmega1284P,PCB=<PCB2>,GIT=<GIT2>,DIRTY=<DIRTY2>,UTC=<UTC2>,SIG=1E9705,CAL=<CAL2>,SERIAL=<SERIAL2>,STATUS=<STATUS2><CR><LF>
 
 TX: AT+Info=3<CR>
-RX: ID=3,FW=20,MODEL=R0806T,MCU=ATmega1284P,PCB=<PCB3>,GIT=<GIT3>,DIRTY=<DIRTY3>,UTC=<UTC3>,SIG=1E9705,CAL=<CAL3>,SERIAL=<SERIAL3>,STATUS=<STATUS3><CR><LF>
+RX: ID=3,FW=21,MODEL=R0806T,MCU=ATmega1284P,PCB=<PCB3>,GIT=<GIT3>,DIRTY=<DIRTY3>,UTC=<UTC3>,SIG=1E9705,CAL=<CAL3>,SERIAL=<SERIAL3>,STATUS=<STATUS3><CR><LF>
 
 TX: AT+Info=4<CR>
-RX: ID=4,FW=20,MODEL=S0804,MCU=ATmega1284P,PCB=<PCB4>,GIT=<GIT4>,DIRTY=<DIRTY4>,UTC=<UTC4>,SIG=1E9705,CAL=<CAL4>,SERIAL=<SERIAL4>,STATUS=<STATUS4><CR><LF>
+RX: ID=4,FW=21,MODEL=S0804,MCU=ATmega1284P,PCB=<PCB4>,GIT=<GIT4>,DIRTY=<DIRTY4>,UTC=<UTC4>,SIG=1E9705,CAL=<CAL4>,SERIAL=<SERIAL4>,STATUS=<STATUS4><CR><LF>
 
 TX: AT+Info=5<CR>
-RX: ID=5,FW=20,MODEL=S0804,MCU=ATmega1284P,PCB=<PCB5>,GIT=<GIT5>,DIRTY=<DIRTY5>,UTC=<UTC5>,SIG=1E9705,CAL=<CAL5>,SERIAL=<SERIAL5>,STATUS=<STATUS5><CR><LF>
+RX: ID=5,FW=21,MODEL=S0804,MCU=ATmega1284P,PCB=<PCB5>,GIT=<GIT5>,DIRTY=<DIRTY5>,UTC=<UTC5>,SIG=1E9705,CAL=<CAL5>,SERIAL=<SERIAL5>,STATUS=<STATUS5><CR><LF>
 ```
 
 | Pole | Co odczytujesz |

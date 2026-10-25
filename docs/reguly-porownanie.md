@@ -1,6 +1,6 @@
 # RULE — porównanie modułów
 
-Dokumentacja bieżącego oprogramowania w wersji **20**. Kolejne wersje oprogramowania otrzymują numery 21, 22 itd.
+Dokumentacja bieżącego oprogramowania w wersji **21**. Kolejne wersje oprogramowania otrzymują numery 22, 23 itd.
 
 Osobne instrukcje: [R0806T](reguly-R0806T.md), [R0808](reguly-R0808.md), [ETH0606T](reguly-ETH0606T.md), [S0804](reguly-S0804.md).
 

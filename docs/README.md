@@ -2,7 +2,7 @@
 
 # Dokumentacja poleceń GRYFSMART
 
-**Aktualna wersja oprogramowania wszystkich modułów: 20.** Kolejne aktualizacje są numerowane 21, 22, 23… Wersja oprogramowania jest niezależna od wersji narzędzi Windows i bootloadera.
+**Aktualna wersja oprogramowania wszystkich modułów: 21.** Kolejne aktualizacje są numerowane 22, 23, 24… Wersja oprogramowania jest niezależna od wersji narzędzi Windows i bootloadera.
 
 [Sposób działania sieci, dwa porty linii, prędkość, limit 35 modułów i ramki ASCII](komendy-wspolne.md#zasady-komunikacji-i-struktura-sieci).
 
@@ -21,10 +21,10 @@
 
 | Moduł | Wersja oprogramowania | Główna instrukcja | Reguły |
 |---|---|---|---|
-| R0806T | 20 | [6 przekaźników, PWM, termostat, wejścia i ich odczyty](R0806T.md) | [RULE i zdalny PWM typu 4](reguly-R0806T.md) |
-| R0808 | 20 | [8 przekaźników, wejścia i temperatura](R0808.md) | [RULE](reguly-R0808.md) |
-| S0804 | 20 | [4 rolety, wejścia i ich odczyty](S0804.md) | [RULE rolet](reguly-S0804.md) |
-| ETH0606T | 20 | [6 wejść i wyjść, USB/RS-232, Ethernet, 5 czujników](ETH0606T.md) | [RULE](reguly-ETH0606T.md) |
+| R0806T | 21 | [6 przekaźników, PWM, termostat, wejścia i ich odczyty](R0806T.md) | [RULE i zdalny PWM typu 4](reguly-R0806T.md) |
+| R0808 | 21 | [8 przekaźników, wejścia i temperatura](R0808.md) | [RULE](reguly-R0808.md) |
+| S0804 | 21 | [4 rolety, wejścia i ich odczyty](S0804.md) | [RULE rolet](reguly-S0804.md) |
+| ETH0606T | 21 | [6 wejść i wyjść, USB/RS-232, Ethernet, 5 czujników](ETH0606T.md) | [RULE](reguly-ETH0606T.md) |
 
 [S0804 — pełna instrukcja parametrów, sterowania, procentów i statusów rolet](rolety-komendy.md).
 

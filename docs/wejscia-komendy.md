@@ -1,6 +1,6 @@
 # Wejścia GRYFSMART — komendy, odczyty i raporty I / PS / PL
 
-Kompletna instrukcja protokołu wejść przyciskowych, bez opisu komend RULE i konfiguracji reguł. Obejmuje ustawianie parametrów, odczyt GET, utrwalanie konfiguracji i raporty o zdarzeniach. Dokumentacja dotyczy oprogramowania w wersji **20** wszystkich czterech modeli.
+Kompletna instrukcja protokołu wejść przyciskowych, bez opisu komend RULE i konfiguracji reguł. Obejmuje ustawianie parametrów, odczyt GET, utrwalanie konfiguracji i raporty o zdarzeniach. Dokumentacja dotyczy oprogramowania w wersji **21** wszystkich czterech modeli.
 
 ## 1. Moduły i podstawowe zasady
 
@@ -335,7 +335,7 @@ ID=3 jest zachowane na całej drodze. Analogicznie przesyłane są PL= i I=. Odb
 
 Celowe wysłanie z terminala `PS=ID,WE`, `PL=ID,WE` lub `I=...` do parsera modułu liniowego może spowodować przekazanie tekstu dalej. **Nie jest to komenda do symulowania przycisku**. Raporty te nie są lokalnymi poleceniami sterowania.
 
-Odpowiedzi GetKeyTime (`KeyTime=...`), SaveOK/SaveERROR i KEYERROR również są przekazywane przez moduły liniowe. Wszystkie moduły z oprogramowania w wersji 20 obsługują przekazywanie odczytów wejść i ich odpowiedzi.
+Odpowiedzi GetKeyTime (`KeyTime=...`), SaveOK/SaveERROR i KEYERROR również są przekazywane przez moduły liniowe. Wszystkie moduły z oprogramowania w wersji 21 obsługują przekazywanie odczytów wejść i ich odpowiedzi.
 
 ### 13.3. ETH jako bramka
 

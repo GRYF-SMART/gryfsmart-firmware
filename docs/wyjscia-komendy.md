@@ -10,7 +10,7 @@ Stan:       O=ID,S1,...,SN<CR><LF>
 
 **R0808 realizuje powyższy format odpowiedzi zarówno na zapytanie, jak i po zmianie wyjść.** Istniejące R0806T i ETH0606T mają różnice w wielkości litery O/o oraz zakończeniu ramki, opisane w tabeli poniżej. S0804 i sterowanie roletami są poza zakresem dokumentu.
 
-Dokumentacja dotyczy oprogramowania w wersji **20** wszystkich trzech modułów.
+Dokumentacja dotyczy oprogramowania w wersji **21** wszystkich trzech modułów.
 
 ## 1. Parametry wspólne
 
