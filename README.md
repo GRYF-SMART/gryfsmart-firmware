@@ -22,13 +22,15 @@ R0806T obsługuje RuleRemote typu 4, czyli sterowanie PWM innego modułu. [Forma
 
 ## Narzędzia i pobieranie
 
+- [Aktualne HEX-y wszystkich modułów — wersja 21](firmware-21/README.md)
+
 - [Opublikowane wydanie i pliki do pobrania](https://github.com/GRYF-SMART/gryfsmart-firmware/releases/latest)
 - [Programator aplikacji](https://github.com/GRYF-SMART/gryfsmart-firmware/releases/latest/download/GRYFSMART-Programator.zip)
 - [Instalator bootloadera przez USBasp](https://github.com/GRYF-SMART/gryfsmart-firmware/releases/latest/download/GRYFSMART-Instalator.zip)
 - [Pełna paczka narzędzi](https://github.com/GRYF-SMART/gryfsmart-firmware/releases/latest/download/GRYFSMART-Tools.zip)
 - [Manifest opublikowanych plików i SHA-256](https://github.com/GRYF-SMART/gryfsmart-firmware/releases/latest/download/gryfsmart-update.json)
 
-Przed wgrywaniem sprawdź model, wersję oprogramowania i SHA-256 w manifeście konkretnego wydania. Dokumentacja opisuje oprogramowanie w wersji 21; aktualizacja dokumentacji nie zastępuje publikacji paczki binarnej.
+Przed wgrywaniem sprawdź model, wersję oprogramowania i SHA-256 w manifeście konkretnego wydania. Dokumentacja i paczka aplikacji firmware-21 opisują oprogramowanie w wersji 21. Narzędzia Windows i bootloadery mają oddzielne wydania.
 
 | Moduł | Wersja oprogramowania | MCU / zegar | Port serwisowy |
 |---|---|---|---|
