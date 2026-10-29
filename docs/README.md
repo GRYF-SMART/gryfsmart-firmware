@@ -21,10 +21,10 @@
 
 | Moduł | Wersja oprogramowania | Główna instrukcja | Reguły |
 |---|---|---|---|
-| R0806T | 21 | [6 przekaźników, PWM, termostat, wejścia i ich odczyty](R0806T.md) | [RULE i zdalny PWM typu 4](reguly-R0806T.md) |
-| R0808 | 21 | [8 przekaźników, wejścia i temperatura](R0808.md) | [RULE](reguly-R0808.md) |
-| S0804 | 21 | [4 rolety, wejścia i ich odczyty](S0804.md) | [RULE rolet](reguly-S0804.md) |
-| ETH0606T | 21 | [6 wejść i wyjść, USB/RS-232, Ethernet, 5 czujników](ETH0606T.md) | [RULE](reguly-ETH0606T.md) |
+| R0806T | 27 | [6 przekaźników, PWM, termostat, wejścia i ich odczyty](R0806T.md) | [RULE i zdalny PWM typu 4](reguly-R0806T.md) |
+| R0808 | 25 | [8 przekaźników, wejścia i temperatura](R0808.md) | [RULE](reguly-R0808.md) |
+| S0804 | 27 | [4 rolety, wejścia i ich odczyty](S0804.md) | [RULE rolet](reguly-S0804.md) |
+| ETH0606T | 23 | [6 wejść i wyjść, USB/RS-232, Ethernet, 5 czujników](ETH0606T.md) | [RULE](reguly-ETH0606T.md) |
 
 [S0804 — pełna instrukcja parametrów, sterowania, procentów i statusów rolet](rolety-komendy.md).
 
@@ -35,3 +35,5 @@
 RuleOK=ID potwierdza przyjęcie komendy, a nie zakończenie ruchu rolety lub całej sceny. RuleERROR=ID oznacza błąd składni, zakresu, sumy albo stanu. SaveOK/SaveERROR informuje o zakończeniu zapisu EEPROM. Odpowiedzi mogą pojawiać się asynchronicznie — sprawdzaj prefiks i ID.
 
 Zmiany konfiguracji utrwala SaveConfig. Defaults czyści konfigurację roboczą. W polu SUMA podaje się sumę wszystkich wcześniejszych liczb, np. KeyTime=1,1,5,20,27.
+
+[R0806T-OLD — profil starszej płytki i porównanie](R0806T-OLD.md).

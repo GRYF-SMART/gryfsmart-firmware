@@ -1,5 +1,14 @@
 # S0804 — parametry, sterowanie i odczyt stanu rolet
 
+## Zmiana kierunków od firmware S0804 27
+
+Od wersji **27** zamieniono sprzętowe kierunki wszystkich czterech rolet względem wersji 26 i starszych: OPEN ustawia DIR=1, CLOSE ustawia DIR=0. Piny DIR to PC6/PC4/PC2/PC0; piny zasilania PWR to PC7/PC5/PC3/PC1. Zasilanie jest wyłączane podczas przerwy zmiany kierunku.
+
+Zmiana obejmuje lokalne przyciski i reguły, RolAct, STEP UP/DOWN, automatyczny STEP oraz pozycję procentową, również przy poleceniach zdalnych. Numery akcji, sumy kontrolne i znaczenie procentów pozostają: OPEN/100% = otwarcie, CLOSE/0% = zamknięcie. Zmienił się kierunek fizycznego napędu. Format R=/RolState pozostaje zgodny z dokumentacją.
+
+Po aktualizacji sprawdź kierunki napędów oraz ponownie ustal pozycję i sprawdź czasy otwierania/zamykania. Zapisane reguły otrzymują odwrócony kierunek bez ich ponownego programowania.
+
+
 S0804 obsługuje cztery rolety. Dokumentacja dotyczy oprogramowania w wersji **21**. GetRolTime, GetRolState i adresowane StanRol są przekazywane przez R0808, R0806T oraz bramkę ETH.
 
 ## 1. Zestawienie

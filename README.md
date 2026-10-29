@@ -44,3 +44,5 @@ Pierwsza instalacja bootloadera wymaga ISP/USBasp. Późniejsze aktualizacje apl
 [Sposób działania sieci i parametry komunikacji](docs/komendy-wspolne.md#zasady-komunikacji-i-struktura-sieci).
 
 [Wspólna instrukcja sieci, stanu, identyfikacji, resetu i wejścia do bootloadera](docs/komendy-wspolne.md#sieć-i-stan).
+
+[R0806T-OLD — opis i różnice względem aktualnego R0806T](docs/R0806T-OLD.md).
