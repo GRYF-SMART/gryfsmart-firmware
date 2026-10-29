@@ -1,12 +1,13 @@
-GRYFEXPERT 0.5.14 — panel Restarty i szybkość działania dla wszystkich pięciu modeli.
+GRYFSMART — historia restartów we wszystkich modułach; OLD startuje bez opóźnienia.
 
-Informacje -> Restarty i szybkość działania:
-• R0808: czasy pętli, zerowanie statystyk, restart; szczegółowa historia 8 uruchomień w EEPROM wymaga firmware 27+.
-• R0806T i S0804: czasy pętli, zerowanie statystyk, restart oraz liczniki i przyczyna ostatniego restartu. Obecny firmware udostępnia podsumowanie, bez listy poszczególnych wpisów.
-• ETH0606T: czasy pętli, zerowanie statystyk i restart modułu. Obecny firmware nie udostępnia trwałego logu restartów.
-• R0806T-OLD: restart modułu; brak pomiarów pętli i logu restartów w obecnym firmware. Niedostępne przyciski są wyłączone z objaśnieniem.
+Aplikacje: ETH0606T 26, R0808 28, R0806T 28, S0804 28, R0806T-OLD 5. GRYFEXPERT 0.5.15, Programator i Instalator 2.0.14. Bootloader OLD v13-old644p; pozostałe bootloadery bez zmian.
 
-Czasy minimalny/średni/maksymalny w µs i liczba próbek. Poprawnie rozpoznawane są oba formaty raportów restartów: strumieniowy R0808 i pojedyncze podsumowanie R0806T/S0804. Firmware 27 nie jest wymagane do pomiarów czasu ani restartu R0808. Przy restarcie ETH przez TCP program ponownie łączy się i potwierdza tożsamość; polecenie restartu wysyłane tylko raz.
+Wszystkie aplikacje udostępniają podsumowanie i historię 8 ostatnich uruchomień: AT+ResetStats=ID. Ramki RESET=ID zawierają BOOTS, WDT, SW, MCUSR, PLANNED i STORE. Wpisy INDEX=0..7 (najnowszy pierwszy), puste wpisy EMPTY=1, koniec odczytu END=1. EEPROM: CRC i commit na końcu; brak daty/godziny. R0806T/S0804 zachowują istniejący dziennik 16 rekordów, odczyt udostępnia ostatnie 8. Nowy log ETH/R0808: 192 B pod 0xD00; OLD: 192 B pod 0x730, przed metadanymi bootloadera 0x7F0. Konfiguracja i ID pozostają oddzielne.
 
-Walidacja: testy rzeczywistych gniazd TCP dla wszystkich pięciu modeli, obsługa obu formatów raportów, blokada nieobsługiwanych komend OLD/ETH, rozłączenie i ponowne połączenie ETH po restarcie; test przeglądarkowy wszystkich paneli i przycisków na symulatorze. Fizycznych urządzeń nie restartowano ani nie programowano.
-Firmware, bootloadery, Programator i Instalator bez zmian: ETH 25, R0808 27, R0806T 27, S0804 27, OLD 4; narzędzia natywne 2.0.13. Nie trzeba wgrywać nowego firmware z powodu tej aktualizacji aplikacji.
+OLD v13: prawidłowa aplikacja startuje od razu po resecie sprzętowym, zasilaniu i watchdogu, bez 3-sekundowego okna oczekiwania. Wejście do aktualizacji przez AT+BOOT=1 lub serwisowe CHAIN1. Pusty/niedokończony wsad pozostaje w odzyskiwaniu. Bootloader przekazuje przyczynę resetu aplikacji. Instalacja bootloadera wymaga ISP/USBasp; nie wgrywaj pliku bootloadera jako aplikacji. Aplikację OLD 5 można wgrać przez dotychczasowy v12, ale pełne rozpoznawanie przyczyn i start bez oczekiwania wymagają v13. Nowy programator obsługuje v12 i v13.
+
+GRYFEXPERT: Informacje -> Restarty i szybkość działania. Szczegółowa historia dla wszystkich nowych wsadów. Obsługa poprzednich wersji pozostaje w zakresie ich możliwości. Po restarcie aplikacja potwierdza ID do 8 s, bez ponawiania RST; poprawia to współpracę ze starym bootloaderem OLD v12. ETH po restarcie ponownie łączy się przez TCP. OLD nadal nie udostępnia pomiarów czasu pętli. Dla pozostałych modeli dostępne są min./średni/maks. czas i zerowanie statystyk.
+
+Pamięć i wersje potwierdzone kompilacją. W ETH zachowano ponad 2 KiB RAM na stos: podgląd ramki w diagnostycznym logu ruchu skrócono z 63 do 55 znaków, z zachowaniem znacznika obcięcia; pełne komendy nadal mają limit 199 znaków. OLD ma 514 B poza zmiennymi statycznymi; test wykonania diagnostyki na produkcyjnym HEX-ie zachował 245 B marginesu stosu w sprawdzonym scenariuszu.
+
+Walidacja: po 61 sprawdzeń zapisu/CRC/przerwania zasilania dla każdego modelu; testy aplikacji i routingu AVR, 19770 sprawdzeń UART OLD, 274 sprawdzenia protokołu bootloadera, test rzeczywistego kodu maszynowego OLD 5 + boot v13 (ID 5, historia, RST, AT+BOOT), start bootloadera poniżej 10 ms dla poprawnej aplikacji oraz odzyskiwanie pustego/przerwanego obrazu; wykonanie HEX ETH z EEPROM i UART; 271 testów GRYFEXPERT z nowymi i poprzednimi wersjami oraz 3-sekundowym startem starego OLD. Testy programowe nie zastępują weryfikacji na płytce. Fizycznych urządzeń nie programowano ani nie restartowano.

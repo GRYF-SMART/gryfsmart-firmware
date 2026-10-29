@@ -2,7 +2,7 @@
 
 # GRYFSMART — oprogramowanie i narzędzia serwisowe
 
-**Aktualne firmware: ETH0606T 25, R0808 27, R0806T 27, S0804 27, OLD 4.** Kolejne wersje oprogramowania to 22, 23, 24… Wersje narzędzi Windows i bootloadera są niezależne od wersji oprogramowania modułu.
+**Aktualne firmware: ETH0606T 26, R0808 28, R0806T 28, S0804 28, OLD 5.** Kolejne wersje oprogramowania to 22, 23, 24… Wersje narzędzi Windows i bootloadera są niezależne od wersji oprogramowania modułu.
 
 ## Dokumentacja poleceń GRYFSMART
 
@@ -34,11 +34,11 @@ Przed wgrywaniem sprawdź model, wersję oprogramowania i SHA-256 w manifeście 
 
 | Moduł | Wersja oprogramowania | MCU / zegar | Port serwisowy |
 |---|---|---|---|
-| R0806T | 27 | ATmega1284P / 18,432 MHz | port logiczny 0 = USART0 |
-| R0808 | 27 | ATmega2560 / 18,432 MHz | port logiczny 0 = USART3 |
-| S0804 | 27 | ATmega1284P / 18,432 MHz | port logiczny 0 = USART0 |
-| ETH0606T | 25 | ATmega2560 / 16 MHz | USB USART0, RS-232 USART1 |
-| R0806T-OLD | 4 | ATmega644P / 11,0592 MHz | USART0 |
+| R0806T | 28 | ATmega1284P / 18,432 MHz | port logiczny 0 = USART0 |
+| R0808 | 28 | ATmega2560 / 18,432 MHz | port logiczny 0 = USART3 |
+| S0804 | 28 | ATmega1284P / 18,432 MHz | port logiczny 0 = USART0 |
+| ETH0606T | 26 | ATmega2560 / 16 MHz | USB USART0, RS-232 USART1 |
+| R0806T-OLD | 5 | ATmega644P / 11,0592 MHz | USART0 |
 
 Pierwsza instalacja bootloadera wymaga ISP/USBasp. Późniejsze aktualizacje aplikacji przez RS-232/USB wymagają już zainstalowanego bootloadera. Bootloader zajmuje ostatnie 8 KiB Flash; w R0806T-OLD ostatnie 4 KiB. ETH z bootloaderem v12 obsługuje też aktualizację aplikacji przez Ethernet.
 
@@ -50,4 +50,4 @@ Pierwsza instalacja bootloadera wymaga ISP/USBasp. Późniejsze aktualizacje apl
 
 [ETH: aktualizacja przez Ethernet — firmware 25 / bootloader v12](docs/ETH-Ethernet-aktualizacja.md).
 
-[GRYFEXPERT 0.5.14 — aplikacja Windows](https://github.com/GRYF-SMART/gryfsmart-firmware/releases/latest/download/GRYFEXPERT-0.5.14-win-x64.zip).
+[GRYFEXPERT 0.5.15 — aplikacja Windows](https://github.com/GRYF-SMART/gryfsmart-firmware/releases/latest/download/GRYFEXPERT-0.5.15-win-x64.zip).
