@@ -4,7 +4,7 @@
 
 1. Pierwszy raz zainstaluj `ETH0606T-bootloader.hex` **v12-ethernet** przez USBasp/ISP, wybierając ETH0606T. Instalacja bootloadera kasuje obecną aplikację i zachowuje EEPROM.
 2. Odłącz USBasp. Wgraj `ETH0606T-firmware.hex` **25** przez Ethernet albo przez USB/RS-232.
-3. Kolejne aktualizacje aplikacji wykonuj z GRYFEXPERT **0.5.7**: połącz z ETH przez TCP i użyj panelu firmware. Programator i instalator **2.0.11** mają również przycisk aktualizacji ETH przez Ethernet, z wyborem lokalnego HEX lub najnowszego pliku GitHub.
+3. Kolejne aktualizacje aplikacji wykonuj z GRYFEXPERT **0.5.8**: połącz z ETH przez TCP i użyj panelu firmware. Programator i instalator **2.0.12** mają również przycisk aktualizacji ETH przez Ethernet, z wyborem lokalnego HEX lub najnowszego pliku GitHub.
 
 Aplikacja używa TCP **5000**, bootloader TCP **5001**. Podaj faktyczny adres IP ETH. Bootloader odczytuje zapisane ustawienia MAC/IP/maski/bramy z dwóch rekordów EEPROM i sprawdza ich CRC. Bez poprawnego zapisu używa `192.168.1.200/24`. Zmiany IP nieutrwalone w EEPROM nie są ustawieniem bootloadera.
 
@@ -15,6 +15,32 @@ Narzędzia 2.0.10 błędnie przerywają aktualizację przy `UNSUPPORTED`. Otwart
 Jeśli urządzenie jest już w bootloaderze lub trybie odzyskiwania, program łączy się bezpośrednio z TCP 5001; działająca aplikacja nie jest wtedy potrzebna. Bootloader zachowuje też protokół STK500v2 na USB i RS-232.
 
 Przez Ethernet aktualizowana jest **aplikacja**, nie obszar samego bootloadera. Zmiana bootloadera wymaga ISP. Obszar aplikacji kończy się na `0x3E000`; bootloader mieści się w ostatnich 8 KiB Flash.
+
+## Aktualizacja wszystkich modułów za ETH przez Ethernet
+
+Narzędzia **2.0.12** i GRYFEXPERT **0.5.8** obsługują układ:
+
+```text
+PC / HA -- Ethernet TCP 5000 --> ETH0606T ID 1
+                                  |
+                               RS-232
+                                  |
+                         port 0 modułu ID 2
+                                  |
+                         port 1 -> port 0 ID 3 -> kolejne ID 4..35
+```
+
+ETH musi mieć aplikację 25 lub nowszą. R0808, R0806T i S0804 wymagają już zainstalowanego zgodnego bootloadera `v11-chain1`, a OLD własnego `v12-old644p`. Do przesyłania aktualizacji dalszych modułów ETH wystarczy rola bramki; bootloader Ethernet v12 ETH jest potrzebny do aktualizacji samego ETH. Pierwsza instalacja bootloaderów nadal wymaga ISP/USBasp.
+
+W GRYFSMART Programator wybierz **Sieć → Ethernet / ETH**, wpisz IP i port 5000, następnie **Wykryj CHAIN1**. Zaznacz **Aktualizuj wszystkie moduły do najnowszej wersji z GitHub**, użyj **Sprawdź całą sieć**, przejrzyj listę wersji i uruchom aktualizację. Z okna aktualizacji pojedynczego ETH możesz przejść przyciskiem **Moduły za ETH — aktualizacja sieci**. W GRYFEXPERT wybierz TCP/IP, połącz z ETH i użyj zakładki zbiorczej **Aktualizacja firmware** albo przycisku aktualizacji pojedynczego modułu.
+
+Pozycja 1 oznacza ETH; pozycja 2 oznacza pierwszy moduł RS232. Zapytanie CHAIN1 do pozycji 2 ma HOPS=0, do pozycji 3 HOPS=1. ETH przekazuje ramkę bez zmiany HOPS i CRC, sam nie jest węzłem CHAIN1. Program rozróżnia pozycję od zapisanego ID i przed zapisem potwierdza model, ID, MCU oraz bootloader wybranego modułu.
+
+Skan nie zmienia adresów ani EEPROM. Do aktualizacji zbiorczej przez ETH ustaw kolejno ID 1,2,3,4…; niezgodność pozycji/ID lub powtórzony adres blokuje serię. W razie potrzeby adresuj moduły oddzielnie przed przygotowaniem planu, np. poleceniami `AT+Search=0,2`, `AT+Search=0,3`, `AT+Search=0,4`, wysyłanymi do ETH i potwierdzanymi odpowiedzią Find po każdej komendzie. Search nadaje adres wskazanej pozycji; nie używaj go jako odczytu diagnostycznego.
+
+Aktualizacja zbiorcza pobiera wsady wszystkich modeli z jednego wydania GitHub i sprawdza SHA-256. Zapisuje tylko wymagające aktualizacji, **od końca linii, ETH na końcu**, a potem sprawdza wszystkie wykryte moduły. Nie odczytuje starego Flash ani nie wykonuje jego kopii. EEPROM konfiguracji jest zachowany; Flash jest sprawdzany CRC i ponownym odczytem tożsamości aplikacji. Brak odpowiedzi na kolejnej pozycji kończy skan po 2 s; moduły za przerwą nie są uznawane za sprawdzone. Brak znanego modułu lub błąd zapisu zatrzymuje serię.
+
+Podczas aktualizacji zwolnij TCP 5000 w HA i pozostałych programach. Każde narzędzie używa własnego połączenia, a ETH przyjmuje jednego klienta sterującego. Strona HTTP na porcie 80 może pozostać otwarta. Aktualizacja wyłącza wyjścia aktualizowanego modułu; ETH jest aktualizowany na końcu, aby wcześniej przekazywał ruch do całej linii.
 
 ## Kontrola i odzyskiwanie
 
