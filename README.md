@@ -50,4 +50,4 @@ Pierwsza instalacja bootloadera wymaga ISP/USBasp. Późniejsze aktualizacje apl
 
 [ETH: aktualizacja przez Ethernet — firmware 25 / bootloader v12](docs/ETH-Ethernet-aktualizacja.md).
 
-[GRYFEXPERT 0.5.13 — aplikacja Windows](https://github.com/GRYF-SMART/gryfsmart-firmware/releases/latest/download/GRYFEXPERT-0.5.13-win-x64.zip).
+[GRYFEXPERT 0.5.14 — aplikacja Windows](https://github.com/GRYF-SMART/gryfsmart-firmware/releases/latest/download/GRYFEXPERT-0.5.14-win-x64.zip).
