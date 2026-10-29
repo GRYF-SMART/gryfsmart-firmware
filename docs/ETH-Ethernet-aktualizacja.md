@@ -4,11 +4,13 @@
 
 1. Pierwszy raz zainstaluj `ETH0606T-bootloader.hex` **v12-ethernet** przez USBasp/ISP, wybierając ETH0606T. Instalacja bootloadera kasuje obecną aplikację i zachowuje EEPROM.
 2. Odłącz USBasp. Wgraj `ETH0606T-firmware.hex` **25** przez Ethernet albo przez USB/RS-232.
-3. Kolejne aktualizacje aplikacji wykonuj z GRYFEXPERT **0.5.6**: połącz z ETH przez TCP i użyj panelu firmware. Programator i instalator **2.0.10** mają również przycisk aktualizacji ETH przez Ethernet, z wyborem lokalnego HEX lub najnowszego pliku GitHub.
+3. Kolejne aktualizacje aplikacji wykonuj z GRYFEXPERT **0.5.7**: połącz z ETH przez TCP i użyj panelu firmware. Programator i instalator **2.0.11** mają również przycisk aktualizacji ETH przez Ethernet, z wyborem lokalnego HEX lub najnowszego pliku GitHub.
 
 Aplikacja używa TCP **5000**, bootloader TCP **5001**. Podaj faktyczny adres IP ETH. Bootloader odczytuje zapisane ustawienia MAC/IP/maski/bramy z dwóch rekordów EEPROM i sprawdza ich CRC. Bez poprawnego zapisu używa `192.168.1.200/24`. Zmiany IP nieutrwalone w EEPROM nie są ustawieniem bootloadera.
 
-Program najpierw sprawdza tożsamość ETH i `AT+NetBoot=1`. Odpowiedź `NETBOOT=1,VERSION=12,PORT=5001` potwierdza obecność sygnatury nowego bootloadera. Następnie `AT+BOOT=1` wyłącza wyjścia i przechodzi do bootloadera. Po połączeniu TCP 5001 sprawdzane są sygnatura protokołu oraz MCU ATmega2560, a dopiero potem rozpoczyna się zapis.
+Program najpierw sprawdza tożsamość ETH, aplikację 25+ i `AT+NetBoot=1`. Instalator ustawia lock bits `0x0F`, które chronią bootloader przed zapisem i odczytem przez aplikację. Dlatego aplikacja 25 może zwrócić `NETBOOT=1,UNSUPPORTED` mimo poprawnie zainstalowanego v12. To nie dowodzi braku bootloadera. Narzędzia 2.0.11 i GRYFEXPERT 0.5.7 obsługują tę sytuację: `AT+BOOT=1` wyłącza wyjścia i przechodzi do bootloadera, a następnie program sprawdza jego własną sygnaturę protokołu i MCU ATmega2560 przez TCP 5001. Dopiero poprawna identyfikacja pozwala wysłać nagłówek obrazu i rozpocząć zapis. Zabezpieczenia Flash pozostają bez zmian; poprawnie zainstalowanego v12 nie trzeba wgrywać ponownie przez USBasp.
+
+Narzędzia 2.0.10 błędnie przerywają aktualizację przy `UNSUPPORTED`. Otwarta strona HTTP (port 80) nie jest przyczyną tego błędu. Inny klient sterujący przez TCP 5000, np. Home Assistant lub GRYFEXPERT, może natomiast zajmować jedyne połączenie aplikacji — rozłącz go przed aktualizacją.
 
 Jeśli urządzenie jest już w bootloaderze lub trybie odzyskiwania, program łączy się bezpośrednio z TCP 5001; działająca aplikacja nie jest wtedy potrzebna. Bootloader zachowuje też protokół STK500v2 na USB i RS-232.
 
