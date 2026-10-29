@@ -2,7 +2,7 @@
 
 # Dokumentacja poleceń GRYFSMART
 
-**Aktualny komplet:** ETH0606T 25, R0808 25, R0806T 27, S0804 27, R0806T-OLD 4. GRYFEXPERT 0.5.15, narzędzia Windows 2.0.13. Numery wersji są niezależne dla modeli.
+**Aktualny komplet:** ETH0606T 25, R0808 25, R0806T 27, S0804 27, R0806T-OLD 4. GRYFEXPERT 0.5.16, narzędzia Windows 2.0.13. Numery wersji są niezależne dla modeli.
 
 [Sposób działania sieci, dwa porty linii, prędkość, limit 35 modułów i ramki ASCII](komendy-wspolne.md#zasady-komunikacji-i-struktura-sieci).
 
@@ -23,7 +23,7 @@
 |---|---|---|---|
 | R0806T | 28 | [6 przekaźników, PWM, termostat, wejścia i ich odczyty](R0806T.md) | [RULE i zdalny PWM typu 4](reguly-R0806T.md) |
 | R0808 | 28 | [8 przekaźników, wejścia i temperatura](R0808.md) | [RULE](reguly-R0808.md) |
-| S0804 | 28 | [4 rolety, wejścia i ich odczyty](S0804.md) | [RULE rolet](reguly-S0804.md) |
+| S0804 | 29 | [4 rolety, wejścia i ich odczyty](S0804.md) | [RULE rolet](reguly-S0804.md) |
 | ETH0606T | 26 | [6 wejść i wyjść, USB/RS-232, Ethernet, 5 czujników](ETH0606T.md) | [RULE](reguly-ETH0606T.md) |
 
 [S0804 — pełna instrukcja parametrów, sterowania, procentów i statusów rolet](rolety-komendy.md).
