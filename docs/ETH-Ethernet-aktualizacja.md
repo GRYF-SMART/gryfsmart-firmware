@@ -4,7 +4,7 @@
 
 1. Pierwszy raz zainstaluj `ETH0606T-bootloader.hex` **v12-ethernet** przez USBasp/ISP, wybierając ETH0606T. Instalacja bootloadera kasuje obecną aplikację i zachowuje EEPROM.
 2. Odłącz USBasp. Wgraj `ETH0606T-firmware.hex` **25** przez Ethernet albo przez USB/RS-232.
-3. Kolejne aktualizacje aplikacji wykonuj z GRYFEXPERT **0.5.8**: połącz z ETH przez TCP i użyj panelu firmware. Programator i instalator **2.0.12** mają również przycisk aktualizacji ETH przez Ethernet, z wyborem lokalnego HEX lub najnowszego pliku GitHub.
+3. Kolejne aktualizacje aplikacji wykonuj z GRYFEXPERT **0.5.9**: połącz z ETH przez TCP i użyj panelu firmware. Programator i instalator **2.0.13** mają również przycisk aktualizacji ETH przez Ethernet, z wyborem lokalnego HEX lub najnowszego pliku GitHub.
 
 Aplikacja używa TCP **5000**, bootloader TCP **5001**. Podaj faktyczny adres IP ETH. Bootloader odczytuje zapisane ustawienia MAC/IP/maski/bramy z dwóch rekordów EEPROM i sprawdza ich CRC. Bez poprawnego zapisu używa `192.168.1.200/24`. Zmiany IP nieutrwalone w EEPROM nie są ustawieniem bootloadera.
 
@@ -18,7 +18,7 @@ Przez Ethernet aktualizowana jest **aplikacja**, nie obszar samego bootloadera. 
 
 ## Aktualizacja wszystkich modułów za ETH przez Ethernet
 
-Narzędzia **2.0.12** i GRYFEXPERT **0.5.8** obsługują układ:
+Narzędzia **2.0.13** i GRYFEXPERT **0.5.9** obsługują układ:
 
 ```text
 PC / HA -- Ethernet TCP 5000 --> ETH0606T ID 1
@@ -68,3 +68,11 @@ Odpowiedzi z RS-232, w tym `AT+Find=ID,4,R0806T-OLD`, `Chain=...`, PS/PL/I/o, po
 - Regresja obu UART-ów nowego bootloadera: STK500v2, odczyt i zapis, blokada wybranego portu oraz ochrona granicy Flash. GRYFEXPERT przechodzi własny zestaw testów.
 
 Testy wykonano programowo i w modelach sprzętu. Nie programowano fizycznych urządzeń podczas przygotowania wydania.
+
+## USB / COM: test po wcześniejszej aktualizacji
+
+Udany zapis USB i późniejszy brak odpowiedzi w teście bootloadera są osobnymi wynikami. Zapis potwierdzony przez AVRDUDE oznacza, że wysłane bajty Flash zostały odczytane i porównane. Sam późniejszy błąd połączenia nie unieważnia tego zapisu.
+
+Programator 2.0.12 po nieudanej próbie binarnej STK500v2 wysyłał `CR` i `AT+BOOT=1` jednym ciągiem. Aplikacja ETH ma jedno miejsce na gotową linię USB. Zakończenie niepełnej ramki binarnej zajmowało to miejsce, zanim parser przetworzył dane, i kolejna komenda AT mogła zostać odrzucona. W Programatorze **2.0.13** separator CR jest osobną transmisją, po której program czeka **150 ms**, zanim wyśle AT+BOOT. Przypadek odtworzono na rzeczywistym kodzie HEX w emulatorze AVR: stara sekwencja gubi komendę, nowa zwraca Find i BootOK przez USB. Bootloader i aplikacja nie wymagają zmiany z powodu tej poprawki.
+
+Do samodzielnego ETH przez USB wybierz główne okno Programatora, model ETH0606T i właściwy COM. Okno sieci CHAIN1 nie jest testem STK500v2 samego ETH. Hercules w zakładce TCP Client sprawdza Ethernet, a w Serial port USB/COM — są to oddzielne ścieżki.
