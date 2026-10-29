@@ -2,7 +2,7 @@
 
 # Dokumentacja poleceń GRYFSMART
 
-**Aktualny komplet:** ETH0606T 25, R0808 25, R0806T 27, S0804 27, R0806T-OLD 4. GRYFEXPERT 0.5.9, narzędzia Windows 2.0.13. Numery wersji są niezależne dla modeli.
+**Aktualny komplet:** ETH0606T 25, R0808 25, R0806T 27, S0804 27, R0806T-OLD 4. GRYFEXPERT 0.5.10, narzędzia Windows 2.0.13. Numery wersji są niezależne dla modeli.
 
 [Sposób działania sieci, dwa porty linii, prędkość, limit 35 modułów i ramki ASCII](komendy-wspolne.md#zasady-komunikacji-i-struktura-sieci).
 
