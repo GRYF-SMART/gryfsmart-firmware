@@ -34,15 +34,20 @@ Przed wgrywaniem sprawdź model, wersję oprogramowania i SHA-256 w manifeście 
 
 | Moduł | Wersja oprogramowania | MCU / zegar | Port serwisowy |
 |---|---|---|---|
-| R0806T | 21 | ATmega1284P / 18,432 MHz | port logiczny 0 = USART0 |
-| R0808 | 21 | ATmega2560 / 18,432 MHz | port logiczny 0 = USART3 |
-| S0804 | 21 | ATmega1284P / 18,432 MHz | port logiczny 0 = USART0 |
-| ETH0606T | 21 | ATmega2560 / 16 MHz | USB USART0, RS-232 USART1 |
+| R0806T | 27 | ATmega1284P / 18,432 MHz | port logiczny 0 = USART0 |
+| R0808 | 25 | ATmega2560 / 18,432 MHz | port logiczny 0 = USART3 |
+| S0804 | 27 | ATmega1284P / 18,432 MHz | port logiczny 0 = USART0 |
+| ETH0606T | 25 | ATmega2560 / 16 MHz | USB USART0, RS-232 USART1 |
+| R0806T-OLD | 4 | ATmega644P / 11,0592 MHz | USART0 |
 
-Pierwsza instalacja bootloadera wymaga ISP/USBasp. Późniejsze aktualizacje aplikacji przez RS-232/USB wymagają już zainstalowanego bootloadera. Bootloader zajmuje ostatnie 8 KiB Flash.
+Pierwsza instalacja bootloadera wymaga ISP/USBasp. Późniejsze aktualizacje aplikacji przez RS-232/USB wymagają już zainstalowanego bootloadera. Bootloader zajmuje ostatnie 8 KiB Flash; w R0806T-OLD ostatnie 4 KiB. ETH z bootloaderem v12 obsługuje też aktualizację aplikacji przez Ethernet.
 
 [Sposób działania sieci i parametry komunikacji](docs/komendy-wspolne.md#zasady-komunikacji-i-struktura-sieci).
 
 [Wspólna instrukcja sieci, stanu, identyfikacji, resetu i wejścia do bootloadera](docs/komendy-wspolne.md#sieć-i-stan).
 
 [R0806T-OLD — opis i różnice względem aktualnego R0806T](docs/R0806T-OLD.md).
+
+[ETH: aktualizacja przez Ethernet — firmware 25 / bootloader v12](docs/ETH-Ethernet-aktualizacja.md).
+
+[GRYFEXPERT 0.5.6 — aplikacja Windows](https://github.com/GRYF-SMART/gryfsmart-firmware/releases/latest/download/GRYFEXPERT-0.5.6-win-x64.zip).
