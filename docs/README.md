@@ -24,7 +24,7 @@
 | R0806T | 28 | [6 przekaźników, PWM, termostat, wejścia i ich odczyty](R0806T.md) | [RULE i zdalny PWM typu 4](reguly-R0806T.md) |
 | R0808 | 28 | [8 przekaźników, wejścia i temperatura](R0808.md) | [RULE](reguly-R0808.md) |
 | S0804 | 29 | [4 rolety, wejścia i ich odczyty](S0804.md) | [RULE rolet](reguly-S0804.md) |
-| ETH0606T | 26 | [6 wejść i wyjść, USB/RS-232, Ethernet, 5 czujników](ETH0606T.md) | [RULE](reguly-ETH0606T.md) |
+| ETH0606T | 27 | [6 wejść i wyjść, USB/RS-232, Ethernet, 5 czujników](ETH0606T.md) | [RULE](reguly-ETH0606T.md) |
 
 [S0804 — pełna instrukcja parametrów, sterowania, procentów i statusów rolet](rolety-komendy.md).
 
@@ -39,3 +39,6 @@ Zmiany konfiguracji utrwala SaveConfig. Defaults czyści konfigurację roboczą.
 [R0806T-OLD — opis i porównanie z aktualnym R0806T](R0806T-OLD.md).
 
 [ETH: Ethernet firmware 25 i bootloader v12](ETH-Ethernet-aktualizacja.md).
+
+
+ETH firmware 27: HA TCP 5000 i GRYFEXPERT TCP 5002 jednoczesnie. [Instrukcja](docs/ETH-HA-GRYFEXPERT-dwa-porty.md).
