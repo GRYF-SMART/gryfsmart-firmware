@@ -2,7 +2,7 @@
 
 # GRYFSMART — oprogramowanie i narzędzia serwisowe
 
-**Aktualne firmware: ETH0606T 27, R0808 28, R0806T 28, S0804 29, OLD 5.** Kolejne wersje oprogramowania to 22, 23, 24… Wersje narzędzi Windows i bootloadera są niezależne od wersji oprogramowania modułu.
+**Aktualne firmware: ETH0606T 28, R0808 28, R0806T 28, S0804 29, OLD 5.** Kolejne wersje oprogramowania to 22, 23, 24… Wersje narzędzi Windows i bootloadera są niezależne od wersji oprogramowania modułu.
 
 ## Dokumentacja poleceń GRYFSMART
 
@@ -37,7 +37,7 @@ Przed wgrywaniem sprawdź model, wersję oprogramowania i SHA-256 w manifeście 
 | R0806T | 28 | ATmega1284P / 18,432 MHz | port logiczny 0 = USART0 |
 | R0808 | 28 | ATmega2560 / 18,432 MHz | port logiczny 0 = USART3 |
 | S0804 | 29 | ATmega1284P / 18,432 MHz | port logiczny 0 = USART0 |
-| ETH0606T | 27 | ATmega2560 / 16 MHz | USB USART0, RS-232 USART1 |
+| ETH0606T | 28 | ATmega2560 / 16 MHz | USB USART0, RS-232 USART1 |
 | R0806T-OLD | 5 | ATmega644P / 11,0592 MHz | USART0 |
 
 Pierwsza instalacja bootloadera wymaga ISP/USBasp. Późniejsze aktualizacje aplikacji przez RS-232/USB wymagają już zainstalowanego bootloadera. Bootloader zajmuje ostatnie 8 KiB Flash; w R0806T-OLD ostatnie 4 KiB. ETH z bootloaderem v12 obsługuje też aktualizację aplikacji przez Ethernet.
@@ -50,7 +50,7 @@ Pierwsza instalacja bootloadera wymaga ISP/USBasp. Późniejsze aktualizacje apl
 
 [ETH: aktualizacja przez Ethernet — firmware 25 / bootloader v12](docs/ETH-Ethernet-aktualizacja.md).
 
-[GRYFEXPERT 0.5.18 — aplikacja Windows](https://github.com/GRYF-SMART/gryfsmart-firmware/releases/latest/download/GRYFEXPERT-0.5.18-win-x64.zip).
+[GRYFEXPERT 0.5.19 — aplikacja Windows](https://github.com/GRYF-SMART/gryfsmart-firmware/releases/latest/download/GRYFEXPERT-0.5.19-win-x64.zip).
 
 
 ETH firmware 27: HA TCP 5000 i GRYFEXPERT TCP 5002 jednoczesnie. [Instrukcja](docs/ETH-HA-GRYFEXPERT-dwa-porty.md).
