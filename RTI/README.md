@@ -1,8 +1,10 @@
 # GRYF dla RTI Integration Designer
 
-**Aktualna wersja sterownika: 2.09 · 6 listopada 2026**
+**Aktualna wersja sterownika: 2.10 · 6 listopada 2026**
 
 Pobierz [GRYF.rtidriver](GRYF.rtidriver). W istniejącym projekcie wybierz instancję **GRYF**, otwórz **Driver Utilities → Update Driver** i wskaż pobrany plik. Nową instancję dodaj z pliku w sekcji **Drivers**. Sterownik obsługuje moduły R0806T, R0808, ETH0606T i S0804.
+
+Pobierz również [komponent rolety](GRYF-Komponent-Rolety.zip): jeden natywny Viewport z przyciskami i stanem. [Instrukcja komponentu](KOMPONENT-ROLETY.md).
 
 ## Zmiany z 6 listopada 2026
 
@@ -13,6 +15,7 @@ Pobierz [GRYF.rtidriver](GRYF.rtidriver). W istniejącym projekcie wybierz insta
 | **RTI 2.07** | Diagnostyka wszystkich modułów lub osobno dla każdego ID. Pokazuje model, wersję firmware, minimum, średnią i maksimum czasu pętli w µs, sumę restartów programowych i watchdog oraz osobny licznik startów. Dostępne są automatyczne odświeżanie i akcja ręczna. |
 | **RTI 2.08** | Składanie fragmentów TCP i rozdzielanie wielu ramek z jednego odczytu. Walidacja raportów, kolejka poleceń z priorytetem akcji użytkownika, odstęp między transmisjami i scalanie oczekujących odczytów. Most GRYFEXPERT rozpoczyna sesję przez `Hello` i przekazuje odebrane odpowiedzi oraz zdarzenia bez echa poleceń. |
 | **RTI 2.09** | Pełna obsługa sterowania i stanów rolet S0804: pozycja 0–100%, STEP UP/DOWN, czasy przejazdu co 0,1 s, odczyt/zapis konfiguracji, pozycja znana, cel, pozostały czas, ruch, postój, przerwa zmiany kierunku, oczekujący ruch i opis tekstowy. Walidacja sum kontrolnych i wygaszanie nieaktualnych danych. |
+| **RTI 2.10** | Natywny komponent rolety, opcjonalne przyciski GÓRA/STOP/DÓŁ/NA PROCENT/STEP, konfigurowalny cel procentowy, krótki tekst stanu i procent. Pamięć zatrzymania po otwieraniu/zamykaniu oparta na raportach; kasowanie po utracie danych. |
 | **GRYFEXPERT 0.5.50** | Eksport nazw wejść, wyjść, PWM i flag do pliku `.driverconfig`. Nazwy flag można zapisać w projekcie w zakładce **Flagi**. [Pobierz GRYFEXPERT 0.5.50](https://github.com/GRYF-SMART/gryfsmart-firmware/releases/tag/v2026.11.06-gryfexpert-0.5.50). |
 
 ## S0804 — rolety w RTI 2.09
@@ -60,4 +63,4 @@ Szczegółowe odczyty wymagają firmware obsługującego `GetRolState` i `GetRol
 
 Dopasowanie odbywa się według ID i typu modułu oraz numeru kanału. Ustawienia połączenia RS-232 i TCP pozostają takie jak w pliku wyeksportowanym z RTI. Pusta nazwa flagi w GRYFEXPERT zachowuje dotychczasową etykietę w RTI.
 
-SHA-256 paczki: `a96a8e607852b4eadf7da432d320478f0e8778eff3e28441f1d56b7a441dfe9c`.
+SHA-256 paczki: `fd5176b3856518f58fabc8ab54d462286d063ce2ab674b636f9956fe872ad8ac`.
