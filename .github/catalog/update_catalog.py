@@ -9,9 +9,9 @@ import urllib.request
 
 ORG = 'GRYF-SMART'
 BASE = 'https://github.com/GRYF-SMART/gryfsmart-firmware'
-SECTIONS = [('GRYFSMART', '1. Program GRYFSMART'), ('AKTUALIZATOR', '2. Aktualizator GRYF'),
-            ('HOME-ASSISTANT', '3. Home Assistant'), ('RTI', '4. Driver RTI'),
-            ('BOOTLOADER', '5. Bootloader'), ('PROTOKOL', '6. Protokół i przykłady')]
+SECTIONS = [('GRYFSMART', '1. Aplikacja GRYFSMART'), ('AKTUALIZATOR', '2. GRYFSMART-Programator'),
+            ('HOME-ASSISTANT', '3. Driver Home Assistant'), ('RTI', '4. Driver RTI'),
+            ('BOOTLOADER', '5. Instalator Bootloader'), ('PROTOKOL', '6. Protokół GRYFSMART')]
 NOTES = {
     ('AKTUALIZATOR', '2.0.21'): 'Obsługa ETH Mini GATE przez RS-232 i Ethernet, pobieranie HEX z GitHub. Czytelny log: błędy na czerwono, zakończenie weryfikacji na zielono.',
     ('AKTUALIZATOR', '2.0.14'): 'Wydanie narzędzi z obsługą pakietu modułów i bootloadera R0806T-OLD v13; aktualizacja przez USB/RS-232 oraz sieć CHAIN1.',
@@ -143,6 +143,7 @@ def render(out, templates, catalog, mode):
     for path, label in SECTIONS[:5]:
         row = products[path][0]
         downloads += f"| {label} | [**{row['version']} — pobierz**]({row['url']}) | [Otwórz]({BASE}/tree/main/{path}) |\n"
+    downloads += f'| 6. Protokół GRYFSMART | [**Opis i przykłady**]({BASE}/tree/main/PROTOKOL) | [Komendy i konfiguracja]({BASE}/tree/main/PROTOKOL) |\n'
     downloads += f'\n**[Najnowsze HEX-y wszystkich modułów]({BASE}/tree/main/HEX)** · **[Protokół i przykłady integracji]({BASE}/tree/main/PROTOKOL)**\n'
     home = '# GRYFSMART — pobieranie i dokumentacja\n\n' + downloads + '\n' + nav()
     home += '\n\nWybierz sekcję: na górze znajdziesz aktualny plik, następnie trzy ostatnie wersje i instrukcję. Program konfiguracyjny jest obecnie wydawany pod nazwą **GRYFEXPERT**.\n'
