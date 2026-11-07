@@ -11,7 +11,8 @@ ORG = 'GRYF-SMART'
 BASE = 'https://github.com/GRYF-SMART/gryfsmart-firmware'
 SECTIONS = [('GRYFSMART', '1. Aplikacja GRYFSMART'), ('AKTUALIZATOR', '2. GRYFSMART-Programator'),
             ('HOME-ASSISTANT', '3. Driver Home Assistant'), ('RTI', '4. Driver RTI'),
-            ('BOOTLOADER', '5. Instalator Bootloader'), ('PROTOKOL', '6. Protokół GRYFSMART')]
+            ('BOOTLOADER', '5. Instalator Bootloader'), ('PROTOKOL', '6. Protokół GRYFSMART'),
+            ('SYSTEM', '7. System i moduły GRYFSMART')]
 NOTES = {
     ('AKTUALIZATOR', '2.0.21'): 'Obsługa ETH Mini GATE przez RS-232 i Ethernet, pobieranie HEX z GitHub. Czytelny log: błędy na czerwono, zakończenie weryfikacji na zielono.',
     ('AKTUALIZATOR', '2.0.14'): 'Wydanie narzędzi z obsługą pakietu modułów i bootloadera R0806T-OLD v13; aktualizacja przez USB/RS-232 oraz sieć CHAIN1.',
@@ -144,6 +145,7 @@ def render(out, templates, catalog, mode):
         row = products[path][0]
         downloads += f"| {label} | [**{row['version']} — pobierz**]({row['url']}) | [Otwórz]({BASE}/tree/main/{path}) |\n"
     downloads += f'| 6. Protokół GRYFSMART | [**Opis i przykłady**]({BASE}/tree/main/PROTOKOL) | [Komendy i konfiguracja]({BASE}/tree/main/PROTOKOL) |\n'
+    downloads += f'| 7. System i moduły GRYFSMART | [**Opis systemu i tabela modułów**]({BASE}/tree/main/SYSTEM) | [Peryferia i połączenia]({BASE}/tree/main/SYSTEM) |\n'
     downloads += f'\n**[Najnowsze HEX-y wszystkich modułów]({BASE}/tree/main/HEX)** · **[Protokół i przykłady integracji]({BASE}/tree/main/PROTOKOL)**\n'
     home = '# GRYFSMART — pobieranie i dokumentacja\n\n' + downloads + '\n' + nav()
     home += '\n\nWybierz sekcję: na górze znajdziesz aktualny plik, następnie trzy ostatnie wersje i instrukcję. Program konfiguracyjny jest obecnie wydawany pod nazwą **GRYFEXPERT**.\n'
@@ -164,6 +166,8 @@ def render(out, templates, catalog, mode):
         body += (templates / (path + '.md')).read_text(encoding='utf-8')
         write(path + '/README.md', body + '\n\n' + nav())
     write('PROTOKOL/README.md', (templates / 'PROTOKOL.md').read_text(encoding='utf-8') + '\n\n' + nav())
+    for page in (templates / 'SYSTEM').glob('*.md'):
+        write('SYSTEM/' + page.name, page.read_text(encoding='utf-8') + '\n\n' + nav())
     hextable = '# Najnowsze HEX-y aplikacji GRYFSMART\n\n| Moduł | Wersja | Pobierz HEX | Wydanie |\n|---|---|---|---|\n'
     for model in ['R0806T', 'R0808', 'S0804', 'ETH0606T', 'ETH Mini']:
         row = catalog['firmware'][model]
