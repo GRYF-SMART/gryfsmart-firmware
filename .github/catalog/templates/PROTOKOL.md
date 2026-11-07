@@ -195,58 +195,118 @@ RX: RolState=4,1,2,1,35,70,82,195<CR><LF>
 
 Wynik: WY1 modułu 2 jest włączone, WE2 zwarte; flagi 1 i 3 modułu 3 są ustawione; roleta 1 modułu 4 otwiera się z pozycji 35% do 70%, zostało 8,2 s.
 
-## 5. Szybkie konfiguracje i scenariusze
+## 5. Szybkie przykłady — polecenia z zewnętrznego systemu
 
-Przykłady dotyczą jawnie wskazanego modułu i kanału. Przed zmianą istniejącej reguły odczytaj jej konfigurację; poniższa reguła zastępuje ustawienia reguły 1. Nie wysyłaj wszystkich przykładów jako jednego skryptu.
+Polecenia wysyłasz z zewnętrznego kontrolera, terminala lub aplikacji przez RS-232 albo TCP bramki. **ID wskazuje moduł docelowy**; nie trzeba przełączać kabla do każdego modułu. Przykłady zakładają już nadane, unikalne adresy. Każdą komendę zakończ bajtem CR; po wysłaniu obsłuż odpowiedź przed kolejnym poleceniem. Nie wpisuj dosłownie oznaczeń TX, RX ani `<CR>`.
 
-### 5.1. Przycisk WE1 przełącza przekaźnik WY1 — R0806T ID 3
+### 5.1. Zapal światło — moduł ID 3, wyjścia 1, 2 i 3
 
-Ustaw krótki próg 0,5 s, długi 2 s, a następnie regułę 1: krótkie naciśnięcie WE1 → TOGGLE WY1.
-
-```text
-AT+KeyTime=3,1,5,20,29<CR>
-AT+Rule=3,1,1,1,0,0,0,0,0,0,0,3,0,0,0,0,0,9<CR>
-AT+SaveConfig=3,3<CR>
-```
-
-W Rule: ID, numer reguły, EN, osiem masek wejść, sześć akcji wyjść, SUMA. Maska 1 oznacza krótkie naciśnięcie, akcja 3 przełączenie. Po KeyTime i Rule oczekuj `RuleOK=3`, po zapisie `SaveOK=3`. Przed uruchomieniem sprawdź również sloty zdalne i dodatkowe akcje tej reguły — mogą mieć wcześniej zapisane ustawienia.
-
-### 5.2. Światło na 10 sekund — R0806T ID 3, WY1
+Dla **R0806T lub ETH0606T** z sześcioma przekaźnikami:
 
 ```text
-AT+Pulse=3,1,100,1<CR>
-AT+GetOut=3<CR>
+TX: AT+SetOut=3,1,1,1,0,0,0<CR>
+RX: RuleOK=3<CR><LF>
+TX: AT+GetOut=3<CR>
 ```
 
-Pierwsza komenda włącza wyjście, a moduł wyłącza je po 10 s. Powtórzenie Pulse odnawia czas. Jest to bieżące sterowanie, nie zapis konfiguracji — SaveConfig nie jest potrzebne.
-
-### 5.3. PWM 60% z łagodnym rozjaśnieniem 1 s — R0806T ID 3
+Dla **R0808** z ośmioma przekaźnikami użyj zamiast tego:
 
 ```text
-AT+PWM=3,4,60,10,77<CR>
-AT+GetPWM=3<CR>
+TX: AT+SetOut=3,1,1,1,0,0,0,0,0<CR>
+RX: RuleOK=3<CR><LF>
+TX: AT+GetOut=3<CR>
 ```
 
-Odczyt pokazuje poziom bieżący i docelowy. Gdy rampa trwa, wartości mogą być różne. Nie zapisuj EEPROM po każdym ustawieniu jasności.
+| Pole | Znaczenie |
+|---|---|
+| Pierwsze `3` | Adres modułu ID 3 |
+| Pierwsze trzy akcje `1,1,1` | Włącz WY1, WY2 i WY3 |
+| Pozostałe akcje `0` | Pozostaw pozostałe wyjścia bez zmian |
 
-### 5.4. Kalibracja czasu i pozycja 50% — S0804 ID 4, roleta 1
+**Wybierz jedną wersję komendy zgodną z modelem**, nie wysyłaj obu. SetOut nie ma sumy kontrolnej. GetOut zwróci `O=3,...` lub `o=3,...`; pierwsze trzy stany powinny wynosić 1, pozostałe zależą od poprzedniego stanu. Aktywny chroniony timer może blokować zwykłe sterowanie — zawsze sprawdzaj odczyt. Do bieżącego włączenia światła nie używaj SaveConfig.
 
-Na postoju ustaw zmierzone pełne czasy: przykładowo 20 s otwierania i 22 s zamykania.
+### 5.2. Ustaw PWM na 50% — R0806T, ID 3
 
 ```text
-AT+RolTime=4,1,200,220,425<CR>
-AT+SaveConfig=4,4<CR>
-AT+RolAct=4,1,2,0,7<CR>
+TX: AT+PWM=3,4,50,57<CR>
+TX: AT+GetPWM=3<CR>
 ```
 
-Poczekaj na pełne zamknięcie, odczytując `AT+GetRolState=4,1,5`. Po potwierdzeniu znanej pozycji 0%, postoju i braku oczekującego ruchu wyślij:
+ID=3, akcja 4 oznacza ustawienie poziomu, wartość=50%, SUMA=3+4+50=57. To polecenie steruje wyjściem PWM modułu R0806T, a nie przekaźnikiem. Obsłuż potwierdzenie pierwszej komendy, następnie odczytaj raport `PWM=3,...` i sprawdź poziom docelowy 50%.
+
+Wariant z rampą **1 s**:
 
 ```text
-AT+RolAct=4,1,7,50,62<CR>
-AT+GetRolState=4,1,5<CR>
+AT+PWM=3,4,50,10,67<CR>
 ```
 
-Stan odświeżaj do zakończenia ruchu; nie zakładaj osiągnięcia 50% po samym RuleOK. Czasy 20/22 s są przykładem — wpisz rzeczywiste czasy swojego napędu.
+RAMPA=10 oznacza 1 s, SUMA=3+4+50+10=67. Podczas rampy bieżący poziom może jeszcze różnić się od docelowego. SaveConfig nie jest potrzebne.
+
+### 5.3. Otwórz rolety 1 i 2 na 50% — S0804, ID 5
+
+Warunek: obie rolety mają ustawione rzeczywiste czasy pełnego otwierania/zamykania i znaną pozycję. Po restarcie albo zmianie czasów najpierw wykonaj pełny przejazd do końca. **0% oznacza zamknięcie, 100% pełne otwarcie.**
+
+```text
+TX: AT+RolAct=5,1,7,50,63<CR>
+RX: RuleOK=5<CR><LF>
+TX: AT+RolAct=5,2,7,50,64<CR>
+RX: RuleOK=5<CR><LF>
+```
+
+| Roleta | ID | Akcja | Cel | Suma |
+|---|---|---|---|---|
+| 1 | 5 | 7 — pozycja procentowa | 50% | 5+1+7+50=63 |
+| 2 | 5 | 7 — pozycja procentowa | 50% | 5+2+7+50=64 |
+
+Są to dwie oddzielne komendy, nie jedna transakcja równoczesnego startu. Odczytuj stan każdej rolety:
+
+```text
+AT+GetRolState=5,1,6<CR>
+AT+GetRolState=5,2,7<CR>
+```
+
+RuleOK potwierdza przyjęcie, a nie dojazd do 50%. Zakończenie potwierdź znaną pozycją 50%, postojem i brakiem oczekującego ruchu. Gdy roleta startuje powyżej 50%, dojedzie do celu w kierunku zamykania. Błąd lub nieznana pozycja nie oznacza osiągnięcia celu. Te komendy nie zmieniają czasów przejazdu ani EEPROM.
+
+### 5.4. Wszystkie wejścia modułu ID 2 — krótkie 0,4 s, długie 2 s
+
+Format: `AT+KeyTime=ID,WEJŚCIE,SHORT,LONG,SUMA`. Czasy mają jednostkę **0,1 s**: SHORT=4 to 0,4 s, LONG=20 to próg 2 s. SUMA=ID+WEJŚCIE+SHORT+LONG.
+
+Dla **R0806T, R0808 albo S0804** ustaw wszystkie osiem wejść osobnymi komendami:
+
+```text
+AT+KeyTime=2,1,4,20,27<CR>
+AT+KeyTime=2,2,4,20,28<CR>
+AT+KeyTime=2,3,4,20,29<CR>
+AT+KeyTime=2,4,4,20,30<CR>
+AT+KeyTime=2,5,4,20,31<CR>
+AT+KeyTime=2,6,4,20,32<CR>
+AT+KeyTime=2,7,4,20,33<CR>
+AT+KeyTime=2,8,4,20,34<CR>
+```
+
+Dla **ETH0606T** wykonaj tylko pierwsze sześć komend, ponieważ ten model ma sześć wejść. ETH Mini nie ma takich wejść przyciskowych. Po każdej komendzie oczekuj `RuleOK=2`; jeżeli wystąpi RuleERROR, sprawdź model i numer wejścia. Po poprawnym ustawieniu wszystkich wejść zapisz konfigurację jednym poleceniem:
+
+```text
+TX: AT+SaveConfig=2,2<CR>
+RX: SaveOK=2<CR><LF>
+```
+
+Sprawdzenie ustawień wejścia 1:
+
+```text
+TX: AT+GetKeyTime=2,1,3<CR>
+RX: KeyTime=2,1,4,20,27<CR><LF>
+```
+
+Dla pozostałych wejść zmień numer WE i sumę zapytania na `2+WE`.
+
+| Przytrzymanie | Raport |
+|---|---|
+| Do 0,4 s, następnie puszczenie | `PS=2,WE` — krótkie naciśnięcie po puszczeniu |
+| Powyżej 0,4 s, ale krócej niż 2 s | Brak PS i PL; nadal są raporty zwarcia/rozwarcia `I=2,...` |
+| Osiągnięcie progu 2 s i dalsze trzymanie | Jedno `PL=2,WE` — długie naciśnięcie podczas trzymania |
+
+Firmware wyzwala LONG **po osiągnięciu progu**, więc potoczne „powyżej 2 sekund” przy ustawieniu 20 oznacza zdarzenie od 2 s. Jeśli wymagane jest ściśle więcej niż 2 s, najbliższy próg to **2,1 s (LONG=21)**; w każdej komendzie powyżej zwiększ LONG i SUMA o 1. Czasy liczone są od potwierdzonych stanów wejścia, z uwzględnieniem filtrowania styków. KeyTime ustawia rozpoznawanie naciśnięć; przypisanie akcji przekaźnika lub rolety wymaga osobnej reguły albo obsługi PS/PL w systemie zewnętrznym.
 
 ## 6. Odbiór, błędy i synchronizacja
 
