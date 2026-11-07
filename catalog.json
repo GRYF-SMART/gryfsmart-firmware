@@ -1,0 +1,176 @@
+{
+  "products": {
+    "GRYFSMART": [
+      {
+        "version": "0.5.50",
+        "url": "https://github.com/GRYF-SMART/gryfsmart-firmware/releases/download/v2026.11.06-gryfexpert-0.5.50/GRYFEXPERT-0.5.50-win-x64.zip",
+        "release": "https://github.com/GRYF-SMART/gryfsmart-firmware/releases/tag/v2026.11.06-gryfexpert-0.5.50",
+        "date": "2026-11-05",
+        "notes": "GRYFEXPERT 0.5.50 dodaje eksport nazw wejść, wyjść, PWM i flag do Integration Designera. Wybierz Plik → Eksportuj nazwy do RTI i wskaż plik .driverconfig wyeksportowany ze sterownika GRYF.",
+        "digest": "sha256:4de75449f20d21ae2429f39f3dd4f59d255037f2e7ecae2dc610ad5d54c4450c"
+      },
+      {
+        "version": "0.5.49",
+        "url": "https://github.com/GRYF-SMART/gryfsmart-firmware/releases/download/v2026.11.05-gryfexpert-0.5.49/GRYFEXPERT-0.5.49-win-x64.zip",
+        "release": "https://github.com/GRYF-SMART/gryfsmart-firmware/releases/tag/v2026.11.05-gryfexpert-0.5.49",
+        "date": "2026-11-05",
+        "notes": "GRYFEXPERT 0.5.49 i ETH0606T FW34: AT+BootInfo, wersja bootloadera oraz źródło jej potwierdzenia w logach. Rozpoznana sygnatura lub jawne UNKNOWN przy braku odczytu. Weryfikacja TCP5001 i CHAIN1 przed zapisem Flash. Dokładny etap braku odpowiedzi ETH. Szczegóły: BOOTLOADER-WERSJA-INSTRUKCJA.txt. Pozostałe wsady bez zmian.",
+        "digest": "sha256:be039bb66d9508f1e8587ebeb99945e1390920ed846779dd9cbe764ccbc37310"
+      },
+      {
+        "version": "0.5.48",
+        "url": "https://github.com/GRYF-SMART/gryfsmart-firmware/releases/download/v2026.11.05-gryfexpert-0.5.48/GRYFEXPERT-0.5.48-win-x64.zip",
+        "release": "https://github.com/GRYF-SMART/gryfsmart-firmware/releases/tag/v2026.11.05-gryfexpert-0.5.48",
+        "date": "2026-11-05",
+        "notes": "GRYFEXPERT 0.5.48 i R0806T FW35: Włącz po czasie i pozostaw włączone. Podczas opóźnienia zachowany jest stan wyjścia, po terminie wyjście pozostaje ON. Tylko R0806T FW35, pozostałe modele bez zmian. Bez dodatkowego RAM; +20 B Flash. Restart anuluje odliczanie. Obsługa w HA 0.3.14. Szczegóły: WLACZ-PO-CZASIE-35-INSTRUKCJA.txt.",
+        "digest": "sha256:72334dc09eee35f32f1a68b1b3c5d3dafa1366bb6f59cf7e4edbef6343b46d62"
+      }
+    ],
+    "AKTUALIZATOR": [
+      {
+        "version": "2.0.21",
+        "url": "https://github.com/GRYF-SMART/gryfsmart-firmware/releases/download/v2026.11.04-gryfexpert-0.5.38/GRYFSMART-Programator-2.0.21.exe",
+        "release": "https://github.com/GRYF-SMART/gryfsmart-firmware/releases/tag/v2026.11.04-gryfexpert-0.5.38",
+        "date": "2026-11-04",
+        "notes": "Obsługa ETH Mini GATE przez RS-232 i Ethernet, pobieranie HEX z GitHub. Czytelny log: błędy na czerwono, zakończenie weryfikacji na zielono.",
+        "digest": "sha256:289afd62fc330e2d3463a329f7dade011bf29604bd524b65fc549d1104f68ec0"
+      },
+      {
+        "version": "2.0.14",
+        "url": "https://github.com/GRYF-SMART/gryfsmart-firmware/releases/download/v2026.10.29-restarts-all-0.5.15/GRYFSMART-Programator.exe",
+        "release": "https://github.com/GRYF-SMART/gryfsmart-firmware/releases/tag/v2026.10.29-restarts-all-0.5.15",
+        "date": "2026-10-29",
+        "notes": "Wydanie narzędzi z obsługą pakietu modułów i bootloadera R0806T-OLD v13; aktualizacja przez USB/RS-232 oraz sieć CHAIN1.",
+        "digest": "sha256:85ef00720376e33f16623da37dbb91eebe900599efc58eefeaf71bd033b1dd46"
+      },
+      {
+        "version": "2.0.13",
+        "url": "https://github.com/GRYF-SMART/gryfsmart-firmware/releases/download/v2026.10.29-usb-fix-2.0.13/GRYFSMART-Programator.exe",
+        "release": "https://github.com/GRYF-SMART/gryfsmart-firmware/releases/tag/v2026.10.29-usb-fix-2.0.13",
+        "date": "2026-10-29",
+        "notes": "Poprawka wejścia ETH przez USB w bootloader: oddzielny CR i odstęp przed AT+BOOT zapobiegają utracie komendy.",
+        "digest": "sha256:5c41440a91e15713f147e09adc823e7372813d20a3571f8b3da6e117c32073ae"
+      }
+    ],
+    "BOOTLOADER": [
+      {
+        "version": "2.0.21",
+        "url": "https://github.com/GRYF-SMART/gryfsmart-firmware/releases/download/v2026.11.05-installer-2.0.21/GRYFSMART-Instalator.zip",
+        "release": "https://github.com/GRYF-SMART/gryfsmart-firmware/releases/tag/v2026.11.05-installer-2.0.21",
+        "date": "2026-11-05",
+        "notes": "Instalator bootloaderów 2.0.21 pod stałą nazwą GRYFSMART-Instalator.exe. ZIP zawiera instalator, AVRDUDE i sześć wsadów bootloadera. Pozostałe pliki dystrybucyjne pochodzą z wydania v2026.11.05-gryfexpert-0.5.49.",
+        "digest": "sha256:d9d933ea2c5d1896efaec7b108607e059c9371f2e55f2dd2345210417ceebd2a"
+      },
+      {
+        "version": "2.0.14",
+        "url": "https://github.com/GRYF-SMART/gryfsmart-firmware/releases/download/v2026.10.29-restarts-all-0.5.15/GRYFSMART-Instalator.zip",
+        "release": "https://github.com/GRYF-SMART/gryfsmart-firmware/releases/tag/v2026.10.29-restarts-all-0.5.15",
+        "date": "2026-10-29",
+        "notes": "Pakiet instalatora z bootloaderem R0806T-OLD v13-old644p. Pozostałe bootloadery bez zmian.",
+        "digest": "sha256:b604bf180e8de008dcc297fcbcc1c366149fe8b72e4e799235acd25ca53be8bd"
+      },
+      {
+        "version": "2.0.13",
+        "url": "https://github.com/GRYF-SMART/gryfsmart-firmware/releases/download/v2026.10.29-usb-fix-2.0.13/GRYFSMART-Instalator.zip",
+        "release": "https://github.com/GRYF-SMART/gryfsmart-firmware/releases/tag/v2026.10.29-usb-fix-2.0.13",
+        "date": "2026-10-29",
+        "notes": "Wydanie pakietu narzędzi 2.0.13. Poprawka USB dotyczy aktualizatora; wsady bootloaderów w tym wydaniu pozostały bez zmian.",
+        "digest": "sha256:711e868fc78f68fdd8cd09ddead63f9b701dbb513b2a817f6d1c93c62e5b189b"
+      }
+    ],
+    "RTI": [
+      {
+        "version": "2.10",
+        "url": "https://github.com/GRYF-SMART/gryfsmart-firmware/releases/download/v2026.11.06-rti-2.10/GRYF.rtidriver",
+        "release": "https://github.com/GRYF-SMART/gryfsmart-firmware/releases/tag/v2026.11.06-rti-2.10",
+        "date": "2026-11-06",
+        "notes": "GRYF RTI 2.10 — komponent rolety S0804.\n\n- Jeden natywny Viewport z przyciskami GÓRA, STOP, DÓŁ, NA PROCENT i STEP.\n- Osobna widoczność przycisków oraz cel procentowy w konfiguracji każdej rolety.\n- Procent lub --% przy braku pozycji, krótki status, zatrzymanie po otwieraniu/zamykaniu.\n- Pamięć kierunku oparta na raportach modułu, kasowana po utracie aktualnych danych.\n- Zachowana obsługa S0804 z wersji 2.09 i import nazw z GRYFEXPERT.\n\nPaczka komponentu zawiera projekt interfejsu i instrukcję. Po otwarciu wzorca zainstaluj GRYF.rtidriver przez Driver Utilities → Update Driver i włącz instancję drivera. Publiczny wzorzec nie zawiera prywatnych skryptów implementacji.\nPrzycisk procentowy jest konfigurowalnym presetem, nie klawiaturą numeryczną.\n\nWalidacja RTI PackageDriver, otwarcie panelu w Integration Designer 11 i 154 testy offline TCP/RS-232: OK. Bez testu na fizycznym napędzie.\n\n[Instrukcja komponentu](https://github.com/GRYF-SMART/gryfsmart-firmware/blob/main/RTI/KOMPONENT-ROLETY.md)\n[Bieżący driver i historia zmian](https://github.com/GRYF-SMART/gryfsmart-firmware/tree/main/RTI)\n",
+        "digest": "sha256:fd5176b3856518f58fabc8ab54d462286d063ce2ab674b636f9956fe872ad8ac"
+      },
+      {
+        "version": "2.09",
+        "url": "https://github.com/GRYF-SMART/gryfsmart-firmware/releases/download/v2026.11.06-rti-2.09/GRYF.rtidriver",
+        "release": "https://github.com/GRYF-SMART/gryfsmart-firmware/releases/tag/v2026.11.06-rti-2.09",
+        "date": "2026-11-06",
+        "notes": "Sterownik GRYF 2.09 dla RTI Integration Designer.\n\n- S0804: otwieranie/zamykanie przez ustawiony czas przejazdu, STOP, STEP UP, STEP DOWN, STEP, pozycja 0–100%.\n- Ustawianie i odczyt czasów pełnego przejazdu co 0,1 s oraz osobny zapis konfiguracji w EEPROM.\n- Zmienne: procent otwarcia, ważność pozycji, cel, pozostały czas, otwieranie, zamykanie, ruch, postój, przerwa zmiany kierunku, oczekujący ruch, pełne otwarcie/zamknięcie i częściowe otwarcie.\n- Gotowy opis tekstowy każdej rolety, cykliczne odczyty, kontrola sum i wygaszanie nieaktualnych danych.\n- Zachowana zgodność starych makr i importu nazw z GRYFEXPERT.\n\nPo restarcie lub zmianie czasów wykonaj pełny przejazd. Procent jest estymacją czasową modułu.\nWalidacja RTI PackageDriver oraz 108 testów offline dla TCP i RS-232 zakończone poprawnie. Bez próby na fizycznym napędzie.\n\n[Instrukcja i zawsze najnowsza paczka](https://github.com/GRYF-SMART/gryfsmart-firmware/tree/main/RTI).\n",
+        "digest": "sha256:a96a8e607852b4eadf7da432d320478f0e8778eff3e28441f1d56b7a441dfe9c"
+      },
+      {
+        "version": "2.08",
+        "url": "https://github.com/GRYF-SMART/gryfsmart-firmware/releases/download/v2026.11.06-rti-2.08/GRYF.rtidriver",
+        "release": "https://github.com/GRYF-SMART/gryfsmart-firmware/releases/tag/v2026.11.06-rti-2.08",
+        "date": "2026-11-05",
+        "notes": "Import nazw z GRYFEXPERT; składanie fragmentów TCP, walidacja raportów, kolejka i priorytet sterowania, odstępy transmisji oraz odświeżanie stanów przez TCP/RS-232.",
+        "digest": "sha256:79f81bc18a38d3b19e584a48216512232c58324df8c53a16230a7e80015a957b"
+      }
+    ],
+    "HOME-ASSISTANT": [
+      {
+        "version": "0.3.14",
+        "url": "https://github.com/GRYF-SMART/ha-gryfsmart/releases/download/v0.3.14/GRYFSMART-HomeAssistant-0.3.14.zip",
+        "release": "https://github.com/GRYF-SMART/ha-gryfsmart/releases/tag/v0.3.14",
+        "date": "2026-11-05",
+        "notes": "R0806T FW35: nowa akcja Włącz po czasie i pozostaw włączone. Stan wyjścia zachowany podczas opóźnienia, po terminie ON. Zdalna akcja wymaga R0806T FW35 na całej drodze. Pozostałe modele bez zmian. Po zakończeniu aktualizacji sprzętu zaktualizuj integrację, zrestartuj HA i odśwież przeglądarkę.",
+        "digest": "sha256:29d69f9df9917713281c3f16580e3589225174eb24d618851e23c66432ea3c85"
+      },
+      {
+        "version": "0.3.13",
+        "url": "https://github.com/GRYF-SMART/ha-gryfsmart/releases/download/v0.3.13/GRYFSMART-HomeAssistant-0.3.13.zip",
+        "release": "https://github.com/GRYF-SMART/ha-gryfsmart/releases/tag/v0.3.13",
+        "date": "2026-11-04",
+        "notes": "Sloty pomijają moduły wybrane w innych slotach. R0808/R0806T FW33: wyłącz po czasie, impuls po opóźnieniu na czas, histereza termostatów od 0. Zdalne timery wymagają zgodnych modułów FW33 na drodze do celu. Po aktualizacji zrestartuj HA i odśwież przeglądarkę.",
+        "digest": "sha256:8e152787d62a709509e405dc2465cd41a0d48a451252ac09cd6ab754008b0bb8"
+      },
+      {
+        "version": "0.3.12",
+        "url": "https://github.com/GRYF-SMART/ha-gryfsmart/releases/download/v0.3.12/GRYFSMART-HomeAssistant-0.3.12.zip",
+        "release": "https://github.com/GRYF-SMART/ha-gryfsmart/releases/tag/v0.3.12",
+        "date": "2026-11-04",
+        "notes": "Sterowanie online przy regułach lokalnych i zdalnych: stan i przełączanie przekaźników, suwak PWM oraz Open/Stop/Close dla rolet. Przyciski korzystają z potwierdzonych stanów HA i nie zmieniają treści reguły ani EEPROM. Po aktualizacji zrestartuj HA i odśwież przeglądarkę.",
+        "digest": "sha256:9650febeaeed1db59097eda3651186c23d9b3e3825e5099f411e279ba47f99b0"
+      }
+    ]
+  },
+  "firmware": {
+    "ETH Mini": {
+      "version": "4",
+      "url": "https://github.com/GRYF-SMART/gryfsmart-firmware/releases/download/v2026.11.06-gryfexpert-0.5.50/ETH-Mini-GATE-firmware-v4.hex",
+      "release": "https://github.com/GRYF-SMART/gryfsmart-firmware/releases/tag/v2026.11.06-gryfexpert-0.5.50",
+      "date": "2026-11-05",
+      "notes": "GRYFEXPERT 0.5.50 dodaje eksport nazw wejść, wyjść, PWM i flag do Integration Designera. Wybierz Plik → Eksportuj nazwy do RTI i wskaż plik .driverconfig wyeksportowany ze sterownika GRYF.",
+      "digest": "sha256:89e1db083c22a39fc9ab884db6e77ae36f535a0ae060eca9570a57e5c3c073bc"
+    },
+    "ETH0606T": {
+      "version": "34",
+      "url": "https://github.com/GRYF-SMART/gryfsmart-firmware/releases/download/v2026.11.06-gryfexpert-0.5.50/ETH0606T-firmware.hex",
+      "release": "https://github.com/GRYF-SMART/gryfsmart-firmware/releases/tag/v2026.11.06-gryfexpert-0.5.50",
+      "date": "2026-11-05",
+      "notes": "GRYFEXPERT 0.5.50 dodaje eksport nazw wejść, wyjść, PWM i flag do Integration Designera. Wybierz Plik → Eksportuj nazwy do RTI i wskaż plik .driverconfig wyeksportowany ze sterownika GRYF.",
+      "digest": "sha256:3558ca5714d2605d1aed56266889fc1cc6bb9d97f786b9030b8200f553a58d9d"
+    },
+    "R0808": {
+      "version": "34",
+      "url": "https://github.com/GRYF-SMART/gryfsmart-firmware/releases/download/v2026.11.06-gryfexpert-0.5.50/R0808-firmware.hex",
+      "release": "https://github.com/GRYF-SMART/gryfsmart-firmware/releases/tag/v2026.11.06-gryfexpert-0.5.50",
+      "date": "2026-11-05",
+      "notes": "GRYFEXPERT 0.5.50 dodaje eksport nazw wejść, wyjść, PWM i flag do Integration Designera. Wybierz Plik → Eksportuj nazwy do RTI i wskaż plik .driverconfig wyeksportowany ze sterownika GRYF.",
+      "digest": "sha256:9091620dd553ea5b37ced4f64a73691324079cc60d52818f85a770e69bcab789"
+    },
+    "R0806T": {
+      "version": "35",
+      "url": "https://github.com/GRYF-SMART/gryfsmart-firmware/releases/download/v2026.11.06-gryfexpert-0.5.50/R0806T-firmware.hex",
+      "release": "https://github.com/GRYF-SMART/gryfsmart-firmware/releases/tag/v2026.11.06-gryfexpert-0.5.50",
+      "date": "2026-11-05",
+      "notes": "GRYFEXPERT 0.5.50 dodaje eksport nazw wejść, wyjść, PWM i flag do Integration Designera. Wybierz Plik → Eksportuj nazwy do RTI i wskaż plik .driverconfig wyeksportowany ze sterownika GRYF.",
+      "digest": "sha256:13bae21f1343f0a835575859648b3ddaddd0aa81a141a09506f9ea0ea90a55dc"
+    },
+    "S0804": {
+      "version": "33",
+      "url": "https://github.com/GRYF-SMART/gryfsmart-firmware/releases/download/v2026.11.06-gryfexpert-0.5.50/S0804-firmware.hex",
+      "release": "https://github.com/GRYF-SMART/gryfsmart-firmware/releases/tag/v2026.11.06-gryfexpert-0.5.50",
+      "date": "2026-11-05",
+      "notes": "GRYFEXPERT 0.5.50 dodaje eksport nazw wejść, wyjść, PWM i flag do Integration Designera. Wybierz Plik → Eksportuj nazwy do RTI i wskaż plik .driverconfig wyeksportowany ze sterownika GRYF.",
+      "digest": "sha256:af7ffb76ae5fa7cc1b4ba229b9698e046a2eb468490f40e54d6894ebcdedd2bf"
+    }
+  }
+}

@@ -1,66 +1,40 @@
-# GRYF dla RTI Integration Designer
+# 4. Driver RTI
 
-**Aktualna wersja sterownika: 2.10 · 6 listopada 2026**
+**[Pobierz najnowszą wersję 2.10](https://github.com/GRYF-SMART/gryfsmart-firmware/releases/download/v2026.11.06-rti-2.10/GRYF.rtidriver)**
 
-Pobierz [GRYF.rtidriver](GRYF.rtidriver). W istniejącym projekcie wybierz instancję **GRYF**, otwórz **Driver Utilities → Update Driver** i wskaż pobrany plik. Nową instancję dodaj z pliku w sekcji **Drivers**. Sterownik obsługuje moduły R0806T, R0808, ETH0606T i S0804.
+GRYF RTI 2.10 — komponent rolety S0804. Jeden natywny Viewport z przyciskami GÓRA, STOP, DÓŁ, NA PROCENT i STEP. Osobna widoczność przycisków oraz cel procentowy w konfiguracji każdej rolety. [Pełny opis wydania](https://github.com/GRYF-SMART/gryfsmart-firmware/releases/tag/v2026.11.06-rti-2.10).
 
-Pobierz również [komponent rolety](GRYF-Komponent-Rolety.zip): jeden natywny Viewport z przyciskami i stanem. [Instrukcja komponentu](KOMPONENT-ROLETY.md).
+## Trzy ostatnie wersje
 
-## Zmiany z 6 listopada 2026
+| Wersja | Data publikacji | Pobieranie | Zmiany |
+|---|---|---|---|
+| **2.10** | 2026-11-06 | [Pobierz](https://github.com/GRYF-SMART/gryfsmart-firmware/releases/download/v2026.11.06-rti-2.10/GRYF.rtidriver) | GRYF RTI 2.10 — komponent rolety S0804. Jeden natywny Viewport z przyciskami GÓRA, STOP, DÓŁ, NA PROCENT i STEP. Osobna widoczność przycisków oraz cel procentowy w konfiguracji każdej rolety. [Pełny opis](https://github.com/GRYF-SMART/gryfsmart-firmware/releases/tag/v2026.11.06-rti-2.10) |
+| **2.09** | 2026-11-06 | [Pobierz](https://github.com/GRYF-SMART/gryfsmart-firmware/releases/download/v2026.11.06-rti-2.09/GRYF.rtidriver) | Sterownik GRYF 2.09 dla RTI Integration Designer. S0804: otwieranie/zamykanie przez ustawiony czas przejazdu, STOP, STEP UP, STEP DOWN, STEP, pozycja 0–100%. Ustawianie i odczyt czasów pełnego przejazdu co 0,1 s oraz osobny zapis konfiguracji w EEPROM. [Pełny opis](https://github.com/GRYF-SMART/gryfsmart-firmware/releases/tag/v2026.11.06-rti-2.09) |
+| **2.08** | 2026-11-05 | [Pobierz](https://github.com/GRYF-SMART/gryfsmart-firmware/releases/download/v2026.11.06-rti-2.08/GRYF.rtidriver) | Import nazw z GRYFEXPERT; składanie fragmentów TCP, walidacja raportów, kolejka i priorytet sterowania, odstępy transmisji oraz odświeżanie stanów przez TCP/RS-232. [Pełny opis](https://github.com/GRYF-SMART/gryfsmart-firmware/releases/tag/v2026.11.06-rti-2.08) |
 
-| Wersja | Zmiany |
-| --- | --- |
-| **RTI 2.05** | Osobne, widoczne od razu pola wyboru **TCP/IP** i **RS-232**. Przy obu odznaczonych używany jest wybór zapisany w projekcie. Przy obu zaznaczonych pierwszeństwo ma RS-232. |
-| **RTI 2.06** | Osobne polecenia **Ustaw wyjście**, **Ustaw flagę** i **Ustaw PWM**. Dla R0806T dodano włączenie na czas, włączenie po czasie oraz impuls po opóźnieniu. Czasy mają rozdzielczość 0,1 s. Dla impulsu wpisz np. `2,5 / 0,7`, czyli opóźnienie i czas włączenia. Włączenie po czasie wymaga firmware 35 lub nowszego. PWM obsługuje rampę 0–5 s, włączenie na procent, wyłączenie oraz przełączanie z pamięcią i bez pamięci. |
-| **RTI 2.07** | Diagnostyka wszystkich modułów lub osobno dla każdego ID. Pokazuje model, wersję firmware, minimum, średnią i maksimum czasu pętli w µs, sumę restartów programowych i watchdog oraz osobny licznik startów. Dostępne są automatyczne odświeżanie i akcja ręczna. |
-| **RTI 2.08** | Składanie fragmentów TCP i rozdzielanie wielu ramek z jednego odczytu. Walidacja raportów, kolejka poleceń z priorytetem akcji użytkownika, odstęp między transmisjami i scalanie oczekujących odczytów. Most GRYFEXPERT rozpoczyna sesję przez `Hello` i przekazuje odebrane odpowiedzi oraz zdarzenia bez echa poleceń. |
-| **RTI 2.09** | Pełna obsługa sterowania i stanów rolet S0804: pozycja 0–100%, STEP UP/DOWN, czasy przejazdu co 0,1 s, odczyt/zapis konfiguracji, pozycja znana, cel, pozostały czas, ruch, postój, przerwa zmiany kierunku, oczekujący ruch i opis tekstowy. Walidacja sum kontrolnych i wygaszanie nieaktualnych danych. |
-| **RTI 2.10** | Natywny komponent rolety, opcjonalne przyciski GÓRA/STOP/DÓŁ/NA PROCENT/STEP, konfigurowalny cel procentowy, krótki tekst stanu i procent. Pamięć zatrzymania po otwieraniu/zamykaniu oparta na raportach; kasowanie po utracie danych. |
-| **GRYFEXPERT 0.5.50** | Eksport nazw wejść, wyjść, PWM i flag do pliku `.driverconfig`. Nazwy flag można zapisać w projekcie w zakładce **Flagi**. [Pobierz GRYFEXPERT 0.5.50](https://github.com/GRYF-SMART/gryfsmart-firmware/releases/tag/v2026.11.06-gryfexpert-0.5.50). |
+## Instalacja sterownika
 
-## S0804 — rolety w RTI 2.09
+Stały adres bieżącej paczki: **[GRYF.rtidriver](https://raw.githubusercontent.com/GRYF-SMART/gryfsmart-firmware/main/RTI/GRYF.rtidriver)**.
 
-W **Driver Properties** ustaw typ modułu **S0804**. W funkcjach danego ID dostępne są:
+1. Pobierz driver z linku na górze.
+2. W Integration Designer dodaj go w sekcji **Drivers**. Przy aktualizacji istniejącej instancji wybierz **GRYF → Driver Utilities → Update Driver**.
+3. W **Driver Properties** wybierz TCP/IP lub RS-232, parametry połączenia, liczbę modułów, ID i modele.
+4. Przypisz funkcje i zmienne do panelu. Zapisz projekt i prześlij go do procesora RTI.
 
-- **Steruj roletą S0804** — wybór jednej z czterech rolet, otwarcie, zamknięcie, STOP, STEP UP, STEP DOWN, STEP i otwarcie na zadany procent. 0% oznacza zamknięcie, 100% pełne otwarcie. Pole procentu dotyczy tylko akcji procentowej.
-- **Ustaw czasy przejazdu rolety** — osobno pełne otwieranie i zamykanie, z krokiem 0,1 s, np. `20,5`. Aktualny firmware przyjmuje 0,1–655,3 s; starsze wersje mogą ograniczać czas do 600 s. Ustawiaj na postoju. Zmiana czasów unieważnia pozycję.
-- **Odczytaj stan i czasy rolety** — ręczne odświeżenie danych.
-- **Zapisz konfigurację S0804 w EEPROM** — utrwala konfigurację modułu, w tym czasy wszystkich czterech rolet. Nie utrwala bieżącej pozycji. Używaj po konfiguracji, nie w cyklicznym makrze.
+Obsługiwane moduły: R0806T, R0808, ETH0606T i S0804. Dostępne są osobne funkcje wyjść, flag i PWM; akcje czasowe co 0,1 s; rampa PWM; diagnostyka modułów; sterowanie i stany rolet, pozycja, cel, ruch, pozostały czas oraz ważność danych.
 
-**Otwieranie czasowe** to pełny przejazd przez czas otwierania zapisany przez `RolTime`; analogicznie działa zamykanie. Odliczanie i zatrzymanie wykonuje S0804. Driver nie zmienia czasu kalibracji przy każdej akcji ani nie emuluje osobnego impulsu ruchu przez opóźniony STOP z XP. Do częściowego otwarcia służy pozycja procentowa. Stare makra „Ustaw wyjście” z OPEN/CLOSE/STOP/STEP pozostają zgodne.
+## Gotowy komponent rolety
 
-Po restarcie lub zmianie czasów wykonaj pełne otwarcie albo zamknięcie. Dopiero po jego zakończeniu moduł zna pozycję i przyjmie pośrednie 1–99%. Pozycja jest estymacją czasową, nie pomiarem czujnika. Potwierdzenie `RuleOK` oznacza przyjęcie polecenia, a nie zakończenie ruchu; błędne lub niedozwolone polecenie może zwrócić `RuleERROR` w TraceViewer.
+**[Pobierz komponent](https://raw.githubusercontent.com/GRYF-SMART/gryfsmart-firmware/main/RTI/GRYF-Komponent-Rolety.zip)** — jeden Viewport z przyciskami GÓRA, STOP, DÓŁ, NA PROCENT i STEP, procentem i stanem. Widoczność poszczególnych przycisków jest konfigurowalna. Przycisk procentowy wywołuje ustawiony preset. [Instrukcja komponentu](KOMPONENT-ROLETY.md).
 
-### Jak wyświetlić roletę na panelu
+## Import nazw z GRYFEXPERT
 
-W zmiennych sterownika wybierz kategorię **S0804 ID … / Roleta …**, opisaną nazwą wyjścia z projektu (także po imporcie nazw z GRYFEXPERT).
+1. Zapisz nazwy wejść, wyjść, PWM i flag w projekcie GRYFEXPERT.
+2. W RTI wybierz **Driver Utilities → Export Configuration** i zapisz `.driverconfig` dla właściwej instancji GRYF.
+3. W GRYFEXPERT użyj eksportu nazw RTI w menu **Plik**, wskaż wyeksportowany plik i zapisz wynik.
+4. Zaimportuj wynik do tej samej instancji w RTI. Sprawdź zgodność ID, typów i liczby modułów.
 
-| Element ekranu | Zmienna |
-| --- | --- |
-| Gotowa informacja na jednym polu tekstowym | **Stan opisowy**, np. `Otwieranie | Otwarcie 35% | Cel 70% | Pozostalo 8.2 s` |
-| Wskaźnik/słupek procentowy | **Otwarcie [%]**; pokazuj wartość tylko przy **Pozycja znana** i **Dane aktualne** |
-| Strzałki kierunku | **Otwieranie** / **Zamykanie** |
-| Animacja ruchu | **W ruchu** |
-| Ikona pauzy przy zmianie kierunku | **Przerwa zmiany kierunku** |
-| Polecenie przyjęte, napęd jeszcze nie ruszył | **Oczekiwanie na rozpoczęcie ruchu** |
-| Ikony końcowych położeń | **Całkowicie otwarta**, **Całkowicie zamknięta** |
-| Pozostałe informacje | **Częściowo otwarta**, **Postój bez oczekującego ruchu**, **Cel [%]**, **Cel aktywny**, **Pozostały czas [s] tekst** |
-| Konfiguracja czasów | **Czasy przejazdu [s] tekst**, **Czasy odczytane i aktualne**, **Czasy przejazdu ustawione** |
-
-Zmienne liczbowe czasów mają jednostkę 0,1 s (np. 82 = 8,2 s). Zmienne tekstowe pokazują sekundy. Pozycja/cel `-1` oznacza brak wartości; nie należy pokazywać tego jako 0%. Kod stanu: -1 brak aktualnych danych, 0 postój, 1 zamykanie, 2 otwieranie, 3 przerwa zmiany kierunku. Postój z aktywnym celem i dodatnim pozostałym czasem jest dodatkowo oznaczany jako oczekiwanie na ruch.
-
-Driver cyklicznie odpytuje szczegółowy stan każdej rolety, rozkładając odczyty w czasie i dając pierwszeństwo sterowaniu. Jeden odczyt planowany jest co 250 ms: jeden moduł to około 1 s na cykl, więcej modułów wydłuża cykl. Raport `R=` dodatkowo zleca odczyt czterech rolet. Dane bez odpowiedzi wygasają po co najmniej 10 s lub trzech pełnych cyklach; wtedy opis pokazuje brak aktualnych danych, a pozycja ma -1. Czasy przejazdu odczytywane są okresowo i na żądanie.
-
-Szczegółowe odczyty wymagają firmware obsługującego `GetRolState` i `GetRolTime` również w modułach pośrednich (funkcje dostępne od firmware 21). Pakiet zweryfikowano narzędziem RTI PackageDriver i testami offline TCP/RS-232; w tej aktualizacji nie przeprowadzono próby ruchu na fizycznej rolecie.
+[Pełna instrukcja: nazwy, stany S0804, komunikacja i diagnostyka](INSTRUKCJA.md).
 
 
-## Jak przenieść nazwy z GRYFEXPERT do RTI
-
-1. W projekcie GRYFEXPERT wpisz nazwy w zakładkach **Wejścia**, **Wyjścia** lub **Rolety** oraz **Flagi**. Nazwę PWM ustaw w zakładce **Wyjścia** modułu R0806T.
-2. W projekcie RTI sprawdź liczbę modułów, ich ID i typy. W Integration Designerze wybierz istniejący sterownik **GRYF → Driver Utilities → Export Configuration** i zapisz plik `.driverconfig`.
-3. W GRYFEXPERT wybierz **Plik → Eksportuj nazwy do RTI** i wskaż wyeksportowany plik. Program utworzy kopię `*-nazwy.driverconfig` i poda liczbę dopasowanych modułów, zmienionych nazw oraz pominiętych modułów.
-4. W tym samym projekcie Integration Designera wybierz **GRYF → Driver Utilities → Import Configuration** i wskaż plik `*-nazwy.driverconfig`. Sprawdź nazwy w **Driver Properties** i listach wyboru w **Tag Editorze**, a następnie zapisz projekt.
-
-Dopasowanie odbywa się według ID i typu modułu oraz numeru kanału. Ustawienia połączenia RS-232 i TCP pozostają takie jak w pliku wyeksportowanym z RTI. Pusta nazwa flagi w GRYFEXPERT zachowuje dotychczasową etykietę w RTI.
-
-SHA-256 paczki: `fd5176b3856518f58fabc8ab54d462286d063ce2ab674b636f9956fe872ad8ac`.
+[1. Program GRYFSMART](https://github.com/GRYF-SMART/gryfsmart-firmware/tree/main/GRYFSMART) · [2. Aktualizator GRYF](https://github.com/GRYF-SMART/gryfsmart-firmware/tree/main/AKTUALIZATOR) · [3. Home Assistant](https://github.com/GRYF-SMART/gryfsmart-firmware/tree/main/HOME-ASSISTANT) · [4. Driver RTI](https://github.com/GRYF-SMART/gryfsmart-firmware/tree/main/RTI) · [5. Bootloader](https://github.com/GRYF-SMART/gryfsmart-firmware/tree/main/BOOTLOADER) · [6. Protokół i przykłady](https://github.com/GRYF-SMART/gryfsmart-firmware/tree/main/PROTOKOL)
