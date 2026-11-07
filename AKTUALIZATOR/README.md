@@ -16,7 +16,9 @@ Obsługa ETH Mini GATE przez RS-232 i Ethernet, pobieranie HEX z GitHub. Czyteln
 
 **GRYFSMART-Programator** służy do wgrywania najnowszej wersji oprogramowania do pamięci Flash modułów. Program automatycznie pobiera najnowszy firmware z GitHuba lub pozwala ręcznie wybrać plik z komputera.
 
-Program automatycznie rozpoznaje moduł oraz zainstalowane oprogramowanie. Jeżeli w module znajduje się tylko bootloader, bez aplikacji, program rozpoznaje bootloader i nie pokazuje wersji firmware aplikacji, ponieważ nie jest ona wgrana. Można wtedy pobrać najnowszą aplikację z GitHuba albo wskazać plik ręcznie i wgrać go do modułu.
+Przed rozpoczęciem aktualizacji wybierz **typ modułu**, a następnie **wsad oprogramowania (plik Flash/HEX)** przeznaczony dla wybranego modelu. Przy dostępie do internetu, po wybraniu źródła **GitHub — najnowszy HEX**, program automatycznie łączy się z repozytorium i pobiera najnowszy wsad dla tego modułu. Alternatywnie wybierz **Plik z komputera** i wskaż wsad ręcznie.
+
+Jeżeli w module znajduje się tylko bootloader, bez aplikacji, program rozpoznaje bootloader i nie pokazuje wersji firmware aplikacji, ponieważ nie jest ona wgrana. Można wtedy wgrać wsad pobrany z GitHuba lub wybrany z komputera.
 
 1. Pobierz program z linku na górze. Wybierz dokładny model: R0806T, R0808, S0804, ETH0606T lub ETH Mini GATE.
 2. Wybierz źródło **GitHub — najnowszy HEX** albo **Plik z komputera**. [Ręczne pobieranie HEX](../HEX).
