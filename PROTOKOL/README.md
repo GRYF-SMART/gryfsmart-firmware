@@ -1,5 +1,7 @@
 # 6. Protokół GRYFSMART — szybka integracja
 
+**GRYFSMART wykorzystuje otwarty, tekstowy protokół komunikacyjny.** Polecenia mają postać ciągów znaków ASCII zakończonych znakiem powrotu karetki **CR (`0x0D`, zapisywanym jako `<CR>`)**. Protokół umożliwia wysyłanie komend sterujących, odczytywanie stanu i konfiguracji modułów oraz odbieranie **asynchronicznych raportów zdarzeń** — na przykład zmiany stanu wyjścia, aktywacji wejścia lub nowej wartości temperatury. Raporty te mogą docierać niezależnie od odpowiedzi na zapytania, dlatego integracja powinna stale obsługiwać odbiór danych.
+
 System można skonfigurować i połączyć z innym systemem za pomocą złącza **RS-232** oraz **Ethernet TCP/IP**, podając adres IP bramki i numer portu TCP.
 
 **[Pobierz przykład klienta TCP w Pythonie](https://raw.githubusercontent.com/GRYF-SMART/gryfsmart-firmware/main/PROTOKOL/przyklad_tcp.py)** · **[Pełny katalog komend](../docs/README.md)** · **[Przykłady konfiguracji instalacji](../docs/PRZYKLADY.md)**
@@ -17,12 +19,10 @@ Ten przewodnik pokazuje drogę od połączenia do sterowania i odbioru stanów w
 | Parzystość | **Brak (N)** |
 | Bity stopu | **1** |
 | Kontrola przepływu | **Brak** — bez RTS/CTS i XON/XOFF |
-| Typ interfejsu | **RS-232 z dodatnimi i ujemnymi poziomami napięcia**, potocznie „RS na ±12 V”; nie UART TTL 3,3/5 V |
+| Typ interfejsu | **RS232** |
 | Sygnały | TX, RX i masa sygnałowa GND; TX jednej strony połącz z RX drugiej według opisu złącza |
 | Zakończenie komendy | CR, bajt `0x0D` |
 | Zakończenie odpowiedzi | CR lub CRLF — odbiornik obsługuje oba warianty |
-
-Określenie „RS na 12 V” opisuje rodzaj interfejsu, a nie wymagane stałe napięcie na przewodzie danych. Rzeczywista amplituda zależy od nadajnika i obciążenia; np. transceiver MAX232 wytwarza poziomy RS-232 z zasilania 5 V. Nie podawaj stałego +12 V na TX/RX. Użyj adaptera **USB–RS232**, nie USB–TTL. [Dane producenta MAX232](https://www.ti.com/product/MAX232).
 
 ### Ethernet — adres IP i port
 

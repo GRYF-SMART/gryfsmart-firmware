@@ -4,11 +4,14 @@
 
 **GRYFSMART jest magistralnym systemem automatyki budynkowej. Każdy moduł ma własną logikę i może pracować autonomicznie.** System ma architekturę **multi-master**: każdy sterownik może inicjować komunikację i współpracować z innymi sterownikami w prawidłowo skonfigurowanej sieci.
 
-Moduły realizują lokalnie zaprogramowane zależności między wejściami, wyjściami i zdarzeniami. Przykładowo przycisk może włączyć oświetlenie, uruchomić roletę albo wywołać działanie innego modułu. Konfigurację przygotowuje się w aplikacji **GRYFSMART / GRYFEXPERT**. Lokalne reguły nie wymagają stale uruchomionego komputera.
+Moduły realizują lokalnie zaprogramowane zależności między wejściami, wyjściami i zdarzeniami. Przykładowo przycisk może włączyć oświetlenie, uruchomić roletę albo wywołać działanie innego modułu. Konfigurację przygotowuje się w aplikacji [**GRYFEXPERT**](../GRYFSMART). Lokalne reguły nie wymagają stale uruchomionego komputera.
 
-System pozwala sterować oświetleniem, obwodami włącz/wyłącz, zaworami i napędami osłon oraz odczytywać stany wejść i temperaturę — stosownie do wyposażenia wybranego modułu. Sterowniki przeznaczone są do montażu w rozdzielnicy na szynie DIN. [Produkty GRYFSMART](https://gryfsmart.pl/sterownik-gryf-r-08-06t/).
+System umożliwia integrację i sterowanie instalacjami nowoczesnego budynku: oświetleniem, roletami, markizami, ogrzewaniem, nawadnianiem ogrodu, klimatyzacją, urządzeniami audio oraz bramą wjazdową i garażową. Współpracuje z systemem alarmowym, czujkami ruchu, zalania i dymu przez odpowiednie moduły i interfejsy integracyjne.
 
-Do wizualizacji można podłączyć **komputer lub serwer Home Assistant** albo **procesor systemu RTI**. Pozwala to pokazać stan instalacji na panelach i telefonach oraz dodać złożone zależności, harmonogramy i współpracę z innymi urządzeniami. Automatyzacje uruchomione w HA lub RTI wymagają działania odpowiedniego systemu; logika zapisana w modułach pozostaje lokalna.
+**GRYFSMART działa lokalnie i nie wymaga chmury. Projekt konfiguracji jest przechowywany lokalnie na dysku, a program sterowania wykonuje się w modułach. Serwer wizualizacji i integracji również działa lokalnie — na komputerze z Home Assistant lub procesorze RTI.**
+
+Integracja z HA lub RTI pozwala obsługiwać połączone instalacje domu z jednej aplikacji. Udostępnia wizualizację, dodatkowe sposoby sterowania, harmonogramy i rozbudowane scenariusze współpracy urządzeń. **Lokalne reguły modułów działają także bez HA i RTI.** Automatyzacje utworzone w HA lub RTI wymagają pracy odpowiedniego lokalnego serwera lub procesora.
+
 
 Komunikacja odbywa się przez **RS-232** lub przez **Ethernet TCP/IP z modułem bramki**, np. ETH0606T. Integrator korzysta z otwartego protokołu komend. [Protokół i przykłady](../PROTOKOL) · [Aplikacja konfiguracyjna](../GRYFSMART) · [Home Assistant](../HOME-ASSISTANT) · [RTI](../RTI).
 
@@ -23,13 +26,11 @@ Kliknij nazwę, aby zobaczyć zdjęcie, zastosowanie, opis peryferiów, złączy
 | **[S0804](S0804.md)** | Rolety, żaluzje, markizy | 8 | 4 kanały napędów, każdy góra/dół | — | 2 × RS-232 |
 | **[ETH0606T](ETH0606T.md)** | Sterowanie lokalne i bramka Ethernet | 6 | 6 przekaźników | Do 5 × DS18B20 | Ethernet, RS-232, USB; sprzętowo RS-485 |
 
-Wszystkie cztery moduły wymagają zasilania elektroniki **12 V DC**. Zasilanie odbiorników, LED i napędów opisano na poszczególnych stronach. Funkcjonalność RS-485 zależy od wgranego oprogramowania; obecność złącza nie oznacza automatycznie obsługi dowolnego protokołu.
+Wszystkie cztery moduły wymagają zasilania **12 V DC**. Zasilanie odbiorników, LED i napędów opisano na poszczególnych stronach. Funkcjonalność RS-485 zależy od wgranego oprogramowania; obecność złącza nie oznacza automatycznie obsługi dowolnego protokołu.
 
 ## Połączenie modułów RS-232
 
-![Komputer RS-232, trzy moduły GRYFSMART i zasilanie 12 V DC](../docs/assets/GRYFSMART-siec-RS232.png)
-
-Ilustracja poglądowa; oznaczenia rzeczywistych zacisków sprawdzaj na obudowie. Połączenie tworzy linię:
+Połączenie modułów tworzy linię:
 
 **Komputer RS-232 → PORT 0 R0806T → PORT 1 → PORT 0 R0808 → PORT 1 → PORT 0 S0804.**
 
@@ -55,4 +56,4 @@ ETH0606T łączy sieć komputerową z modułami RS-232: **komputer / HA / RTI �
 
 Nowe moduły mają bootloader. Aktualizację aplikacji opisuje [GRYFSMART-Programator](../AKTUALIZATOR), a instalację lub aktualizację bootloadera przez ISP — [GRYFSMART-Instalator](../BOOTLOADER).
 
-Dokumentacja sprzętu bazuje na materiałach producenta podlinkowanych na stronach modułów; funkcje bieżącego firmware opisano w [katalogu komend](../docs/README.md). W razie rozbieżności wersji sprzętu nie przenoś parametrów jednego wariantu na inny.
+Szczegółowe funkcje oprogramowania opisano w [katalogu komend](../docs/README.md).
