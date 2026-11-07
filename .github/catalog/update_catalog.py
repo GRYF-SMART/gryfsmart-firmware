@@ -146,10 +146,8 @@ def render(out, templates, catalog, mode):
         downloads += f"| {label} | [**{row['version']} — pobierz**]({row['url']}) | [Otwórz]({BASE}/tree/main/{path}) |\n"
     downloads += f'| 6. Protokół GRYFSMART | [**Opis i przykłady**]({BASE}/tree/main/PROTOKOL) | [Komendy i konfiguracja]({BASE}/tree/main/PROTOKOL) |\n'
     downloads += f'| 7. System i moduły GRYFSMART | [**Opis systemu i tabela modułów**]({BASE}/tree/main/SYSTEM) | [Peryferia i połączenia]({BASE}/tree/main/SYSTEM) |\n'
-    downloads += f'\n**[Najnowsze HEX-y wszystkich modułów]({BASE}/tree/main/HEX)** · **[Protokół i przykłady integracji]({BASE}/tree/main/PROTOKOL)**\n'
-    home = '# GRYFSMART — pobieranie i dokumentacja\n\n' + downloads + '\n' + nav()
-    home += '\n\nWybierz sekcję: na górze znajdziesz aktualny plik, następnie trzy ostatnie wersje i instrukcję. Program konfiguracyjny jest obecnie wydawany pod nazwą **GRYFEXPERT**.\n'
-    home += '\nAktualizator wgrywa aplikację przez istniejący bootloader. Instalator bootloaderów służy do pierwszej instalacji przez ISP/USBasp.\n'
+    home = '# GRYFSMART — pobieranie i dokumentacja\n\n' + downloads + '\n'
+    home += (templates / 'HOME.md').read_text(encoding='utf-8')
     if mode == 'profile':
         write('README.md', home)
         return
