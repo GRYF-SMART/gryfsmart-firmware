@@ -33,3 +33,7 @@ Instalator służy do wgrania bootloadera do modułów przez programator ISP/USB
 ## 6. Protokół GRYFSMART
 
 Dokładny opis protokołu komunikacyjnego GRYFSMART: parametry połączenia, komendy sterujące, odczyty stanów modułów oraz przykłady integracji i konfiguracji.
+
+## 7. System i moduły GRYFSMART
+
+W tej sekcji znajduje się opis systemu GRYFSMART oraz wszystkich sterowników wraz ze zdjęciami, parametrami technicznymi, opisem peryferiów i sposobem podłączenia. Tabela modułów prowadzi do szczegółowych informacji o każdym sterowniku.
