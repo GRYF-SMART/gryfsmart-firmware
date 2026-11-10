@@ -80,6 +80,14 @@
     ],
     "RTI": [
       {
+        "version": "2.12",
+        "url": "https://github.com/GRYF-SMART/gryfsmart-firmware/releases/download/v2026.11.10-rti-2.12/GRYF.rtidriver",
+        "release": "https://github.com/GRYF-SMART/gryfsmart-firmware/releases/tag/v2026.11.10-rti-2.12",
+        "date": "2026-11-10",
+        "notes": "GRYF RTI 2.12 — wspólny cykl odczytu stanów modułów.\n\n- Jeden moduł co 10 sekund: ID 1, ID 2, aż do ostatniego i ponownie ID 1. Pełny obieg trwa liczba modułów × 10 s.\n- W każdym cyklu odczyty wyjść / rolet, PWM (R0806T), wejść i flag. Zastępuje osobne okresy 8,1 s oraz 10,504 s.\n- Start: odczyty co 100 ms, malejąco według ID; na końcu flagi i temperatury R0808 (oba kanały).\n- R0806T i ETH0606T: odbiór automatycznych raportów temperatury; brak wysyłania nieobsługiwanego lokalnie ReadTemp.\n- Zachowane raporty asynchroniczne i szczegółowe odświeżanie rolet. Pierwszy cykl okresowy 10 s po zakończeniu startu.\n- Zachowany identyfikator drivera, konfiguracja oraz interfejsy funkcji i zmiennych.\n\nWalidacja: RTI PackageDriver; testy 376 odczytów startowych i dwóch pełnych obiegów okresowych dla RS232/TCP, 30 modułów, błędów transmisji oraz braku modułów; 154 testy rolet. Bez testu na fizycznym procesorze RTI.\n",
+        "digest": "sha256:1a27dd904f8d443d11f17675fad301a1a6a3e44ca7d7491d70f9e022cbcdf35f"
+      },
+      {
         "version": "2.11",
         "url": "https://github.com/GRYF-SMART/gryfsmart-firmware/releases/download/v2026.11.10-rti-2.11/GRYF.rtidriver",
         "release": "https://github.com/GRYF-SMART/gryfsmart-firmware/releases/tag/v2026.11.10-rti-2.11",
@@ -94,14 +102,6 @@
         "date": "2026-11-06",
         "notes": "GRYF RTI 2.10 — komponent rolety S0804.\n\n- Jeden natywny Viewport z przyciskami GÓRA, STOP, DÓŁ, NA PROCENT i STEP.\n- Osobna widoczność przycisków oraz cel procentowy w konfiguracji każdej rolety.\n- Procent lub --% przy braku pozycji, krótki status, zatrzymanie po otwieraniu/zamykaniu.\n- Pamięć kierunku oparta na raportach modułu, kasowana po utracie aktualnych danych.\n- Zachowana obsługa S0804 z wersji 2.09 i import nazw z GRYFEXPERT.\n\nPaczka komponentu zawiera projekt interfejsu i instrukcję. Po otwarciu wzorca zainstaluj GRYF.rtidriver przez Driver Utilities → Update Driver i włącz instancję drivera. Publiczny wzorzec nie zawiera prywatnych skryptów implementacji.\nPrzycisk procentowy jest konfigurowalnym presetem, nie klawiaturą numeryczną.\n\nWalidacja RTI PackageDriver, otwarcie panelu w Integration Designer 11 i 154 testy offline TCP/RS-232: OK. Bez testu na fizycznym napędzie.\n\n[Instrukcja komponentu](https://github.com/GRYF-SMART/gryfsmart-firmware/blob/main/RTI/KOMPONENT-ROLETY.md)\n[Bieżący driver i historia zmian](https://github.com/GRYF-SMART/gryfsmart-firmware/tree/main/RTI)\n",
         "digest": "sha256:fd5176b3856518f58fabc8ab54d462286d063ce2ab674b636f9956fe872ad8ac"
-      },
-      {
-        "version": "2.09",
-        "url": "https://github.com/GRYF-SMART/gryfsmart-firmware/releases/download/v2026.11.06-rti-2.09/GRYF.rtidriver",
-        "release": "https://github.com/GRYF-SMART/gryfsmart-firmware/releases/tag/v2026.11.06-rti-2.09",
-        "date": "2026-11-06",
-        "notes": "Sterownik GRYF 2.09 dla RTI Integration Designer.\n\n- S0804: otwieranie/zamykanie przez ustawiony czas przejazdu, STOP, STEP UP, STEP DOWN, STEP, pozycja 0–100%.\n- Ustawianie i odczyt czasów pełnego przejazdu co 0,1 s oraz osobny zapis konfiguracji w EEPROM.\n- Zmienne: procent otwarcia, ważność pozycji, cel, pozostały czas, otwieranie, zamykanie, ruch, postój, przerwa zmiany kierunku, oczekujący ruch, pełne otwarcie/zamknięcie i częściowe otwarcie.\n- Gotowy opis tekstowy każdej rolety, cykliczne odczyty, kontrola sum i wygaszanie nieaktualnych danych.\n- Zachowana zgodność starych makr i importu nazw z GRYFEXPERT.\n\nPo restarcie lub zmianie czasów wykonaj pełny przejazd. Procent jest estymacją czasową modułu.\nWalidacja RTI PackageDriver oraz 108 testów offline dla TCP i RS-232 zakończone poprawnie. Bez próby na fizycznym napędzie.\n\n[Instrukcja i zawsze najnowsza paczka](https://github.com/GRYF-SMART/gryfsmart-firmware/tree/main/RTI).\n",
-        "digest": "sha256:a96a8e607852b4eadf7da432d320478f0e8778eff3e28441f1d56b7a441dfe9c"
       }
     ],
     "HOME-ASSISTANT": [

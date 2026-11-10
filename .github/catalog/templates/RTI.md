@@ -1,16 +1,23 @@
-## Synchronizacja po uruchomieniu RTI — wersja 2.11
+## Synchronizacja stanów — wersja 2.12
 
 Po starcie driver wysyła zapytania co **0,1 s**. Każdy etap przechodzi od najwyższego skonfigurowanego ID do ID 1:
 
 1. Wyjścia przekaźnikowe R0806T, R0808 i ETH0606T (`GetOut`).
-2. Rolety S0804: stan zbiorczy (`StanRol`) oraz szczegółowy stan każdego z czterech napędów (`GetRolState`).
+2. Rolety S0804: stan zbiorczy (`StanRol`) oraz szczegółowy stan czterech napędów (`GetRolState`).
 3. PWM modułów R0806T (`GetPWM`).
-4. Wejścia modułów (`GetInputs`).
-5. Flagi wirtualne (`GetFlags`).
+4. Wejścia (`GetInputs`).
+5. Flagi wirtualne (`GetFlags`) w obsługujących je modułach.
+6. Temperatury R0808: oba kanały (`ReadTemp`). R0806T i ETH0606T wysyłają pomiary temperatury automatycznie; driver odbiera te raporty, ponieważ ich firmware nie obsługuje lokalnego zapytania `ReadTemp`.
 
-Sekwencja korzysta z liczby i modeli modułów ustawionych w Driver Properties; nie wykrywa samoczynnie nowych ID. Dotyczy TCP i RS-232. Zapytania są odczytami i nie zmieniają wyjść. Polecenia użytkownika mają pierwszeństwo i mogą wydłużyć synchronizację. Odpytywanie w tle nie wtrąca zapytań do sekwencji startowej.
+Sekwencja korzysta z liczby i modeli modułów ustawionych w Driver Properties; nie wykrywa samoczynnie nowych ID. Dotyczy TCP i RS-232. Odczyty nie zmieniają wyjść. Polecenia użytkownika mają pierwszeństwo i mogą wydłużyć synchronizację. Odpytywanie w tle nie wtrąca zapytań do sekwencji startowej.
 
-Po zakończeniu wraca zwykłe odpytywanie okresowe. Brak odpowiedzi lub błąd transmisji nie blokuje kolejnych modułów; odczyt zostanie ponowiony w cyklu okresowym. Wyświetlenie stanu wymaga poprawnej odpowiedzi modułu. Restart drivera uruchamia sekwencję ponownie; samo ponowne połączenie TCP nie uruchamia osobnej sekwencji.
+### Odświeżanie podczas pracy
+
+Po zakończeniu sekwencji startowej działa **jeden cykl: co 10 sekund kolejny moduł**. Po 10 s odpytywany jest ID 1, po 20 s ID 2, następnie kolejne ID, a po ostatnim cykl wraca do ID 1. Pełny obieg N modułów trwa N × 10 s.
+
+Dla wybranego ID driver kolejkuje odczyty wyjść (dla S0804 stan rolet), PWM tylko dla R0806T, wejść oraz flag. Komendy są wysyłane kolejno przez wspólną kolejkę transmisji. Usunięto wcześniejsze osobne cykle 8,1 s i 10,504 s. Raporty asynchroniczne modułów oraz szczegółowe odświeżanie rolet pozostają aktywne.
+
+Brak odpowiedzi lub błąd pojedynczej transmisji nie blokuje następnych modułów. Wyświetlenie stanu wymaga odpowiedzi modułu. Restart drivera ponawia pełną sekwencję startową; samo ponowne połączenie TCP nie uruchamia osobnej sekwencji.
 
 ## Instalacja sterownika
 
