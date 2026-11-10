@@ -1,3 +1,17 @@
+## Synchronizacja po uruchomieniu RTI — wersja 2.11
+
+Po starcie driver wysyła zapytania co **0,1 s**. Każdy etap przechodzi od najwyższego skonfigurowanego ID do ID 1:
+
+1. Wyjścia przekaźnikowe R0806T, R0808 i ETH0606T (`GetOut`).
+2. Rolety S0804: stan zbiorczy (`StanRol`) oraz szczegółowy stan każdego z czterech napędów (`GetRolState`).
+3. PWM modułów R0806T (`GetPWM`).
+4. Wejścia modułów (`GetInputs`).
+5. Flagi wirtualne (`GetFlags`).
+
+Sekwencja korzysta z liczby i modeli modułów ustawionych w Driver Properties; nie wykrywa samoczynnie nowych ID. Dotyczy TCP i RS-232. Zapytania są odczytami i nie zmieniają wyjść. Polecenia użytkownika mają pierwszeństwo i mogą wydłużyć synchronizację. Odpytywanie w tle nie wtrąca zapytań do sekwencji startowej.
+
+Po zakończeniu wraca zwykłe odpytywanie okresowe. Brak odpowiedzi lub błąd transmisji nie blokuje kolejnych modułów; odczyt zostanie ponowiony w cyklu okresowym. Wyświetlenie stanu wymaga poprawnej odpowiedzi modułu. Restart drivera uruchamia sekwencję ponownie; samo ponowne połączenie TCP nie uruchamia osobnej sekwencji.
+
 ## Instalacja sterownika
 
 Stały adres bieżącej paczki: **[GRYF.rtidriver](https://raw.githubusercontent.com/GRYF-SMART/gryfsmart-firmware/main/RTI/GRYF.rtidriver)**.

@@ -12,6 +12,20 @@ GRYF RTI 2.11 — szybki odczyt stanów po restarcie procesora RTI. Zapytania co
 | **2.10** | 2026-11-06 | [Pobierz](https://github.com/GRYF-SMART/gryfsmart-firmware/releases/download/v2026.11.06-rti-2.10/GRYF.rtidriver) | GRYF RTI 2.10 — komponent rolety S0804. Jeden natywny Viewport z przyciskami GÓRA, STOP, DÓŁ, NA PROCENT i STEP. Osobna widoczność przycisków oraz cel procentowy w konfiguracji każdej rolety. [Pełny opis](https://github.com/GRYF-SMART/gryfsmart-firmware/releases/tag/v2026.11.06-rti-2.10) |
 | **2.09** | 2026-11-06 | [Pobierz](https://github.com/GRYF-SMART/gryfsmart-firmware/releases/download/v2026.11.06-rti-2.09/GRYF.rtidriver) | Sterownik GRYF 2.09 dla RTI Integration Designer. S0804: otwieranie/zamykanie przez ustawiony czas przejazdu, STOP, STEP UP, STEP DOWN, STEP, pozycja 0–100%. Ustawianie i odczyt czasów pełnego przejazdu co 0,1 s oraz osobny zapis konfiguracji w EEPROM. [Pełny opis](https://github.com/GRYF-SMART/gryfsmart-firmware/releases/tag/v2026.11.06-rti-2.09) |
 
+## Synchronizacja po uruchomieniu RTI — wersja 2.11
+
+Po starcie driver wysyła zapytania co **0,1 s**. Każdy etap przechodzi od najwyższego skonfigurowanego ID do ID 1:
+
+1. Wyjścia przekaźnikowe R0806T, R0808 i ETH0606T (`GetOut`).
+2. Rolety S0804: stan zbiorczy (`StanRol`) oraz szczegółowy stan każdego z czterech napędów (`GetRolState`).
+3. PWM modułów R0806T (`GetPWM`).
+4. Wejścia modułów (`GetInputs`).
+5. Flagi wirtualne (`GetFlags`).
+
+Sekwencja korzysta z liczby i modeli modułów ustawionych w Driver Properties; nie wykrywa samoczynnie nowych ID. Dotyczy TCP i RS-232. Zapytania są odczytami i nie zmieniają wyjść. Polecenia użytkownika mają pierwszeństwo i mogą wydłużyć synchronizację. Odpytywanie w tle nie wtrąca zapytań do sekwencji startowej.
+
+Po zakończeniu wraca zwykłe odpytywanie okresowe. Brak odpowiedzi lub błąd transmisji nie blokuje kolejnych modułów; odczyt zostanie ponowiony w cyklu okresowym. Wyświetlenie stanu wymaga poprawnej odpowiedzi modułu. Restart drivera uruchamia sekwencję ponownie; samo ponowne połączenie TCP nie uruchamia osobnej sekwencji.
+
 ## Instalacja sterownika
 
 Stały adres bieżącej paczki: **[GRYF.rtidriver](https://raw.githubusercontent.com/GRYF-SMART/gryfsmart-firmware/main/RTI/GRYF.rtidriver)**.
