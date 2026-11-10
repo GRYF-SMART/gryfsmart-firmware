@@ -80,6 +80,14 @@
     ],
     "RTI": [
       {
+        "version": "2.11",
+        "url": "https://github.com/GRYF-SMART/gryfsmart-firmware/releases/download/v2026.11.10-rti-2.11/GRYF.rtidriver",
+        "release": "https://github.com/GRYF-SMART/gryfsmart-firmware/releases/tag/v2026.11.10-rti-2.11",
+        "date": "2026-11-10",
+        "notes": "GRYF RTI 2.11 — szybki odczyt stanów po restarcie procesora RTI.\n\n- Zapytania co 100 ms, od najwyższego skonfigurowanego ID do ID 1.\n- Etapy: wyjścia przekaźnikowe, rolety (również pozycje i szczegółowe stany), PWM, wejścia, flagi.\n- Odpytywanie okresowe nie przerywa sekwencji; komendy użytkownika zachowują pierwszeństwo.\n- Po sekwencji normalne odświeżanie stanów; błędy pojedynczego odczytu nie blokują dalszych modułów.\n- Bez zmiany konfiguracji i interfejsów funkcji/zmiennych; zachowany komponent rolet.\n\nWalidacja: RTI PackageDriver, 344 odczyty w testach startu TCP/RS232 (kolejność i odstępy, 30 modułów, błędy zapisu, brak modułów) oraz 154 testy rolet. Bez testu restartu fizycznego RTI.\n",
+        "digest": "sha256:dd13c4fb8222b908030047b5ea12aeb75f63dc07e921d9655d4093649c10ed4b"
+      },
+      {
         "version": "2.10",
         "url": "https://github.com/GRYF-SMART/gryfsmart-firmware/releases/download/v2026.11.06-rti-2.10/GRYF.rtidriver",
         "release": "https://github.com/GRYF-SMART/gryfsmart-firmware/releases/tag/v2026.11.06-rti-2.10",
@@ -94,14 +102,6 @@
         "date": "2026-11-06",
         "notes": "Sterownik GRYF 2.09 dla RTI Integration Designer.\n\n- S0804: otwieranie/zamykanie przez ustawiony czas przejazdu, STOP, STEP UP, STEP DOWN, STEP, pozycja 0–100%.\n- Ustawianie i odczyt czasów pełnego przejazdu co 0,1 s oraz osobny zapis konfiguracji w EEPROM.\n- Zmienne: procent otwarcia, ważność pozycji, cel, pozostały czas, otwieranie, zamykanie, ruch, postój, przerwa zmiany kierunku, oczekujący ruch, pełne otwarcie/zamknięcie i częściowe otwarcie.\n- Gotowy opis tekstowy każdej rolety, cykliczne odczyty, kontrola sum i wygaszanie nieaktualnych danych.\n- Zachowana zgodność starych makr i importu nazw z GRYFEXPERT.\n\nPo restarcie lub zmianie czasów wykonaj pełny przejazd. Procent jest estymacją czasową modułu.\nWalidacja RTI PackageDriver oraz 108 testów offline dla TCP i RS-232 zakończone poprawnie. Bez próby na fizycznym napędzie.\n\n[Instrukcja i zawsze najnowsza paczka](https://github.com/GRYF-SMART/gryfsmart-firmware/tree/main/RTI).\n",
         "digest": "sha256:a96a8e607852b4eadf7da432d320478f0e8778eff3e28441f1d56b7a441dfe9c"
-      },
-      {
-        "version": "2.08",
-        "url": "https://github.com/GRYF-SMART/gryfsmart-firmware/releases/download/v2026.11.06-rti-2.08/GRYF.rtidriver",
-        "release": "https://github.com/GRYF-SMART/gryfsmart-firmware/releases/tag/v2026.11.06-rti-2.08",
-        "date": "2026-11-05",
-        "notes": "Import nazw z GRYFEXPERT; składanie fragmentów TCP, walidacja raportów, kolejka i priorytet sterowania, odstępy transmisji oraz odświeżanie stanów przez TCP/RS-232.",
-        "digest": "sha256:79f81bc18a38d3b19e584a48216512232c58324df8c53a16230a7e80015a957b"
       }
     ],
     "HOME-ASSISTANT": [

@@ -1,16 +1,16 @@
 # 4. Driver RTI
 
-**[Pobierz najnowszą wersję 2.10](https://github.com/GRYF-SMART/gryfsmart-firmware/releases/download/v2026.11.06-rti-2.10/GRYF.rtidriver)**
+**[Pobierz najnowszą wersję 2.11](https://github.com/GRYF-SMART/gryfsmart-firmware/releases/download/v2026.11.10-rti-2.11/GRYF.rtidriver)**
 
-GRYF RTI 2.10 — komponent rolety S0804. Jeden natywny Viewport z przyciskami GÓRA, STOP, DÓŁ, NA PROCENT i STEP. Osobna widoczność przycisków oraz cel procentowy w konfiguracji każdej rolety. [Pełny opis wydania](https://github.com/GRYF-SMART/gryfsmart-firmware/releases/tag/v2026.11.06-rti-2.10).
+GRYF RTI 2.11 — szybki odczyt stanów po restarcie procesora RTI. Zapytania co 100 ms, od najwyższego skonfigurowanego ID do ID 1. Etapy: wyjścia przekaźnikowe, rolety (również pozycje i szczegółowe stany), PWM, wejścia, flagi. [Pełny opis wydania](https://github.com/GRYF-SMART/gryfsmart-firmware/releases/tag/v2026.11.10-rti-2.11).
 
 ## Trzy ostatnie wersje
 
 | Wersja | Data publikacji | Pobieranie | Zmiany |
 |---|---|---|---|
+| **2.11** | 2026-11-10 | [Pobierz](https://github.com/GRYF-SMART/gryfsmart-firmware/releases/download/v2026.11.10-rti-2.11/GRYF.rtidriver) | GRYF RTI 2.11 — szybki odczyt stanów po restarcie procesora RTI. Zapytania co 100 ms, od najwyższego skonfigurowanego ID do ID 1. Etapy: wyjścia przekaźnikowe, rolety (również pozycje i szczegółowe stany), PWM, wejścia, flagi. [Pełny opis](https://github.com/GRYF-SMART/gryfsmart-firmware/releases/tag/v2026.11.10-rti-2.11) |
 | **2.10** | 2026-11-06 | [Pobierz](https://github.com/GRYF-SMART/gryfsmart-firmware/releases/download/v2026.11.06-rti-2.10/GRYF.rtidriver) | GRYF RTI 2.10 — komponent rolety S0804. Jeden natywny Viewport z przyciskami GÓRA, STOP, DÓŁ, NA PROCENT i STEP. Osobna widoczność przycisków oraz cel procentowy w konfiguracji każdej rolety. [Pełny opis](https://github.com/GRYF-SMART/gryfsmart-firmware/releases/tag/v2026.11.06-rti-2.10) |
 | **2.09** | 2026-11-06 | [Pobierz](https://github.com/GRYF-SMART/gryfsmart-firmware/releases/download/v2026.11.06-rti-2.09/GRYF.rtidriver) | Sterownik GRYF 2.09 dla RTI Integration Designer. S0804: otwieranie/zamykanie przez ustawiony czas przejazdu, STOP, STEP UP, STEP DOWN, STEP, pozycja 0–100%. Ustawianie i odczyt czasów pełnego przejazdu co 0,1 s oraz osobny zapis konfiguracji w EEPROM. [Pełny opis](https://github.com/GRYF-SMART/gryfsmart-firmware/releases/tag/v2026.11.06-rti-2.09) |
-| **2.08** | 2026-11-05 | [Pobierz](https://github.com/GRYF-SMART/gryfsmart-firmware/releases/download/v2026.11.06-rti-2.08/GRYF.rtidriver) | Import nazw z GRYFEXPERT; składanie fragmentów TCP, walidacja raportów, kolejka i priorytet sterowania, odstępy transmisji oraz odświeżanie stanów przez TCP/RS-232. [Pełny opis](https://github.com/GRYF-SMART/gryfsmart-firmware/releases/tag/v2026.11.06-rti-2.08) |
 
 ## Instalacja sterownika
 
