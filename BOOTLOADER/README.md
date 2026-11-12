@@ -1,16 +1,16 @@
 # 5. Instalator Bootloader
 
-**[Pobierz najnowszą wersję 2.0.21](https://github.com/GRYF-SMART/gryfsmart-firmware/releases/download/v2026.11.05-installer-2.0.21/GRYFSMART-Instalator.zip)**
+**[Pobierz najnowszą wersję 2.0.22](https://github.com/GRYF-SMART/gryfsmart-firmware/releases/download/v2026.11.12-installer-2.0.22/GRYFSMART-Instalator.zip)**
 
-Instalator bootloaderów 2.0.21 pod stałą nazwą GRYFSMART-Instalator.exe. ZIP zawiera instalator, AVRDUDE i sześć wsadów bootloadera. Pozostałe pliki dystrybucyjne pochodzą z wydania v2026.11.05-gryfexpert-0.5.49. [Pełny opis wydania](https://github.com/GRYF-SMART/gryfsmart-firmware/releases/tag/v2026.11.05-installer-2.0.21).
+Instalator 2.0.22 i bootloader S0804 v12-chain1-led-on. Diody RUN (PB3) oraz RX/TX (PB2) świecą stale w trybie bootloadera: podczas oczekiwania, zapisu i po zapisie. Po przejściu do aplikacji sterowanie przejmuje aplikacja. Po poprawnym zapisie i weryfikacji instalator wyświetla zielony napis: Gotowe! Bootloader modułu S0804 został wgrany pomyślnie! [Pełny opis wydania](https://github.com/GRYF-SMART/gryfsmart-firmware/releases/tag/v2026.11.12-installer-2.0.22).
 
 ## Trzy ostatnie wersje
 
 | Wersja | Data publikacji | Pobieranie | Zmiany |
 |---|---|---|---|
+| **2.0.22** | 2026-11-12 | [Pobierz](https://github.com/GRYF-SMART/gryfsmart-firmware/releases/download/v2026.11.12-installer-2.0.22/GRYFSMART-Instalator.zip) | Instalator 2.0.22 i bootloader S0804 v12-chain1-led-on. Diody RUN (PB3) oraz RX/TX (PB2) świecą stale w trybie bootloadera: podczas oczekiwania, zapisu i po zapisie. Po przejściu do aplikacji sterowanie przejmuje aplikacja. Po poprawnym zapisie i weryfikacji instalator wyświetla zielony napis: Gotowe! Bootloader modułu S0804 został wgrany pomyślnie! [Pełny opis](https://github.com/GRYF-SMART/gryfsmart-firmware/releases/tag/v2026.11.12-installer-2.0.22) |
 | **2.0.21** | 2026-11-05 | [Pobierz](https://github.com/GRYF-SMART/gryfsmart-firmware/releases/download/v2026.11.05-installer-2.0.21/GRYFSMART-Instalator.zip) | Instalator bootloaderów 2.0.21 pod stałą nazwą GRYFSMART-Instalator.exe. ZIP zawiera instalator, AVRDUDE i sześć wsadów bootloadera. Pozostałe pliki dystrybucyjne pochodzą z wydania v2026.11.05-gryfexpert-0.5.49. [Pełny opis](https://github.com/GRYF-SMART/gryfsmart-firmware/releases/tag/v2026.11.05-installer-2.0.21) |
 | **2.0.14** | 2026-10-29 | [Pobierz](https://github.com/GRYF-SMART/gryfsmart-firmware/releases/download/v2026.10.29-restarts-all-0.5.15/GRYFSMART-Instalator.zip) | Pakiet instalatora z bootloaderem R0806T-OLD v13-old644p. Pozostałe bootloadery bez zmian. [Pełny opis](https://github.com/GRYF-SMART/gryfsmart-firmware/releases/tag/v2026.10.29-restarts-all-0.5.15) |
-| **2.0.13** | 2026-10-29 | [Pobierz](https://github.com/GRYF-SMART/gryfsmart-firmware/releases/download/v2026.10.29-usb-fix-2.0.13/GRYFSMART-Instalator.zip) | Wydanie pakietu narzędzi 2.0.13. Poprawka USB dotyczy aktualizatora; wsady bootloaderów w tym wydaniu pozostały bez zmian. [Pełny opis](https://github.com/GRYF-SMART/gryfsmart-firmware/releases/tag/v2026.10.29-usb-fix-2.0.13) |
 
 ## Pierwsza instalacja bootloadera — GRYFSMART-Instalator
 

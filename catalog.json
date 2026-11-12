@@ -54,6 +54,14 @@
     ],
     "BOOTLOADER": [
       {
+        "version": "2.0.22",
+        "url": "https://github.com/GRYF-SMART/gryfsmart-firmware/releases/download/v2026.11.12-installer-2.0.22/GRYFSMART-Instalator.zip",
+        "release": "https://github.com/GRYF-SMART/gryfsmart-firmware/releases/tag/v2026.11.12-installer-2.0.22",
+        "date": "2026-11-12",
+        "notes": "Instalator 2.0.22 i bootloader S0804 v12-chain1-led-on.\nDiody RUN (PB3) oraz RX/TX (PB2) świecą stale w trybie bootloadera: podczas oczekiwania, zapisu i po zapisie. Po przejściu do aplikacji sterowanie przejmuje aplikacja.\nPo poprawnym zapisie i weryfikacji instalator wyświetla zielony napis: Gotowe! Bootloader modułu S0804 został wgrany pomyślnie!\nRozpakuj cały GRYFSMART-Instalator.zip. Pierwsza instalacja przez ISP/USBasp; potem odłącz USBasp i wgraj aplikację przez RS-232. USBasp trzymający RESET może uniemożliwiać uruchomienie bootloadera do czasu zwolnienia RESET.\nLokalna bieżąca instalacja: F:/GRYFEXPERT/INSTALATOR/GRYFSMART-Instalator.exe. Kolejne kompilacje nadpisują tę kopię wraz z wymaganymi plikami.\nWeryfikacja: kompilacja AVR, limit 8 KiB, testy instalatora oraz wykonanie HEX w emulatorze AVR (stałe diody, UART, zapis/odczyt, ochrona bootloadera, przekazanie sterowania aplikacji). Fizycznego urządzenia nie programowano. Pozostałe aplikacje i programator zachowano z poprzedniego wydania.",
+        "digest": "sha256:505f898d89e329a43750955b200360ee5ea2b9c722a43c25f5b2341ee432dbb1"
+      },
+      {
         "version": "2.0.21",
         "url": "https://github.com/GRYF-SMART/gryfsmart-firmware/releases/download/v2026.11.05-installer-2.0.21/GRYFSMART-Instalator.zip",
         "release": "https://github.com/GRYF-SMART/gryfsmart-firmware/releases/tag/v2026.11.05-installer-2.0.21",
@@ -68,14 +76,6 @@
         "date": "2026-10-29",
         "notes": "Pakiet instalatora z bootloaderem R0806T-OLD v13-old644p. Pozostałe bootloadery bez zmian.",
         "digest": "sha256:b604bf180e8de008dcc297fcbcc1c366149fe8b72e4e799235acd25ca53be8bd"
-      },
-      {
-        "version": "2.0.13",
-        "url": "https://github.com/GRYF-SMART/gryfsmart-firmware/releases/download/v2026.10.29-usb-fix-2.0.13/GRYFSMART-Instalator.zip",
-        "release": "https://github.com/GRYF-SMART/gryfsmart-firmware/releases/tag/v2026.10.29-usb-fix-2.0.13",
-        "date": "2026-10-29",
-        "notes": "Wydanie pakietu narzędzi 2.0.13. Poprawka USB dotyczy aktualizatora; wsady bootloaderów w tym wydaniu pozostały bez zmian.",
-        "digest": "sha256:711e868fc78f68fdd8cd09ddead63f9b701dbb513b2a817f6d1c93c62e5b189b"
       }
     ],
     "RTI": [
@@ -134,42 +134,42 @@
   "firmware": {
     "ETH Mini": {
       "version": "4",
-      "url": "https://github.com/GRYF-SMART/gryfsmart-firmware/releases/download/v2026.11.06-gryfexpert-0.5.50/ETH-Mini-GATE-firmware-v4.hex",
-      "release": "https://github.com/GRYF-SMART/gryfsmart-firmware/releases/tag/v2026.11.06-gryfexpert-0.5.50",
-      "date": "2026-11-05",
-      "notes": "GRYFEXPERT 0.5.50 dodaje eksport nazw wejść, wyjść, PWM i flag do Integration Designera. Wybierz Plik → Eksportuj nazwy do RTI i wskaż plik .driverconfig wyeksportowany ze sterownika GRYF.",
+      "url": "https://github.com/GRYF-SMART/gryfsmart-firmware/releases/download/v2026.11.12-installer-2.0.22/ETH-Mini-GATE-firmware-v4.hex",
+      "release": "https://github.com/GRYF-SMART/gryfsmart-firmware/releases/tag/v2026.11.12-installer-2.0.22",
+      "date": "2026-11-12",
+      "notes": "Instalator 2.0.22 i bootloader S0804 v12-chain1-led-on.\nDiody RUN (PB3) oraz RX/TX (PB2) świecą stale w trybie bootloadera: podczas oczekiwania, zapisu i po zapisie. Po przejściu do aplikacji sterowanie przejmuje aplikacja.\nPo poprawnym zapisie i weryfikacji instalator wyświetla zielony napis: Gotowe! Bootloader modułu S0804 został wgrany pomyślnie!\nRozpakuj cały GRYFSMART-Instalator.zip. Pierwsza instalacja przez ISP/USBasp; potem odłącz USBasp i wgraj aplikację przez RS-232. USBasp trzymający RESET może uniemożliwiać uruchomienie bootloadera do czasu zwolnienia RESET.\nLokalna bieżąca instalacja: F:/GRYFEXPERT/INSTALATOR/GRYFSMART-Instalator.exe. Kolejne kompilacje nadpisują tę kopię wraz z wymaganymi plikami.\nWeryfikacja: kompilacja AVR, limit 8 KiB, testy instalatora oraz wykonanie HEX w emulatorze AVR (stałe diody, UART, zapis/odczyt, ochrona bootloadera, przekazanie sterowania aplikacji). Fizycznego urządzenia nie programowano. Pozostałe aplikacje i programator zachowano z poprzedniego wydania.",
       "digest": "sha256:89e1db083c22a39fc9ab884db6e77ae36f535a0ae060eca9570a57e5c3c073bc"
     },
     "ETH0606T": {
       "version": "34",
-      "url": "https://github.com/GRYF-SMART/gryfsmart-firmware/releases/download/v2026.11.06-gryfexpert-0.5.50/ETH0606T-firmware.hex",
-      "release": "https://github.com/GRYF-SMART/gryfsmart-firmware/releases/tag/v2026.11.06-gryfexpert-0.5.50",
-      "date": "2026-11-05",
-      "notes": "GRYFEXPERT 0.5.50 dodaje eksport nazw wejść, wyjść, PWM i flag do Integration Designera. Wybierz Plik → Eksportuj nazwy do RTI i wskaż plik .driverconfig wyeksportowany ze sterownika GRYF.",
+      "url": "https://github.com/GRYF-SMART/gryfsmart-firmware/releases/download/v2026.11.12-installer-2.0.22/ETH0606T-firmware.hex",
+      "release": "https://github.com/GRYF-SMART/gryfsmart-firmware/releases/tag/v2026.11.12-installer-2.0.22",
+      "date": "2026-11-12",
+      "notes": "Instalator 2.0.22 i bootloader S0804 v12-chain1-led-on.\nDiody RUN (PB3) oraz RX/TX (PB2) świecą stale w trybie bootloadera: podczas oczekiwania, zapisu i po zapisie. Po przejściu do aplikacji sterowanie przejmuje aplikacja.\nPo poprawnym zapisie i weryfikacji instalator wyświetla zielony napis: Gotowe! Bootloader modułu S0804 został wgrany pomyślnie!\nRozpakuj cały GRYFSMART-Instalator.zip. Pierwsza instalacja przez ISP/USBasp; potem odłącz USBasp i wgraj aplikację przez RS-232. USBasp trzymający RESET może uniemożliwiać uruchomienie bootloadera do czasu zwolnienia RESET.\nLokalna bieżąca instalacja: F:/GRYFEXPERT/INSTALATOR/GRYFSMART-Instalator.exe. Kolejne kompilacje nadpisują tę kopię wraz z wymaganymi plikami.\nWeryfikacja: kompilacja AVR, limit 8 KiB, testy instalatora oraz wykonanie HEX w emulatorze AVR (stałe diody, UART, zapis/odczyt, ochrona bootloadera, przekazanie sterowania aplikacji). Fizycznego urządzenia nie programowano. Pozostałe aplikacje i programator zachowano z poprzedniego wydania.",
       "digest": "sha256:3558ca5714d2605d1aed56266889fc1cc6bb9d97f786b9030b8200f553a58d9d"
     },
     "R0808": {
       "version": "34",
-      "url": "https://github.com/GRYF-SMART/gryfsmart-firmware/releases/download/v2026.11.06-gryfexpert-0.5.50/R0808-firmware.hex",
-      "release": "https://github.com/GRYF-SMART/gryfsmart-firmware/releases/tag/v2026.11.06-gryfexpert-0.5.50",
-      "date": "2026-11-05",
-      "notes": "GRYFEXPERT 0.5.50 dodaje eksport nazw wejść, wyjść, PWM i flag do Integration Designera. Wybierz Plik → Eksportuj nazwy do RTI i wskaż plik .driverconfig wyeksportowany ze sterownika GRYF.",
+      "url": "https://github.com/GRYF-SMART/gryfsmart-firmware/releases/download/v2026.11.12-installer-2.0.22/R0808-firmware.hex",
+      "release": "https://github.com/GRYF-SMART/gryfsmart-firmware/releases/tag/v2026.11.12-installer-2.0.22",
+      "date": "2026-11-12",
+      "notes": "Instalator 2.0.22 i bootloader S0804 v12-chain1-led-on.\nDiody RUN (PB3) oraz RX/TX (PB2) świecą stale w trybie bootloadera: podczas oczekiwania, zapisu i po zapisie. Po przejściu do aplikacji sterowanie przejmuje aplikacja.\nPo poprawnym zapisie i weryfikacji instalator wyświetla zielony napis: Gotowe! Bootloader modułu S0804 został wgrany pomyślnie!\nRozpakuj cały GRYFSMART-Instalator.zip. Pierwsza instalacja przez ISP/USBasp; potem odłącz USBasp i wgraj aplikację przez RS-232. USBasp trzymający RESET może uniemożliwiać uruchomienie bootloadera do czasu zwolnienia RESET.\nLokalna bieżąca instalacja: F:/GRYFEXPERT/INSTALATOR/GRYFSMART-Instalator.exe. Kolejne kompilacje nadpisują tę kopię wraz z wymaganymi plikami.\nWeryfikacja: kompilacja AVR, limit 8 KiB, testy instalatora oraz wykonanie HEX w emulatorze AVR (stałe diody, UART, zapis/odczyt, ochrona bootloadera, przekazanie sterowania aplikacji). Fizycznego urządzenia nie programowano. Pozostałe aplikacje i programator zachowano z poprzedniego wydania.",
       "digest": "sha256:9091620dd553ea5b37ced4f64a73691324079cc60d52818f85a770e69bcab789"
     },
     "R0806T": {
       "version": "35",
-      "url": "https://github.com/GRYF-SMART/gryfsmart-firmware/releases/download/v2026.11.06-gryfexpert-0.5.50/R0806T-firmware.hex",
-      "release": "https://github.com/GRYF-SMART/gryfsmart-firmware/releases/tag/v2026.11.06-gryfexpert-0.5.50",
-      "date": "2026-11-05",
-      "notes": "GRYFEXPERT 0.5.50 dodaje eksport nazw wejść, wyjść, PWM i flag do Integration Designera. Wybierz Plik → Eksportuj nazwy do RTI i wskaż plik .driverconfig wyeksportowany ze sterownika GRYF.",
+      "url": "https://github.com/GRYF-SMART/gryfsmart-firmware/releases/download/v2026.11.12-installer-2.0.22/R0806T-firmware.hex",
+      "release": "https://github.com/GRYF-SMART/gryfsmart-firmware/releases/tag/v2026.11.12-installer-2.0.22",
+      "date": "2026-11-12",
+      "notes": "Instalator 2.0.22 i bootloader S0804 v12-chain1-led-on.\nDiody RUN (PB3) oraz RX/TX (PB2) świecą stale w trybie bootloadera: podczas oczekiwania, zapisu i po zapisie. Po przejściu do aplikacji sterowanie przejmuje aplikacja.\nPo poprawnym zapisie i weryfikacji instalator wyświetla zielony napis: Gotowe! Bootloader modułu S0804 został wgrany pomyślnie!\nRozpakuj cały GRYFSMART-Instalator.zip. Pierwsza instalacja przez ISP/USBasp; potem odłącz USBasp i wgraj aplikację przez RS-232. USBasp trzymający RESET może uniemożliwiać uruchomienie bootloadera do czasu zwolnienia RESET.\nLokalna bieżąca instalacja: F:/GRYFEXPERT/INSTALATOR/GRYFSMART-Instalator.exe. Kolejne kompilacje nadpisują tę kopię wraz z wymaganymi plikami.\nWeryfikacja: kompilacja AVR, limit 8 KiB, testy instalatora oraz wykonanie HEX w emulatorze AVR (stałe diody, UART, zapis/odczyt, ochrona bootloadera, przekazanie sterowania aplikacji). Fizycznego urządzenia nie programowano. Pozostałe aplikacje i programator zachowano z poprzedniego wydania.",
       "digest": "sha256:13bae21f1343f0a835575859648b3ddaddd0aa81a141a09506f9ea0ea90a55dc"
     },
     "S0804": {
       "version": "33",
-      "url": "https://github.com/GRYF-SMART/gryfsmart-firmware/releases/download/v2026.11.06-gryfexpert-0.5.50/S0804-firmware.hex",
-      "release": "https://github.com/GRYF-SMART/gryfsmart-firmware/releases/tag/v2026.11.06-gryfexpert-0.5.50",
-      "date": "2026-11-05",
-      "notes": "GRYFEXPERT 0.5.50 dodaje eksport nazw wejść, wyjść, PWM i flag do Integration Designera. Wybierz Plik → Eksportuj nazwy do RTI i wskaż plik .driverconfig wyeksportowany ze sterownika GRYF.",
+      "url": "https://github.com/GRYF-SMART/gryfsmart-firmware/releases/download/v2026.11.12-installer-2.0.22/S0804-firmware.hex",
+      "release": "https://github.com/GRYF-SMART/gryfsmart-firmware/releases/tag/v2026.11.12-installer-2.0.22",
+      "date": "2026-11-12",
+      "notes": "Instalator 2.0.22 i bootloader S0804 v12-chain1-led-on.\nDiody RUN (PB3) oraz RX/TX (PB2) świecą stale w trybie bootloadera: podczas oczekiwania, zapisu i po zapisie. Po przejściu do aplikacji sterowanie przejmuje aplikacja.\nPo poprawnym zapisie i weryfikacji instalator wyświetla zielony napis: Gotowe! Bootloader modułu S0804 został wgrany pomyślnie!\nRozpakuj cały GRYFSMART-Instalator.zip. Pierwsza instalacja przez ISP/USBasp; potem odłącz USBasp i wgraj aplikację przez RS-232. USBasp trzymający RESET może uniemożliwiać uruchomienie bootloadera do czasu zwolnienia RESET.\nLokalna bieżąca instalacja: F:/GRYFEXPERT/INSTALATOR/GRYFSMART-Instalator.exe. Kolejne kompilacje nadpisują tę kopię wraz z wymaganymi plikami.\nWeryfikacja: kompilacja AVR, limit 8 KiB, testy instalatora oraz wykonanie HEX w emulatorze AVR (stałe diody, UART, zapis/odczyt, ochrona bootloadera, przekazanie sterowania aplikacji). Fizycznego urządzenia nie programowano. Pozostałe aplikacje i programator zachowano z poprzedniego wydania.",
       "digest": "sha256:af7ffb76ae5fa7cc1b4ba229b9698e046a2eb468490f40e54d6894ebcdedd2bf"
     }
   }
