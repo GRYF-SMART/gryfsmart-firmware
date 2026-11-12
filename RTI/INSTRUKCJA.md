@@ -1,18 +1,30 @@
-## Bramka RTI — GRYFEXPERT 0.5.51 / driver RTI 2.13
+## Konfiguracja przez GRYFEXPERT — driver RTI 2.14 / GRYFEXPERT 0.5.52
 
-Połączenie: **GRYFEXPERT ⇄ LAN ⇄ procesor RTI ⇄ RS232 ⇄ port 0 pierwszego modułu GRYF**. Moduł ETH nie jest wymagany. Most obsługuje konfigurację, nazwy, reguły, wykrywanie modułów i diagnostykę. Nie obsługuje wgrywania HEX ani uruchamiania bootloadera.
+Połączenie: **GRYFEXPERT → adres IP procesora RTI + port TCP → RS232 → port 0 pierwszego modułu GRYF**. Odpowiedzi wracają tą samą drogą. Moduł ETH nie jest wymagany. RTI działa jako serwer ze stałym adresem IP; GRYFEXPERT inicjuje połączenie jako klient.
 
-1. W GRYFEXPERT wybierz **Bramka RTI**. Domyślny port nasłuchu to **4211**, identyfikator **RTI-1**. Program generuje klucz parowania (32 znaki hex); skopiuj go do konfiguracji drivera RTI.
-2. W Integration Designer zaktualizuj driver do **2.13**. Wybierz **RS-232**, port procesora połączony z GRYF i **115200, 8N1**. W sekcji **Bramka dla GRYFEXPERT** włącz bramkę, wpisz adres IPv4 komputera w LAN, port, identyfikator i ten sam klucz. Zapisz i prześlij projekt do RTI.
-3. W GRYFEXPERT kliknij **Połącz**. Program oczekuje do 60 s; można anulować oczekiwanie. To RTI inicjuje połączenie TCP do komputera. Zezwól GRYFEXPERT na połączenia przychodzące w Zaporze Windows dla prywatnej sieci. Stosuj stały adres lub rezerwację DHCP komputera.
-4. Po połączeniu widoczny jest identyfikator RTI i adres połączenia. Rozpoznaj moduły i odczytaj konfigurację tak jak przez bezpośredni COM. Opcja nadawania ID zapisuje adresy modułów; po zmianie ID lub modeli dostosuj również konfigurację drivera w Integration Designer.
-5. Po zakończeniu kliknij **Rozłącz**. Driver wznawia normalną pracę i pełną synchronizację stanów.
+### Ustawienia drivera RTI
 
-**Podczas sesji konfiguracji wstrzymane są komendy, logika sterująca przez ten driver i odpytywanie z RTI. Moduły nadal wykonują własny program.** Odpowiedzi modułów są przekazywane do GRYFEXPERT. Zerwanie sesji lub brak heartbeat przez ponad 10 s powoduje zwolnienie mostu i ponowny odczyt stanów. Odrzucone polecenia RTI nie są odtwarzane po sesji. Nie podłączaj drugiej instancji drivera do tego samego portu COM.
+W Integration Designer zaktualizuj driver do **2.14**. Wybierz **RS-232**, port procesora połączony z GRYF i **115200, 8N1**. W osobnej sekcji **Konfiguracja przez GRYFEXPERT**:
 
-Zmienne RTI **Status bramki** i **Trwa konfiguracja GRYFEXPERT** pozwalają wyświetlić stan na panelu. Stary kanał `Hello` na porcie 4210 został zastąpiony parowaną sesją; nie jest uruchamiany. Pozostałe funkcje i identyfikator drivera są zachowane.
+- włącz konfigurację przez GRYFEXPERT;
+- ustaw **Port TCP konfiguracji GRYFEXPERT**: domyślnie **4211**, z możliwością zmiany na wolny port w zakresie 1024–65535;
+- wpisz identyfikator RTI oraz klucz parowania (32 znaki hex, skopiowany z GRYFEXPERT).
 
-Klucz identyfikuje sparowaną instalację; transmisja nie jest szyfrowana. Używaj mostu w zaufanej sieci LAN, bez przekierowania portu z Internetu. Testy obejmują symulację RTI i komunikację TCP na komputerze; poprawność na fizycznym procesorze RTI wymaga testu instalacyjnego.
+Port służy wyłącznie do konfiguracji modułów przez GRYFEXPERT; nie jest portem bramki ETH. W driverze **nie wpisuje się IP komputera**. Stały adres IP lub rezerwację DHCP procesora ustaw w konfiguracji sieci RTI. Zapisz i prześlij projekt do procesora. Wymagany runtime RTI 15+ obsługujący GenericServer. Zmienna **Status bramki** informuje o nasłuchu lub błędzie portu.
+
+### Ustawienia GRYFEXPERT
+
+1. Wybierz **Bramka RTI** obok COM i Ethernet ETH.
+2. Wpisz **Adres IP RTI** (np. `192.168.0.15`) oraz **Port TCP RTI**. Domyślnie **4211**, można go edytować. Musi być taki sam jak w driverze.
+3. Ustaw identyfikator i klucz parowania zgodne z driverem. Zapisz projekt, aby zachować ustawienia.
+4. Kliknij **Połącz**. Program łączy się do RTI — nie uruchamia serwera na komputerze. Następnie rozpoznaj moduły i odczytaj konfigurację jak przy bezpośrednim COM.
+5. Po zakończeniu kliknij **Rozłącz**. RTI wraca do normalnej pracy i odczytuje stany modułów. Po zmianie ID lub modeli w GRYFEXPERT dostosuj także konfigurację drivera w Integration Designer.
+
+Most obsługuje konfigurację, nazwy, reguły, wykrywanie modułów i diagnostykę. **Nie obsługuje wgrywania HEX ani uruchamiania bootloadera.** Podczas sesji wstrzymane są komendy i odpytywanie tego drivera RTI; moduły nadal wykonują własny program. Drugi klient nie może przejąć aktywnej sesji. Zerwanie połączenia lub brak heartbeat przez ponad 10 s zwalnia most i uruchamia synchronizację. Odrzucone polecenia RTI nie są odtwarzane. Nie używaj drugiej instancji drivera na tym samym COM.
+
+Zmienne **Status bramki** oraz **Trwa konfiguracja GRYFEXPERT** można umieścić na panelu RTI. Port i klucz są ustawieniami konkretnej instalacji. Używaj mostu w zaufanym LAN; transmisja nie jest szyfrowana i portu nie należy przekierowywać z Internetu.
+
+**Zmiana względem 0.5.51 / 2.13:** kierunek zestawiania połączenia został odwrócony na GRYFEXPERT → RTI. Zaktualizuj obie strony. Stary klucz i numer portu można zachować, ale w projekcie GRYFEXPERT trzeba podać adres RTI i ponownie potwierdzić przypisanie modułów do połączenia. Testy obejmują symulację RTI i rzeczywiste połączenia TCP na komputerze; test instalacyjny na fizycznym RTI pozostaje do wykonania.
 
 ## Synchronizacja stanów — wersja 2.12
 
