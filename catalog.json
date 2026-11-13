@@ -110,7 +110,7 @@
         "url": "https://github.com/GRYF-SMART/ha-gryfsmart/releases/download/v0.3.15/GRYFSMART-HomeAssistant-0.3.15.zip",
         "release": "https://github.com/GRYF-SMART/ha-gryfsmart/releases/tag/v0.3.15",
         "date": "2026-11-13",
-        "notes": "GRYFSMART Home Assistant 0.3.15\\n\\nKomplet dziewięciu akcji rolet: OTWÓRZ, STOP, ZAMKNIJ, oba kierunkowe STEP, STEP cykliczny, otwieranie i zamykanie na czas oraz pozycja procentowa. Usługa gryfsmart.shutter_action przyjmuje czas w sekundach dla obu akcji czasowych. Parametry walidowane są przed wysłaniem.\\n\\nZgodne z protokołem modułów GRYF i GRYFEXPERT 0.5.60. Po aktualizacji integracji uruchom ponownie Home Assistant.",
+        "notes": "GRYFSMART Home Assistant 0.3.15\n\nKomplet dziewięciu akcji rolet: OTWÓRZ, STOP, ZAMKNIJ, oba kierunkowe STEP, STEP cykliczny, otwieranie i zamykanie na czas oraz pozycja procentowa. Usługa `gryfsmart.shutter_action` przyjmuje czas w sekundach dla obu akcji czasowych. Parametry walidowane są przed wysłaniem.\n\nZgodne z protokołem modułów GRYF i GRYFEXPERT 0.5.60. Po aktualizacji integracji uruchom ponownie Home Assistant.",
         "digest": "sha256:c8aeacf4e80a0df2d2c0f822ade69e50820cf7d3320b0e333075993b0a19feb9"
       },
       {
