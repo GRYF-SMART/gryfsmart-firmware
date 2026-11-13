@@ -53,6 +53,13 @@ def item(version, asset, release):
                 release=release['html_url'], date=release['published_at'][:10],
                 notes=release.get('body') or release['name'], digest=asset.get('digest'))
 
+def remember(rows, version, asset, release):
+    """Keep original version notes, but download a refreshed package if changed."""
+    candidate = item(version, asset, release)
+    original = rows.setdefault(str(version), candidate)
+    if candidate['digest'] and candidate['digest'] != original.get('digest'):
+        original.update(url=candidate['url'], digest=candidate['digest'])
+
 def summary(row):
     lines = [s.strip().lstrip('-* ').strip() for s in row['notes'].splitlines()]
     lines = [s for s in lines if s and not s.startswith(('#', '[', '|', 'http', '```'))]
@@ -81,11 +88,11 @@ def collect(cache):
                                    ('AKTUALIZATOR', r'GRYFSMART-Programator-(\d+\.\d+\.\d+)\.exe')]:
                 match = re.fullmatch(pattern, a['name'])
                 if match:
-                    groups[group].setdefault(match[1], item(match[1], a, r))
+                    remember(groups[group], match[1], a, r)
             if a['name'] == 'GRYF.rtidriver':
                 match = re.search(r'rti-(\d+\.\d+)', r['tag_name'], re.I)
                 if match:
-                    groups['RTI'].setdefault(match[1], item(match[1], a, r))
+                    remember(groups['RTI'], match[1], a, r)
             match = re.fullmatch(r'ETH-Mini-GATE-firmware-v(\d+)\.hex', a['name'])
             if match and (not hexes.get('ETH Mini') or int(match[1]) >= int(hexes['ETH Mini']['version'])):
                 hexes['ETH Mini'] = item(match[1], a, r)
@@ -109,10 +116,9 @@ def collect(cache):
             group = {'GRYFSMART-Programator.exe': 'AKTUALIZATOR', 'GRYFSMART-Instalator.exe': 'BOOTLOADER'}.get(name)
             if group and name in assets:
                 version = str(program['version'])
-                if version not in groups[group]:
-                    # Prefer the full installer ZIP including AVRDUDE/bootloader HEXs.
-                    download = assets.get(name.replace('.exe', '.zip'), assets[name]) if group == 'BOOTLOADER' else assets[name]
-                    groups[group][version] = item(version, download, r)
+                # Prefer the full installer ZIP including AVRDUDE/bootloader HEXs.
+                download = assets.get(name.replace('.exe', '.zip'), assets[name]) if group == 'BOOTLOADER' else assets[name]
+                remember(groups[group], version, download, r)
         for app in manifest.get('applications', []):
             model = app.get('model', app.get('name'))
             if model in ['R0806T', 'R0808', 'S0804', 'ETH0606T'] and app['asset'] in assets:
@@ -166,11 +172,12 @@ def render(out, templates, catalog, mode):
     write('PROTOKOL/README.md', (templates / 'PROTOKOL.md').read_text(encoding='utf-8') + '\n\n' + nav())
     for page in (templates / 'SYSTEM').glob('*.md'):
         write('SYSTEM/' + page.name, page.read_text(encoding='utf-8') + '\n\n' + nav())
-    hextable = '# Najnowsze HEX-y aplikacji GRYFSMART\n\n| Moduł | Wersja | Pobierz HEX | Wydanie |\n|---|---|---|---|\n'
+    hextable = '# Najnowsze HEX-y aplikacji GRYFSMART\n\n**[Pobierz komplet HEX — aplikacje i bootloadery](https://raw.githubusercontent.com/GRYF-SMART/gryfsmart-firmware/main/HEX/GRYFSMART-HEX.zip)**\n\n| Moduł | Wersja | Pobierz HEX | Wydanie |\n|---|---|---|---|\n'
     for model in ['R0806T', 'R0808', 'S0804', 'ETH0606T', 'ETH Mini']:
         row = catalog['firmware'][model]
         hextable += f"| {model} | {row['version']} | [**Pobierz HEX**]({row['url']}) | [Opis]({row['release']}) |\n"
-    hextable += '\nSą to aplikacje modułów. Dobierz model dokładnie; plik aplikacji nie zastępuje bootloadera. [Instrukcja aktualizacji](../AKTUALIZATOR).\n\n' + nav()
+    hextable += '\nW komplecie ZIP są osobne katalogi aplikacji i bootloaderów, również dla starszego R0806T-OLD, oraz sumy kontrolne plików. [Lista plików i wersji](manifest.json).\n'
+    hextable += '\nPowyższa tabela zawiera aplikacje modułów. Dobierz model dokładnie; plik aplikacji nie zastępuje bootloadera. [Instrukcja aktualizacji](../AKTUALIZATOR).\n\n' + nav()
     write('HEX/README.md', hextable)
     write('catalog.json', json.dumps(catalog, ensure_ascii=False, indent=2))
 

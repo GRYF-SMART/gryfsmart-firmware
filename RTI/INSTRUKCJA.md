@@ -1,10 +1,14 @@
-## Konfiguracja przez GRYFEXPERT — driver RTI 2.16 / GRYFEXPERT 0.5.60
+## Aktualizacja drivera 2.17
+
+Wersja **2.17** naprawia import i aktualizację paczki w Integration Designer. Zachowuje identyfikator drivera, konfigurację, funkcje i zmienne z 2.16, w tym dziewięć akcji rolet S0804. Jeśli pojawia się komunikat „Unable to update driver”, pobierz paczkę 2.17 i użyj **GRYF → Driver Utilities → Update Driver**. Nie usuwaj istniejącej instancji.
+
+## Konfiguracja przez GRYFEXPERT — driver RTI 2.17 / GRYFEXPERT 0.5.60
 
 Połączenie: **GRYFEXPERT → adres IP procesora RTI + port TCP → RS232 → port 0 pierwszego modułu GRYF**. Odpowiedzi wracają tą samą drogą. Moduł ETH nie jest wymagany. RTI działa jako serwer ze stałym adresem IP; GRYFEXPERT inicjuje połączenie jako klient.
 
 ### Ustawienia drivera RTI
 
-W Integration Designer zaktualizuj driver do **2.16**. Wybierz **RS-232**, port procesora połączony z GRYF i **115200, 8N1**. W osobnej sekcji **Konfiguracja przez GRYFEXPERT**:
+W Integration Designer zaktualizuj driver do **2.17**. Wybierz **RS-232**, port procesora połączony z GRYF i **115200, 8N1**. W osobnej sekcji **Konfiguracja przez GRYFEXPERT**:
 
 - włącz konfigurację przez GRYFEXPERT;
 - ustaw **Port TCP konfiguracji GRYFEXPERT**: domyślnie **4211**, z możliwością zmiany na wolny port w zakresie 1024–65535;

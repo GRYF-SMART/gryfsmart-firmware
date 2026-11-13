@@ -1,0 +1,121 @@
+{
+  "schema": 1,
+  "files": [
+    {
+      "model": "ETH0606T",
+      "version": "37",
+      "kind": "application",
+      "asset": "ETH0606T-firmware.hex",
+      "sha256": "2e848581e2704dbb1448c25e7217ce5033f1f199ff35752f053e64dc60651433",
+      "mcu": "atmega2560",
+      "clock_hz": 16000000
+    },
+    {
+      "model": "R0808",
+      "version": "38",
+      "kind": "application",
+      "asset": "R0808-firmware.hex",
+      "sha256": "17ae19995c45fa757bb24774a63472d803e98b87c4410761ecdc40adfaec4fa8",
+      "mcu": "atmega2560",
+      "clock_hz": 18432000
+    },
+    {
+      "model": "R0806T",
+      "version": "39",
+      "kind": "application",
+      "asset": "R0806T-firmware.hex",
+      "sha256": "49a061aecf1cb6959cb53a4989100eb886e5e96b79617cbc0aba8de1e601dbab",
+      "mcu": "atmega1284p",
+      "clock_hz": 18432000
+    },
+    {
+      "model": "S0804",
+      "version": "37",
+      "kind": "application",
+      "asset": "S0804-firmware.hex",
+      "sha256": "1e0b6a4439d53ae12af9158b41fbab4d1b83562660895bb7ad48f22aa1512014",
+      "mcu": "atmega1284p",
+      "clock_hz": 18432000
+    },
+    {
+      "model": "R0806T-OLD",
+      "version": "10",
+      "kind": "application",
+      "asset": "R0806T-OLD-firmware.hex",
+      "sha256": "71246636e023e2b2fa0a5acac746d713f56aff451cc78dc78a85f2f7c70ed02d",
+      "mcu": "atmega644p",
+      "clock_hz": 11059200
+    },
+    {
+      "asset": "ETH0606T-bootloader.hex",
+      "mcu": "atmega2560",
+      "kind": "bootloader",
+      "clock_hz": 16000000,
+      "model": "ETH0606T",
+      "version": "v12-ethernet",
+      "uarts": [
+        0,
+        1
+      ],
+      "sha256": "102404bf984495f0eee298ff92754f1823a90e2b674079aef576e4b01e1fcd6c"
+    },
+    {
+      "asset": "R0808-bootloader.hex",
+      "mcu": "atmega2560",
+      "kind": "bootloader",
+      "clock_hz": 18432000,
+      "model": "R0808",
+      "version": "v11-chain1",
+      "uarts": [
+        3
+      ],
+      "sha256": "7834e1f10e9c1669a4247c2a1ef54e94d8c0ccf4b80242acec1001f16b640290"
+    },
+    {
+      "asset": "R0806T-bootloader.hex",
+      "mcu": "atmega1284p",
+      "kind": "bootloader",
+      "clock_hz": 18432000,
+      "model": "R0806T",
+      "version": "v11-chain1",
+      "uarts": [
+        0
+      ],
+      "sha256": "1b669b713645dc2de27f1b6883a03da8a77f32018848567d4a05b8a61c7bfb8b"
+    },
+    {
+      "asset": "S0804-bootloader.hex",
+      "mcu": "atmega1284p",
+      "kind": "bootloader",
+      "clock_hz": 18432000,
+      "model": "S0804",
+      "version": "v12-chain1-led-on",
+      "uarts": [
+        0
+      ],
+      "sha256": "4792d977c6024ae7d94bd789801710bca401441c4a7268542e3310f1de07da4b"
+    },
+    {
+      "model": "R0806T-OLD",
+      "mcu": "atmega644p",
+      "clock_hz": 11059200,
+      "version": "v15-old644p",
+      "kind": "bootloader",
+      "asset": "R0806T-OLD-bootloader.hex",
+      "sha256": "bba300fb54727419999e79abd5b88568c1392c806b3b81531d075a028d074d71"
+    },
+    {
+      "model": "ETH-Mini-GATE",
+      "version": "4",
+      "kind": "application",
+      "asset": "ETH-Mini-GATE-firmware-v4.hex",
+      "sha256": "89e1db083c22a39fc9ab884db6e77ae36f535a0ae060eca9570a57e5c3c073bc"
+    },
+    {
+      "model": "ETH-Mini-GATE",
+      "kind": "bootloader",
+      "asset": "ETH-Mini-GATE-bootloader.hex",
+      "sha256": "8a6e123b618dbb6054d300a3fd9e2cbf1158d76246371de03999da8f7ba0cc8d"
+    }
+  ]
+}
