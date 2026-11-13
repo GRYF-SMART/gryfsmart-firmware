@@ -1,10 +1,10 @@
-## Konfiguracja przez GRYFEXPERT — driver RTI 2.14 / GRYFEXPERT 0.5.52
+## Konfiguracja przez GRYFEXPERT — driver RTI 2.15 / GRYFEXPERT 0.5.55
 
 Połączenie: **GRYFEXPERT → adres IP procesora RTI + port TCP → RS232 → port 0 pierwszego modułu GRYF**. Odpowiedzi wracają tą samą drogą. Moduł ETH nie jest wymagany. RTI działa jako serwer ze stałym adresem IP; GRYFEXPERT inicjuje połączenie jako klient.
 
 ### Ustawienia drivera RTI
 
-W Integration Designer zaktualizuj driver do **2.14**. Wybierz **RS-232**, port procesora połączony z GRYF i **115200, 8N1**. W osobnej sekcji **Konfiguracja przez GRYFEXPERT**:
+W Integration Designer zaktualizuj driver do **2.15**. Wybierz **RS-232**, port procesora połączony z GRYF i **115200, 8N1**. W osobnej sekcji **Konfiguracja przez GRYFEXPERT**:
 
 - włącz konfigurację przez GRYFEXPERT;
 - ustaw **Port TCP konfiguracji GRYFEXPERT**: domyślnie **4211**, z możliwością zmiany na wolny port w zakresie 1024–65535;
@@ -19,6 +19,10 @@ Port służy wyłącznie do konfiguracji modułów przez GRYFEXPERT; nie jest po
 3. Ustaw identyfikator i klucz parowania zgodne z driverem. Zapisz projekt, aby zachować ustawienia.
 4. Kliknij **Połącz**. Program łączy się do RTI — nie uruchamia serwera na komputerze. Następnie rozpoznaj moduły i odczytaj konfigurację jak przy bezpośrednim COM.
 5. Po zakończeniu kliknij **Rozłącz**. RTI wraca do normalnej pracy i odczytuje stany modułów. Po zmianie ID lub modeli w GRYFEXPERT dostosuj także konfigurację drivera w Integration Designer.
+
+### Wyszukiwanie RTI w sieci — wersja 2.15
+
+W GRYFEXPERT wybierz **Narzędzia → Wyszukaj sterowniki RTI** i rozpocznij skanowanie lokalnych podsieci IPv4 /24 na wybranym porcie TCP (domyślnie 4211). Driver 2.15 odpowiada identyfikatorem RTI i portem, gdy konfiguracja przez GRYFEXPERT jest włączona. Program pokazuje adres IP i identyfikator; przycisk **Użyj** wprowadza je do ustawień połączenia. Skanowanie nie pobiera klucza, nie przejmuje połączenia i nie dotyka RS232. Wymaga aktualizacji drivera GRYF i przesłania projektu do procesora RTI. Nie wymaga flashowania firmware modułów GRYF.
 
 Most obsługuje konfigurację, nazwy, reguły, wykrywanie modułów i diagnostykę. **Nie obsługuje wgrywania HEX ani uruchamiania bootloadera.** Podczas sesji wstrzymane są komendy i odpytywanie tego drivera RTI; moduły nadal wykonują własny program. Drugi klient nie może przejąć aktywnej sesji. Zerwanie połączenia lub brak heartbeat przez ponad 10 s zwalnia most i uruchamia synchronizację. Odrzucone polecenia RTI nie są odtwarzane. Nie używaj drugiej instancji drivera na tym samym COM.
 

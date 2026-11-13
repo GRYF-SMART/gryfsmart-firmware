@@ -1,24 +1,24 @@
 # 4. Driver RTI
 
-**[Pobierz najnowszą wersję 2.14](https://github.com/GRYF-SMART/gryfsmart-firmware/releases/download/v2026.11.12-gryfexpert-0.5.52-rti-2.14/GRYF.rtidriver)**
+**[Pobierz najnowszą wersję 2.15](https://github.com/GRYF-SMART/gryfsmart-firmware/releases/download/v2026.11.13-gryfexpert-0.5.55-rti-2.15/GRYF.rtidriver)**
 
-GRYFEXPERT 0.5.52 + RTI 2.14 — konfiguracja przez stały adres IP RTI. W trybie Bramka RTI wpisuje się adres IP procesora RTI oraz port TCP. Domyślny port 4211 jest edytowalny. W driverze osobna sekcja Konfiguracja przez GRYFEXPERT z tym samym portem. To GRYFEXPERT łączy się do RTI; komputer nie nasłuchuje i jego IP nie jest wpisywane w driverze. Zachowano… [Pełny opis wydania](https://github.com/GRYF-SMART/gryfsmart-firmware/releases/tag/v2026.11.12-gryfexpert-0.5.52-rti-2.14).
+GRYFEXPERT 0.5.55 + RTI 2.15 — wyszukiwanie sterowników RTI w lokalnej sieci. GRYFEXPERT znajduje adres IP i identyfikator skonfigurowany w driverze, a wybrany wynik uzupełnia połączenie. Wymaga włączonej konfiguracji GRYFEXPERT w driverze i portu TCP dostępnego w LAN. Wykrywanie nie ujawnia klucza, nie wstrzymuje pracy RTI i nie wymaga flashowania firmware modułów. [Pełny opis wydania](https://github.com/GRYF-SMART/gryfsmart-firmware/releases/tag/v2026.11.13-gryfexpert-0.5.55-rti-2.15).
 
 ## Trzy ostatnie wersje
 
 | Wersja | Data publikacji | Pobieranie | Zmiany |
 |---|---|---|---|
+| **2.15** | 2026-11-13 | [Pobierz](https://github.com/GRYF-SMART/gryfsmart-firmware/releases/download/v2026.11.13-gryfexpert-0.5.55-rti-2.15/GRYF.rtidriver) | Odpowiedź wykrywania RTI dla GRYFEXPERT: adres IP, identyfikator RTI i port, bez logowania do mostu i wpływu na RS232. Wymaga włączonej konfiguracji GRYFEXPERT w driverze. [Pełny opis](https://github.com/GRYF-SMART/gryfsmart-firmware/releases/tag/v2026.11.13-gryfexpert-0.5.55-rti-2.15) |
 | **2.14** | 2026-11-12 | [Pobierz](https://github.com/GRYF-SMART/gryfsmart-firmware/releases/download/v2026.11.12-gryfexpert-0.5.52-rti-2.14/GRYF.rtidriver) | GRYFEXPERT 0.5.52 + RTI 2.14 — konfiguracja przez stały adres IP RTI. W trybie Bramka RTI wpisuje się adres IP procesora RTI oraz port TCP. Domyślny port 4211 jest edytowalny. W driverze osobna sekcja Konfiguracja przez GRYFEXPERT z tym samym portem. To GRYFEXPERT łączy się do RTI; komputer nie nasłuchuje i jego IP nie jest wpisywane w driverze. Zachowano… [Pełny opis](https://github.com/GRYF-SMART/gryfsmart-firmware/releases/tag/v2026.11.12-gryfexpert-0.5.52-rti-2.14) |
 | **2.13** | 2026-11-12 | [Pobierz](https://github.com/GRYF-SMART/gryfsmart-firmware/releases/download/v2026.11.12-gryfexpert-0.5.51-rti-2.13/GRYF.rtidriver) | GRYFEXPERT 0.5.51 — bramka RTI (wymaga drivera GRYF 2.13). Nowy tryb połączenia Bramka RTI obok COM i Ethernet ETH. Nasłuch TCP, klucz parowania, identyfikator procesora i status. Konfiguracja i diagnostyka modułów przez RS232 procesora RTI, bez ETH. Heartbeat i rozłączenie sesji z przywróceniem pracy drivera. Wgrywanie HEX w tym trybie zablokowane.… [Pełny opis](https://github.com/GRYF-SMART/gryfsmart-firmware/releases/tag/v2026.11.12-gryfexpert-0.5.51-rti-2.13) |
-| **2.12** | 2026-11-10 | [Pobierz](https://github.com/GRYF-SMART/gryfsmart-firmware/releases/download/v2026.11.10-rti-2.12/GRYF.rtidriver) | GRYF RTI 2.12 — wspólny cykl odczytu stanów modułów. Jeden moduł co 10 sekund: ID 1, ID 2, aż do ostatniego i ponownie ID 1. Pełny obieg trwa liczba modułów × 10 s. W każdym cyklu odczyty wyjść / rolet, PWM (R0806T), wejść i flag. Zastępuje osobne okresy 8,1 s oraz 10,504 s. [Pełny opis](https://github.com/GRYF-SMART/gryfsmart-firmware/releases/tag/v2026.11.10-rti-2.12) |
 
-## Konfiguracja przez GRYFEXPERT — driver RTI 2.14 / GRYFEXPERT 0.5.52
+## Konfiguracja przez GRYFEXPERT — driver RTI 2.15 / GRYFEXPERT 0.5.55
 
 Połączenie: **GRYFEXPERT → adres IP procesora RTI + port TCP → RS232 → port 0 pierwszego modułu GRYF**. Odpowiedzi wracają tą samą drogą. Moduł ETH nie jest wymagany. RTI działa jako serwer ze stałym adresem IP; GRYFEXPERT inicjuje połączenie jako klient.
 
 ### Ustawienia drivera RTI
 
-W Integration Designer zaktualizuj driver do **2.14**. Wybierz **RS-232**, port procesora połączony z GRYF i **115200, 8N1**. W osobnej sekcji **Konfiguracja przez GRYFEXPERT**:
+W Integration Designer zaktualizuj driver do **2.15**. Wybierz **RS-232**, port procesora połączony z GRYF i **115200, 8N1**. W osobnej sekcji **Konfiguracja przez GRYFEXPERT**:
 
 - włącz konfigurację przez GRYFEXPERT;
 - ustaw **Port TCP konfiguracji GRYFEXPERT**: domyślnie **4211**, z możliwością zmiany na wolny port w zakresie 1024–65535;
@@ -33,6 +33,10 @@ Port służy wyłącznie do konfiguracji modułów przez GRYFEXPERT; nie jest po
 3. Ustaw identyfikator i klucz parowania zgodne z driverem. Zapisz projekt, aby zachować ustawienia.
 4. Kliknij **Połącz**. Program łączy się do RTI — nie uruchamia serwera na komputerze. Następnie rozpoznaj moduły i odczytaj konfigurację jak przy bezpośrednim COM.
 5. Po zakończeniu kliknij **Rozłącz**. RTI wraca do normalnej pracy i odczytuje stany modułów. Po zmianie ID lub modeli w GRYFEXPERT dostosuj także konfigurację drivera w Integration Designer.
+
+### Wyszukiwanie RTI w sieci
+
+W menu **Narzędzia → Wyszukaj sterowniki RTI** uruchom skanowanie. Program sprawdza lokalne podsieci IPv4 /24 na wskazanym porcie TCP (domyślnie 4211). Driver RTI 2.15 odpowiada skonfigurowanym identyfikatorem i portem, jeśli **Konfiguracja przez GRYFEXPERT** jest włączona. Wynik pokazuje IP procesora RTI i jego identyfikator; **Użyj** przenosi te dane do ustawień połączenia GRYFEXPERT. Klucz parowania nie jest odczytywany ani przesyłany przez skaner. Wykrywanie nie przejmuje sesji, nie zatrzymuje pracy drivera i nie wysyła żadnych komend do modułów. Wyszukiwanie nie wymaga flashowania firmware GRYF.
 
 Most obsługuje konfigurację, nazwy, reguły, wykrywanie modułów i diagnostykę. **Nie obsługuje wgrywania HEX ani uruchamiania bootloadera.** Podczas sesji wstrzymane są komendy i odpytywanie tego drivera RTI; moduły nadal wykonują własny program. Drugi klient nie może przejąć aktywnej sesji. Zerwanie połączenia lub brak heartbeat przez ponad 10 s zwalnia most i uruchamia synchronizację. Odrzucone polecenia RTI nie są odtwarzane. Nie używaj drugiej instancji drivera na tym samym COM.
 
