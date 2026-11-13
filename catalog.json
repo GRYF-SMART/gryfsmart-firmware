@@ -2,6 +2,14 @@
   "products": {
     "GRYFSMART": [
       {
+        "version": "0.5.60",
+        "url": "https://github.com/GRYF-SMART/gryfsmart-firmware/releases/download/v2026.11.13-gryfexpert-0.5.60-rti-2.16/GRYFEXPERT-0.5.60-win-x64.zip",
+        "release": "https://github.com/GRYF-SMART/gryfsmart-firmware/releases/tag/v2026.11.13-gryfexpert-0.5.60-rti-2.16",
+        "date": "2026-11-13",
+        "notes": "GRYFEXPERT 0.5.60 / RTI 2.16 / firmware modules updated. Nine consistent shutter actions across GRYFEXPERT, S0804 HEX, RTI and Home Assistant. Step 5 cycles OPEN, STOP, CLOSE, STOP; code 6 remains a compatibility alias. Directional steps, open/close for 1..255 seconds, percent position, auto stop after configured travel, stop and direction change are supported.\n\nTemperature reports on R0806T, R0808 and ETH0606T are sent only on first sample and when rounded value changes by 0.1 C. Stable readings no longer produce periodic reports.\n\nAll builds and offline tests passed. No physical modules were programmed. See RTI/README.md, HA README and the relevant firmware source guides.",
+        "digest": "sha256:b8f6fffcd1d3bc687be947e28b65e71b92d9b0ddfdea2aa498f06d35d735c646"
+      },
+      {
         "version": "0.5.59",
         "url": "https://github.com/GRYF-SMART/gryfsmart-firmware/releases/download/v2026.11.13-shutter-step/GRYFEXPERT-0.5.59-win-x64.zip",
         "release": "https://github.com/GRYF-SMART/gryfsmart-firmware/releases/tag/v2026.11.13-shutter-step",
@@ -16,14 +24,6 @@
         "date": "2026-11-13",
         "notes": "GRYFEXPERT 0.5.58 — wysyłanie bez odczytu wstępnego.\nUsunięto przycisk „Sprawdź sprzęt, zachowaj projekt”. Konfigurację można wysłać od razu. Ustawienia projektu zastępują ustawienia sprzętu w wybranym zakresie, także jeśli moduł ma już zapisaną regułę lub inną konfigurację. Wysyłka pojedynczej reguły pozostawia pozostałe reguły bez zmian. Po wysłaniu pozostaje automatyczna kontrola zakresu i potwierdzenie zapisu EEPROM.\n\nGRYFEXPERT 0.5.57 — czytelny komunikat o błędzie połączenia RTI.\n\nGRYFEXPERT 0.5.56 — widoczny postęp wyszukiwania RTI.\r\n",
         "digest": "sha256:ab3355cd4dbba71225a22e5296dae2204427e03d9a2de9a3b7abdd2299e222b6"
-      },
-      {
-        "version": "0.5.57",
-        "url": "https://github.com/GRYF-SMART/gryfsmart-firmware/releases/download/v2026.11.13-gryfexpert-0.5.57-rti-2.15/GRYFEXPERT-0.5.57-win-x64.zip",
-        "release": "https://github.com/GRYF-SMART/gryfsmart-firmware/releases/tag/v2026.11.13-gryfexpert-0.5.57-rti-2.15",
-        "date": "2026-11-13",
-        "notes": "GRYFEXPERT 0.5.57 — komunikat o błędzie połączenia RTI.\nPrzy nieudanym połączeniu wyświetlana jest pogrubiona, czerwona podpowiedź sprawdzenia adresu IP, portu, nazwy RTI i klucza parowania oraz aktualizacji GRYFEXPERT.\n\nGRYFEXPERT 0.5.56 — widoczny postęp wyszukiwania RTI.\nPodczas skanowania widoczny jest animowany wskaźnik, pasek postępu, liczba sprawdzonych adresów IP i port TCP. Po zakończeniu program wyświetla liczbę znalezionych driverów albo czytelny komunikat o braku wyników.\r\n",
-        "digest": "sha256:a9d064ffe124fe1a79ee8a3599084c773b3dc2171117349a1d641293c350d0a6"
       }
     ],
     "AKTUALIZATOR": [
@@ -80,6 +80,14 @@
     ],
     "RTI": [
       {
+        "version": "2.16",
+        "url": "https://github.com/GRYF-SMART/gryfsmart-firmware/releases/download/v2026.11.13-gryfexpert-0.5.60-rti-2.16/GRYF.rtidriver",
+        "release": "https://github.com/GRYF-SMART/gryfsmart-firmware/releases/tag/v2026.11.13-gryfexpert-0.5.60-rti-2.16",
+        "date": "2026-11-13",
+        "notes": "GRYFEXPERT 0.5.60 / RTI 2.16 / firmware modules updated. Nine consistent shutter actions across GRYFEXPERT, S0804 HEX, RTI and Home Assistant. Step 5 cycles OPEN, STOP, CLOSE, STOP; code 6 remains a compatibility alias. Directional steps, open/close for 1..255 seconds, percent position, auto stop after configured travel, stop and direction change are supported.\n\nTemperature reports on R0806T, R0808 and ETH0606T are sent only on first sample and when rounded value changes by 0.1 C. Stable readings no longer produce periodic reports.\n\nAll builds and offline tests passed. No physical modules were programmed. See RTI/README.md, HA README and the relevant firmware source guides.",
+        "digest": "sha256:6842b319ac8d180905050c7fdf25ad297cf9a54772893da0ee6c832d9c2d662f"
+      },
+      {
         "version": "2.15",
         "url": "https://github.com/GRYF-SMART/gryfsmart-firmware/releases/download/v2026.11.13-gryfexpert-0.5.55-rti-2.15/GRYF.rtidriver",
         "release": "https://github.com/GRYF-SMART/gryfsmart-firmware/releases/tag/v2026.11.13-gryfexpert-0.5.55-rti-2.15",
@@ -94,17 +102,17 @@
         "date": "2026-11-12",
         "notes": "GRYFEXPERT 0.5.52 + RTI 2.14 — konfiguracja przez stały adres IP RTI.\n\nW trybie Bramka RTI wpisuje się adres IP procesora RTI oraz port TCP. Domyślny port 4211 jest edytowalny. W driverze osobna sekcja Konfiguracja przez GRYFEXPERT z tym samym portem. To GRYFEXPERT łączy się do RTI; komputer nie nasłuchuje i jego IP nie jest wpisywane w driverze. Zachowano klucz parowania, identyfikator, blokadę HEX i przywrócenie pracy RTI po sesji. Zaktualizuj oba programy. Projekty zachowane; dla dotychczasowego trybu RTI podaj adres procesora i ponownie potwierdź powiązanie modułów.\n\nGRYF RTI 2.14 — serwer konfiguracji dla GRYFEXPERT 0.5.52.\n\n- GRYFEXPERT inicjuje połączenie do stałego adresu IP procesora RTI.\n- Osobna sekcja drivera „Konfiguracja przez GRYFEXPERT”. Port TCP domyślnie 4211, edytowalny (1024–65535), taki sam jak w GRYFEXPERT.\n- Usunięto pole IP komputera z drivera. RTI nasłuchuje przez GenericServer (runtime 15+).\n- Parowanie i wyłączność jednej sesji, odrzucanie drugiego klienta, limit nieautoryzowanych połączeń i timeout.\n- Po rozłączeniu lub utracie heartbeat RTI wznawia synchronizację stanów. HEX pozostaje zablokowany.\n- Zmiana protokołu mostu: zaktualizuj obie strony (0.5.52 / 2.14).\n\nWalidacja: PackageDriver, testy serwera, rolet i startu. Testy z rzeczywistymi gniazdami TCP i symulowanym RTI, bez programowania sprzętu. Pozostaje test na fizycznym procesorze RTI.\n\nPozostałe wsady i narzędzia zachowane z wydania v2026.11.12-installer-2.0.23 bez zmian. Testy GRYFEXPERT oraz test interfejsu i sesji TCP: PASS.\n",
         "digest": "sha256:008ae8d2b78c36923853ba6bd14365b41214e9767ac9f341c6ed7847c83d9d05"
-      },
-      {
-        "version": "2.13",
-        "url": "https://github.com/GRYF-SMART/gryfsmart-firmware/releases/download/v2026.11.12-gryfexpert-0.5.51-rti-2.13/GRYF.rtidriver",
-        "release": "https://github.com/GRYF-SMART/gryfsmart-firmware/releases/tag/v2026.11.12-gryfexpert-0.5.51-rti-2.13",
-        "date": "2026-11-12",
-        "notes": "GRYFEXPERT 0.5.51 — bramka RTI (wymaga drivera GRYF 2.13).\n\nNowy tryb połączenia Bramka RTI obok COM i Ethernet ETH. Nasłuch TCP, klucz parowania, identyfikator procesora i status. Konfiguracja i diagnostyka modułów przez RS232 procesora RTI, bez ETH. Heartbeat i rozłączenie sesji z przywróceniem pracy drivera. Wgrywanie HEX w tym trybie zablokowane. Projekty i połączenia COM/ETH zachowane.\n\nTesty TCP z symulatorem, regresja konfiguracji i firmware. Nie wykonywano konfiguracji ani flashowania fizycznego sprzętu.\n\nGRYF RTI 2.13 — bramka konfiguracyjna dla GRYFEXPERT 0.5.51.\n\n- GRYFEXPERT ⇄ LAN ⇄ RTI ⇄ RS232 ⇄ moduły, bez bramki ETH.\n- RTI inicjuje połączenie do komputera; port 4211, klucz parowania i identyfikator RTI.\n- Wyłączny dostęp do portu podczas konfiguracji: wstrzymane komendy drivera i cykliczne odczyty.\n- Heartbeat, automatyczne zwolnienie sesji i synchronizacja stanów po rozłączeniu.\n- Zmienne statusu do panelu RTI. Usunięty starszy nieparowany kanał Hello.\n- Konfiguracja i diagnostyka; HEX i komendy bootloadera zablokowane.\n\nWalidacja: PackageDriver, testy kolejności startu, rolet i mostu TCP; bez testu na fizycznym procesorze RTI. Instrukcja: RTI/README.md w repozytorium.\n\nPozostałe wsady i narzędzia zachowane z wydania v2026.11.12-installer-2.0.23 bez zmian. Testy GRYFEXPERT: 782 kontrole oraz test interfejsu i sesji TCP.\n",
-        "digest": "sha256:474cc362f0582d6da4e05e1d1117e990b67b1127823653ffe0ecbfad276307f2"
       }
     ],
     "HOME-ASSISTANT": [
+      {
+        "version": "0.3.15",
+        "url": "https://github.com/GRYF-SMART/ha-gryfsmart/releases/download/v0.3.15/GRYFSMART-HomeAssistant-0.3.15.zip",
+        "release": "https://github.com/GRYF-SMART/ha-gryfsmart/releases/tag/v0.3.15",
+        "date": "2026-11-13",
+        "notes": "GRYFSMART Home Assistant 0.3.15\\n\\nKomplet dziewięciu akcji rolet: OTWÓRZ, STOP, ZAMKNIJ, oba kierunkowe STEP, STEP cykliczny, otwieranie i zamykanie na czas oraz pozycja procentowa. Usługa gryfsmart.shutter_action przyjmuje czas w sekundach dla obu akcji czasowych. Parametry walidowane są przed wysłaniem.\\n\\nZgodne z protokołem modułów GRYF i GRYFEXPERT 0.5.60. Po aktualizacji integracji uruchom ponownie Home Assistant.",
+        "digest": "sha256:c8aeacf4e80a0df2d2c0f822ade69e50820cf7d3320b0e333075993b0a19feb9"
+      },
       {
         "version": "0.3.14",
         "url": "https://github.com/GRYF-SMART/ha-gryfsmart/releases/download/v0.3.14/GRYFSMART-HomeAssistant-0.3.14.zip",
@@ -120,57 +128,49 @@
         "date": "2026-11-04",
         "notes": "Sloty pomijają moduły wybrane w innych slotach. R0808/R0806T FW33: wyłącz po czasie, impuls po opóźnieniu na czas, histereza termostatów od 0. Zdalne timery wymagają zgodnych modułów FW33 na drodze do celu. Po aktualizacji zrestartuj HA i odśwież przeglądarkę.",
         "digest": "sha256:8e152787d62a709509e405dc2465cd41a0d48a451252ac09cd6ab754008b0bb8"
-      },
-      {
-        "version": "0.3.12",
-        "url": "https://github.com/GRYF-SMART/ha-gryfsmart/releases/download/v0.3.12/GRYFSMART-HomeAssistant-0.3.12.zip",
-        "release": "https://github.com/GRYF-SMART/ha-gryfsmart/releases/tag/v0.3.12",
-        "date": "2026-11-04",
-        "notes": "Sterowanie online przy regułach lokalnych i zdalnych: stan i przełączanie przekaźników, suwak PWM oraz Open/Stop/Close dla rolet. Przyciski korzystają z potwierdzonych stanów HA i nie zmieniają treści reguły ani EEPROM. Po aktualizacji zrestartuj HA i odśwież przeglądarkę.",
-        "digest": "sha256:9650febeaeed1db59097eda3651186c23d9b3e3825e5099f411e279ba47f99b0"
       }
     ]
   },
   "firmware": {
     "ETH Mini": {
       "version": "4",
-      "url": "https://github.com/GRYF-SMART/gryfsmart-firmware/releases/download/v2026.11.13-shutter-step/ETH-Mini-GATE-firmware-v4.hex",
-      "release": "https://github.com/GRYF-SMART/gryfsmart-firmware/releases/tag/v2026.11.13-shutter-step",
+      "url": "https://github.com/GRYF-SMART/gryfsmart-firmware/releases/download/v2026.11.13-gryfexpert-0.5.60-rti-2.16/ETH-Mini-GATE-firmware-v4.hex",
+      "release": "https://github.com/GRYF-SMART/gryfsmart-firmware/releases/tag/v2026.11.13-gryfexpert-0.5.60-rti-2.16",
       "date": "2026-11-13",
-      "notes": "STEP i otwieranie rolety na zadany czas\n\nGRYFEXPERT 0.5.59. Firmware S0804 36, R0806T 38, R0808 37,\nETH0606T 36 i R0806T-OLD 10.\n\nSTEP jest akcją 5. Akcja 6 także wykonuje STEP dla istniejących zapisów. Podczas ruchu zatrzymuje roletę. Po zatrzymaniu\nnastępne wywołanie uruchamia ruch przeciwny do ostatniego.\nCykl to OTWÓRZ, STOP, ZAMKNIJ, STOP, OTWÓRZ.\nZakończenie czasu oraz komenda STOP również kończą ruch.\nPrzy znanej pozycji całkowicie zamkniętej STEP otwiera, a przy otwartej zamyka.\nPo restarcie, gdy pozycja i kierunek są nieznane, pierwszy STEP otwiera.\nPrzed zmianą kierunku sterownik odłącza napęd i odczekuje 300 ms.\n\nOtwórz na czas jest akcją 8. Parametr to 1–255 pełnych sekund.\nPrzykład otwierania rolety 1 w module ID 2 przez 10 sekund\nAT+RolAct=2,1,8,10,21\nSTEP dla tej samej rolety\nAT+RolAct=2,1,5,0,8\nSTOP dla tej samej rolety\nAT+RolAct=2,1,3,0,6\nOstatnie pole każdej ramki jest sumą pól liczbowych.\n\nCzas jest liczony od włączenia napędu, po ewentualnej przerwie kierunkowej.\nPonowne Otwórz na czas odnawia odliczanie. STOP lub STEP przerywa ruch.\nCzas akcji jest niezależny od zapamiętanego pełnego czasu przejazdu.\nKrótki ruch z nieznanej pozycji nie oznacza osiągnięcia 100%.\nPełny czas przejazdu nadal służy do obliczania pozycji.\n\nW GRYFEXPERT akcje są dostępne w akcjach lokalnych S0804,\nw slotach rolet wszystkich pięciu sterowników i w panelu online S0804.\nSTEP jest również przyciskiem sterowania online w tabelach reguł i slotów.\nDane reguł i EEPROM zachowują dotychczasowy układ. Dawna akcja 5 (Krok zamykania) wykonuje teraz pełny cykl STEP.\nAkcja 8 wymaga aktualizacji S0804 oraz sterownika przechowującego slot.\nETH Mini GATE przekazuje te ramki przez istniejący protokół.\n\nWeryfikacja obejmuje symulator AVR, cykl STEP, krańce, STOP, czasy 1/10/255 s,\nczęściową pozycję, oba UART-y, cztery rolety, sloty i zapis/odczyt EEPROM,\ntesty aplikacji oraz kontrolę HEX względem obszaru bootloadera.\nWgrywanie do fizycznych modułów wykonuje użytkownik programatorem.\n",
+      "notes": "GRYFEXPERT 0.5.60 / RTI 2.16 / firmware modules updated. Nine consistent shutter actions across GRYFEXPERT, S0804 HEX, RTI and Home Assistant. Step 5 cycles OPEN, STOP, CLOSE, STOP; code 6 remains a compatibility alias. Directional steps, open/close for 1..255 seconds, percent position, auto stop after configured travel, stop and direction change are supported.\n\nTemperature reports on R0806T, R0808 and ETH0606T are sent only on first sample and when rounded value changes by 0.1 C. Stable readings no longer produce periodic reports.\n\nAll builds and offline tests passed. No physical modules were programmed. See RTI/README.md, HA README and the relevant firmware source guides.",
       "digest": "sha256:89e1db083c22a39fc9ab884db6e77ae36f535a0ae060eca9570a57e5c3c073bc"
     },
     "ETH0606T": {
-      "version": "36",
-      "url": "https://github.com/GRYF-SMART/gryfsmart-firmware/releases/download/v2026.11.13-shutter-step/ETH0606T-firmware.hex",
-      "release": "https://github.com/GRYF-SMART/gryfsmart-firmware/releases/tag/v2026.11.13-shutter-step",
+      "version": "37",
+      "url": "https://github.com/GRYF-SMART/gryfsmart-firmware/releases/download/v2026.11.13-gryfexpert-0.5.60-rti-2.16/ETH0606T-firmware.hex",
+      "release": "https://github.com/GRYF-SMART/gryfsmart-firmware/releases/tag/v2026.11.13-gryfexpert-0.5.60-rti-2.16",
       "date": "2026-11-13",
-      "notes": "STEP i otwieranie rolety na zadany czas\n\nGRYFEXPERT 0.5.59. Firmware S0804 36, R0806T 38, R0808 37,\nETH0606T 36 i R0806T-OLD 10.\n\nSTEP jest akcją 5. Akcja 6 także wykonuje STEP dla istniejących zapisów. Podczas ruchu zatrzymuje roletę. Po zatrzymaniu\nnastępne wywołanie uruchamia ruch przeciwny do ostatniego.\nCykl to OTWÓRZ, STOP, ZAMKNIJ, STOP, OTWÓRZ.\nZakończenie czasu oraz komenda STOP również kończą ruch.\nPrzy znanej pozycji całkowicie zamkniętej STEP otwiera, a przy otwartej zamyka.\nPo restarcie, gdy pozycja i kierunek są nieznane, pierwszy STEP otwiera.\nPrzed zmianą kierunku sterownik odłącza napęd i odczekuje 300 ms.\n\nOtwórz na czas jest akcją 8. Parametr to 1–255 pełnych sekund.\nPrzykład otwierania rolety 1 w module ID 2 przez 10 sekund\nAT+RolAct=2,1,8,10,21\nSTEP dla tej samej rolety\nAT+RolAct=2,1,5,0,8\nSTOP dla tej samej rolety\nAT+RolAct=2,1,3,0,6\nOstatnie pole każdej ramki jest sumą pól liczbowych.\n\nCzas jest liczony od włączenia napędu, po ewentualnej przerwie kierunkowej.\nPonowne Otwórz na czas odnawia odliczanie. STOP lub STEP przerywa ruch.\nCzas akcji jest niezależny od zapamiętanego pełnego czasu przejazdu.\nKrótki ruch z nieznanej pozycji nie oznacza osiągnięcia 100%.\nPełny czas przejazdu nadal służy do obliczania pozycji.\n\nW GRYFEXPERT akcje są dostępne w akcjach lokalnych S0804,\nw slotach rolet wszystkich pięciu sterowników i w panelu online S0804.\nSTEP jest również przyciskiem sterowania online w tabelach reguł i slotów.\nDane reguł i EEPROM zachowują dotychczasowy układ. Dawna akcja 5 (Krok zamykania) wykonuje teraz pełny cykl STEP.\nAkcja 8 wymaga aktualizacji S0804 oraz sterownika przechowującego slot.\nETH Mini GATE przekazuje te ramki przez istniejący protokół.\n\nWeryfikacja obejmuje symulator AVR, cykl STEP, krańce, STOP, czasy 1/10/255 s,\nczęściową pozycję, oba UART-y, cztery rolety, sloty i zapis/odczyt EEPROM,\ntesty aplikacji oraz kontrolę HEX względem obszaru bootloadera.\nWgrywanie do fizycznych modułów wykonuje użytkownik programatorem.\n",
-      "digest": "sha256:9652cd5612baba446079ebdc8236da74f54347c3343cfaddbd61b0dae0b5e8ad"
+      "notes": "GRYFEXPERT 0.5.60 / RTI 2.16 / firmware modules updated. Nine consistent shutter actions across GRYFEXPERT, S0804 HEX, RTI and Home Assistant. Step 5 cycles OPEN, STOP, CLOSE, STOP; code 6 remains a compatibility alias. Directional steps, open/close for 1..255 seconds, percent position, auto stop after configured travel, stop and direction change are supported.\n\nTemperature reports on R0806T, R0808 and ETH0606T are sent only on first sample and when rounded value changes by 0.1 C. Stable readings no longer produce periodic reports.\n\nAll builds and offline tests passed. No physical modules were programmed. See RTI/README.md, HA README and the relevant firmware source guides.",
+      "digest": "sha256:2e848581e2704dbb1448c25e7217ce5033f1f199ff35752f053e64dc60651433"
     },
     "R0808": {
-      "version": "37",
-      "url": "https://github.com/GRYF-SMART/gryfsmart-firmware/releases/download/v2026.11.13-shutter-step/R0808-firmware.hex",
-      "release": "https://github.com/GRYF-SMART/gryfsmart-firmware/releases/tag/v2026.11.13-shutter-step",
+      "version": "38",
+      "url": "https://github.com/GRYF-SMART/gryfsmart-firmware/releases/download/v2026.11.13-gryfexpert-0.5.60-rti-2.16/R0808-firmware.hex",
+      "release": "https://github.com/GRYF-SMART/gryfsmart-firmware/releases/tag/v2026.11.13-gryfexpert-0.5.60-rti-2.16",
       "date": "2026-11-13",
-      "notes": "STEP i otwieranie rolety na zadany czas\n\nGRYFEXPERT 0.5.59. Firmware S0804 36, R0806T 38, R0808 37,\nETH0606T 36 i R0806T-OLD 10.\n\nSTEP jest akcją 5. Akcja 6 także wykonuje STEP dla istniejących zapisów. Podczas ruchu zatrzymuje roletę. Po zatrzymaniu\nnastępne wywołanie uruchamia ruch przeciwny do ostatniego.\nCykl to OTWÓRZ, STOP, ZAMKNIJ, STOP, OTWÓRZ.\nZakończenie czasu oraz komenda STOP również kończą ruch.\nPrzy znanej pozycji całkowicie zamkniętej STEP otwiera, a przy otwartej zamyka.\nPo restarcie, gdy pozycja i kierunek są nieznane, pierwszy STEP otwiera.\nPrzed zmianą kierunku sterownik odłącza napęd i odczekuje 300 ms.\n\nOtwórz na czas jest akcją 8. Parametr to 1–255 pełnych sekund.\nPrzykład otwierania rolety 1 w module ID 2 przez 10 sekund\nAT+RolAct=2,1,8,10,21\nSTEP dla tej samej rolety\nAT+RolAct=2,1,5,0,8\nSTOP dla tej samej rolety\nAT+RolAct=2,1,3,0,6\nOstatnie pole każdej ramki jest sumą pól liczbowych.\n\nCzas jest liczony od włączenia napędu, po ewentualnej przerwie kierunkowej.\nPonowne Otwórz na czas odnawia odliczanie. STOP lub STEP przerywa ruch.\nCzas akcji jest niezależny od zapamiętanego pełnego czasu przejazdu.\nKrótki ruch z nieznanej pozycji nie oznacza osiągnięcia 100%.\nPełny czas przejazdu nadal służy do obliczania pozycji.\n\nW GRYFEXPERT akcje są dostępne w akcjach lokalnych S0804,\nw slotach rolet wszystkich pięciu sterowników i w panelu online S0804.\nSTEP jest również przyciskiem sterowania online w tabelach reguł i slotów.\nDane reguł i EEPROM zachowują dotychczasowy układ. Dawna akcja 5 (Krok zamykania) wykonuje teraz pełny cykl STEP.\nAkcja 8 wymaga aktualizacji S0804 oraz sterownika przechowującego slot.\nETH Mini GATE przekazuje te ramki przez istniejący protokół.\n\nWeryfikacja obejmuje symulator AVR, cykl STEP, krańce, STOP, czasy 1/10/255 s,\nczęściową pozycję, oba UART-y, cztery rolety, sloty i zapis/odczyt EEPROM,\ntesty aplikacji oraz kontrolę HEX względem obszaru bootloadera.\nWgrywanie do fizycznych modułów wykonuje użytkownik programatorem.\n",
-      "digest": "sha256:55691727f1239d3badd245849742ded446022604d87b3d630f29bda0231e6d00"
+      "notes": "GRYFEXPERT 0.5.60 / RTI 2.16 / firmware modules updated. Nine consistent shutter actions across GRYFEXPERT, S0804 HEX, RTI and Home Assistant. Step 5 cycles OPEN, STOP, CLOSE, STOP; code 6 remains a compatibility alias. Directional steps, open/close for 1..255 seconds, percent position, auto stop after configured travel, stop and direction change are supported.\n\nTemperature reports on R0806T, R0808 and ETH0606T are sent only on first sample and when rounded value changes by 0.1 C. Stable readings no longer produce periodic reports.\n\nAll builds and offline tests passed. No physical modules were programmed. See RTI/README.md, HA README and the relevant firmware source guides.",
+      "digest": "sha256:17ae19995c45fa757bb24774a63472d803e98b87c4410761ecdc40adfaec4fa8"
     },
     "R0806T": {
-      "version": "38",
-      "url": "https://github.com/GRYF-SMART/gryfsmart-firmware/releases/download/v2026.11.13-shutter-step/R0806T-firmware.hex",
-      "release": "https://github.com/GRYF-SMART/gryfsmart-firmware/releases/tag/v2026.11.13-shutter-step",
+      "version": "39",
+      "url": "https://github.com/GRYF-SMART/gryfsmart-firmware/releases/download/v2026.11.13-gryfexpert-0.5.60-rti-2.16/R0806T-firmware.hex",
+      "release": "https://github.com/GRYF-SMART/gryfsmart-firmware/releases/tag/v2026.11.13-gryfexpert-0.5.60-rti-2.16",
       "date": "2026-11-13",
-      "notes": "STEP i otwieranie rolety na zadany czas\n\nGRYFEXPERT 0.5.59. Firmware S0804 36, R0806T 38, R0808 37,\nETH0606T 36 i R0806T-OLD 10.\n\nSTEP jest akcją 5. Akcja 6 także wykonuje STEP dla istniejących zapisów. Podczas ruchu zatrzymuje roletę. Po zatrzymaniu\nnastępne wywołanie uruchamia ruch przeciwny do ostatniego.\nCykl to OTWÓRZ, STOP, ZAMKNIJ, STOP, OTWÓRZ.\nZakończenie czasu oraz komenda STOP również kończą ruch.\nPrzy znanej pozycji całkowicie zamkniętej STEP otwiera, a przy otwartej zamyka.\nPo restarcie, gdy pozycja i kierunek są nieznane, pierwszy STEP otwiera.\nPrzed zmianą kierunku sterownik odłącza napęd i odczekuje 300 ms.\n\nOtwórz na czas jest akcją 8. Parametr to 1–255 pełnych sekund.\nPrzykład otwierania rolety 1 w module ID 2 przez 10 sekund\nAT+RolAct=2,1,8,10,21\nSTEP dla tej samej rolety\nAT+RolAct=2,1,5,0,8\nSTOP dla tej samej rolety\nAT+RolAct=2,1,3,0,6\nOstatnie pole każdej ramki jest sumą pól liczbowych.\n\nCzas jest liczony od włączenia napędu, po ewentualnej przerwie kierunkowej.\nPonowne Otwórz na czas odnawia odliczanie. STOP lub STEP przerywa ruch.\nCzas akcji jest niezależny od zapamiętanego pełnego czasu przejazdu.\nKrótki ruch z nieznanej pozycji nie oznacza osiągnięcia 100%.\nPełny czas przejazdu nadal służy do obliczania pozycji.\n\nW GRYFEXPERT akcje są dostępne w akcjach lokalnych S0804,\nw slotach rolet wszystkich pięciu sterowników i w panelu online S0804.\nSTEP jest również przyciskiem sterowania online w tabelach reguł i slotów.\nDane reguł i EEPROM zachowują dotychczasowy układ. Dawna akcja 5 (Krok zamykania) wykonuje teraz pełny cykl STEP.\nAkcja 8 wymaga aktualizacji S0804 oraz sterownika przechowującego slot.\nETH Mini GATE przekazuje te ramki przez istniejący protokół.\n\nWeryfikacja obejmuje symulator AVR, cykl STEP, krańce, STOP, czasy 1/10/255 s,\nczęściową pozycję, oba UART-y, cztery rolety, sloty i zapis/odczyt EEPROM,\ntesty aplikacji oraz kontrolę HEX względem obszaru bootloadera.\nWgrywanie do fizycznych modułów wykonuje użytkownik programatorem.\n",
-      "digest": "sha256:5a6c111d662047502b558dd72a05a4ce00a98172e243cb2328c8ce7ec4201837"
+      "notes": "GRYFEXPERT 0.5.60 / RTI 2.16 / firmware modules updated. Nine consistent shutter actions across GRYFEXPERT, S0804 HEX, RTI and Home Assistant. Step 5 cycles OPEN, STOP, CLOSE, STOP; code 6 remains a compatibility alias. Directional steps, open/close for 1..255 seconds, percent position, auto stop after configured travel, stop and direction change are supported.\n\nTemperature reports on R0806T, R0808 and ETH0606T are sent only on first sample and when rounded value changes by 0.1 C. Stable readings no longer produce periodic reports.\n\nAll builds and offline tests passed. No physical modules were programmed. See RTI/README.md, HA README and the relevant firmware source guides.",
+      "digest": "sha256:49a061aecf1cb6959cb53a4989100eb886e5e96b79617cbc0aba8de1e601dbab"
     },
     "S0804": {
-      "version": "36",
-      "url": "https://github.com/GRYF-SMART/gryfsmart-firmware/releases/download/v2026.11.13-shutter-step/S0804-firmware.hex",
-      "release": "https://github.com/GRYF-SMART/gryfsmart-firmware/releases/tag/v2026.11.13-shutter-step",
+      "version": "37",
+      "url": "https://github.com/GRYF-SMART/gryfsmart-firmware/releases/download/v2026.11.13-gryfexpert-0.5.60-rti-2.16/S0804-firmware.hex",
+      "release": "https://github.com/GRYF-SMART/gryfsmart-firmware/releases/tag/v2026.11.13-gryfexpert-0.5.60-rti-2.16",
       "date": "2026-11-13",
-      "notes": "STEP i otwieranie rolety na zadany czas\n\nGRYFEXPERT 0.5.59. Firmware S0804 36, R0806T 38, R0808 37,\nETH0606T 36 i R0806T-OLD 10.\n\nSTEP jest akcją 5. Akcja 6 także wykonuje STEP dla istniejących zapisów. Podczas ruchu zatrzymuje roletę. Po zatrzymaniu\nnastępne wywołanie uruchamia ruch przeciwny do ostatniego.\nCykl to OTWÓRZ, STOP, ZAMKNIJ, STOP, OTWÓRZ.\nZakończenie czasu oraz komenda STOP również kończą ruch.\nPrzy znanej pozycji całkowicie zamkniętej STEP otwiera, a przy otwartej zamyka.\nPo restarcie, gdy pozycja i kierunek są nieznane, pierwszy STEP otwiera.\nPrzed zmianą kierunku sterownik odłącza napęd i odczekuje 300 ms.\n\nOtwórz na czas jest akcją 8. Parametr to 1–255 pełnych sekund.\nPrzykład otwierania rolety 1 w module ID 2 przez 10 sekund\nAT+RolAct=2,1,8,10,21\nSTEP dla tej samej rolety\nAT+RolAct=2,1,5,0,8\nSTOP dla tej samej rolety\nAT+RolAct=2,1,3,0,6\nOstatnie pole każdej ramki jest sumą pól liczbowych.\n\nCzas jest liczony od włączenia napędu, po ewentualnej przerwie kierunkowej.\nPonowne Otwórz na czas odnawia odliczanie. STOP lub STEP przerywa ruch.\nCzas akcji jest niezależny od zapamiętanego pełnego czasu przejazdu.\nKrótki ruch z nieznanej pozycji nie oznacza osiągnięcia 100%.\nPełny czas przejazdu nadal służy do obliczania pozycji.\n\nW GRYFEXPERT akcje są dostępne w akcjach lokalnych S0804,\nw slotach rolet wszystkich pięciu sterowników i w panelu online S0804.\nSTEP jest również przyciskiem sterowania online w tabelach reguł i slotów.\nDane reguł i EEPROM zachowują dotychczasowy układ. Dawna akcja 5 (Krok zamykania) wykonuje teraz pełny cykl STEP.\nAkcja 8 wymaga aktualizacji S0804 oraz sterownika przechowującego slot.\nETH Mini GATE przekazuje te ramki przez istniejący protokół.\n\nWeryfikacja obejmuje symulator AVR, cykl STEP, krańce, STOP, czasy 1/10/255 s,\nczęściową pozycję, oba UART-y, cztery rolety, sloty i zapis/odczyt EEPROM,\ntesty aplikacji oraz kontrolę HEX względem obszaru bootloadera.\nWgrywanie do fizycznych modułów wykonuje użytkownik programatorem.\n",
-      "digest": "sha256:6b3244c23cff95b47e9c3a461eaab89f385488f565e0cfdd7d8db3c017ebab66"
+      "notes": "GRYFEXPERT 0.5.60 / RTI 2.16 / firmware modules updated. Nine consistent shutter actions across GRYFEXPERT, S0804 HEX, RTI and Home Assistant. Step 5 cycles OPEN, STOP, CLOSE, STOP; code 6 remains a compatibility alias. Directional steps, open/close for 1..255 seconds, percent position, auto stop after configured travel, stop and direction change are supported.\n\nTemperature reports on R0806T, R0808 and ETH0606T are sent only on first sample and when rounded value changes by 0.1 C. Stable readings no longer produce periodic reports.\n\nAll builds and offline tests passed. No physical modules were programmed. See RTI/README.md, HA README and the relevant firmware source guides.",
+      "digest": "sha256:1e0b6a4439d53ae12af9158b41fbab4d1b83562660895bb7ad48f22aa1512014"
     }
   }
 }

@@ -2,10 +2,10 @@
 
 | Program / integracja | Najnowsza wersja — pobierz | Instrukcja |
 |---|---|---|
-| 1. Aplikacja GRYFSMART | [**0.5.59 — pobierz**](https://github.com/GRYF-SMART/gryfsmart-firmware/releases/download/v2026.11.13-shutter-step/GRYFEXPERT-0.5.59-win-x64.zip) | [Otwórz](https://github.com/GRYF-SMART/gryfsmart-firmware/tree/main/GRYFSMART) |
+| 1. Aplikacja GRYFSMART | [**0.5.60 — pobierz**](https://github.com/GRYF-SMART/gryfsmart-firmware/releases/download/v2026.11.13-gryfexpert-0.5.60-rti-2.16/GRYFEXPERT-0.5.60-win-x64.zip) | [Otwórz](https://github.com/GRYF-SMART/gryfsmart-firmware/tree/main/GRYFSMART) |
 | 2. GRYFSMART-Programator | [**2.0.25 — pobierz**](https://github.com/GRYF-SMART/gryfsmart-firmware/releases/download/v2026.11.13-s0804-compatible/GRYFSMART-Programator.exe) | [Otwórz](https://github.com/GRYF-SMART/gryfsmart-firmware/tree/main/AKTUALIZATOR) |
-| 3. Driver Home Assistant | [**0.3.14 — pobierz**](https://github.com/GRYF-SMART/ha-gryfsmart/releases/download/v0.3.14/GRYFSMART-HomeAssistant-0.3.14.zip) | [Otwórz](https://github.com/GRYF-SMART/gryfsmart-firmware/tree/main/HOME-ASSISTANT) |
-| 4. Driver RTI | [**2.15 — pobierz**](https://github.com/GRYF-SMART/gryfsmart-firmware/releases/download/v2026.11.13-gryfexpert-0.5.55-rti-2.15/GRYF.rtidriver) | [Otwórz](https://github.com/GRYF-SMART/gryfsmart-firmware/tree/main/RTI) |
+| 3. Driver Home Assistant | [**0.3.15 — pobierz**](https://github.com/GRYF-SMART/ha-gryfsmart/releases/download/v0.3.15/GRYFSMART-HomeAssistant-0.3.15.zip) | [Otwórz](https://github.com/GRYF-SMART/gryfsmart-firmware/tree/main/HOME-ASSISTANT) |
+| 4. Driver RTI | [**2.16 — pobierz**](https://github.com/GRYF-SMART/gryfsmart-firmware/releases/download/v2026.11.13-gryfexpert-0.5.60-rti-2.16/GRYF.rtidriver) | [Otwórz](https://github.com/GRYF-SMART/gryfsmart-firmware/tree/main/RTI) |
 | 5. Instalator Bootloader | [**2.0.25 — pobierz**](https://github.com/GRYF-SMART/gryfsmart-firmware/releases/download/v2026.11.13-s0804-compatible/GRYFSMART-Instalator.zip) | [Otwórz](https://github.com/GRYF-SMART/gryfsmart-firmware/tree/main/BOOTLOADER) |
 | 6. Protokół GRYFSMART | [**Opis i przykłady**](https://github.com/GRYF-SMART/gryfsmart-firmware/tree/main/PROTOKOL) | [Komendy i konfiguracja](https://github.com/GRYF-SMART/gryfsmart-firmware/tree/main/PROTOKOL) |
 | 7. System i moduły GRYFSMART | [**Opis systemu i tabela modułów**](https://github.com/GRYF-SMART/gryfsmart-firmware/tree/main/SYSTEM) | [Peryferia i połączenia](https://github.com/GRYF-SMART/gryfsmart-firmware/tree/main/SYSTEM) |
