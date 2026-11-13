@@ -2,11 +2,11 @@
 
 | Moduł | Wersja | Pobierz HEX | Wydanie |
 |---|---|---|---|
-| R0806T | 36 | [**Pobierz HEX**](https://github.com/GRYF-SMART/gryfsmart-firmware/releases/download/v2026.11.13-s0804-compatible/R0806T-firmware.hex) | [Opis](https://github.com/GRYF-SMART/gryfsmart-firmware/releases/tag/v2026.11.13-s0804-compatible) |
-| R0808 | 35 | [**Pobierz HEX**](https://github.com/GRYF-SMART/gryfsmart-firmware/releases/download/v2026.11.13-s0804-compatible/R0808-firmware.hex) | [Opis](https://github.com/GRYF-SMART/gryfsmart-firmware/releases/tag/v2026.11.13-s0804-compatible) |
-| S0804 | 33 | [**Pobierz HEX**](https://github.com/GRYF-SMART/gryfsmart-firmware/releases/download/v2026.11.13-s0804-compatible/S0804-firmware.hex) | [Opis](https://github.com/GRYF-SMART/gryfsmart-firmware/releases/tag/v2026.11.13-s0804-compatible) |
-| ETH0606T | 34 | [**Pobierz HEX**](https://github.com/GRYF-SMART/gryfsmart-firmware/releases/download/v2026.11.13-s0804-compatible/ETH0606T-firmware.hex) | [Opis](https://github.com/GRYF-SMART/gryfsmart-firmware/releases/tag/v2026.11.13-s0804-compatible) |
-| ETH Mini | 4 | [**Pobierz HEX**](https://github.com/GRYF-SMART/gryfsmart-firmware/releases/download/v2026.11.13-s0804-compatible/ETH-Mini-GATE-firmware-v4.hex) | [Opis](https://github.com/GRYF-SMART/gryfsmart-firmware/releases/tag/v2026.11.13-s0804-compatible) |
+| R0806T | 36 | [**Pobierz HEX**](https://github.com/GRYF-SMART/gryfsmart-firmware/releases/download/v2026.11.13-gryfexpert-0.5.54/R0806T-firmware.hex) | [Opis](https://github.com/GRYF-SMART/gryfsmart-firmware/releases/tag/v2026.11.13-gryfexpert-0.5.54) |
+| R0808 | 35 | [**Pobierz HEX**](https://github.com/GRYF-SMART/gryfsmart-firmware/releases/download/v2026.11.13-gryfexpert-0.5.54/R0808-firmware.hex) | [Opis](https://github.com/GRYF-SMART/gryfsmart-firmware/releases/tag/v2026.11.13-gryfexpert-0.5.54) |
+| S0804 | 33 | [**Pobierz HEX**](https://github.com/GRYF-SMART/gryfsmart-firmware/releases/download/v2026.11.13-gryfexpert-0.5.54/S0804-firmware.hex) | [Opis](https://github.com/GRYF-SMART/gryfsmart-firmware/releases/tag/v2026.11.13-gryfexpert-0.5.54) |
+| ETH0606T | 34 | [**Pobierz HEX**](https://github.com/GRYF-SMART/gryfsmart-firmware/releases/download/v2026.11.13-gryfexpert-0.5.54/ETH0606T-firmware.hex) | [Opis](https://github.com/GRYF-SMART/gryfsmart-firmware/releases/tag/v2026.11.13-gryfexpert-0.5.54) |
+| ETH Mini | 4 | [**Pobierz HEX**](https://github.com/GRYF-SMART/gryfsmart-firmware/releases/download/v2026.11.13-gryfexpert-0.5.54/ETH-Mini-GATE-firmware-v4.hex) | [Opis](https://github.com/GRYF-SMART/gryfsmart-firmware/releases/tag/v2026.11.13-gryfexpert-0.5.54) |
 
 Są to aplikacje modułów. Dobierz model dokładnie; plik aplikacji nie zastępuje bootloadera. [Instrukcja aktualizacji](../AKTUALIZATOR).
 
