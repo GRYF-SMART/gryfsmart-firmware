@@ -2,6 +2,14 @@
   "products": {
     "GRYFSMART": [
       {
+        "version": "0.5.56",
+        "url": "https://github.com/GRYF-SMART/gryfsmart-firmware/releases/download/v2026.11.13-gryfexpert-0.5.56/GRYFEXPERT-0.5.56-win-x64.zip",
+        "release": "https://github.com/GRYF-SMART/gryfsmart-firmware/releases/tag/v2026.11.13-gryfexpert-0.5.56",
+        "date": "2026-11-13",
+        "notes": "GRYFEXPERT 0.5.56 — widoczny postęp wyszukiwania RTI.\r\nPodczas skanowania widoczny jest animowany wskaźnik, pasek postępu, liczba sprawdzonych adresów IP i port TCP. Po zakończeniu program wyświetla liczbę znalezionych driverów albo czytelny komunikat o braku wyników.\r\n",
+        "digest": "sha256:7c820e827ee9781bc9547c7c42eb06d7186ca6b669c07988d962222af4d5099f"
+      },
+      {
         "version": "0.5.55",
         "url": "https://github.com/GRYF-SMART/gryfsmart-firmware/releases/download/v2026.11.13-gryfexpert-0.5.55-rti-2.15/GRYFEXPERT-0.5.55-win-x64.zip",
         "release": "https://github.com/GRYF-SMART/gryfsmart-firmware/releases/tag/v2026.11.13-gryfexpert-0.5.55-rti-2.15",
@@ -16,14 +24,6 @@
         "date": "2026-11-13",
         "notes": "GRYFEXPERT 0.5.54 — wyraźny komunikat o braku modułów RS-232 za RTI.\r\nGdy sesja RTI została poprawnie zestawiona, ale moduły nie odpowiadają na pierwsze zapytanie lub skanowanie nie wykryło żadnego urządzenia, program pokazuje czerwony, pogrubiony komunikat. Treść wskazuje sprawdzenie zasilania modułów, połączenia RS-232, wyboru portu oraz prędkości 115200 bit/s (8N1) w sterowniku RTI.\r\nBłędy parowania i przerwanie połączenia z samym RTI zachowują własne komunikaty. Po braku odpowiedzi podczas łączenia sesja RTI zostaje zamknięta. Odczyt części instalacji zachowuje dotychczasowy wynik skanowania.\r\nWeryfikacja: kompilacja i pełny self-test, lokalny symulator RTI odpowiadający na heartbeat bez odpowiedzi modułów, scenariusz braku odpowiedzi przy łączeniu i przy pustym skanie, kontrola przypisania dedykowanego stylu błędu w widoku. Bez zapisu konfiguracji fizycznych urządzeń.\r\n",
         "digest": "sha256:db719f1eec01dfa641d48ac7bcbdb4864fde0ab40a0fc263b177d2b919f9acdf"
-      },
-      {
-        "version": "0.5.53",
-        "url": "https://github.com/GRYF-SMART/gryfsmart-firmware/releases/download/v2026.11.13-s0804-compatible/GRYFEXPERT-0.5.53-win-x64.zip",
-        "release": "https://github.com/GRYF-SMART/gryfsmart-firmware/releases/tag/v2026.11.13-s0804-compatible",
-        "date": "2026-11-13",
-        "notes": "Programator 2.0.25 i GRYFEXPERT 0.5.53 — zgodność z bootloaderem S0804 v12-chain1-led-on.\r\nUsunięto błędne odrzucanie aktualnego bootloadera S0804 z komunikatem wymagającym v11-chain1. Zapis przez RS-232 i aktualizacja CHAIN1 akceptują dla S0804 zarówno v11-chain1, jak i v12-chain1-led-on. Lista wersji dla innych modeli i kontrola modelu, MCU oraz protokołu zachowują swoje ograniczenia.\r\nPoprawiono również kontrolę bootloadera w aktualizatorze firmware w GRYFEXPERT. Komunikat niezgodności programatora pokazuje wykryty model, wersję i tryb.\r\nNarzędzia Windows mają wersję 2.0.25. Instalator zachowuje przycisk instalacji sterownika USBasp dodany w 2.0.24. Po wypakowaniu pełnej paczki uruchom nowy plik EXE. Wgrany bootloader S0804 v12-chain1-led-on jest obsługiwany przez tę wersję aktualizatora.\r\nWeryfikacja: 14446 testów programatora, pełne symulowane przesłanie S0804 (480 stron), CRC i start aplikacji, zgodność v11, odrzucanie nieznanych wersji i wersji S0804 w innych modelach, pełny self-test GRYFEXPERT, kompilacja i kontrola sum SHA256. Fizyczne wgrywanie do modułu nie było wykonywane.\r\n",
-        "digest": "sha256:20b630a0974ab888d6d5a3b1533b1d8bb2466f76dd6ed7a1e6f8ce898f829425"
       }
     ],
     "AKTUALIZATOR": [
@@ -134,42 +134,42 @@
   "firmware": {
     "ETH Mini": {
       "version": "4",
-      "url": "https://github.com/GRYF-SMART/gryfsmart-firmware/releases/download/v2026.11.13-gryfexpert-0.5.55-rti-2.15/ETH-Mini-GATE-firmware-v4.hex",
-      "release": "https://github.com/GRYF-SMART/gryfsmart-firmware/releases/tag/v2026.11.13-gryfexpert-0.5.55-rti-2.15",
+      "url": "https://github.com/GRYF-SMART/gryfsmart-firmware/releases/download/v2026.11.13-gryfexpert-0.5.56/ETH-Mini-GATE-firmware-v4.hex",
+      "release": "https://github.com/GRYF-SMART/gryfsmart-firmware/releases/tag/v2026.11.13-gryfexpert-0.5.56",
       "date": "2026-11-13",
-      "notes": "GRYFEXPERT 0.5.55 + GRYF RTI 2.15 — wyszukiwanie sterowników RTI.\n\nNowe narzędzie Narzędzia → Wyszukaj sterowniki RTI skanuje lokalne podsieci IPv4 /24 na wybranym porcie TCP. Lista wyników pokazuje adres IP, identyfikator RTI i port, a przycisk Użyj uzupełnia ustawienia połączenia. Skaner nie przesyła klucza parowania i nie ingeruje w magistralę RS232. Wymaga sterownika RTI 2.15 z włączoną konfiguracją przez GRYFEXPERT. Nie wymaga flashowania firmware modułów GRYF.\n\nWeryfikacja: build Windows x64 GRYFEXPERT, test parsera odpowiedzi, test serwera RTI w Node.js i testy własne programu. Nie łączono się ani nie programowano fizycznego procesora RTI.\n\r\n\r\nGRYF RTI 2.15 — wykrywanie sterowników RTI z GRYFEXPERT 0.5.55.\n\n- Odpowiada na żądanie wykrywania adresem skonfigurowanego identyfikatora RTI i portem.\n- Wykrywanie nie tworzy sesji GRYFEXPERT, nie wstrzymuje obsługi RTI i nie wysyła danych do RS232.\n- Odpowiedź nie zawiera klucza parowania; dostępna tylko gdy most GRYFEXPERT jest włączony i poprawnie skonfigurowany.\n- Wymaga zaktualizowania drivera GRYF w Integration Designerze i przesłania projektu do procesora RTI. Nie wymaga flashowania firmware modułów GRYF.\n\nWalidacja: pakiet RTI odtworzony i sprawdzony, test serwera wykrywania bez wpływu na RS232. Nie programowano procesora RTI ani modułów.\n\r\nPozostałe wsady i narzędzia zachowane z wydania v2026.11.13-gryfexpert-0.5.54.\r\n\r\n",
+      "notes": "GRYFEXPERT 0.5.56 — widoczny postęp wyszukiwania RTI.\r\nPodczas skanowania widoczny jest animowany wskaźnik, pasek postępu, liczba sprawdzonych adresów IP i port TCP. Po zakończeniu program wyświetla liczbę znalezionych driverów albo czytelny komunikat o braku wyników.\r\n",
       "digest": "sha256:89e1db083c22a39fc9ab884db6e77ae36f535a0ae060eca9570a57e5c3c073bc"
     },
     "ETH0606T": {
       "version": "34",
-      "url": "https://github.com/GRYF-SMART/gryfsmart-firmware/releases/download/v2026.11.13-gryfexpert-0.5.55-rti-2.15/ETH0606T-firmware.hex",
-      "release": "https://github.com/GRYF-SMART/gryfsmart-firmware/releases/tag/v2026.11.13-gryfexpert-0.5.55-rti-2.15",
+      "url": "https://github.com/GRYF-SMART/gryfsmart-firmware/releases/download/v2026.11.13-gryfexpert-0.5.56/ETH0606T-firmware.hex",
+      "release": "https://github.com/GRYF-SMART/gryfsmart-firmware/releases/tag/v2026.11.13-gryfexpert-0.5.56",
       "date": "2026-11-13",
-      "notes": "GRYFEXPERT 0.5.55 + GRYF RTI 2.15 — wyszukiwanie sterowników RTI.\n\nNowe narzędzie Narzędzia → Wyszukaj sterowniki RTI skanuje lokalne podsieci IPv4 /24 na wybranym porcie TCP. Lista wyników pokazuje adres IP, identyfikator RTI i port, a przycisk Użyj uzupełnia ustawienia połączenia. Skaner nie przesyła klucza parowania i nie ingeruje w magistralę RS232. Wymaga sterownika RTI 2.15 z włączoną konfiguracją przez GRYFEXPERT. Nie wymaga flashowania firmware modułów GRYF.\n\nWeryfikacja: build Windows x64 GRYFEXPERT, test parsera odpowiedzi, test serwera RTI w Node.js i testy własne programu. Nie łączono się ani nie programowano fizycznego procesora RTI.\n\r\n\r\nGRYF RTI 2.15 — wykrywanie sterowników RTI z GRYFEXPERT 0.5.55.\n\n- Odpowiada na żądanie wykrywania adresem skonfigurowanego identyfikatora RTI i portem.\n- Wykrywanie nie tworzy sesji GRYFEXPERT, nie wstrzymuje obsługi RTI i nie wysyła danych do RS232.\n- Odpowiedź nie zawiera klucza parowania; dostępna tylko gdy most GRYFEXPERT jest włączony i poprawnie skonfigurowany.\n- Wymaga zaktualizowania drivera GRYF w Integration Designerze i przesłania projektu do procesora RTI. Nie wymaga flashowania firmware modułów GRYF.\n\nWalidacja: pakiet RTI odtworzony i sprawdzony, test serwera wykrywania bez wpływu na RS232. Nie programowano procesora RTI ani modułów.\n\r\nPozostałe wsady i narzędzia zachowane z wydania v2026.11.13-gryfexpert-0.5.54.\r\n\r\n",
+      "notes": "GRYFEXPERT 0.5.56 — widoczny postęp wyszukiwania RTI.\r\nPodczas skanowania widoczny jest animowany wskaźnik, pasek postępu, liczba sprawdzonych adresów IP i port TCP. Po zakończeniu program wyświetla liczbę znalezionych driverów albo czytelny komunikat o braku wyników.\r\n",
       "digest": "sha256:3558ca5714d2605d1aed56266889fc1cc6bb9d97f786b9030b8200f553a58d9d"
     },
     "R0808": {
       "version": "35",
-      "url": "https://github.com/GRYF-SMART/gryfsmart-firmware/releases/download/v2026.11.13-gryfexpert-0.5.55-rti-2.15/R0808-firmware.hex",
-      "release": "https://github.com/GRYF-SMART/gryfsmart-firmware/releases/tag/v2026.11.13-gryfexpert-0.5.55-rti-2.15",
+      "url": "https://github.com/GRYF-SMART/gryfsmart-firmware/releases/download/v2026.11.13-gryfexpert-0.5.56/R0808-firmware.hex",
+      "release": "https://github.com/GRYF-SMART/gryfsmart-firmware/releases/tag/v2026.11.13-gryfexpert-0.5.56",
       "date": "2026-11-13",
-      "notes": "GRYFEXPERT 0.5.55 + GRYF RTI 2.15 — wyszukiwanie sterowników RTI.\n\nNowe narzędzie Narzędzia → Wyszukaj sterowniki RTI skanuje lokalne podsieci IPv4 /24 na wybranym porcie TCP. Lista wyników pokazuje adres IP, identyfikator RTI i port, a przycisk Użyj uzupełnia ustawienia połączenia. Skaner nie przesyła klucza parowania i nie ingeruje w magistralę RS232. Wymaga sterownika RTI 2.15 z włączoną konfiguracją przez GRYFEXPERT. Nie wymaga flashowania firmware modułów GRYF.\n\nWeryfikacja: build Windows x64 GRYFEXPERT, test parsera odpowiedzi, test serwera RTI w Node.js i testy własne programu. Nie łączono się ani nie programowano fizycznego procesora RTI.\n\r\n\r\nGRYF RTI 2.15 — wykrywanie sterowników RTI z GRYFEXPERT 0.5.55.\n\n- Odpowiada na żądanie wykrywania adresem skonfigurowanego identyfikatora RTI i portem.\n- Wykrywanie nie tworzy sesji GRYFEXPERT, nie wstrzymuje obsługi RTI i nie wysyła danych do RS232.\n- Odpowiedź nie zawiera klucza parowania; dostępna tylko gdy most GRYFEXPERT jest włączony i poprawnie skonfigurowany.\n- Wymaga zaktualizowania drivera GRYF w Integration Designerze i przesłania projektu do procesora RTI. Nie wymaga flashowania firmware modułów GRYF.\n\nWalidacja: pakiet RTI odtworzony i sprawdzony, test serwera wykrywania bez wpływu na RS232. Nie programowano procesora RTI ani modułów.\n\r\nPozostałe wsady i narzędzia zachowane z wydania v2026.11.13-gryfexpert-0.5.54.\r\n\r\n",
+      "notes": "GRYFEXPERT 0.5.56 — widoczny postęp wyszukiwania RTI.\r\nPodczas skanowania widoczny jest animowany wskaźnik, pasek postępu, liczba sprawdzonych adresów IP i port TCP. Po zakończeniu program wyświetla liczbę znalezionych driverów albo czytelny komunikat o braku wyników.\r\n",
       "digest": "sha256:ca510453a5b2fc668e0ef9cc6bad9e4a1db5e8ac5e80408261e75e5b1f3b15ed"
     },
     "R0806T": {
       "version": "36",
-      "url": "https://github.com/GRYF-SMART/gryfsmart-firmware/releases/download/v2026.11.13-gryfexpert-0.5.55-rti-2.15/R0806T-firmware.hex",
-      "release": "https://github.com/GRYF-SMART/gryfsmart-firmware/releases/tag/v2026.11.13-gryfexpert-0.5.55-rti-2.15",
+      "url": "https://github.com/GRYF-SMART/gryfsmart-firmware/releases/download/v2026.11.13-gryfexpert-0.5.56/R0806T-firmware.hex",
+      "release": "https://github.com/GRYF-SMART/gryfsmart-firmware/releases/tag/v2026.11.13-gryfexpert-0.5.56",
       "date": "2026-11-13",
-      "notes": "GRYFEXPERT 0.5.55 + GRYF RTI 2.15 — wyszukiwanie sterowników RTI.\n\nNowe narzędzie Narzędzia → Wyszukaj sterowniki RTI skanuje lokalne podsieci IPv4 /24 na wybranym porcie TCP. Lista wyników pokazuje adres IP, identyfikator RTI i port, a przycisk Użyj uzupełnia ustawienia połączenia. Skaner nie przesyła klucza parowania i nie ingeruje w magistralę RS232. Wymaga sterownika RTI 2.15 z włączoną konfiguracją przez GRYFEXPERT. Nie wymaga flashowania firmware modułów GRYF.\n\nWeryfikacja: build Windows x64 GRYFEXPERT, test parsera odpowiedzi, test serwera RTI w Node.js i testy własne programu. Nie łączono się ani nie programowano fizycznego procesora RTI.\n\r\n\r\nGRYF RTI 2.15 — wykrywanie sterowników RTI z GRYFEXPERT 0.5.55.\n\n- Odpowiada na żądanie wykrywania adresem skonfigurowanego identyfikatora RTI i portem.\n- Wykrywanie nie tworzy sesji GRYFEXPERT, nie wstrzymuje obsługi RTI i nie wysyła danych do RS232.\n- Odpowiedź nie zawiera klucza parowania; dostępna tylko gdy most GRYFEXPERT jest włączony i poprawnie skonfigurowany.\n- Wymaga zaktualizowania drivera GRYF w Integration Designerze i przesłania projektu do procesora RTI. Nie wymaga flashowania firmware modułów GRYF.\n\nWalidacja: pakiet RTI odtworzony i sprawdzony, test serwera wykrywania bez wpływu na RS232. Nie programowano procesora RTI ani modułów.\n\r\nPozostałe wsady i narzędzia zachowane z wydania v2026.11.13-gryfexpert-0.5.54.\r\n\r\n",
+      "notes": "GRYFEXPERT 0.5.56 — widoczny postęp wyszukiwania RTI.\r\nPodczas skanowania widoczny jest animowany wskaźnik, pasek postępu, liczba sprawdzonych adresów IP i port TCP. Po zakończeniu program wyświetla liczbę znalezionych driverów albo czytelny komunikat o braku wyników.\r\n",
       "digest": "sha256:279ef6a2c33815b1d1cb9266bfb47abcf8b52b3177ccb2f369a4cf057e601caa"
     },
     "S0804": {
       "version": "33",
-      "url": "https://github.com/GRYF-SMART/gryfsmart-firmware/releases/download/v2026.11.13-gryfexpert-0.5.55-rti-2.15/S0804-firmware.hex",
-      "release": "https://github.com/GRYF-SMART/gryfsmart-firmware/releases/tag/v2026.11.13-gryfexpert-0.5.55-rti-2.15",
+      "url": "https://github.com/GRYF-SMART/gryfsmart-firmware/releases/download/v2026.11.13-gryfexpert-0.5.56/S0804-firmware.hex",
+      "release": "https://github.com/GRYF-SMART/gryfsmart-firmware/releases/tag/v2026.11.13-gryfexpert-0.5.56",
       "date": "2026-11-13",
-      "notes": "GRYFEXPERT 0.5.55 + GRYF RTI 2.15 — wyszukiwanie sterowników RTI.\n\nNowe narzędzie Narzędzia → Wyszukaj sterowniki RTI skanuje lokalne podsieci IPv4 /24 na wybranym porcie TCP. Lista wyników pokazuje adres IP, identyfikator RTI i port, a przycisk Użyj uzupełnia ustawienia połączenia. Skaner nie przesyła klucza parowania i nie ingeruje w magistralę RS232. Wymaga sterownika RTI 2.15 z włączoną konfiguracją przez GRYFEXPERT. Nie wymaga flashowania firmware modułów GRYF.\n\nWeryfikacja: build Windows x64 GRYFEXPERT, test parsera odpowiedzi, test serwera RTI w Node.js i testy własne programu. Nie łączono się ani nie programowano fizycznego procesora RTI.\n\r\n\r\nGRYF RTI 2.15 — wykrywanie sterowników RTI z GRYFEXPERT 0.5.55.\n\n- Odpowiada na żądanie wykrywania adresem skonfigurowanego identyfikatora RTI i portem.\n- Wykrywanie nie tworzy sesji GRYFEXPERT, nie wstrzymuje obsługi RTI i nie wysyła danych do RS232.\n- Odpowiedź nie zawiera klucza parowania; dostępna tylko gdy most GRYFEXPERT jest włączony i poprawnie skonfigurowany.\n- Wymaga zaktualizowania drivera GRYF w Integration Designerze i przesłania projektu do procesora RTI. Nie wymaga flashowania firmware modułów GRYF.\n\nWalidacja: pakiet RTI odtworzony i sprawdzony, test serwera wykrywania bez wpływu na RS232. Nie programowano procesora RTI ani modułów.\n\r\nPozostałe wsady i narzędzia zachowane z wydania v2026.11.13-gryfexpert-0.5.54.\r\n\r\n",
+      "notes": "GRYFEXPERT 0.5.56 — widoczny postęp wyszukiwania RTI.\r\nPodczas skanowania widoczny jest animowany wskaźnik, pasek postępu, liczba sprawdzonych adresów IP i port TCP. Po zakończeniu program wyświetla liczbę znalezionych driverów albo czytelny komunikat o braku wyników.\r\n",
       "digest": "sha256:af7ffb76ae5fa7cc1b4ba229b9698e046a2eb468490f40e54d6894ebcdedd2bf"
     }
   }
