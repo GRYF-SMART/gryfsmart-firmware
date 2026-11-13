@@ -12,13 +12,13 @@ GRYFEXPERT 0.5.60 / RTI 2.16 / firmware modules updated. Nine consistent shutter
 | **2.15** | 2026-11-13 | [Pobierz](https://github.com/GRYF-SMART/gryfsmart-firmware/releases/download/v2026.11.13-gryfexpert-0.5.55-rti-2.15/GRYF.rtidriver) | GRYFEXPERT 0.5.55 + GRYF RTI 2.15 — wyszukiwanie sterowników RTI. Nowe narzędzie Narzędzia → Wyszukaj sterowniki RTI skanuje lokalne podsieci IPv4 /24 na wybranym porcie TCP. Lista wyników pokazuje adres IP, identyfikator RTI i port, a przycisk Użyj uzupełnia ustawienia połączenia. Skaner nie przesyła klucza parowania i nie ingeruje w magistralę RS232.… [Pełny opis](https://github.com/GRYF-SMART/gryfsmart-firmware/releases/tag/v2026.11.13-gryfexpert-0.5.55-rti-2.15) |
 | **2.14** | 2026-11-12 | [Pobierz](https://github.com/GRYF-SMART/gryfsmart-firmware/releases/download/v2026.11.12-gryfexpert-0.5.52-rti-2.14/GRYF.rtidriver) | GRYFEXPERT 0.5.52 + RTI 2.14 — konfiguracja przez stały adres IP RTI. W trybie Bramka RTI wpisuje się adres IP procesora RTI oraz port TCP. Domyślny port 4211 jest edytowalny. W driverze osobna sekcja Konfiguracja przez GRYFEXPERT z tym samym portem. To GRYFEXPERT łączy się do RTI; komputer nie nasłuchuje i jego IP nie jest wpisywane w driverze. Zachowano… [Pełny opis](https://github.com/GRYF-SMART/gryfsmart-firmware/releases/tag/v2026.11.12-gryfexpert-0.5.52-rti-2.14) |
 
-## Konfiguracja przez GRYFEXPERT — driver RTI 2.14 / GRYFEXPERT 0.5.52
+## Konfiguracja przez GRYFEXPERT — driver RTI 2.16 / GRYFEXPERT 0.5.60
 
 Połączenie: **GRYFEXPERT → adres IP procesora RTI + port TCP → RS232 → port 0 pierwszego modułu GRYF**. Odpowiedzi wracają tą samą drogą. Moduł ETH nie jest wymagany. RTI działa jako serwer ze stałym adresem IP; GRYFEXPERT inicjuje połączenie jako klient.
 
 ### Ustawienia drivera RTI
 
-W Integration Designer zaktualizuj driver do **2.14**. Wybierz **RS-232**, port procesora połączony z GRYF i **115200, 8N1**. W osobnej sekcji **Konfiguracja przez GRYFEXPERT**:
+W Integration Designer zaktualizuj driver do **2.16**. Wybierz **RS-232**, port procesora połączony z GRYF i **115200, 8N1**. W osobnej sekcji **Konfiguracja przez GRYFEXPERT**:
 
 - włącz konfigurację przez GRYFEXPERT;
 - ustaw **Port TCP konfiguracji GRYFEXPERT**: domyślnie **4211**, z możliwością zmiany na wolny port w zakresie 1024–65535;
@@ -39,6 +39,10 @@ Most obsługuje konfigurację, nazwy, reguły, wykrywanie modułów i diagnostyk
 Zmienne **Status bramki** oraz **Trwa konfiguracja GRYFEXPERT** można umieścić na panelu RTI. Port i klucz są ustawieniami konkretnej instalacji. Używaj mostu w zaufanym LAN; transmisja nie jest szyfrowana i portu nie należy przekierowywać z Internetu.
 
 **Zmiana względem 0.5.51 / 2.13:** kierunek zestawiania połączenia został odwrócony na GRYFEXPERT → RTI. Zaktualizuj obie strony. Stary klucz i numer portu można zachować, ale w projekcie GRYFEXPERT trzeba podać adres RTI i ponownie potwierdzić przypisanie modułów do połączenia. Testy obejmują symulację RTI i rzeczywiste połączenia TCP na komputerze; test instalacyjny na fizycznym RTI pozostaje do wykonania.
+
+## Akcje rolet S0804 — RTI 2.16
+
+Driver RTI oferuje dziewięć wspólnych akcji: OTWÓRZ, STOP, ZAMKNIJ, ZAMKNIJ+STOP, OTWÓRZ+STOP, STEP (OTWÓRZ → STOP → ZAMKNIJ → STOP), OTWÓRZ NA CZAS, ZAMKNIJ NA CZAS oraz USTAW POZYCJĘ %. Czas obu akcji czasowych podaje się w sekundach (1–255). Pełny przejazd i STEP zatrzymują się po czasie ustawionym w S0804; STOP i ponowne wywołanie kierunku podczas ruchu zatrzymują napęd. Kod 6 jest zachowany jako zgodny alias STEP.
 
 ## Synchronizacja stanów — wersja 2.12
 
@@ -70,7 +74,7 @@ Stały adres bieżącej paczki: **[GRYF.rtidriver](https://raw.githubusercontent
 3. W **Driver Properties** wybierz TCP/IP lub RS-232, parametry połączenia, liczbę modułów, ID i modele.
 4. Przypisz funkcje i zmienne do panelu. Zapisz projekt i prześlij go do procesora RTI.
 
-Obsługiwane moduły: R0806T, R0808, ETH0606T i S0804. Dostępne są osobne funkcje wyjść, flag i PWM; akcje czasowe co 0,1 s; rampa PWM; diagnostyka modułów; sterowanie i stany rolet, pozycja, cel, ruch, pozostały czas oraz ważność danych.
+Obsługiwane moduły: R0806T, R0808, ETH0606T i S0804. Dostępne są osobne funkcje wyjść, flag i PWM; akcje czasowe co 0,1 s; rampa PWM; diagnostyka modułów; sterowanie i stany rolet, dziewięć akcji z parametrami czasu/pozycji, cel, ruch, pozostały czas oraz ważność danych.
 
 ## Gotowy komponent rolety
 
@@ -84,6 +88,8 @@ Obsługiwane moduły: R0806T, R0808, ETH0606T i S0804. Dostępne są osobne funk
 4. Zaimportuj wynik do tej samej instancji w RTI. Sprawdź zgodność ID, typów i liczby modułów.
 
 [Pełna instrukcja: nazwy, stany S0804, komunikacja i diagnostyka](INSTRUKCJA.md).
+
+
 
 
 [1. Aplikacja GRYFSMART](https://github.com/GRYF-SMART/gryfsmart-firmware/tree/main/GRYFSMART) · [2. GRYFSMART-Programator](https://github.com/GRYF-SMART/gryfsmart-firmware/tree/main/AKTUALIZATOR) · [3. Driver Home Assistant](https://github.com/GRYF-SMART/gryfsmart-firmware/tree/main/HOME-ASSISTANT) · [4. Driver RTI](https://github.com/GRYF-SMART/gryfsmart-firmware/tree/main/RTI) · [5. Instalator Bootloader](https://github.com/GRYF-SMART/gryfsmart-firmware/tree/main/BOOTLOADER) · [6. Protokół GRYFSMART](https://github.com/GRYF-SMART/gryfsmart-firmware/tree/main/PROTOKOL) · [7. System i moduły GRYFSMART](https://github.com/GRYF-SMART/gryfsmart-firmware/tree/main/SYSTEM)
