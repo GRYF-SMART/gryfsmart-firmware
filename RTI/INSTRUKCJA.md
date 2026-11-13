@@ -1,10 +1,10 @@
-## Konfiguracja przez GRYFEXPERT — driver RTI 2.15 / GRYFEXPERT 0.5.55
+## Konfiguracja przez GRYFEXPERT — driver RTI 2.16 / GRYFEXPERT 0.5.60
 
 Połączenie: **GRYFEXPERT → adres IP procesora RTI + port TCP → RS232 → port 0 pierwszego modułu GRYF**. Odpowiedzi wracają tą samą drogą. Moduł ETH nie jest wymagany. RTI działa jako serwer ze stałym adresem IP; GRYFEXPERT inicjuje połączenie jako klient.
 
 ### Ustawienia drivera RTI
 
-W Integration Designer zaktualizuj driver do **2.15**. Wybierz **RS-232**, port procesora połączony z GRYF i **115200, 8N1**. W osobnej sekcji **Konfiguracja przez GRYFEXPERT**:
+W Integration Designer zaktualizuj driver do **2.16**. Wybierz **RS-232**, port procesora połączony z GRYF i **115200, 8N1**. W osobnej sekcji **Konfiguracja przez GRYFEXPERT**:
 
 - włącz konfigurację przez GRYFEXPERT;
 - ustaw **Port TCP konfiguracji GRYFEXPERT**: domyślnie **4211**, z możliwością zmiany na wolny port w zakresie 1024–65535;
@@ -20,9 +20,9 @@ Port służy wyłącznie do konfiguracji modułów przez GRYFEXPERT; nie jest po
 4. Kliknij **Połącz**. Program łączy się do RTI — nie uruchamia serwera na komputerze. Następnie rozpoznaj moduły i odczytaj konfigurację jak przy bezpośrednim COM.
 5. Po zakończeniu kliknij **Rozłącz**. RTI wraca do normalnej pracy i odczytuje stany modułów. Po zmianie ID lub modeli w GRYFEXPERT dostosuj także konfigurację drivera w Integration Designer.
 
-### Wyszukiwanie RTI w sieci — wersja 2.15
+### Wyszukiwanie RTI w sieci — wersja 2.16
 
-W GRYFEXPERT wybierz **Narzędzia → Wyszukaj sterowniki RTI** i rozpocznij skanowanie lokalnych podsieci IPv4 /24 na wybranym porcie TCP (domyślnie 4211). Driver 2.15 odpowiada identyfikatorem RTI i portem, gdy konfiguracja przez GRYFEXPERT jest włączona. Program pokazuje adres IP i identyfikator; przycisk **Użyj** wprowadza je do ustawień połączenia. Skanowanie nie pobiera klucza, nie przejmuje połączenia i nie dotyka RS232. Wymaga aktualizacji drivera GRYF i przesłania projektu do procesora RTI. Nie wymaga flashowania firmware modułów GRYF.
+W GRYFEXPERT wybierz **Narzędzia → Wyszukaj sterowniki RTI** i rozpocznij skanowanie lokalnych podsieci IPv4 /24 na wybranym porcie TCP (domyślnie 4211). Driver 2.16 odpowiada identyfikatorem RTI i portem, gdy konfiguracja przez GRYFEXPERT jest włączona. Program pokazuje adres IP i identyfikator; przycisk **Użyj** wprowadza je do ustawień połączenia. Skanowanie nie pobiera klucza, nie przejmuje połączenia i nie dotyka RS232. Wymaga aktualizacji drivera GRYF i przesłania projektu do procesora RTI. Nie wymaga flashowania firmware modułów GRYF.
 
 Most obsługuje konfigurację, nazwy, reguły, wykrywanie modułów i diagnostykę. **Nie obsługuje wgrywania HEX ani uruchamiania bootloadera.** Podczas sesji wstrzymane są komendy i odpytywanie tego drivera RTI; moduły nadal wykonują własny program. Drugi klient nie może przejąć aktywnej sesji. Zerwanie połączenia lub brak heartbeat przez ponad 10 s zwalnia most i uruchamia synchronizację. Odrzucone polecenia RTI nie są odtwarzane. Nie używaj drugiej instancji drivera na tym samym COM.
 
@@ -55,11 +55,11 @@ Brak odpowiedzi lub błąd pojedynczej transmisji nie blokuje następnych moduł
 
 [Aktualny driver i trzy ostatnie wersje](README.md)
 
-## S0804 — rolety w RTI 2.09
+## S0804 — dziewięć akcji rolet w RTI 2.16
 
 W **Driver Properties** ustaw typ modułu **S0804**. W funkcjach danego ID dostępne są:
 
-- **Steruj roletą S0804** — wybór jednej z czterech rolet, otwarcie, zamknięcie, STOP, STEP UP, STEP DOWN, STEP i otwarcie na zadany procent. 0% oznacza zamknięcie, 100% pełne otwarcie. Pole procentu dotyczy tylko akcji procentowej.
+- **Steruj roletą S0804** — wybór jednej z czterech rolet, OTWÓRZ, STOP, ZAMKNIJ, ZAMKNIJ+STOP, OTWÓRZ+STOP, STEP cykliczny, OTWÓRZ NA CZAS, ZAMKNIJ NA CZAS i USTAW POZYCJĘ %. 0% oznacza zamknięcie, 100% pełne otwarcie. Pole procentu dotyczy tylko akcji procentowej.
 - **Ustaw czasy przejazdu rolety** — osobno pełne otwieranie i zamykanie, z krokiem 0,1 s, np. `20,5`. Aktualny firmware przyjmuje 0,1–655,3 s; starsze wersje mogą ograniczać czas do 600 s. Ustawiaj na postoju. Zmiana czasów unieważnia pozycję.
 - **Odczytaj stan i czasy rolety** — ręczne odświeżenie danych.
 - **Zapisz konfigurację S0804 w EEPROM** — utrwala konfigurację modułu, w tym czasy wszystkich czterech rolet. Nie utrwala bieżącej pozycji. Używaj po konfiguracji, nie w cyklicznym makrze.
@@ -101,3 +101,9 @@ Szczegółowe odczyty wymagają firmware obsługującego `GetRolState` i `GetRol
 Dopasowanie odbywa się według ID i typu modułu oraz numeru kanału. Ustawienia połączenia RS-232 i TCP pozostają takie jak w pliku wyeksportowanym z RTI. Pusta nazwa flagi w GRYFEXPERT zachowuje dotychczasową etykietę w RTI.
 
 SHA-256 paczki: `fd5176b3856518f58fabc8ab54d462286d063ce2ab674b636f9956fe872ad8ac`.
+
+
+## Akcje rolet S0804 w RTI 2.16
+
+W funkcjach **Steruj roletą S0804** oraz **Komponent rolety** są dostępne te same akcje: OTWÓRZ (1), STOP (3), ZAMKNIJ (2), ZAMKNIJ+STOP (9), OTWÓRZ+STOP (4), STEP (5), OTWÓRZ NA CZAS (8), ZAMKNIJ NA CZAS (10) i USTAW POZYCJĘ % (7). Dla akcji 8 i 10 wpisz czas 1–255 sekund; dla akcji 7 pozycję 0–100%. Pozostałe akcje nie używają parametru. Kod 6 zostaje obsługiwany przez firmware jako starszy alias STEP, ale nie pojawia się jako nowa akcja.
+

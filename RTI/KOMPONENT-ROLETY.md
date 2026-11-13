@@ -1,6 +1,6 @@
 # GRYF — jeden komponent rolety S0804
 
-Komponent jest natywnym **Viewport** w Integration Designer 11: jednym obiektem na stronie, zawierającym procent otwarcia, krótki stan oraz przyciski **GÓRA / STOP / DÓŁ / NA PROCENT / STEP**. Wnętrze edytuje się przez prawy przycisk myszy → **Edit Viewport**. Nie wymaga serwera WWW ani przeglądarki.
+Komponent jest natywnym **Viewport** w Integration Designer 11: jednym obiektem na stronie, zawierającym procent otwarcia, krótki stan oraz akcje **OTWÓRZ / STOP / ZAMKNIJ / ZAMKNIJ+STOP / OTWÓRZ+STOP / STEP / OTWÓRZ NA CZAS / ZAMKNIJ NA CZAS / USTAW POZYCJĘ**. Wnętrze edytuje się przez prawy przycisk myszy → **Edit Viewport**. Nie wymaga serwera WWW ani przeglądarki.
 
 ## Uruchomienie wzorca
 
@@ -29,11 +29,11 @@ Przycisk procentowy wykonuje zapisany cel i wyświetla go, np. **NA 70%**. Jest 
 
 Zaznacz zewnętrzny Viewport i kopiuj go jako całość na stronę docelową. Po przeniesieniu między projektami sprawdź instancję GRYF i powiązania w Tag Editor. Nie zakładaj, że numery urządzeń w dwóch projektach są takie same.
 
-Przy kopii dla **innej** rolety nadaj jej własne tagi (np. `GRYF Roleta 2: ...`), aby zmiana makra nie zmieniła również pierwszej rolety. W pięciu makrach wybierz funkcję **ID N → Komponent rolety**, numer rolety 1–4 i odpowiedni przycisk. Zaktualizuj również tagi tekstowe i zmienne widoczności:
+Przy kopii dla **innej** rolety nadaj jej własne tagi (np. `GRYF Roleta 2: ...`), aby zmiana makra nie zmieniła również pierwszej rolety. W funkcji **ID N → Komponent rolety** wybierz numer rolety i jedną z dziewięciu akcji. Dla ruchu czasowego podaj 1–255 s; dla pozycji ustaw cel w zakresie 0–100%. Zaktualizuj również tagi tekstowe i zmienne widoczności:
 
 | Element | Powiązanie dla rolety R, modułu ID N |
 | --- | --- |
-| GÓRA / STOP / DÓŁ / NA PROCENT / STEP | `ShutterComponentN(R, 1 / 3 / 2 / 7 / 6)` |
+| OTWÓRZ / STOP / ZAMKNIJ / ZAMKNIJ+STOP / OTWÓRZ+STOP / STEP / CZAS OTWIERANIA / CZAS ZAMYKANIA / POZYCJA | `ShutterComponentN(R, 1 / 3 / 2 / 9 / 4 / 5 / 8 / 10 / 7, parametr)` |
 | Procent | `R{R}_POSITION_TEXT_ID{N}` |
 | Krótki stan | `R{R}_MOTION_TEXT_ID{N}` |
 | Etykieta NA PROCENT | `R{R}_PRESET_TEXT_ID{N}` |
