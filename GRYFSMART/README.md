@@ -1,16 +1,16 @@
 # 1. Aplikacja GRYFSMART
 
-**[Pobierz najnowszą wersję 0.5.57](https://github.com/GRYF-SMART/gryfsmart-firmware/releases/download/v2026.11.13-gryfexpert-0.5.57-rti-2.15/GRYFEXPERT-0.5.57-win-x64.zip)**
+**[Pobierz najnowszą wersję 0.5.58](https://github.com/GRYF-SMART/gryfsmart-firmware/releases/download/v2026.11.13-gryfexpert-0.5.58-rti-2.15/GRYFEXPERT-0.5.58-win-x64.zip)**
 
-GRYFEXPERT 0.5.57 — komunikat o błędzie połączenia RTI. Przy nieudanym połączeniu wyświetlana jest pogrubiona, czerwona podpowiedź sprawdzenia adresu IP, portu, nazwy RTI i klucza parowania oraz aktualizacji GRYFEXPERT. GRYFEXPERT 0.5.56 — widoczny postęp wyszukiwania RTI. [Pełny opis wydania](https://github.com/GRYF-SMART/gryfsmart-firmware/releases/tag/v2026.11.13-gryfexpert-0.5.57-rti-2.15).
+GRYFEXPERT 0.5.58 — wysyłanie bez odczytu wstępnego. Usunięto przycisk „Sprawdź sprzęt, zachowaj projekt”. Konfigurację można wysłać od razu. Ustawienia projektu zastępują ustawienia sprzętu w wybranym zakresie, także jeśli moduł ma już zapisaną regułę lub inną konfigurację. Wysyłka pojedynczej reguły pozostawia pozostałe reguły bez zmian. Po wysłaniu… [Pełny opis wydania](https://github.com/GRYF-SMART/gryfsmart-firmware/releases/tag/v2026.11.13-gryfexpert-0.5.58-rti-2.15).
 
 ## Trzy ostatnie wersje
 
 | Wersja | Data publikacji | Pobieranie | Zmiany |
 |---|---|---|---|
+| **0.5.58** | 2026-11-13 | [Pobierz](https://github.com/GRYF-SMART/gryfsmart-firmware/releases/download/v2026.11.13-gryfexpert-0.5.58-rti-2.15/GRYFEXPERT-0.5.58-win-x64.zip) | GRYFEXPERT 0.5.58 — wysyłanie bez odczytu wstępnego. Usunięto przycisk „Sprawdź sprzęt, zachowaj projekt”. Konfigurację można wysłać od razu. Ustawienia projektu zastępują ustawienia sprzętu w wybranym zakresie, także jeśli moduł ma już zapisaną regułę lub inną konfigurację. Wysyłka pojedynczej reguły pozostawia pozostałe reguły bez zmian. Po wysłaniu… [Pełny opis](https://github.com/GRYF-SMART/gryfsmart-firmware/releases/tag/v2026.11.13-gryfexpert-0.5.58-rti-2.15) |
 | **0.5.57** | 2026-11-13 | [Pobierz](https://github.com/GRYF-SMART/gryfsmart-firmware/releases/download/v2026.11.13-gryfexpert-0.5.57-rti-2.15/GRYFEXPERT-0.5.57-win-x64.zip) | GRYFEXPERT 0.5.57 — komunikat o błędzie połączenia RTI. Przy nieudanym połączeniu wyświetlana jest pogrubiona, czerwona podpowiedź sprawdzenia adresu IP, portu, nazwy RTI i klucza parowania oraz aktualizacji GRYFEXPERT. GRYFEXPERT 0.5.56 — widoczny postęp wyszukiwania RTI. [Pełny opis](https://github.com/GRYF-SMART/gryfsmart-firmware/releases/tag/v2026.11.13-gryfexpert-0.5.57-rti-2.15) |
 | **0.5.56** | 2026-11-13 | [Pobierz](https://github.com/GRYF-SMART/gryfsmart-firmware/releases/download/v2026.11.13-gryfexpert-0.5.56/GRYFEXPERT-0.5.56-win-x64.zip) | GRYFEXPERT 0.5.56 — widoczny postęp wyszukiwania RTI. Podczas skanowania widoczny jest animowany wskaźnik, pasek postępu, liczba sprawdzonych adresów IP i port TCP. Po zakończeniu program wyświetla liczbę znalezionych driverów albo czytelny komunikat o braku wyników. [Pełny opis](https://github.com/GRYF-SMART/gryfsmart-firmware/releases/tag/v2026.11.13-gryfexpert-0.5.56) |
-| **0.5.55** | 2026-11-13 | [Pobierz](https://github.com/GRYF-SMART/gryfsmart-firmware/releases/download/v2026.11.13-gryfexpert-0.5.55-rti-2.15/GRYFEXPERT-0.5.55-win-x64.zip) | GRYFEXPERT 0.5.55 + GRYF RTI 2.15 — wyszukiwanie sterowników RTI. Nowe narzędzie Narzędzia → Wyszukaj sterowniki RTI skanuje lokalne podsieci IPv4 /24 na wybranym porcie TCP. Lista wyników pokazuje adres IP, identyfikator RTI i port, a przycisk Użyj uzupełnia ustawienia połączenia. Skaner nie przesyła klucza parowania i nie ingeruje w magistralę RS232.… [Pełny opis](https://github.com/GRYF-SMART/gryfsmart-firmware/releases/tag/v2026.11.13-gryfexpert-0.5.55-rti-2.15) |
 
 ## Konfiguracja przez GRYFEXPERT — driver RTI 2.14 / GRYFEXPERT 0.5.52
 
