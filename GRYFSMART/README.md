@@ -1,16 +1,16 @@
 # 1. Aplikacja GRYFSMART
 
-**[Pobierz najnowszą wersję 0.5.52](https://github.com/GRYF-SMART/gryfsmart-firmware/releases/download/v2026.11.12-gryfexpert-0.5.52-rti-2.14/GRYFEXPERT-0.5.52-win-x64.zip)**
+**[Pobierz najnowszą wersję 0.5.53](https://github.com/GRYF-SMART/gryfsmart-firmware/releases/download/v2026.11.13-s0804-compatible/GRYFEXPERT-0.5.53-win-x64.zip)**
 
-GRYFEXPERT 0.5.52 + RTI 2.14 — konfiguracja przez stały adres IP RTI. W trybie Bramka RTI wpisuje się adres IP procesora RTI oraz port TCP. Domyślny port 4211 jest edytowalny. W driverze osobna sekcja Konfiguracja przez GRYFEXPERT z tym samym portem. To GRYFEXPERT łączy się do RTI; komputer nie nasłuchuje i jego IP nie jest wpisywane w driverze. Zachowano… [Pełny opis wydania](https://github.com/GRYF-SMART/gryfsmart-firmware/releases/tag/v2026.11.12-gryfexpert-0.5.52-rti-2.14).
+Programator 2.0.25 i GRYFEXPERT 0.5.53 — zgodność z bootloaderem S0804 v12-chain1-led-on. Usunięto błędne odrzucanie aktualnego bootloadera S0804 z komunikatem wymagającym v11-chain1. Zapis przez RS-232 i aktualizacja CHAIN1 akceptują dla S0804 zarówno v11-chain1, jak i v12-chain1-led-on. Lista wersji dla innych modeli i kontrola modelu, MCU oraz protokołu… [Pełny opis wydania](https://github.com/GRYF-SMART/gryfsmart-firmware/releases/tag/v2026.11.13-s0804-compatible).
 
 ## Trzy ostatnie wersje
 
 | Wersja | Data publikacji | Pobieranie | Zmiany |
 |---|---|---|---|
+| **0.5.53** | 2026-11-13 | [Pobierz](https://github.com/GRYF-SMART/gryfsmart-firmware/releases/download/v2026.11.13-s0804-compatible/GRYFEXPERT-0.5.53-win-x64.zip) | Programator 2.0.25 i GRYFEXPERT 0.5.53 — zgodność z bootloaderem S0804 v12-chain1-led-on. Usunięto błędne odrzucanie aktualnego bootloadera S0804 z komunikatem wymagającym v11-chain1. Zapis przez RS-232 i aktualizacja CHAIN1 akceptują dla S0804 zarówno v11-chain1, jak i v12-chain1-led-on. Lista wersji dla innych modeli i kontrola modelu, MCU oraz protokołu… [Pełny opis](https://github.com/GRYF-SMART/gryfsmart-firmware/releases/tag/v2026.11.13-s0804-compatible) |
 | **0.5.52** | 2026-11-12 | [Pobierz](https://github.com/GRYF-SMART/gryfsmart-firmware/releases/download/v2026.11.12-gryfexpert-0.5.52-rti-2.14/GRYFEXPERT-0.5.52-win-x64.zip) | GRYFEXPERT 0.5.52 + RTI 2.14 — konfiguracja przez stały adres IP RTI. W trybie Bramka RTI wpisuje się adres IP procesora RTI oraz port TCP. Domyślny port 4211 jest edytowalny. W driverze osobna sekcja Konfiguracja przez GRYFEXPERT z tym samym portem. To GRYFEXPERT łączy się do RTI; komputer nie nasłuchuje i jego IP nie jest wpisywane w driverze. Zachowano… [Pełny opis](https://github.com/GRYF-SMART/gryfsmart-firmware/releases/tag/v2026.11.12-gryfexpert-0.5.52-rti-2.14) |
 | **0.5.51** | 2026-11-12 | [Pobierz](https://github.com/GRYF-SMART/gryfsmart-firmware/releases/download/v2026.11.12-gryfexpert-0.5.51-rti-2.13/GRYFEXPERT-0.5.51-win-x64.zip) | GRYFEXPERT 0.5.51 — bramka RTI (wymaga drivera GRYF 2.13). Nowy tryb połączenia Bramka RTI obok COM i Ethernet ETH. Nasłuch TCP, klucz parowania, identyfikator procesora i status. Konfiguracja i diagnostyka modułów przez RS232 procesora RTI, bez ETH. Heartbeat i rozłączenie sesji z przywróceniem pracy drivera. Wgrywanie HEX w tym trybie zablokowane.… [Pełny opis](https://github.com/GRYF-SMART/gryfsmart-firmware/releases/tag/v2026.11.12-gryfexpert-0.5.51-rti-2.13) |
-| **0.5.50** | 2026-11-05 | [Pobierz](https://github.com/GRYF-SMART/gryfsmart-firmware/releases/download/v2026.11.06-gryfexpert-0.5.50/GRYFEXPERT-0.5.50-win-x64.zip) | GRYFEXPERT 0.5.50 dodaje eksport nazw wejść, wyjść, PWM i flag do Integration Designera. Wybierz Plik → Eksportuj nazwy do RTI i wskaż plik .driverconfig wyeksportowany ze sterownika GRYF. [Pełny opis](https://github.com/GRYF-SMART/gryfsmart-firmware/releases/tag/v2026.11.06-gryfexpert-0.5.50) |
 
 ## Konfiguracja przez GRYFEXPERT — driver RTI 2.14 / GRYFEXPERT 0.5.52
 

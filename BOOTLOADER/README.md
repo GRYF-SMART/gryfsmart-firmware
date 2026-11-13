@@ -1,16 +1,16 @@
 # 5. Instalator Bootloader
 
-**[Pobierz najnowszą wersję 2.0.24](https://github.com/GRYF-SMART/gryfsmart-firmware/releases/download/v2026.11.13-installer-2.0.24/GRYFSMART-Instalator.zip)**
+**[Pobierz najnowszą wersję 2.0.25](https://github.com/GRYF-SMART/gryfsmart-firmware/releases/download/v2026.11.13-s0804-compatible/GRYFSMART-Instalator.zip)**
 
-Instalator 2.0.24 — wykrywanie i instalacja sterownika USBasp. Po podłączeniu USBasp (VID 16C0, PID 05DC) program sprawdza stan sterownika w Windows co 3 sekundy. Brak sterownika wyświetla czerwony komunikat oraz przycisk „Zainstaluj sterownik USBasp”. Brak urządzenia, kilka programatorów i błędy sprzętu Windows mają osobne komunikaty. Przycisk uruchamia… [Pełny opis wydania](https://github.com/GRYF-SMART/gryfsmart-firmware/releases/tag/v2026.11.13-installer-2.0.24).
+Programator 2.0.25 i GRYFEXPERT 0.5.53 — zgodność z bootloaderem S0804 v12-chain1-led-on. Usunięto błędne odrzucanie aktualnego bootloadera S0804 z komunikatem wymagającym v11-chain1. Zapis przez RS-232 i aktualizacja CHAIN1 akceptują dla S0804 zarówno v11-chain1, jak i v12-chain1-led-on. Lista wersji dla innych modeli i kontrola modelu, MCU oraz protokołu… [Pełny opis wydania](https://github.com/GRYF-SMART/gryfsmart-firmware/releases/tag/v2026.11.13-s0804-compatible).
 
 ## Trzy ostatnie wersje
 
 | Wersja | Data publikacji | Pobieranie | Zmiany |
 |---|---|---|---|
+| **2.0.25** | 2026-11-13 | [Pobierz](https://github.com/GRYF-SMART/gryfsmart-firmware/releases/download/v2026.11.13-s0804-compatible/GRYFSMART-Instalator.zip) | Programator 2.0.25 i GRYFEXPERT 0.5.53 — zgodność z bootloaderem S0804 v12-chain1-led-on. Usunięto błędne odrzucanie aktualnego bootloadera S0804 z komunikatem wymagającym v11-chain1. Zapis przez RS-232 i aktualizacja CHAIN1 akceptują dla S0804 zarówno v11-chain1, jak i v12-chain1-led-on. Lista wersji dla innych modeli i kontrola modelu, MCU oraz protokołu… [Pełny opis](https://github.com/GRYF-SMART/gryfsmart-firmware/releases/tag/v2026.11.13-s0804-compatible) |
 | **2.0.24** | 2026-11-13 | [Pobierz](https://github.com/GRYF-SMART/gryfsmart-firmware/releases/download/v2026.11.13-installer-2.0.24/GRYFSMART-Instalator.zip) | Instalator 2.0.24 — wykrywanie i instalacja sterownika USBasp. Po podłączeniu USBasp (VID 16C0, PID 05DC) program sprawdza stan sterownika w Windows co 3 sekundy. Brak sterownika wyświetla czerwony komunikat oraz przycisk „Zainstaluj sterownik USBasp”. Brak urządzenia, kilka programatorów i błędy sprzętu Windows mają osobne komunikaty. Przycisk uruchamia… [Pełny opis](https://github.com/GRYF-SMART/gryfsmart-firmware/releases/tag/v2026.11.13-installer-2.0.24) |
 | **2.0.23** | 2026-11-12 | [Pobierz](https://github.com/GRYF-SMART/gryfsmart-firmware/releases/download/v2026.11.12-installer-2.0.23/GRYFSMART-Instalator.zip) | Instalator 2.0.23 — automatyczna korekta fuse bitów wszystkich sześciu profili. Po kopii EEPROM instalator ustawia zewnętrzny kwarc Full Swing, wyłącza CKDIV8, wybiera obszar bootloadera i start od bootloadera oraz zachowuje ISP. ETH0606T/R0808/R0806T/S0804: 8 KiB; R0806T-OLD i ETH Mini GATE: 4 KiB zgodnie z ich procesorem i wsadem. Przed korektą czerwony… [Pełny opis](https://github.com/GRYF-SMART/gryfsmart-firmware/releases/tag/v2026.11.12-installer-2.0.23) |
-| **2.0.22** | 2026-11-12 | [Pobierz](https://github.com/GRYF-SMART/gryfsmart-firmware/releases/download/v2026.11.12-installer-2.0.22/GRYFSMART-Instalator.zip) | Instalator 2.0.22 i bootloader S0804 v12-chain1-led-on. Diody RUN (PB3) oraz RX/TX (PB2) świecą stale w trybie bootloadera: podczas oczekiwania, zapisu i po zapisie. Po przejściu do aplikacji sterowanie przejmuje aplikacja. Po poprawnym zapisie i weryfikacji instalator wyświetla zielony napis: Gotowe! Bootloader modułu S0804 został wgrany pomyślnie! [Pełny opis](https://github.com/GRYF-SMART/gryfsmart-firmware/releases/tag/v2026.11.12-installer-2.0.22) |
 
 ## Pierwsza instalacja bootloadera — GRYFSMART-Instalator
 
