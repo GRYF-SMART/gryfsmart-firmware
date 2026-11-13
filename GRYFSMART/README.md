@@ -1,16 +1,16 @@
 # 1. Aplikacja GRYFSMART
 
-**[Pobierz najnowszą wersję 0.5.60](https://github.com/GRYF-SMART/gryfsmart-firmware/releases/download/v2026.11.13-gryfexpert-0.5.60-rti-2.16/GRYFEXPERT-0.5.60-win-x64.zip)**
+**[Pobierz najnowszą wersję 0.5.61](https://github.com/GRYF-SMART/gryfsmart-firmware/releases/download/v2026.11.13-gryfexpert-0.5.61/GRYFEXPERT-0.5.61-win-x64.zip)**
 
-GRYFEXPERT 0.5.60 / RTI 2.16 / firmware modules updated. Nine consistent shutter actions across GRYFEXPERT, S0804 HEX, RTI and Home Assistant. Step 5 cycles OPEN, STOP, CLOSE, STOP; code 6 remains a compatibility alias. Directional steps, open/close for 1..255 seconds, percent position, auto stop after configured travel, stop and direction change are… [Pełny opis wydania](https://github.com/GRYF-SMART/gryfsmart-firmware/releases/tag/v2026.11.13-gryfexpert-0.5.60-rti-2.16).
+GRYFEXPERT 0.5.61: jedna akcja rolety wybierana z rozwijanego menu. Reguły lokalne S0804 i sloty rolet wszystkich modeli: usunięto dodatkowy panel wielu przycisków i stale widocznych parametrów pod wyborem akcji. Czas [s] jest widoczny tylko dla OTWÓRZ NA CZAS i ZAMKNIJ NA CZAS; Pozycja [%] tylko dla USTAW POZYCJĘ. Tak samo działa wybór akcji w zakładce… [Pełny opis wydania](https://github.com/GRYF-SMART/gryfsmart-firmware/releases/tag/v2026.11.13-gryfexpert-0.5.61).
 
 ## Trzy ostatnie wersje
 
 | Wersja | Data publikacji | Pobieranie | Zmiany |
 |---|---|---|---|
+| **0.5.61** | 2026-11-13 | [Pobierz](https://github.com/GRYF-SMART/gryfsmart-firmware/releases/download/v2026.11.13-gryfexpert-0.5.61/GRYFEXPERT-0.5.61-win-x64.zip) | GRYFEXPERT 0.5.61: jedna akcja rolety wybierana z rozwijanego menu. Reguły lokalne S0804 i sloty rolet wszystkich modeli: usunięto dodatkowy panel wielu przycisków i stale widocznych parametrów pod wyborem akcji. Czas [s] jest widoczny tylko dla OTWÓRZ NA CZAS i ZAMKNIJ NA CZAS; Pozycja [%] tylko dla USTAW POZYCJĘ. Tak samo działa wybór akcji w zakładce… [Pełny opis](https://github.com/GRYF-SMART/gryfsmart-firmware/releases/tag/v2026.11.13-gryfexpert-0.5.61) |
 | **0.5.60** | 2026-11-13 | [Pobierz](https://github.com/GRYF-SMART/gryfsmart-firmware/releases/download/v2026.11.13-gryfexpert-0.5.60-rti-2.16/GRYFEXPERT-0.5.60-win-x64.zip) | GRYFEXPERT 0.5.60 / RTI 2.16 / firmware modules updated. Nine consistent shutter actions across GRYFEXPERT, S0804 HEX, RTI and Home Assistant. Step 5 cycles OPEN, STOP, CLOSE, STOP; code 6 remains a compatibility alias. Directional steps, open/close for 1..255 seconds, percent position, auto stop after configured travel, stop and direction change are… [Pełny opis](https://github.com/GRYF-SMART/gryfsmart-firmware/releases/tag/v2026.11.13-gryfexpert-0.5.60-rti-2.16) |
 | **0.5.59** | 2026-11-13 | [Pobierz](https://github.com/GRYF-SMART/gryfsmart-firmware/releases/download/v2026.11.13-shutter-step/GRYFEXPERT-0.5.59-win-x64.zip) | STEP i otwieranie rolety na zadany czas GRYFEXPERT 0.5.59. Firmware S0804 36, R0806T 38, R0808 37, ETH0606T 36 i R0806T-OLD 10. [Pełny opis](https://github.com/GRYF-SMART/gryfsmart-firmware/releases/tag/v2026.11.13-shutter-step) |
-| **0.5.58** | 2026-11-13 | [Pobierz](https://github.com/GRYF-SMART/gryfsmart-firmware/releases/download/v2026.11.13-gryfexpert-0.5.58-rti-2.15/GRYFEXPERT-0.5.58-win-x64.zip) | GRYFEXPERT 0.5.58 — wysyłanie bez odczytu wstępnego. Usunięto przycisk „Sprawdź sprzęt, zachowaj projekt”. Konfigurację można wysłać od razu. Ustawienia projektu zastępują ustawienia sprzętu w wybranym zakresie, także jeśli moduł ma już zapisaną regułę lub inną konfigurację. Wysyłka pojedynczej reguły pozostawia pozostałe reguły bez zmian. Po wysłaniu… [Pełny opis](https://github.com/GRYF-SMART/gryfsmart-firmware/releases/tag/v2026.11.13-gryfexpert-0.5.58-rti-2.15) |
 
 ## Konfiguracja przez GRYFEXPERT — driver RTI 2.14 / GRYFEXPERT 0.5.52
 
