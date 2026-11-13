@@ -2,14 +2,6 @@
   "products": {
     "GRYFSMART": [
       {
-        "version": "0.5.60",
-        "url": "https://github.com/GRYF-SMART/gryfsmart-firmware/releases/download/v2026.11.13-gryfexpert-0.5.60-rti-2.16/GRYFEXPERT-0.5.60-win-x64.zip",
-        "release": "https://github.com/GRYF-SMART/gryfsmart-firmware/releases/tag/v2026.11.13-gryfexpert-0.5.60-rti-2.16",
-        "date": "2026-11-13",
-        "notes": "GRYFEXPERT 0.5.60 / RTI 2.16 / firmware modules updated. Nine consistent shutter actions across GRYFEXPERT, S0804 HEX, RTI and Home Assistant. Step 5 cycles OPEN, STOP, CLOSE, STOP; code 6 remains a compatibility alias. Directional steps, open/close for 1..255 seconds, percent position, auto stop after configured travel, stop and direction change are supported.\n\nTemperature reports on R0806T, R0808 and ETH0606T are sent only on first sample and when rounded value changes by 0.1 C. Stable readings no longer produce periodic reports.\n\nAll builds and offline tests passed. No physical modules were programmed. See RTI/README.md, HA README and the relevant firmware source guides.",
-        "digest": "sha256:b8f6fffcd1d3bc687be947e28b65e71b92d9b0ddfdea2aa498f06d35d735c646"
-      },
-      {
         "version": "0.5.59",
         "url": "https://github.com/GRYF-SMART/gryfsmart-firmware/releases/download/v2026.11.13-shutter-step/GRYFEXPERT-0.5.59-win-x64.zip",
         "release": "https://github.com/GRYF-SMART/gryfsmart-firmware/releases/tag/v2026.11.13-shutter-step",
@@ -24,6 +16,14 @@
         "date": "2026-11-13",
         "notes": "GRYFEXPERT 0.5.58 — wysyłanie bez odczytu wstępnego.\nUsunięto przycisk „Sprawdź sprzęt, zachowaj projekt”. Konfigurację można wysłać od razu. Ustawienia projektu zastępują ustawienia sprzętu w wybranym zakresie, także jeśli moduł ma już zapisaną regułę lub inną konfigurację. Wysyłka pojedynczej reguły pozostawia pozostałe reguły bez zmian. Po wysłaniu pozostaje automatyczna kontrola zakresu i potwierdzenie zapisu EEPROM.\n\nGRYFEXPERT 0.5.57 — czytelny komunikat o błędzie połączenia RTI.\n\nGRYFEXPERT 0.5.56 — widoczny postęp wyszukiwania RTI.\r\n",
         "digest": "sha256:ab3355cd4dbba71225a22e5296dae2204427e03d9a2de9a3b7abdd2299e222b6"
+      },
+      {
+        "version": "0.5.57",
+        "url": "https://github.com/GRYF-SMART/gryfsmart-firmware/releases/download/v2026.11.13-gryfexpert-0.5.57-rti-2.15/GRYFEXPERT-0.5.57-win-x64.zip",
+        "release": "https://github.com/GRYF-SMART/gryfsmart-firmware/releases/tag/v2026.11.13-gryfexpert-0.5.57-rti-2.15",
+        "date": "2026-11-13",
+        "notes": "GRYFEXPERT 0.5.57 — komunikat o błędzie połączenia RTI.\nPrzy nieudanym połączeniu wyświetlana jest pogrubiona, czerwona podpowiedź sprawdzenia adresu IP, portu, nazwy RTI i klucza parowania oraz aktualizacji GRYFEXPERT.\n\nGRYFEXPERT 0.5.56 — widoczny postęp wyszukiwania RTI.\nPodczas skanowania widoczny jest animowany wskaźnik, pasek postępu, liczba sprawdzonych adresów IP i port TCP. Po zakończeniu program wyświetla liczbę znalezionych driverów albo czytelny komunikat o braku wyników.\r\n",
+        "digest": "sha256:a9d064ffe124fe1a79ee8a3599084c773b3dc2171117349a1d641293c350d0a6"
       }
     ],
     "AKTUALIZATOR": [
