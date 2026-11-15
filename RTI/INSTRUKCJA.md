@@ -1,14 +1,18 @@
-## Aktualizacja drivera 2.17
+## Aktualizacja drivera 2.18
 
-Wersja **2.17** naprawia import i aktualizację paczki w Integration Designer. Zachowuje identyfikator drivera, konfigurację, funkcje i zmienne z 2.16, w tym dziewięć akcji rolet S0804. Jeśli pojawia się komunikat „Unable to update driver”, pobierz paczkę 2.17 i użyj **GRYF → Driver Utilities → Update Driver**. Nie usuwaj istniejącej instancji.
+<!-- RTI-METADATA:BEGIN -->
+**GRYF Driver v2.18** · Copyright: 15/11/2026 GRYF
+<!-- RTI-METADATA:END -->
 
-## Konfiguracja przez GRYFEXPERT — driver RTI 2.17 / GRYFEXPERT 0.5.60
+Aktualna paczka ma nazwę **GRYF Driver**. Numer wersji w polu Version i nagłówku pomocy oraz data Copyright są synchronizowane przy budowaniu wydania. Zachowano poprawkę importu z wersji 2.17 oraz dotychczasowe funkcje i identyfikatory. W Integration Designer wybierz istniejącą instancję **GRYF → Driver Utilities → Update Driver** i wskaż nowy `GRYF.rtidriver`. Nie usuwaj istniejącej instancji. Nazwa instancji zapisana wcześniej w projekcie może wymagać osobnej zmiany na **GRYF Driver**.
+
+## Konfiguracja przez GRYFEXPERT — driver RTI 2.18 / GRYFEXPERT 0.5.60
 
 Połączenie: **GRYFEXPERT → adres IP procesora RTI + port TCP → RS232 → port 0 pierwszego modułu GRYF**. Odpowiedzi wracają tą samą drogą. Moduł ETH nie jest wymagany. RTI działa jako serwer ze stałym adresem IP; GRYFEXPERT inicjuje połączenie jako klient.
 
 ### Ustawienia drivera RTI
 
-W Integration Designer zaktualizuj driver do **2.17**. Wybierz **RS-232**, port procesora połączony z GRYF i **115200, 8N1**. W osobnej sekcji **Konfiguracja przez GRYFEXPERT**:
+W Integration Designer zaktualizuj driver do **2.18**. Wybierz **RS-232**, port procesora połączony z GRYF i **115200, 8N1**. W osobnej sekcji **Konfiguracja przez GRYFEXPERT**:
 
 - włącz konfigurację przez GRYFEXPERT;
 - ustaw **Port TCP konfiguracji GRYFEXPERT**: domyślnie **4211**, z możliwością zmiany na wolny port w zakresie 1024–65535;
@@ -104,10 +108,10 @@ Szczegółowe odczyty wymagają firmware obsługującego `GetRolState` i `GetRol
 
 Dopasowanie odbywa się według ID i typu modułu oraz numeru kanału. Ustawienia połączenia RS-232 i TCP pozostają takie jak w pliku wyeksportowanym z RTI. Pusta nazwa flagi w GRYFEXPERT zachowuje dotychczasową etykietę w RTI.
 
-SHA-256 paczki: `fd5176b3856518f58fabc8ab54d462286d063ce2ab674b636f9956fe872ad8ac`.
+Aktualna wersja i SHA-256 paczki: [manifest drivera](https://github.com/GRYF-SMART/gryfsmart-firmware/blob/main/RTI/manifest.json).
 
 
-## Akcje rolet S0804 w RTI 2.16
+## Akcje rolet S0804 w RTI 2.18
 
 W funkcjach **Steruj roletą S0804** oraz **Komponent rolety** są dostępne te same akcje: OTWÓRZ (1), STOP (3), ZAMKNIJ (2), ZAMKNIJ+STOP (9), OTWÓRZ+STOP (4), STEP (5), OTWÓRZ NA CZAS (8), ZAMKNIJ NA CZAS (10) i USTAW POZYCJĘ % (7). Dla akcji 8 i 10 wpisz czas 1–255 sekund; dla akcji 7 pozycję 0–100%. Pozostałe akcje nie używają parametru. Kod 6 zostaje obsługiwany przez firmware jako starszy alias STEP, ale nie pojawia się jako nowa akcja.
 

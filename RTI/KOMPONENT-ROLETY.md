@@ -1,5 +1,9 @@
 # GRYF — jeden komponent rolety S0804
 
+<!-- RTI-METADATA:BEGIN -->
+**GRYF Driver v2.18** · Copyright: 15/11/2026 GRYF
+<!-- RTI-METADATA:END -->
+
 Komponent jest natywnym **Viewport** w Integration Designer 11: jednym obiektem na stronie, zawierającym procent otwarcia, krótki stan oraz akcje **OTWÓRZ / STOP / ZAMKNIJ / ZAMKNIJ+STOP / OTWÓRZ+STOP / STEP / OTWÓRZ NA CZAS / ZAMKNIJ NA CZAS / USTAW POZYCJĘ**. Wnętrze edytuje się przez prawy przycisk myszy → **Edit Viewport**. Nie wymaga serwera WWW ani przeglądarki.
 
 ## Uruchomienie wzorca

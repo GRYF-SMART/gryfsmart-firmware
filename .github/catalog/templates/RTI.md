@@ -1,10 +1,14 @@
-## Konfiguracja przez GRYFEXPERT — driver RTI 2.17 / GRYFEXPERT 0.5.60 lub nowszy
+## Konfiguracja przez GRYFEXPERT — driver RTI 2.18 / GRYFEXPERT 0.5.60 lub nowszy
+
+<!-- RTI-METADATA:BEGIN -->
+**GRYF Driver v2.18** · Copyright: 15/11/2026 GRYF
+<!-- RTI-METADATA:END -->
 
 Połączenie: **GRYFEXPERT → adres IP procesora RTI + port TCP → RS232 → port 0 pierwszego modułu GRYF**. Odpowiedzi wracają tą samą drogą. Moduł ETH nie jest wymagany. RTI działa jako serwer ze stałym adresem IP; GRYFEXPERT inicjuje połączenie jako klient.
 
 ### Ustawienia drivera RTI
 
-W Integration Designer zaktualizuj driver do **2.17**. Wybierz **RS-232**, port procesora połączony z GRYF i **115200, 8N1**. W osobnej sekcji **Konfiguracja przez GRYFEXPERT**:
+W Integration Designer zaktualizuj driver do **2.18**. Wybierz **RS-232**, port procesora połączony z GRYF i **115200, 8N1**. W osobnej sekcji **Konfiguracja przez GRYFEXPERT**:
 
 - włącz konfigurację przez GRYFEXPERT;
 - ustaw **Port TCP konfiguracji GRYFEXPERT**: domyślnie **4211**, z możliwością zmiany na wolny port w zakresie 1024–65535;
@@ -26,7 +30,7 @@ Zmienne **Status bramki** oraz **Trwa konfiguracja GRYFEXPERT** można umieści�
 
 **Zmiana względem 0.5.51 / 2.13:** kierunek zestawiania połączenia został odwrócony na GRYFEXPERT → RTI. Zaktualizuj obie strony. Stary klucz i numer portu można zachować, ale w projekcie GRYFEXPERT trzeba podać adres RTI i ponownie potwierdzić przypisanie modułów do połączenia. Testy obejmują symulację RTI i rzeczywiste połączenia TCP na komputerze; test instalacyjny na fizycznym RTI pozostaje do wykonania.
 
-## Akcje rolet S0804 — RTI 2.16
+## Akcje rolet S0804 — RTI 2.18
 
 Driver RTI oferuje dziewięć wspólnych akcji: OTWÓRZ, STOP, ZAMKNIJ, ZAMKNIJ+STOP, OTWÓRZ+STOP, STEP (OTWÓRZ → STOP → ZAMKNIJ → STOP), OTWÓRZ NA CZAS, ZAMKNIJ NA CZAS oraz USTAW POZYCJĘ %. Czas obu akcji czasowych podaje się w sekundach (1–255). Pełny przejazd i STEP zatrzymują się po czasie ustawionym w S0804; STOP i ponowne wywołanie kierunku podczas ruchu zatrzymują napęd. Kod 6 jest zachowany jako zgodny alias STEP.
 
@@ -53,7 +57,7 @@ Brak odpowiedzi lub błąd pojedynczej transmisji nie blokuje następnych moduł
 
 ## Instalacja sterownika
 
-Wersja **2.17** naprawia import i aktualizację paczki w Integration Designer. Zachowuje identyfikator drivera, konfigurację, funkcje i zmienne z 2.16, w tym dziewięć akcji rolet S0804. Jeśli pojawia się komunikat „Unable to update driver”, pobierz paczkę 2.17 i użyj **GRYF → Driver Utilities → Update Driver**. Nie usuwaj istniejącej instancji.
+Aktualna paczka ma nazwę **GRYF Driver**. Numer wersji w polu Version i nagłówku pomocy oraz data Copyright są synchronizowane przy budowaniu wydania. Zachowano poprawkę importu z wersji 2.17 oraz dotychczasowe funkcje i identyfikatory. W Integration Designer wybierz istniejącą instancję **GRYF → Driver Utilities → Update Driver** i wskaż nowy `GRYF.rtidriver`. Nie usuwaj istniejącej instancji. Nazwa instancji zapisana wcześniej w projekcie może wymagać osobnej zmiany na **GRYF Driver**.
 
 
 Stały adres bieżącej paczki: **[GRYF.rtidriver](https://raw.githubusercontent.com/GRYF-SMART/gryfsmart-firmware/main/RTI/GRYF.rtidriver)**.
