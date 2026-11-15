@@ -1,10 +1,16 @@
+## Ruch rolety przez zadany czas — RTI 2.19
+
+Dla **OTWIERAJ PRZEZ** i **ZAMYKAJ PRZEZ** wpisz czas w sekundach co **0,1 s**, w zakresie **0,1–655,3 s**, np. `0,1`, `1,2` albo `1.2`. Czas odmierza moduł S0804; po jego upływie zatrzymuje napęd. Przerwa przy zmianie kierunku nie skraca zadanego czasu ruchu. Czasy ułamkowe i dłuższe niż 255 s wymagają **firmware S0804 38 lub nowszego**. Pełne sekundy 1–255 nadal używają dotychczasowego polecenia i działają także ze starszym firmware obsługującym te akcje. Dla USTAW POZYCJĘ wpisz całkowite 0–100%.
+
+W Integration Designer pole **Czas [s] / pozycja [%]** przyjmuje tekst. Wpis `10` nadal oznacza 10 sekund. Po aktualizacji istniejącego projektu sprawdź wartości parametrów zapisanych makr.
+
 # GRYF — jeden komponent rolety S0804
 
 <!-- RTI-METADATA:BEGIN -->
-**GRYF Driver v2.18** · Copyright: 15/11/2026 GRYF
+**GRYF Driver v2.19** · Copyright: 15/11/2026 GRYF
 <!-- RTI-METADATA:END -->
 
-Komponent jest natywnym **Viewport** w Integration Designer 11: jednym obiektem na stronie, zawierającym procent otwarcia, krótki stan oraz akcje **OTWÓRZ / STOP / ZAMKNIJ / ZAMKNIJ+STOP / OTWÓRZ+STOP / STEP / OTWÓRZ NA CZAS / ZAMKNIJ NA CZAS / USTAW POZYCJĘ**. Wnętrze edytuje się przez prawy przycisk myszy → **Edit Viewport**. Nie wymaga serwera WWW ani przeglądarki.
+Komponent jest natywnym **Viewport** w Integration Designer 11: jednym obiektem na stronie, zawierającym procent otwarcia, krótki stan oraz akcje **OTWÓRZ / STOP / ZAMKNIJ / ZAMKNIJ+STOP / OTWÓRZ+STOP / STEP / OTWIERAJ PRZEZ / ZAMYKAJ PRZEZ / USTAW POZYCJĘ**. Wnętrze edytuje się przez prawy przycisk myszy → **Edit Viewport**. Nie wymaga serwera WWW ani przeglądarki.
 
 ## Uruchomienie wzorca
 
@@ -33,7 +39,7 @@ Przycisk procentowy wykonuje zapisany cel i wyświetla go, np. **NA 70%**. Jest 
 
 Zaznacz zewnętrzny Viewport i kopiuj go jako całość na stronę docelową. Po przeniesieniu między projektami sprawdź instancję GRYF i powiązania w Tag Editor. Nie zakładaj, że numery urządzeń w dwóch projektach są takie same.
 
-Przy kopii dla **innej** rolety nadaj jej własne tagi (np. `GRYF Roleta 2: ...`), aby zmiana makra nie zmieniła również pierwszej rolety. W funkcji **ID N → Komponent rolety** wybierz numer rolety i jedną z dziewięciu akcji. Dla ruchu czasowego podaj 1–255 s; dla pozycji ustaw cel w zakresie 0–100%. Zaktualizuj również tagi tekstowe i zmienne widoczności:
+Przy kopii dla **innej** rolety nadaj jej własne tagi (np. `GRYF Roleta 2: ...`), aby zmiana makra nie zmieniła również pierwszej rolety. W funkcji **ID N → Komponent rolety** wybierz numer rolety i jedną z dziewięciu akcji. Dla ruchu czasowego podaj 0,1–655,3 s co 0,1 s; dla pozycji ustaw cel w zakresie 0–100%. Zaktualizuj również tagi tekstowe i zmienne widoczności:
 
 | Element | Powiązanie dla rolety R, modułu ID N |
 | --- | --- |

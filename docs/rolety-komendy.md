@@ -1,5 +1,18 @@
 # S0804 — parametry, sterowanie i odczyt stanu rolet
 
+## Ruch czasowy co 0,1 s — firmware 38
+
+`AT+RolTimed=ID,NR,KIERUNEK,CZAS,SUMA<CR>`: ID=1–35, NR=1–4, KIERUNEK=1 otwieranie albo 2 zamykanie, CZAS=1–6553 w jednostkach 0,1 s. SUMA=ID+NR+KIERUNEK+CZAS. Przykłady:
+
+```text
+AT+RolTimed=4,1,1,12,18<CR>   otwieraj roletę 1 modułu 4 przez 1,2 s
+AT+RolTimed=4,1,2,1,8<CR>     zamykaj tę roletę przez 0,1 s
+```
+
+Moduł potwierdza przyjęcie przez `RuleOK=ID`; błędne parametry lub sumę odrzuca przez `RuleERROR=ID`. Silnik zatrzymuje się po zadanym czasie odmierzanym lokalnie, także gdy RTI nie wysyła kolejnych poleceń. Przerwa 0,3 s przy zmianie kierunku poprzedza ruch i nie jest wliczana do CZAS. Komenda nie zmienia pełnych czasów przejazdu `RolTime` ani zapisanej konfiguracji EEPROM. Wymaga poprawnie ustawionych czasów przejazdu. STOP anuluje ruch. Odczyt stanu: `AT+GetRolState=ID,NR,SUMA`.
+
+Dotychczasowe `RolAct` 8 (otwieranie) i 10 (zamykanie) nadal przyjmują pełne sekundy 1–255. Nowa komenda nie zmienia jednostek istniejących reguł. Moduły pośrednie z aktualnym firmware przekazują ją bez interpretowania parametrów; firmware 38 jest wymagane na docelowym S0804.
+
 ## Zmiana kierunków od firmware S0804 27
 
 Od wersji **27** zamieniono sprzętowe kierunki wszystkich czterech rolet względem wersji 26 i starszych: OPEN ustawia DIR=1, CLOSE ustawia DIR=0. Piny DIR to PC6/PC4/PC2/PC0; piny zasilania PWR to PC7/PC5/PC3/PC1. Zasilanie jest wyłączane podczas przerwy zmiany kierunku.
@@ -26,7 +39,7 @@ S0804 obsługuje cztery rolety. Dokumentacja dotyczy oprogramowania w wersji **2
 | Odpowiedź parametrów | `RolTime=ID,NR,OPEN,CLOSE,SUMA` | Odpowiedź GetRolTime |
 | Odpowiedź szczegółowa | `RolState=ID,NR,STAN,ZNANA,POZYCJA,CEL,POZOSTALO,SUMA` | Odpowiedź GetRolState |
 
-ID: 1–35, NR rolety: 1–4. Liczby są dziesiętne. SUMA jest zwykłą sumą wcześniejszych pól liczbowych. [Zasady komunikacji](komendy-wspolne.md#zasady-komunikacji-i-struktura-sieci). W przykładach `<CR>` i `<LF>` oznaczają bajty, a TX/RX — kierunki względem terminala. Nie wpisuj dosłownego `<CR>`.
+ID: 1–35, NR rolety: 1–4. Liczby są dziesiętne. SUMA jest zwykłą sumą wcześniejszych pól liczbowych. Łącze 115200 8N1; zapytanie kończ CR (0x0D), odpowiedź CRLF. W przykładach `<CR>` i `<LF>` oznaczają bajty, a TX/RX — kierunki względem terminala. Nie wpisuj dosłownego `<CR>`.
 
 Nowe odczyty wymagają ID 1–35. Wyjątek historyczny: StanRol=0 pyta lokalny S0804; nie jest broadcastem ani sposobem przejścia przez moduł przekaźnikowy.
 
@@ -36,7 +49,7 @@ Nowe odczyty wymagają ID 1–35. Wyjątek historyczny: StanRol=0 pyta lokalny S
 AT+RolTime=ID,NR,OTWARCIE,ZAMKNIECIE,SUMA<CR>
 ```
 
-Oba czasy: 1–6000 w jednostkach **0,1 s**, czyli 0,1–600 s. Ustawienie jest możliwe tylko na postoju, bez oczekującej komendy. Unieważnia dotychczasową pozycję rolety. Przykład: otwieranie 20 s, zamykanie 22 s:
+Oba czasy: 1–6553 w jednostkach **0,1 s**, czyli 0,1–655,3 s. Ustawienie jest możliwe tylko na postoju, bez oczekującej komendy. Unieważnia dotychczasową pozycję rolety. Przykład: otwieranie 20 s, zamykanie 22 s:
 
 ```text
 TX: AT+RolTime=1,1,200,220,422<CR>
@@ -78,9 +91,12 @@ SUMA=ID+NR+AKCJA+PROCENT. Akcje 0–6 wymagają PROCENT=0:
 | 2 | CLOSE | Pełne zamykanie przez skonfigurowany czas |
 | 3 | STOP | Zatrzymanie i anulowanie oczekującego ruchu |
 | 4 | STEP UP | Otwiera; podczas otwierania lub oczekiwania na OPEN — STOP |
-| 5 | STEP DOWN | Zamyka; podczas zamykania lub oczekiwania na CLOSE — STOP |
+| 5 | STEP | Cykl OPEN → STOP → CLOSE → STOP |
 | 6 | STEP | Podczas ruchu STOP; na postoju kierunek przeciwny do ostatniego, początkowo OPEN |
 | 7 | POSITION | Docelowe otwarcie 0–100% |
+| 8 | OPEN TIMED | Otwieranie przez 1–255 pełnych sekund |
+| 9 | CLOSE+STOP | Zamyka; podczas zamykania lub oczekiwania na CLOSE — STOP |
+| 10 | CLOSE TIMED | Zamykanie przez 1–255 pełnych sekund |
 
 Przykłady dla ID=1 i rolety 1, po każdej przyjętej komendzie RuleOK=1:
 
@@ -89,7 +105,7 @@ AT+RolAct=1,1,1,0,3<CR>      ← OPEN
 AT+RolAct=1,1,2,0,4<CR>      ← CLOSE
 AT+RolAct=1,1,3,0,5<CR>      ← STOP
 AT+RolAct=1,1,4,0,6<CR>      ← STEP UP
-AT+RolAct=1,1,5,0,7<CR>      ← STEP DOWN
+AT+RolAct=1,1,5,0,7<CR>      ← STEP
 AT+RolAct=1,1,6,0,8<CR>      ← STEP
 AT+RolAct=1,1,7,50,59<CR>    ← pozycja 50%
 AT+RolAct=1,1,7,0,9<CR>      ← pełne zamknięcie
@@ -162,7 +178,7 @@ RX: RolState=1,1,2,0,255,100,120,479<CR><LF>
 RX: RolState=1,1,3,1,100,50,103,259<CR><LF>
 ```
 
-POZOSTALO może wynieść do 6003 (600 s ruchu + 0,3 s przerwy). Wartość 1 oznacza do około 0,1 s do zakończenia, nie jedną sekundę. Bez aktywnego ruchu/celu wynosi 0.
+POZOSTALO może wynieść do 6556 (655,3 s ruchu + 0,3 s przerwy). Wartość 1 oznacza do około 0,1 s do zakończenia, nie jedną sekundę. Bez aktywnego ruchu/celu wynosi 0.
 
 Stan i pozycja są odczytywane bez wykonywania ruchu i bez pobierania oczekującej komendy. Dlatego tuż po RolAct można zobaczyć STAN=0, ale CEL inny niż 255 i dodatni czas: polecenie już przyjęto, a silnik jeszcze nie ruszył. Podobnie przez krótki czas po upływie timera STAN może nadal wskazywać ruch przy POZOSTALO=0, dopóki normalna obsługa rolet nie wyłączy wyjścia. Odczyt nie wykonuje STOP w zastępstwie tej obsługi.
 

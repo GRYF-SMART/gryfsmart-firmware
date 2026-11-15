@@ -106,7 +106,22 @@ SUMA w zapytaniu GetFlags to ID; w odpowiedzi to ID+MASKA. Bit 0 maski oznacza f
 
 ### 3.4. S0804 — pełna obsługa rolety
 
-`AT+RolAct=ID,ROLETA,AKCJA,PROCENT,SUMA`. ROLETA=1–4. Akcje: 1 OPEN, 2 CLOSE, 3 STOP, 4 STEP UP, 5 STEP DOWN, 6 STEP, 7 procent. Dla akcji 1–6 PROCENT=0.
+#### Ruch czasowy co 0,1 s — firmware 38
+
+`AT+RolTimed=ID,NR,KIERUNEK,CZAS,SUMA<CR>`: ID=1–35, NR=1–4, KIERUNEK=1 otwieranie albo 2 zamykanie, CZAS=1–6553 w jednostkach 0,1 s. SUMA=ID+NR+KIERUNEK+CZAS. Przykłady:
+
+```text
+AT+RolTimed=4,1,1,12,18<CR>   otwieraj roletę 1 modułu 4 przez 1,2 s
+AT+RolTimed=4,1,2,1,8<CR>     zamykaj tę roletę przez 0,1 s
+```
+
+Moduł potwierdza przyjęcie przez `RuleOK=ID`; błędne parametry lub sumę odrzuca przez `RuleERROR=ID`. Silnik zatrzymuje się po zadanym czasie odmierzanym lokalnie, także gdy RTI nie wysyła kolejnych poleceń. Przerwa 0,3 s przy zmianie kierunku poprzedza ruch i nie jest wliczana do CZAS. Komenda nie zmienia pełnych czasów przejazdu `RolTime` ani zapisanej konfiguracji EEPROM. Wymaga poprawnie ustawionych czasów przejazdu. STOP anuluje ruch. Odczyt stanu: `AT+GetRolState=ID,NR,SUMA`.
+
+Dotychczasowe `RolAct` 8 (otwieranie) i 10 (zamykanie) nadal przyjmują pełne sekundy 1–255. Nowa komenda nie zmienia jednostek istniejących reguł. Moduły pośrednie z aktualnym firmware przekazują ją bez interpretowania parametrów; firmware 38 jest wymagane na docelowym S0804.
+
+
+
+`AT+RolAct=ID,ROLETA,AKCJA,PROCENT,SUMA`. ROLETA=1–4. Akcje: 1 OPEN, 2 CLOSE, 3 STOP, 4 OTWÓRZ+STOP, 5 STEP, 6 starszy alias STEP, 7 procent, 8 otwieranie przez czas, 9 ZAMKNIJ+STOP, 10 zamykanie przez czas. Dla akcji 8 i 10 czwarte pole to pełne sekundy 1–255; dla 7 procent 0–100; dla pozostałych 0.
 
 ```text
 AT+RolTime=4,1,200,220,425<CR>  pełny przejazd: 20 s w górę, 22 s w dół

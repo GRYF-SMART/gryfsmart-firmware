@@ -1,8 +1,8 @@
 {
   "name": "GRYF Driver",
-  "version": "2.18",
+  "version": "2.19",
   "date": "2026-11-15",
   "copyright": "15/11/2026 GRYF",
   "asset": "GRYF.rtidriver",
-  "sha256": "445c94a25731bb3c08ce1b899378d90b075beff53d149d1de6656ba65b25cc08"
+  "sha256": "52a613c952ccda4ff25e749ca04b4e33ba5629c8392c8efb2aa8b36808dbc4f9"
 }

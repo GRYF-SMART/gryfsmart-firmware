@@ -30,10 +30,10 @@
     },
     {
       "model": "S0804",
-      "version": "37",
+      "version": "38",
       "kind": "application",
       "asset": "S0804-firmware.hex",
-      "sha256": "1e0b6a4439d53ae12af9158b41fbab4d1b83562660895bb7ad48f22aa1512014",
+      "sha256": "0f1dbaa79aba8235174535eb6a14283cf8cfb66e1d29eefc2749313b6cfb858b",
       "mcu": "atmega1284p",
       "clock_hz": 18432000
     },

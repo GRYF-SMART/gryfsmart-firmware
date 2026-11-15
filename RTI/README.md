@@ -1,28 +1,33 @@
 # 4. Driver RTI
 
-**[Pobierz najnowszą wersję 2.18](https://github.com/GRYF-SMART/gryfsmart-firmware/releases/download/v2026.11.15-rti-2.18/GRYF.rtidriver)**
+<!-- RTI-METADATA:BEGIN -->
+**GRYF Driver v2.19** · Copyright: 15/11/2026 GRYF
+<!-- RTI-METADATA:END -->
 
-GRYF Driver 2.18 aktualizuje metadane widoczne w Integration Designer i dokumentacji. Name: GRYF Driver; Version: 2.18; Copyright: 15/11/2026 GRYF. Nagłówek pomocy: GRYF Driver v2.18. Dodano wpis do historii wersji i bieżące metadane w instrukcjach. [Pełny opis wydania](https://github.com/GRYF-SMART/gryfsmart-firmware/releases/tag/v2026.11.15-rti-2.18).
+**[Pobierz najnowszy GRYF Driver 2.19](https://github.com/GRYF-SMART/gryfsmart-firmware/releases/download/v2026.11.15-rti-2.19/GRYF.rtidriver)**
+
+Aktualna paczka ma nazwę **GRYF Driver**. Numer wersji w polu Version i nagłówku pomocy oraz data Copyright są synchronizowane przy budowaniu wydania. Zachowano poprawkę importu z wersji 2.17 oraz dotychczasowe funkcje i identyfikatory. W Integration Designer wybierz istniejącą instancję **GRYF → Driver Utilities → Update Driver** i wskaż nowy `GRYF.rtidriver`. Nie usuwaj istniejącej instancji. Nazwa instancji zapisana wcześniej w projekcie może wymagać osobnej zmiany na **GRYF Driver**.
+
+## Ruch rolety przez zadany czas — RTI 2.19
+
+Dla **OTWIERAJ PRZEZ** i **ZAMYKAJ PRZEZ** wpisz czas w sekundach co **0,1 s**, w zakresie **0,1–655,3 s**, np. `0,1`, `1,2` albo `1.2`. Czas odmierza moduł S0804; po jego upływie zatrzymuje napęd. Przerwa przy zmianie kierunku nie skraca zadanego czasu ruchu. Czasy ułamkowe i dłuższe niż 255 s wymagają **firmware S0804 38 lub nowszego**. Pełne sekundy 1–255 nadal używają dotychczasowego polecenia i działają także ze starszym firmware obsługującym te akcje. Dla USTAW POZYCJĘ wpisz całkowite 0–100%.
+
+W Integration Designer pole **Czas [s] / pozycja [%]** przyjmuje tekst. Wpis `10` nadal oznacza 10 sekund. Po aktualizacji istniejącego projektu sprawdź wartości parametrów zapisanych makr.
 
 ## Trzy ostatnie wersje
 
 | Wersja | Data publikacji | Pobieranie | Zmiany |
 |---|---|---|---|
-| **2.18** | 2026-11-15 | [Pobierz](https://github.com/GRYF-SMART/gryfsmart-firmware/releases/download/v2026.11.15-rti-2.18/GRYF.rtidriver) | GRYF Driver 2.18 aktualizuje metadane widoczne w Integration Designer i dokumentacji. Name: GRYF Driver; Version: 2.18; Copyright: 15/11/2026 GRYF. Nagłówek pomocy: GRYF Driver v2.18. Dodano wpis do historii wersji i bieżące metadane w instrukcjach. [Pełny opis](https://github.com/GRYF-SMART/gryfsmart-firmware/releases/tag/v2026.11.15-rti-2.18) |
-| **2.17** | 2026-11-13 | [Pobierz](https://github.com/GRYF-SMART/gryfsmart-firmware/releases/download/v2026.11.13-rti-2.17/GRYF.rtidriver) | GRYF RTI 2.17 naprawia błąd „Unable to update driver” przy imporcie i aktualizacji w Integration Designer. Zachowuje dziewięć akcji rolet S0804, komunikację RS-232/TCP i bramkę konfiguracji GRYFEXPERT. Paczka jest tworzona oficjalnym RTI PackageDriver. Manifest i definicje XML mają prawidłowy format, warunki widoczności są kompilowane, a skrypty i… [Pełny opis](https://github.com/GRYF-SMART/gryfsmart-firmware/releases/tag/v2026.11.13-rti-2.17) |
-| **2.16** | 2026-11-13 | [Pobierz](https://github.com/GRYF-SMART/gryfsmart-firmware/releases/download/v2026.11.13-gryfexpert-0.5.60-rti-2.16/GRYF.rtidriver) | GRYFEXPERT 0.5.60 / RTI 2.16 / firmware modules updated. Nine consistent shutter actions across GRYFEXPERT, S0804 HEX, RTI and Home Assistant. Step 5 cycles OPEN, STOP, CLOSE, STOP; code 6 remains a compatibility alias. Directional steps, open/close for 1..255 seconds, percent position, auto stop after configured travel, stop and direction change are… [Pełny opis](https://github.com/GRYF-SMART/gryfsmart-firmware/releases/tag/v2026.11.13-gryfexpert-0.5.60-rti-2.16) |
-
-## Konfiguracja przez GRYFEXPERT — driver RTI 2.18 / GRYFEXPERT 0.5.60 lub nowszy
-
-<!-- RTI-METADATA:BEGIN -->
-**GRYF Driver v2.18** · Copyright: 15/11/2026 GRYF
-<!-- RTI-METADATA:END -->
+| **2.19** | 2026-11-15 | [Pobierz](https://github.com/GRYF-SMART/gryfsmart-firmware/releases/download/v2026.11.15-rti-2.19/GRYF.rtidriver) | OTWIERAJ PRZEZ / ZAMYKAJ PRZEZ; nastawa co 0,1 s; firmware S0804 38 odmierza czas i zatrzymuje napęd. |
+| **2.18** | 2026-11-15 | [Pobierz](https://github.com/GRYF-SMART/gryfsmart-firmware/releases/download/v2026.11.15-rti-2.18/GRYF.rtidriver) | Nazwa GRYF Driver, aktualne wersje w pomocy i dokumentacji, Copyright oraz kontrola metadanych przy pakowaniu. |
+| **2.17** | 2026-11-13 | [Pobierz](https://github.com/GRYF-SMART/gryfsmart-firmware/releases/download/v2026.11.13-rti-2.17/GRYF.rtidriver) | Poprawka formatu paczki i aktualizacji w Integration Designer; zachowana obsługa dziewięciu akcji rolet. |
+## Konfiguracja przez GRYFEXPERT — driver RTI 2.19 / GRYFEXPERT 0.5.60
 
 Połączenie: **GRYFEXPERT → adres IP procesora RTI + port TCP → RS232 → port 0 pierwszego modułu GRYF**. Odpowiedzi wracają tą samą drogą. Moduł ETH nie jest wymagany. RTI działa jako serwer ze stałym adresem IP; GRYFEXPERT inicjuje połączenie jako klient.
 
 ### Ustawienia drivera RTI
 
-W Integration Designer zaktualizuj driver do **2.18**. Wybierz **RS-232**, port procesora połączony z GRYF i **115200, 8N1**. W osobnej sekcji **Konfiguracja przez GRYFEXPERT**:
+W Integration Designer zaktualizuj driver do **2.19**. Wybierz **RS-232**, port procesora połączony z GRYF i **115200, 8N1**. W osobnej sekcji **Konfiguracja przez GRYFEXPERT**:
 
 - włącz konfigurację przez GRYFEXPERT;
 - ustaw **Port TCP konfiguracji GRYFEXPERT**: domyślnie **4211**, z możliwością zmiany na wolny port w zakresie 1024–65535;
@@ -38,15 +43,15 @@ Port służy wyłącznie do konfiguracji modułów przez GRYFEXPERT; nie jest po
 4. Kliknij **Połącz**. Program łączy się do RTI — nie uruchamia serwera na komputerze. Następnie rozpoznaj moduły i odczytaj konfigurację jak przy bezpośrednim COM.
 5. Po zakończeniu kliknij **Rozłącz**. RTI wraca do normalnej pracy i odczytuje stany modułów. Po zmianie ID lub modeli w GRYFEXPERT dostosuj także konfigurację drivera w Integration Designer.
 
+### Wyszukiwanie RTI w sieci
+
+W menu **Narzędzia → Wyszukaj sterowniki RTI** uruchom skanowanie. Program sprawdza lokalne podsieci IPv4 /24 na wskazanym porcie TCP (domyślnie 4211). Driver RTI 2.16 odpowiada skonfigurowanym identyfikatorem i portem, jeśli **Konfiguracja przez GRYFEXPERT** jest włączona. Wynik pokazuje IP procesora RTI i jego identyfikator; **Użyj** przenosi te dane do ustawień połączenia GRYFEXPERT. Klucz parowania nie jest odczytywany ani przesyłany przez skaner. Wykrywanie nie przejmuje sesji, nie zatrzymuje pracy drivera i nie wysyła żadnych komend do modułów. Wyszukiwanie nie wymaga flashowania firmware GRYF.
+
 Most obsługuje konfigurację, nazwy, reguły, wykrywanie modułów i diagnostykę. **Nie obsługuje wgrywania HEX ani uruchamiania bootloadera.** Podczas sesji wstrzymane są komendy i odpytywanie tego drivera RTI; moduły nadal wykonują własny program. Drugi klient nie może przejąć aktywnej sesji. Zerwanie połączenia lub brak heartbeat przez ponad 10 s zwalnia most i uruchamia synchronizację. Odrzucone polecenia RTI nie są odtwarzane. Nie używaj drugiej instancji drivera na tym samym COM.
 
 Zmienne **Status bramki** oraz **Trwa konfiguracja GRYFEXPERT** można umieścić na panelu RTI. Port i klucz są ustawieniami konkretnej instalacji. Używaj mostu w zaufanym LAN; transmisja nie jest szyfrowana i portu nie należy przekierowywać z Internetu.
 
 **Zmiana względem 0.5.51 / 2.13:** kierunek zestawiania połączenia został odwrócony na GRYFEXPERT → RTI. Zaktualizuj obie strony. Stary klucz i numer portu można zachować, ale w projekcie GRYFEXPERT trzeba podać adres RTI i ponownie potwierdzić przypisanie modułów do połączenia. Testy obejmują symulację RTI i rzeczywiste połączenia TCP na komputerze; test instalacyjny na fizycznym RTI pozostaje do wykonania.
-
-## Akcje rolet S0804 — RTI 2.18
-
-Driver RTI oferuje dziewięć wspólnych akcji: OTWÓRZ, STOP, ZAMKNIJ, ZAMKNIJ+STOP, OTWÓRZ+STOP, STEP (OTWÓRZ → STOP → ZAMKNIJ → STOP), OTWÓRZ NA CZAS, ZAMKNIJ NA CZAS oraz USTAW POZYCJĘ %. Czas obu akcji czasowych podaje się w sekundach (1–255). Pełny przejazd i STEP zatrzymują się po czasie ustawionym w S0804; STOP i ponowne wywołanie kierunku podczas ruchu zatrzymują napęd. Kod 6 jest zachowany jako zgodny alias STEP.
 
 ## Synchronizacja stanów — wersja 2.12
 
@@ -71,9 +76,6 @@ Brak odpowiedzi lub błąd pojedynczej transmisji nie blokuje następnych moduł
 
 ## Instalacja sterownika
 
-Aktualna paczka ma nazwę **GRYF Driver**. Numer wersji w polu Version i nagłówku pomocy oraz data Copyright są synchronizowane przy budowaniu wydania. Zachowano poprawkę importu z wersji 2.17 oraz dotychczasowe funkcje i identyfikatory. W Integration Designer wybierz istniejącą instancję **GRYF → Driver Utilities → Update Driver** i wskaż nowy `GRYF.rtidriver`. Nie usuwaj istniejącej instancji. Nazwa instancji zapisana wcześniej w projekcie może wymagać osobnej zmiany na **GRYF Driver**.
-
-
 Stały adres bieżącej paczki: **[GRYF.rtidriver](https://raw.githubusercontent.com/GRYF-SMART/gryfsmart-firmware/main/RTI/GRYF.rtidriver)**.
 
 1. Pobierz driver z linku na górze.
@@ -81,11 +83,11 @@ Stały adres bieżącej paczki: **[GRYF.rtidriver](https://raw.githubusercontent
 3. W **Driver Properties** wybierz TCP/IP lub RS-232, parametry połączenia, liczbę modułów, ID i modele.
 4. Przypisz funkcje i zmienne do panelu. Zapisz projekt i prześlij go do procesora RTI.
 
-Obsługiwane moduły: R0806T, R0808, ETH0606T i S0804. Dostępne są osobne funkcje wyjść, flag i PWM; akcje czasowe co 0,1 s; rampa PWM; diagnostyka modułów; sterowanie i stany rolet, dziewięć akcji z parametrami czasu/pozycji, cel, ruch, pozostały czas oraz ważność danych.
+Obsługiwane moduły: R0806T, R0808, ETH0606T i S0804. Dostępne są osobne funkcje wyjść, flag i PWM; akcje czasowe co 0,1 s; rampa PWM; diagnostyka modułów; sterowanie i stany rolet, pozycja, cel, ruch, pozostały czas oraz ważność danych.
 
 ## Gotowy komponent rolety
 
-**[Pobierz komponent](https://raw.githubusercontent.com/GRYF-SMART/gryfsmart-firmware/main/RTI/GRYF-Komponent-Rolety.zip)** — jeden Viewport z przyciskami GÓRA, STOP, DÓŁ, NA PROCENT i STEP, procentem i stanem. Widoczność poszczególnych przycisków jest konfigurowalna. Przycisk procentowy wywołuje ustawiony preset. [Instrukcja komponentu](KOMPONENT-ROLETY.md).
+**[Pobierz komponent](https://raw.githubusercontent.com/GRYF-SMART/gryfsmart-firmware/main/RTI/GRYF-Komponent-Rolety.zip)** — jeden Viewport z przyciskami OTWÓRZ, STOP, ZAMKNIJ, oba kierunkowe STEP, cykliczny STEP, ruch na czas i pozycję procentową, a także procentem i stanem. Widoczność poszczególnych przycisków jest konfigurowalna. Przycisk procentowy wywołuje ustawiony preset. [Instrukcja komponentu](KOMPONENT-ROLETY.md).
 
 ## Import nazw z GRYFEXPERT
 
@@ -97,6 +99,5 @@ Obsługiwane moduły: R0806T, R0808, ETH0606T i S0804. Dostępne są osobne funk
 [Pełna instrukcja: nazwy, stany S0804, komunikacja i diagnostyka](INSTRUKCJA.md).
 
 
-
-
 [1. Aplikacja GRYFSMART](https://github.com/GRYF-SMART/gryfsmart-firmware/tree/main/GRYFSMART) · [2. GRYFSMART-Programator](https://github.com/GRYF-SMART/gryfsmart-firmware/tree/main/AKTUALIZATOR) · [3. Driver Home Assistant](https://github.com/GRYF-SMART/gryfsmart-firmware/tree/main/HOME-ASSISTANT) · [4. Driver RTI](https://github.com/GRYF-SMART/gryfsmart-firmware/tree/main/RTI) · [5. Instalator Bootloader](https://github.com/GRYF-SMART/gryfsmart-firmware/tree/main/BOOTLOADER) · [6. Protokół GRYFSMART](https://github.com/GRYF-SMART/gryfsmart-firmware/tree/main/PROTOKOL) · [7. System i moduły GRYFSMART](https://github.com/GRYF-SMART/gryfsmart-firmware/tree/main/SYSTEM)
+
