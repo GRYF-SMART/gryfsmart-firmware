@@ -2,6 +2,14 @@
   "products": {
     "GRYFSMART": [
       {
+        "version": "0.5.64",
+        "url": "https://github.com/GRYF-SMART/gryfsmart-firmware/releases/download/v2026.11.16-gryfexpert-0.5.64/GRYFEXPERT-0.5.64-win-x64.zip",
+        "release": "https://github.com/GRYF-SMART/gryfsmart-firmware/releases/tag/v2026.11.16-gryfexpert-0.5.64",
+        "date": "2026-11-16",
+        "notes": "GRYFEXPERT 0.5.64 — naprawa wyszukiwania sterowników RTI.\n\n- Pole portu i przycisk Skanuj sieć są dostępne po otwarciu okna. Poprawiono stały atrybut disabled, który uniemożliwiał rozpoczęcie skanu.\n- Kontrolki blokują się tylko podczas skanowania i odblokowują po jego zakończeniu.\n- Sprawdzono walidację portu, widoczny postęp, zakończenie i ponowienie skanowania w interfejsie aplikacji oraz testy własne programu.\n- Poprawka dotyczy GRYFEXPERT; wersje firmware i drivera RTI pozostają bez zmian.\n",
+        "digest": "sha256:a3876508d50fb643f9d6ddc4a9504c83e8ac0336d520d24b3ceb684b298fc622"
+      },
+      {
         "version": "0.5.63",
         "url": "https://github.com/GRYF-SMART/gryfsmart-firmware/releases/download/v2026.11.16-gryfexpert-0.5.63/GRYFEXPERT-0.5.63-win-x64.zip",
         "release": "https://github.com/GRYF-SMART/gryfsmart-firmware/releases/tag/v2026.11.16-gryfexpert-0.5.63",
@@ -16,14 +24,6 @@
         "date": "2026-11-16",
         "notes": "GRYFEXPERT 0.5.62 — naprawa zapisu projektu z ETH-Mini-GATE.\n\n- Usunięto błąd „Nieprawidłowa struktura modułu 1” podczas zapisywania projektu z bramką ETH-Mini-GATE (ID 1).\n- Zapis, ponowne otwieranie oraz import i eksport projektu zachowują bramkę, nazwy i konfigurację pozostałych modułów, w tym reguły, sloty i czasy rolet.\n- Odczyt i wysyłanie konfiguracji całej instalacji pomijają bramkę, która nie ma reguł ani wyjść. Ustawienia sieciowe bramki obsługuje okno „Konfiguracja ETH Mini GATE”.\n- ETH-Mini-GATE nie pojawia się jako cel akcji slotu.\n\nZweryfikowano odtworzenie błędu, zapis i odczyt projektów, import/eksport, plan komend oraz interfejs aplikacji. Wystarczy zaktualizować GRYFEXPERT; ta poprawka nie wymaga zmiany HEX ani sterownika RTI. Pozostałe paczki pochodzą z bieżącego wydania RTI 2.20.\n",
         "digest": "sha256:942006da2c90182370a3b0db81c1c86901f55846f498c76298fb70ffefde40b9"
-      },
-      {
-        "version": "0.5.61",
-        "url": "https://github.com/GRYF-SMART/gryfsmart-firmware/releases/download/v2026.11.16-rti-2.20/GRYFEXPERT-0.5.61-win-x64.zip",
-        "release": "https://github.com/GRYF-SMART/gryfsmart-firmware/releases/tag/v2026.11.13-gryfexpert-0.5.61",
-        "date": "2026-11-13",
-        "notes": "GRYFEXPERT 0.5.61: jedna akcja rolety wybierana z rozwijanego menu.\n\n- Reguły lokalne S0804 i sloty rolet wszystkich modeli: usunięto dodatkowy panel wielu przycisków i stale widocznych parametrów pod wyborem akcji.\n- Czas [s] jest widoczny tylko dla OTWÓRZ NA CZAS i ZAMKNIJ NA CZAS; Pozycja [%] tylko dla USTAW POZYCJĘ. Tak samo działa wybór akcji w zakładce Online.\n- Pełne czasy przejazdu ustawia się wyłącznie w zakładce Rolety. OTWÓRZ prowadzi do 100%, ZAMKNIJ do 0%; STEP i oba kierunkowe STEP korzystają z czasów zapisanych w module. Usunięto wysyłanie czasów z zakładki Online.\n- Zapisane akcje i parametry projektów zachowują dotychczasowy format. Dotychczasowy firmware realizuje ten sposób pracy; do tej zmiany interfejsu nie trzeba ponownie wgrywać HEX.\n\nZweryfikowano kompilację, testy aplikacji i interfejs: wybór dziewięciu akcji, warunkowe pola, zakładkę Rolety, Online oraz eksport reguł lokalnych i slotów.\n",
-        "digest": "sha256:84bd81efaa96642ce2bcca046861d1c16d8fd2f632522c2d43ee3a2a71fbff87"
       }
     ],
     "AKTUALIZATOR": [
@@ -134,42 +134,42 @@
   "firmware": {
     "ETH Mini": {
       "version": "4",
-      "url": "https://github.com/GRYF-SMART/gryfsmart-firmware/releases/download/v2026.11.16-gryfexpert-0.5.63/ETH-Mini-GATE-firmware-v4.hex",
-      "release": "https://github.com/GRYF-SMART/gryfsmart-firmware/releases/tag/v2026.11.16-gryfexpert-0.5.63",
+      "url": "https://github.com/GRYF-SMART/gryfsmart-firmware/releases/download/v2026.11.16-gryfexpert-0.5.64/ETH-Mini-GATE-firmware-v4.hex",
+      "release": "https://github.com/GRYF-SMART/gryfsmart-firmware/releases/tag/v2026.11.16-gryfexpert-0.5.64",
       "date": "2026-11-16",
-      "notes": "GRYFEXPERT 0.5.63 — aktualizacja stanów w tle bez drgania strony.\n\n- Raporty z modułów aktualizują od razu stany przycisków, PWM i temperatur. Wpis w logu nie odświeża już głównego edytora.\n- Okresowe odczyty wejść/wyjść, flag i temperatur działają w tle: nie migają paskiem stanu i nie blokują pól edycji. Wszystkie komendy nadal korzystają z jednej kolejki komunikacji.\n- Temperatury regulatorów odświeżają się w osobnych polach; odbiór temperatury nie odświeża formularza nazw wyjść. Terminal aktualizuje tylko swój dziennik, a wykrywanie wejść reaguje na odebrane naciśnięcia.\n- Zachowano poprawkę zapisu projektów z ETH-Mini-GATE z wersji 0.5.62.\n\nZweryfikowano kompilację, testy aplikacji i interfejs z symulowaną bramką: natychmiastową zmianę stanu przycisku, zachowanie tekstu i fokusu, stabilną pozycję strony oraz rzeczywisty cykl 30-sekundowego odczytu. Aktualizacja dotyczy GRYFEXPERT; nie wymaga zmiany HEX ani RTI.\n",
+      "notes": "GRYFEXPERT 0.5.64 — naprawa wyszukiwania sterowników RTI.\n\n- Pole portu i przycisk Skanuj sieć są dostępne po otwarciu okna. Poprawiono stały atrybut disabled, który uniemożliwiał rozpoczęcie skanu.\n- Kontrolki blokują się tylko podczas skanowania i odblokowują po jego zakończeniu.\n- Sprawdzono walidację portu, widoczny postęp, zakończenie i ponowienie skanowania w interfejsie aplikacji oraz testy własne programu.\n- Poprawka dotyczy GRYFEXPERT; wersje firmware i drivera RTI pozostają bez zmian.\n",
       "digest": "sha256:89e1db083c22a39fc9ab884db6e77ae36f535a0ae060eca9570a57e5c3c073bc"
     },
     "ETH0606T": {
       "version": "37",
-      "url": "https://github.com/GRYF-SMART/gryfsmart-firmware/releases/download/v2026.11.16-gryfexpert-0.5.63/ETH0606T-firmware.hex",
-      "release": "https://github.com/GRYF-SMART/gryfsmart-firmware/releases/tag/v2026.11.16-gryfexpert-0.5.63",
+      "url": "https://github.com/GRYF-SMART/gryfsmart-firmware/releases/download/v2026.11.16-gryfexpert-0.5.64/ETH0606T-firmware.hex",
+      "release": "https://github.com/GRYF-SMART/gryfsmart-firmware/releases/tag/v2026.11.16-gryfexpert-0.5.64",
       "date": "2026-11-16",
-      "notes": "GRYFEXPERT 0.5.63 — aktualizacja stanów w tle bez drgania strony.\n\n- Raporty z modułów aktualizują od razu stany przycisków, PWM i temperatur. Wpis w logu nie odświeża już głównego edytora.\n- Okresowe odczyty wejść/wyjść, flag i temperatur działają w tle: nie migają paskiem stanu i nie blokują pól edycji. Wszystkie komendy nadal korzystają z jednej kolejki komunikacji.\n- Temperatury regulatorów odświeżają się w osobnych polach; odbiór temperatury nie odświeża formularza nazw wyjść. Terminal aktualizuje tylko swój dziennik, a wykrywanie wejść reaguje na odebrane naciśnięcia.\n- Zachowano poprawkę zapisu projektów z ETH-Mini-GATE z wersji 0.5.62.\n\nZweryfikowano kompilację, testy aplikacji i interfejs z symulowaną bramką: natychmiastową zmianę stanu przycisku, zachowanie tekstu i fokusu, stabilną pozycję strony oraz rzeczywisty cykl 30-sekundowego odczytu. Aktualizacja dotyczy GRYFEXPERT; nie wymaga zmiany HEX ani RTI.\n",
+      "notes": "GRYFEXPERT 0.5.64 — naprawa wyszukiwania sterowników RTI.\n\n- Pole portu i przycisk Skanuj sieć są dostępne po otwarciu okna. Poprawiono stały atrybut disabled, który uniemożliwiał rozpoczęcie skanu.\n- Kontrolki blokują się tylko podczas skanowania i odblokowują po jego zakończeniu.\n- Sprawdzono walidację portu, widoczny postęp, zakończenie i ponowienie skanowania w interfejsie aplikacji oraz testy własne programu.\n- Poprawka dotyczy GRYFEXPERT; wersje firmware i drivera RTI pozostają bez zmian.\n",
       "digest": "sha256:2e848581e2704dbb1448c25e7217ce5033f1f199ff35752f053e64dc60651433"
     },
     "R0808": {
       "version": "38",
-      "url": "https://github.com/GRYF-SMART/gryfsmart-firmware/releases/download/v2026.11.16-gryfexpert-0.5.63/R0808-firmware.hex",
-      "release": "https://github.com/GRYF-SMART/gryfsmart-firmware/releases/tag/v2026.11.16-gryfexpert-0.5.63",
+      "url": "https://github.com/GRYF-SMART/gryfsmart-firmware/releases/download/v2026.11.16-gryfexpert-0.5.64/R0808-firmware.hex",
+      "release": "https://github.com/GRYF-SMART/gryfsmart-firmware/releases/tag/v2026.11.16-gryfexpert-0.5.64",
       "date": "2026-11-16",
-      "notes": "GRYFEXPERT 0.5.63 — aktualizacja stanów w tle bez drgania strony.\n\n- Raporty z modułów aktualizują od razu stany przycisków, PWM i temperatur. Wpis w logu nie odświeża już głównego edytora.\n- Okresowe odczyty wejść/wyjść, flag i temperatur działają w tle: nie migają paskiem stanu i nie blokują pól edycji. Wszystkie komendy nadal korzystają z jednej kolejki komunikacji.\n- Temperatury regulatorów odświeżają się w osobnych polach; odbiór temperatury nie odświeża formularza nazw wyjść. Terminal aktualizuje tylko swój dziennik, a wykrywanie wejść reaguje na odebrane naciśnięcia.\n- Zachowano poprawkę zapisu projektów z ETH-Mini-GATE z wersji 0.5.62.\n\nZweryfikowano kompilację, testy aplikacji i interfejs z symulowaną bramką: natychmiastową zmianę stanu przycisku, zachowanie tekstu i fokusu, stabilną pozycję strony oraz rzeczywisty cykl 30-sekundowego odczytu. Aktualizacja dotyczy GRYFEXPERT; nie wymaga zmiany HEX ani RTI.\n",
+      "notes": "GRYFEXPERT 0.5.64 — naprawa wyszukiwania sterowników RTI.\n\n- Pole portu i przycisk Skanuj sieć są dostępne po otwarciu okna. Poprawiono stały atrybut disabled, który uniemożliwiał rozpoczęcie skanu.\n- Kontrolki blokują się tylko podczas skanowania i odblokowują po jego zakończeniu.\n- Sprawdzono walidację portu, widoczny postęp, zakończenie i ponowienie skanowania w interfejsie aplikacji oraz testy własne programu.\n- Poprawka dotyczy GRYFEXPERT; wersje firmware i drivera RTI pozostają bez zmian.\n",
       "digest": "sha256:17ae19995c45fa757bb24774a63472d803e98b87c4410761ecdc40adfaec4fa8"
     },
     "R0806T": {
       "version": "39",
-      "url": "https://github.com/GRYF-SMART/gryfsmart-firmware/releases/download/v2026.11.16-gryfexpert-0.5.63/R0806T-firmware.hex",
-      "release": "https://github.com/GRYF-SMART/gryfsmart-firmware/releases/tag/v2026.11.16-gryfexpert-0.5.63",
+      "url": "https://github.com/GRYF-SMART/gryfsmart-firmware/releases/download/v2026.11.16-gryfexpert-0.5.64/R0806T-firmware.hex",
+      "release": "https://github.com/GRYF-SMART/gryfsmart-firmware/releases/tag/v2026.11.16-gryfexpert-0.5.64",
       "date": "2026-11-16",
-      "notes": "GRYFEXPERT 0.5.63 — aktualizacja stanów w tle bez drgania strony.\n\n- Raporty z modułów aktualizują od razu stany przycisków, PWM i temperatur. Wpis w logu nie odświeża już głównego edytora.\n- Okresowe odczyty wejść/wyjść, flag i temperatur działają w tle: nie migają paskiem stanu i nie blokują pól edycji. Wszystkie komendy nadal korzystają z jednej kolejki komunikacji.\n- Temperatury regulatorów odświeżają się w osobnych polach; odbiór temperatury nie odświeża formularza nazw wyjść. Terminal aktualizuje tylko swój dziennik, a wykrywanie wejść reaguje na odebrane naciśnięcia.\n- Zachowano poprawkę zapisu projektów z ETH-Mini-GATE z wersji 0.5.62.\n\nZweryfikowano kompilację, testy aplikacji i interfejs z symulowaną bramką: natychmiastową zmianę stanu przycisku, zachowanie tekstu i fokusu, stabilną pozycję strony oraz rzeczywisty cykl 30-sekundowego odczytu. Aktualizacja dotyczy GRYFEXPERT; nie wymaga zmiany HEX ani RTI.\n",
+      "notes": "GRYFEXPERT 0.5.64 — naprawa wyszukiwania sterowników RTI.\n\n- Pole portu i przycisk Skanuj sieć są dostępne po otwarciu okna. Poprawiono stały atrybut disabled, który uniemożliwiał rozpoczęcie skanu.\n- Kontrolki blokują się tylko podczas skanowania i odblokowują po jego zakończeniu.\n- Sprawdzono walidację portu, widoczny postęp, zakończenie i ponowienie skanowania w interfejsie aplikacji oraz testy własne programu.\n- Poprawka dotyczy GRYFEXPERT; wersje firmware i drivera RTI pozostają bez zmian.\n",
       "digest": "sha256:49a061aecf1cb6959cb53a4989100eb886e5e96b79617cbc0aba8de1e601dbab"
     },
     "S0804": {
       "version": "38",
-      "url": "https://github.com/GRYF-SMART/gryfsmart-firmware/releases/download/v2026.11.16-gryfexpert-0.5.63/S0804-firmware.hex",
-      "release": "https://github.com/GRYF-SMART/gryfsmart-firmware/releases/tag/v2026.11.16-gryfexpert-0.5.63",
+      "url": "https://github.com/GRYF-SMART/gryfsmart-firmware/releases/download/v2026.11.16-gryfexpert-0.5.64/S0804-firmware.hex",
+      "release": "https://github.com/GRYF-SMART/gryfsmart-firmware/releases/tag/v2026.11.16-gryfexpert-0.5.64",
       "date": "2026-11-16",
-      "notes": "GRYFEXPERT 0.5.63 — aktualizacja stanów w tle bez drgania strony.\n\n- Raporty z modułów aktualizują od razu stany przycisków, PWM i temperatur. Wpis w logu nie odświeża już głównego edytora.\n- Okresowe odczyty wejść/wyjść, flag i temperatur działają w tle: nie migają paskiem stanu i nie blokują pól edycji. Wszystkie komendy nadal korzystają z jednej kolejki komunikacji.\n- Temperatury regulatorów odświeżają się w osobnych polach; odbiór temperatury nie odświeża formularza nazw wyjść. Terminal aktualizuje tylko swój dziennik, a wykrywanie wejść reaguje na odebrane naciśnięcia.\n- Zachowano poprawkę zapisu projektów z ETH-Mini-GATE z wersji 0.5.62.\n\nZweryfikowano kompilację, testy aplikacji i interfejs z symulowaną bramką: natychmiastową zmianę stanu przycisku, zachowanie tekstu i fokusu, stabilną pozycję strony oraz rzeczywisty cykl 30-sekundowego odczytu. Aktualizacja dotyczy GRYFEXPERT; nie wymaga zmiany HEX ani RTI.\n",
+      "notes": "GRYFEXPERT 0.5.64 — naprawa wyszukiwania sterowników RTI.\n\n- Pole portu i przycisk Skanuj sieć są dostępne po otwarciu okna. Poprawiono stały atrybut disabled, który uniemożliwiał rozpoczęcie skanu.\n- Kontrolki blokują się tylko podczas skanowania i odblokowują po jego zakończeniu.\n- Sprawdzono walidację portu, widoczny postęp, zakończenie i ponowienie skanowania w interfejsie aplikacji oraz testy własne programu.\n- Poprawka dotyczy GRYFEXPERT; wersje firmware i drivera RTI pozostają bez zmian.\n",
       "digest": "sha256:0f1dbaa79aba8235174535eb6a14283cf8cfb66e1d29eefc2749313b6cfb858b"
     }
   }

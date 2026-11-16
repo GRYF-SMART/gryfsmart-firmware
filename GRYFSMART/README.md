@@ -1,16 +1,16 @@
 # 1. Aplikacja GRYFSMART
 
-**[Pobierz najnowszą wersję 0.5.63](https://github.com/GRYF-SMART/gryfsmart-firmware/releases/download/v2026.11.16-gryfexpert-0.5.63/GRYFEXPERT-0.5.63-win-x64.zip)**
+**[Pobierz najnowszą wersję 0.5.64](https://github.com/GRYF-SMART/gryfsmart-firmware/releases/download/v2026.11.16-gryfexpert-0.5.64/GRYFEXPERT-0.5.64-win-x64.zip)**
 
-GRYFEXPERT 0.5.63 — aktualizacja stanów w tle bez drgania strony. Raporty z modułów aktualizują od razu stany przycisków, PWM i temperatur. Wpis w logu nie odświeża już głównego edytora. Okresowe odczyty wejść/wyjść, flag i temperatur działają w tle: nie migają paskiem stanu i nie blokują pól edycji. Wszystkie komendy nadal korzystają z jednej kolejki… [Pełny opis wydania](https://github.com/GRYF-SMART/gryfsmart-firmware/releases/tag/v2026.11.16-gryfexpert-0.5.63).
+GRYFEXPERT 0.5.64 — naprawa wyszukiwania sterowników RTI. Pole portu i przycisk Skanuj sieć są dostępne po otwarciu okna. Poprawiono stały atrybut disabled, który uniemożliwiał rozpoczęcie skanu. Kontrolki blokują się tylko podczas skanowania i odblokowują po jego zakończeniu. [Pełny opis wydania](https://github.com/GRYF-SMART/gryfsmart-firmware/releases/tag/v2026.11.16-gryfexpert-0.5.64).
 
 ## Trzy ostatnie wersje
 
 | Wersja | Data publikacji | Pobieranie | Zmiany |
 |---|---|---|---|
+| **0.5.64** | 2026-11-16 | [Pobierz](https://github.com/GRYF-SMART/gryfsmart-firmware/releases/download/v2026.11.16-gryfexpert-0.5.64/GRYFEXPERT-0.5.64-win-x64.zip) | GRYFEXPERT 0.5.64 — naprawa wyszukiwania sterowników RTI. Pole portu i przycisk Skanuj sieć są dostępne po otwarciu okna. Poprawiono stały atrybut disabled, który uniemożliwiał rozpoczęcie skanu. Kontrolki blokują się tylko podczas skanowania i odblokowują po jego zakończeniu. [Pełny opis](https://github.com/GRYF-SMART/gryfsmart-firmware/releases/tag/v2026.11.16-gryfexpert-0.5.64) |
 | **0.5.63** | 2026-11-16 | [Pobierz](https://github.com/GRYF-SMART/gryfsmart-firmware/releases/download/v2026.11.16-gryfexpert-0.5.63/GRYFEXPERT-0.5.63-win-x64.zip) | GRYFEXPERT 0.5.63 — aktualizacja stanów w tle bez drgania strony. Raporty z modułów aktualizują od razu stany przycisków, PWM i temperatur. Wpis w logu nie odświeża już głównego edytora. Okresowe odczyty wejść/wyjść, flag i temperatur działają w tle: nie migają paskiem stanu i nie blokują pól edycji. Wszystkie komendy nadal korzystają z jednej kolejki… [Pełny opis](https://github.com/GRYF-SMART/gryfsmart-firmware/releases/tag/v2026.11.16-gryfexpert-0.5.63) |
 | **0.5.62** | 2026-11-16 | [Pobierz](https://github.com/GRYF-SMART/gryfsmart-firmware/releases/download/v2026.11.16-gryfexpert-0.5.62/GRYFEXPERT-0.5.62-win-x64.zip) | GRYFEXPERT 0.5.62 — naprawa zapisu projektu z ETH-Mini-GATE. Usunięto błąd „Nieprawidłowa struktura modułu 1” podczas zapisywania projektu z bramką ETH-Mini-GATE (ID 1). Zapis, ponowne otwieranie oraz import i eksport projektu zachowują bramkę, nazwy i konfigurację pozostałych modułów, w tym reguły, sloty i czasy rolet. [Pełny opis](https://github.com/GRYF-SMART/gryfsmart-firmware/releases/tag/v2026.11.16-gryfexpert-0.5.62) |
-| **0.5.61** | 2026-11-13 | [Pobierz](https://github.com/GRYF-SMART/gryfsmart-firmware/releases/download/v2026.11.16-rti-2.20/GRYFEXPERT-0.5.61-win-x64.zip) | GRYFEXPERT 0.5.61: jedna akcja rolety wybierana z rozwijanego menu. Reguły lokalne S0804 i sloty rolet wszystkich modeli: usunięto dodatkowy panel wielu przycisków i stale widocznych parametrów pod wyborem akcji. Czas [s] jest widoczny tylko dla OTWÓRZ NA CZAS i ZAMKNIJ NA CZAS; Pozycja [%] tylko dla USTAW POZYCJĘ. Tak samo działa wybór akcji w zakładce… [Pełny opis](https://github.com/GRYF-SMART/gryfsmart-firmware/releases/tag/v2026.11.13-gryfexpert-0.5.61) |
 
 ## Konfiguracja przez GRYFEXPERT — driver RTI 2.14 / GRYFEXPERT 0.5.52
 
