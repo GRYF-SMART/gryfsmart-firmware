@@ -2,6 +2,14 @@
   "products": {
     "GRYFSMART": [
       {
+        "version": "0.5.63",
+        "url": "https://github.com/GRYF-SMART/gryfsmart-firmware/releases/download/v2026.11.16-gryfexpert-0.5.63/GRYFEXPERT-0.5.63-win-x64.zip",
+        "release": "https://github.com/GRYF-SMART/gryfsmart-firmware/releases/tag/v2026.11.16-gryfexpert-0.5.63",
+        "date": "2026-11-16",
+        "notes": "GRYFEXPERT 0.5.63 — aktualizacja stanów w tle bez drgania strony.\n\n- Raporty z modułów aktualizują od razu stany przycisków, PWM i temperatur. Wpis w logu nie odświeża już głównego edytora.\n- Okresowe odczyty wejść/wyjść, flag i temperatur działają w tle: nie migają paskiem stanu i nie blokują pól edycji. Wszystkie komendy nadal korzystają z jednej kolejki komunikacji.\n- Temperatury regulatorów odświeżają się w osobnych polach; odbiór temperatury nie odświeża formularza nazw wyjść. Terminal aktualizuje tylko swój dziennik, a wykrywanie wejść reaguje na odebrane naciśnięcia.\n- Zachowano poprawkę zapisu projektów z ETH-Mini-GATE z wersji 0.5.62.\n\nZweryfikowano kompilację, testy aplikacji i interfejs z symulowaną bramką: natychmiastową zmianę stanu przycisku, zachowanie tekstu i fokusu, stabilną pozycję strony oraz rzeczywisty cykl 30-sekundowego odczytu. Aktualizacja dotyczy GRYFEXPERT; nie wymaga zmiany HEX ani RTI.\n",
+        "digest": "sha256:ac3b3f3294d701da77837819f2511c2a1d9ca5f97ecaae388b9c0351cd743fa1"
+      },
+      {
         "version": "0.5.62",
         "url": "https://github.com/GRYF-SMART/gryfsmart-firmware/releases/download/v2026.11.16-gryfexpert-0.5.62/GRYFEXPERT-0.5.62-win-x64.zip",
         "release": "https://github.com/GRYF-SMART/gryfsmart-firmware/releases/tag/v2026.11.16-gryfexpert-0.5.62",
@@ -16,14 +24,6 @@
         "date": "2026-11-13",
         "notes": "GRYFEXPERT 0.5.61: jedna akcja rolety wybierana z rozwijanego menu.\n\n- Reguły lokalne S0804 i sloty rolet wszystkich modeli: usunięto dodatkowy panel wielu przycisków i stale widocznych parametrów pod wyborem akcji.\n- Czas [s] jest widoczny tylko dla OTWÓRZ NA CZAS i ZAMKNIJ NA CZAS; Pozycja [%] tylko dla USTAW POZYCJĘ. Tak samo działa wybór akcji w zakładce Online.\n- Pełne czasy przejazdu ustawia się wyłącznie w zakładce Rolety. OTWÓRZ prowadzi do 100%, ZAMKNIJ do 0%; STEP i oba kierunkowe STEP korzystają z czasów zapisanych w module. Usunięto wysyłanie czasów z zakładki Online.\n- Zapisane akcje i parametry projektów zachowują dotychczasowy format. Dotychczasowy firmware realizuje ten sposób pracy; do tej zmiany interfejsu nie trzeba ponownie wgrywać HEX.\n\nZweryfikowano kompilację, testy aplikacji i interfejs: wybór dziewięciu akcji, warunkowe pola, zakładkę Rolety, Online oraz eksport reguł lokalnych i slotów.\n",
         "digest": "sha256:84bd81efaa96642ce2bcca046861d1c16d8fd2f632522c2d43ee3a2a71fbff87"
-      },
-      {
-        "version": "0.5.60",
-        "url": "https://github.com/GRYF-SMART/gryfsmart-firmware/releases/download/v2026.11.13-gryfexpert-0.5.60-rti-2.16/GRYFEXPERT-0.5.60-win-x64.zip",
-        "release": "https://github.com/GRYF-SMART/gryfsmart-firmware/releases/tag/v2026.11.13-gryfexpert-0.5.60-rti-2.16",
-        "date": "2026-11-13",
-        "notes": "GRYFEXPERT 0.5.60 / RTI 2.16 / firmware modules updated. Nine consistent shutter actions across GRYFEXPERT, S0804 HEX, RTI and Home Assistant. Step 5 cycles OPEN, STOP, CLOSE, STOP; code 6 remains a compatibility alias. Directional steps, open/close for 1..255 seconds, percent position, auto stop after configured travel, stop and direction change are supported.\n\nTemperature reports on R0806T, R0808 and ETH0606T are sent only on first sample and when rounded value changes by 0.1 C. Stable readings no longer produce periodic reports.\n\nAll builds and offline tests passed. No physical modules were programmed. See RTI/README.md, HA README and the relevant firmware source guides.",
-        "digest": "sha256:da703ec8e83073b75dc0ad4b363de872efe82af860cf4cf069c9ebd793af2255"
       }
     ],
     "AKTUALIZATOR": [
@@ -134,42 +134,42 @@
   "firmware": {
     "ETH Mini": {
       "version": "4",
-      "url": "https://github.com/GRYF-SMART/gryfsmart-firmware/releases/download/v2026.11.16-gryfexpert-0.5.62/ETH-Mini-GATE-firmware-v4.hex",
-      "release": "https://github.com/GRYF-SMART/gryfsmart-firmware/releases/tag/v2026.11.16-gryfexpert-0.5.62",
+      "url": "https://github.com/GRYF-SMART/gryfsmart-firmware/releases/download/v2026.11.16-gryfexpert-0.5.63/ETH-Mini-GATE-firmware-v4.hex",
+      "release": "https://github.com/GRYF-SMART/gryfsmart-firmware/releases/tag/v2026.11.16-gryfexpert-0.5.63",
       "date": "2026-11-16",
-      "notes": "GRYFEXPERT 0.5.62 — naprawa zapisu projektu z ETH-Mini-GATE.\n\n- Usunięto błąd „Nieprawidłowa struktura modułu 1” podczas zapisywania projektu z bramką ETH-Mini-GATE (ID 1).\n- Zapis, ponowne otwieranie oraz import i eksport projektu zachowują bramkę, nazwy i konfigurację pozostałych modułów, w tym reguły, sloty i czasy rolet.\n- Odczyt i wysyłanie konfiguracji całej instalacji pomijają bramkę, która nie ma reguł ani wyjść. Ustawienia sieciowe bramki obsługuje okno „Konfiguracja ETH Mini GATE”.\n- ETH-Mini-GATE nie pojawia się jako cel akcji slotu.\n\nZweryfikowano odtworzenie błędu, zapis i odczyt projektów, import/eksport, plan komend oraz interfejs aplikacji. Wystarczy zaktualizować GRYFEXPERT; ta poprawka nie wymaga zmiany HEX ani sterownika RTI. Pozostałe paczki pochodzą z bieżącego wydania RTI 2.20.\n",
+      "notes": "GRYFEXPERT 0.5.63 — aktualizacja stanów w tle bez drgania strony.\n\n- Raporty z modułów aktualizują od razu stany przycisków, PWM i temperatur. Wpis w logu nie odświeża już głównego edytora.\n- Okresowe odczyty wejść/wyjść, flag i temperatur działają w tle: nie migają paskiem stanu i nie blokują pól edycji. Wszystkie komendy nadal korzystają z jednej kolejki komunikacji.\n- Temperatury regulatorów odświeżają się w osobnych polach; odbiór temperatury nie odświeża formularza nazw wyjść. Terminal aktualizuje tylko swój dziennik, a wykrywanie wejść reaguje na odebrane naciśnięcia.\n- Zachowano poprawkę zapisu projektów z ETH-Mini-GATE z wersji 0.5.62.\n\nZweryfikowano kompilację, testy aplikacji i interfejs z symulowaną bramką: natychmiastową zmianę stanu przycisku, zachowanie tekstu i fokusu, stabilną pozycję strony oraz rzeczywisty cykl 30-sekundowego odczytu. Aktualizacja dotyczy GRYFEXPERT; nie wymaga zmiany HEX ani RTI.\n",
       "digest": "sha256:89e1db083c22a39fc9ab884db6e77ae36f535a0ae060eca9570a57e5c3c073bc"
     },
     "ETH0606T": {
       "version": "37",
-      "url": "https://github.com/GRYF-SMART/gryfsmart-firmware/releases/download/v2026.11.16-gryfexpert-0.5.62/ETH0606T-firmware.hex",
-      "release": "https://github.com/GRYF-SMART/gryfsmart-firmware/releases/tag/v2026.11.16-gryfexpert-0.5.62",
+      "url": "https://github.com/GRYF-SMART/gryfsmart-firmware/releases/download/v2026.11.16-gryfexpert-0.5.63/ETH0606T-firmware.hex",
+      "release": "https://github.com/GRYF-SMART/gryfsmart-firmware/releases/tag/v2026.11.16-gryfexpert-0.5.63",
       "date": "2026-11-16",
-      "notes": "GRYFEXPERT 0.5.62 — naprawa zapisu projektu z ETH-Mini-GATE.\n\n- Usunięto błąd „Nieprawidłowa struktura modułu 1” podczas zapisywania projektu z bramką ETH-Mini-GATE (ID 1).\n- Zapis, ponowne otwieranie oraz import i eksport projektu zachowują bramkę, nazwy i konfigurację pozostałych modułów, w tym reguły, sloty i czasy rolet.\n- Odczyt i wysyłanie konfiguracji całej instalacji pomijają bramkę, która nie ma reguł ani wyjść. Ustawienia sieciowe bramki obsługuje okno „Konfiguracja ETH Mini GATE”.\n- ETH-Mini-GATE nie pojawia się jako cel akcji slotu.\n\nZweryfikowano odtworzenie błędu, zapis i odczyt projektów, import/eksport, plan komend oraz interfejs aplikacji. Wystarczy zaktualizować GRYFEXPERT; ta poprawka nie wymaga zmiany HEX ani sterownika RTI. Pozostałe paczki pochodzą z bieżącego wydania RTI 2.20.\n",
+      "notes": "GRYFEXPERT 0.5.63 — aktualizacja stanów w tle bez drgania strony.\n\n- Raporty z modułów aktualizują od razu stany przycisków, PWM i temperatur. Wpis w logu nie odświeża już głównego edytora.\n- Okresowe odczyty wejść/wyjść, flag i temperatur działają w tle: nie migają paskiem stanu i nie blokują pól edycji. Wszystkie komendy nadal korzystają z jednej kolejki komunikacji.\n- Temperatury regulatorów odświeżają się w osobnych polach; odbiór temperatury nie odświeża formularza nazw wyjść. Terminal aktualizuje tylko swój dziennik, a wykrywanie wejść reaguje na odebrane naciśnięcia.\n- Zachowano poprawkę zapisu projektów z ETH-Mini-GATE z wersji 0.5.62.\n\nZweryfikowano kompilację, testy aplikacji i interfejs z symulowaną bramką: natychmiastową zmianę stanu przycisku, zachowanie tekstu i fokusu, stabilną pozycję strony oraz rzeczywisty cykl 30-sekundowego odczytu. Aktualizacja dotyczy GRYFEXPERT; nie wymaga zmiany HEX ani RTI.\n",
       "digest": "sha256:2e848581e2704dbb1448c25e7217ce5033f1f199ff35752f053e64dc60651433"
     },
     "R0808": {
       "version": "38",
-      "url": "https://github.com/GRYF-SMART/gryfsmart-firmware/releases/download/v2026.11.16-gryfexpert-0.5.62/R0808-firmware.hex",
-      "release": "https://github.com/GRYF-SMART/gryfsmart-firmware/releases/tag/v2026.11.16-gryfexpert-0.5.62",
+      "url": "https://github.com/GRYF-SMART/gryfsmart-firmware/releases/download/v2026.11.16-gryfexpert-0.5.63/R0808-firmware.hex",
+      "release": "https://github.com/GRYF-SMART/gryfsmart-firmware/releases/tag/v2026.11.16-gryfexpert-0.5.63",
       "date": "2026-11-16",
-      "notes": "GRYFEXPERT 0.5.62 — naprawa zapisu projektu z ETH-Mini-GATE.\n\n- Usunięto błąd „Nieprawidłowa struktura modułu 1” podczas zapisywania projektu z bramką ETH-Mini-GATE (ID 1).\n- Zapis, ponowne otwieranie oraz import i eksport projektu zachowują bramkę, nazwy i konfigurację pozostałych modułów, w tym reguły, sloty i czasy rolet.\n- Odczyt i wysyłanie konfiguracji całej instalacji pomijają bramkę, która nie ma reguł ani wyjść. Ustawienia sieciowe bramki obsługuje okno „Konfiguracja ETH Mini GATE”.\n- ETH-Mini-GATE nie pojawia się jako cel akcji slotu.\n\nZweryfikowano odtworzenie błędu, zapis i odczyt projektów, import/eksport, plan komend oraz interfejs aplikacji. Wystarczy zaktualizować GRYFEXPERT; ta poprawka nie wymaga zmiany HEX ani sterownika RTI. Pozostałe paczki pochodzą z bieżącego wydania RTI 2.20.\n",
+      "notes": "GRYFEXPERT 0.5.63 — aktualizacja stanów w tle bez drgania strony.\n\n- Raporty z modułów aktualizują od razu stany przycisków, PWM i temperatur. Wpis w logu nie odświeża już głównego edytora.\n- Okresowe odczyty wejść/wyjść, flag i temperatur działają w tle: nie migają paskiem stanu i nie blokują pól edycji. Wszystkie komendy nadal korzystają z jednej kolejki komunikacji.\n- Temperatury regulatorów odświeżają się w osobnych polach; odbiór temperatury nie odświeża formularza nazw wyjść. Terminal aktualizuje tylko swój dziennik, a wykrywanie wejść reaguje na odebrane naciśnięcia.\n- Zachowano poprawkę zapisu projektów z ETH-Mini-GATE z wersji 0.5.62.\n\nZweryfikowano kompilację, testy aplikacji i interfejs z symulowaną bramką: natychmiastową zmianę stanu przycisku, zachowanie tekstu i fokusu, stabilną pozycję strony oraz rzeczywisty cykl 30-sekundowego odczytu. Aktualizacja dotyczy GRYFEXPERT; nie wymaga zmiany HEX ani RTI.\n",
       "digest": "sha256:17ae19995c45fa757bb24774a63472d803e98b87c4410761ecdc40adfaec4fa8"
     },
     "R0806T": {
       "version": "39",
-      "url": "https://github.com/GRYF-SMART/gryfsmart-firmware/releases/download/v2026.11.16-gryfexpert-0.5.62/R0806T-firmware.hex",
-      "release": "https://github.com/GRYF-SMART/gryfsmart-firmware/releases/tag/v2026.11.16-gryfexpert-0.5.62",
+      "url": "https://github.com/GRYF-SMART/gryfsmart-firmware/releases/download/v2026.11.16-gryfexpert-0.5.63/R0806T-firmware.hex",
+      "release": "https://github.com/GRYF-SMART/gryfsmart-firmware/releases/tag/v2026.11.16-gryfexpert-0.5.63",
       "date": "2026-11-16",
-      "notes": "GRYFEXPERT 0.5.62 — naprawa zapisu projektu z ETH-Mini-GATE.\n\n- Usunięto błąd „Nieprawidłowa struktura modułu 1” podczas zapisywania projektu z bramką ETH-Mini-GATE (ID 1).\n- Zapis, ponowne otwieranie oraz import i eksport projektu zachowują bramkę, nazwy i konfigurację pozostałych modułów, w tym reguły, sloty i czasy rolet.\n- Odczyt i wysyłanie konfiguracji całej instalacji pomijają bramkę, która nie ma reguł ani wyjść. Ustawienia sieciowe bramki obsługuje okno „Konfiguracja ETH Mini GATE”.\n- ETH-Mini-GATE nie pojawia się jako cel akcji slotu.\n\nZweryfikowano odtworzenie błędu, zapis i odczyt projektów, import/eksport, plan komend oraz interfejs aplikacji. Wystarczy zaktualizować GRYFEXPERT; ta poprawka nie wymaga zmiany HEX ani sterownika RTI. Pozostałe paczki pochodzą z bieżącego wydania RTI 2.20.\n",
+      "notes": "GRYFEXPERT 0.5.63 — aktualizacja stanów w tle bez drgania strony.\n\n- Raporty z modułów aktualizują od razu stany przycisków, PWM i temperatur. Wpis w logu nie odświeża już głównego edytora.\n- Okresowe odczyty wejść/wyjść, flag i temperatur działają w tle: nie migają paskiem stanu i nie blokują pól edycji. Wszystkie komendy nadal korzystają z jednej kolejki komunikacji.\n- Temperatury regulatorów odświeżają się w osobnych polach; odbiór temperatury nie odświeża formularza nazw wyjść. Terminal aktualizuje tylko swój dziennik, a wykrywanie wejść reaguje na odebrane naciśnięcia.\n- Zachowano poprawkę zapisu projektów z ETH-Mini-GATE z wersji 0.5.62.\n\nZweryfikowano kompilację, testy aplikacji i interfejs z symulowaną bramką: natychmiastową zmianę stanu przycisku, zachowanie tekstu i fokusu, stabilną pozycję strony oraz rzeczywisty cykl 30-sekundowego odczytu. Aktualizacja dotyczy GRYFEXPERT; nie wymaga zmiany HEX ani RTI.\n",
       "digest": "sha256:49a061aecf1cb6959cb53a4989100eb886e5e96b79617cbc0aba8de1e601dbab"
     },
     "S0804": {
       "version": "38",
-      "url": "https://github.com/GRYF-SMART/gryfsmart-firmware/releases/download/v2026.11.16-gryfexpert-0.5.62/S0804-firmware.hex",
-      "release": "https://github.com/GRYF-SMART/gryfsmart-firmware/releases/tag/v2026.11.16-gryfexpert-0.5.62",
+      "url": "https://github.com/GRYF-SMART/gryfsmart-firmware/releases/download/v2026.11.16-gryfexpert-0.5.63/S0804-firmware.hex",
+      "release": "https://github.com/GRYF-SMART/gryfsmart-firmware/releases/tag/v2026.11.16-gryfexpert-0.5.63",
       "date": "2026-11-16",
-      "notes": "GRYFEXPERT 0.5.62 — naprawa zapisu projektu z ETH-Mini-GATE.\n\n- Usunięto błąd „Nieprawidłowa struktura modułu 1” podczas zapisywania projektu z bramką ETH-Mini-GATE (ID 1).\n- Zapis, ponowne otwieranie oraz import i eksport projektu zachowują bramkę, nazwy i konfigurację pozostałych modułów, w tym reguły, sloty i czasy rolet.\n- Odczyt i wysyłanie konfiguracji całej instalacji pomijają bramkę, która nie ma reguł ani wyjść. Ustawienia sieciowe bramki obsługuje okno „Konfiguracja ETH Mini GATE”.\n- ETH-Mini-GATE nie pojawia się jako cel akcji slotu.\n\nZweryfikowano odtworzenie błędu, zapis i odczyt projektów, import/eksport, plan komend oraz interfejs aplikacji. Wystarczy zaktualizować GRYFEXPERT; ta poprawka nie wymaga zmiany HEX ani sterownika RTI. Pozostałe paczki pochodzą z bieżącego wydania RTI 2.20.\n",
+      "notes": "GRYFEXPERT 0.5.63 — aktualizacja stanów w tle bez drgania strony.\n\n- Raporty z modułów aktualizują od razu stany przycisków, PWM i temperatur. Wpis w logu nie odświeża już głównego edytora.\n- Okresowe odczyty wejść/wyjść, flag i temperatur działają w tle: nie migają paskiem stanu i nie blokują pól edycji. Wszystkie komendy nadal korzystają z jednej kolejki komunikacji.\n- Temperatury regulatorów odświeżają się w osobnych polach; odbiór temperatury nie odświeża formularza nazw wyjść. Terminal aktualizuje tylko swój dziennik, a wykrywanie wejść reaguje na odebrane naciśnięcia.\n- Zachowano poprawkę zapisu projektów z ETH-Mini-GATE z wersji 0.5.62.\n\nZweryfikowano kompilację, testy aplikacji i interfejs z symulowaną bramką: natychmiastową zmianę stanu przycisku, zachowanie tekstu i fokusu, stabilną pozycję strony oraz rzeczywisty cykl 30-sekundowego odczytu. Aktualizacja dotyczy GRYFEXPERT; nie wymaga zmiany HEX ani RTI.\n",
       "digest": "sha256:0f1dbaa79aba8235174535eb6a14283cf8cfb66e1d29eefc2749313b6cfb858b"
     }
   }
