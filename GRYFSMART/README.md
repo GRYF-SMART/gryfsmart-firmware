@@ -1,16 +1,16 @@
 # 1. Aplikacja GRYFSMART
 
-**[Pobierz najnowszą wersję 0.5.64](https://github.com/GRYF-SMART/gryfsmart-firmware/releases/download/v2026.11.16-gryfexpert-0.5.64/GRYFEXPERT-0.5.64-win-x64.zip)**
+**[Pobierz najnowszą wersję 0.5.65](https://github.com/GRYF-SMART/gryfsmart-firmware/releases/download/v2026.11.17-gryfexpert-0.5.65/GRYFEXPERT-0.5.65-win-x64.zip)**
 
-GRYFEXPERT 0.5.64 — naprawa wyszukiwania sterowników RTI. Pole portu i przycisk Skanuj sieć są dostępne po otwarciu okna. Poprawiono stały atrybut disabled, który uniemożliwiał rozpoczęcie skanu. Kontrolki blokują się tylko podczas skanowania i odblokowują po jego zakończeniu. [Pełny opis wydania](https://github.com/GRYF-SMART/gryfsmart-firmware/releases/tag/v2026.11.16-gryfexpert-0.5.64).
+GRYFEXPERT 0.5.65 — szczegółowe błędy konfiguracji termostatów. Błąd wskazuje nazwę, ID i model modułu oraz numer i nazwę termostatu, także przy podglądzie zapisu całej instalacji. Oddzielne przyczyny i wskazówki dla braku wyjścia w AUTO/ON, nieprawidłowego czujnika, temperatury, histerezy i przypisania wyjść. Powtórzone wyjście wskazuje ID, numer WY i… [Pełny opis wydania](https://github.com/GRYF-SMART/gryfsmart-firmware/releases/tag/v2026.11.17-gryfexpert-0.5.65).
 
 ## Trzy ostatnie wersje
 
 | Wersja | Data publikacji | Pobieranie | Zmiany |
 |---|---|---|---|
+| **0.5.65** | 2026-11-16 | [Pobierz](https://github.com/GRYF-SMART/gryfsmart-firmware/releases/download/v2026.11.17-gryfexpert-0.5.65/GRYFEXPERT-0.5.65-win-x64.zip) | GRYFEXPERT 0.5.65 — szczegółowe błędy konfiguracji termostatów. Błąd wskazuje nazwę, ID i model modułu oraz numer i nazwę termostatu, także przy podglądzie zapisu całej instalacji. Oddzielne przyczyny i wskazówki dla braku wyjścia w AUTO/ON, nieprawidłowego czujnika, temperatury, histerezy i przypisania wyjść. Powtórzone wyjście wskazuje ID, numer WY i… [Pełny opis](https://github.com/GRYF-SMART/gryfsmart-firmware/releases/tag/v2026.11.17-gryfexpert-0.5.65) |
 | **0.5.64** | 2026-11-16 | [Pobierz](https://github.com/GRYF-SMART/gryfsmart-firmware/releases/download/v2026.11.16-gryfexpert-0.5.64/GRYFEXPERT-0.5.64-win-x64.zip) | GRYFEXPERT 0.5.64 — naprawa wyszukiwania sterowników RTI. Pole portu i przycisk Skanuj sieć są dostępne po otwarciu okna. Poprawiono stały atrybut disabled, który uniemożliwiał rozpoczęcie skanu. Kontrolki blokują się tylko podczas skanowania i odblokowują po jego zakończeniu. [Pełny opis](https://github.com/GRYF-SMART/gryfsmart-firmware/releases/tag/v2026.11.16-gryfexpert-0.5.64) |
 | **0.5.63** | 2026-11-16 | [Pobierz](https://github.com/GRYF-SMART/gryfsmart-firmware/releases/download/v2026.11.16-gryfexpert-0.5.63/GRYFEXPERT-0.5.63-win-x64.zip) | GRYFEXPERT 0.5.63 — aktualizacja stanów w tle bez drgania strony. Raporty z modułów aktualizują od razu stany przycisków, PWM i temperatur. Wpis w logu nie odświeża już głównego edytora. Okresowe odczyty wejść/wyjść, flag i temperatur działają w tle: nie migają paskiem stanu i nie blokują pól edycji. Wszystkie komendy nadal korzystają z jednej kolejki… [Pełny opis](https://github.com/GRYF-SMART/gryfsmart-firmware/releases/tag/v2026.11.16-gryfexpert-0.5.63) |
-| **0.5.62** | 2026-11-16 | [Pobierz](https://github.com/GRYF-SMART/gryfsmart-firmware/releases/download/v2026.11.16-gryfexpert-0.5.62/GRYFEXPERT-0.5.62-win-x64.zip) | GRYFEXPERT 0.5.62 — naprawa zapisu projektu z ETH-Mini-GATE. Usunięto błąd „Nieprawidłowa struktura modułu 1” podczas zapisywania projektu z bramką ETH-Mini-GATE (ID 1). Zapis, ponowne otwieranie oraz import i eksport projektu zachowują bramkę, nazwy i konfigurację pozostałych modułów, w tym reguły, sloty i czasy rolet. [Pełny opis](https://github.com/GRYF-SMART/gryfsmart-firmware/releases/tag/v2026.11.16-gryfexpert-0.5.62) |
 
 ## Konfiguracja przez GRYFEXPERT — driver RTI 2.14 / GRYFEXPERT 0.5.52
 
