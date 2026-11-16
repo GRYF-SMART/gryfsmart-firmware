@@ -1,16 +1,16 @@
 # 4. Driver RTI
 
-**[Pobierz najnowszą wersję 2.18](https://github.com/GRYF-SMART/gryfsmart-firmware/releases/download/v2026.11.15-rti-2.18/GRYF.rtidriver)**
+**[Pobierz najnowszą wersję 2.19](https://github.com/GRYF-SMART/gryfsmart-firmware/releases/download/v2026.11.15-rti-2.19/GRYF.rtidriver)**
 
-GRYF Driver 2.18 aktualizuje metadane widoczne w Integration Designer i dokumentacji. Name: GRYF Driver; Version: 2.18; Copyright: 15/11/2026 GRYF. Nagłówek pomocy: GRYF Driver v2.18. Dodano wpis do historii wersji i bieżące metadane w instrukcjach. [Pełny opis wydania](https://github.com/GRYF-SMART/gryfsmart-firmware/releases/tag/v2026.11.15-rti-2.18).
+GRYF Driver 2.19: OTWIERAJ PRZEZ / ZAMYKAJ PRZEZ z nastawą co 0,1 s. Zmieniono nazwy akcji w funkcjach Steruj roletą S0804 i Komponent rolety dla wszystkich ID drivera. Czas wpisuje się w sekundach 0,1–655,3 s, z przecinkiem lub kropką, np. 1,2 albo 1.2. Pozycja pozostaje całkowita 0–100%. [Pełny opis wydania](https://github.com/GRYF-SMART/gryfsmart-firmware/releases/tag/v2026.11.15-rti-2.19).
 
 ## Trzy ostatnie wersje
 
 | Wersja | Data publikacji | Pobieranie | Zmiany |
 |---|---|---|---|
+| **2.19** | 2026-11-16 | [Pobierz](https://github.com/GRYF-SMART/gryfsmart-firmware/releases/download/v2026.11.15-rti-2.19/GRYF.rtidriver) | GRYF Driver 2.19: OTWIERAJ PRZEZ / ZAMYKAJ PRZEZ z nastawą co 0,1 s. Zmieniono nazwy akcji w funkcjach Steruj roletą S0804 i Komponent rolety dla wszystkich ID drivera. Czas wpisuje się w sekundach 0,1–655,3 s, z przecinkiem lub kropką, np. 1,2 albo 1.2. Pozycja pozostaje całkowita 0–100%. [Pełny opis](https://github.com/GRYF-SMART/gryfsmart-firmware/releases/tag/v2026.11.15-rti-2.19) |
 | **2.18** | 2026-11-15 | [Pobierz](https://github.com/GRYF-SMART/gryfsmart-firmware/releases/download/v2026.11.15-rti-2.18/GRYF.rtidriver) | GRYF Driver 2.18 aktualizuje metadane widoczne w Integration Designer i dokumentacji. Name: GRYF Driver; Version: 2.18; Copyright: 15/11/2026 GRYF. Nagłówek pomocy: GRYF Driver v2.18. Dodano wpis do historii wersji i bieżące metadane w instrukcjach. [Pełny opis](https://github.com/GRYF-SMART/gryfsmart-firmware/releases/tag/v2026.11.15-rti-2.18) |
 | **2.17** | 2026-11-13 | [Pobierz](https://github.com/GRYF-SMART/gryfsmart-firmware/releases/download/v2026.11.13-rti-2.17/GRYF.rtidriver) | GRYF RTI 2.17 naprawia błąd „Unable to update driver” przy imporcie i aktualizacji w Integration Designer. Zachowuje dziewięć akcji rolet S0804, komunikację RS-232/TCP i bramkę konfiguracji GRYFEXPERT. Paczka jest tworzona oficjalnym RTI PackageDriver. Manifest i definicje XML mają prawidłowy format, warunki widoczności są kompilowane, a skrypty i… [Pełny opis](https://github.com/GRYF-SMART/gryfsmart-firmware/releases/tag/v2026.11.13-rti-2.17) |
-| **2.16** | 2026-11-13 | [Pobierz](https://github.com/GRYF-SMART/gryfsmart-firmware/releases/download/v2026.11.13-gryfexpert-0.5.60-rti-2.16/GRYF.rtidriver) | GRYFEXPERT 0.5.60 / RTI 2.16 / firmware modules updated. Nine consistent shutter actions across GRYFEXPERT, S0804 HEX, RTI and Home Assistant. Step 5 cycles OPEN, STOP, CLOSE, STOP; code 6 remains a compatibility alias. Directional steps, open/close for 1..255 seconds, percent position, auto stop after configured travel, stop and direction change are… [Pełny opis](https://github.com/GRYF-SMART/gryfsmart-firmware/releases/tag/v2026.11.13-gryfexpert-0.5.60-rti-2.16) |
 
 ## Ruch rolety przez zadany czas — RTI 2.19
 
