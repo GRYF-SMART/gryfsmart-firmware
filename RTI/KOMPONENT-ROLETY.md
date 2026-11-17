@@ -1,34 +1,34 @@
-## Pola poleceń rolety — RTI 2.20
+## Menu S0804 — pięć pozycji w RTI 2.21
 
-Aby przy ruchu, STOP i STEP nie było niepotrzebnej liczby, wybierz jedną z osobnych funkcji w kategorii **ID modułu**:
+Po ustawieniu typu modułu **S0804**, w jego gałęzi ID dostępne są wyłącznie:
 
-| Funkcja | Pola widoczne w makrze |
+| Funkcja | Parametry i akcje |
 |---|---|
-| **Steruj roletą S0804 — ruch / STOP / STEP** | Roleta i akcja; bez końcowego parametru |
-| **Roleta: OTWIERAJ PRZEZ (s, krok 0,1 s)** | Roleta i czas w sekundach |
-| **Roleta: ZAMYKAJ PRZEZ (s, krok 0,1 s)** | Roleta i czas w sekundach |
-| **Roleta: USTAW POZYCJĘ (%)** | Roleta i otwarcie 0–100% |
-| **Komponent rolety: ustaw zapisaną pozycję** | Tylko roleta; procent pobierany z ustawień komponentu |
+| **Steruj roletą** | Roleta 1–4 oraz OTWÓRZ, STOP, ZAMKNIJ, ZAMKNIJ-STOP, OTWÓRZ-STOP, STEP. **Bez pola czasu/procentu.** |
+| **Steruj roletą (czas / procent)** | Roleta 1–4, akcja OTWIERAJ PRZEZ (dokładność 0,1 s), ZAMYKAJ PRZEZ (dokładność 0,1 s) albo USTAW POZYCJĘ %, oraz jedna wartość czasu/procentu. |
+| **Ustaw czasy przejazdu rolety** | Roleta 1–4 oraz czasy pełnego otwierania i zamykania w sekundach co 0,1 s. |
+| **Zapisz konfigurację do modułu** | Bez dodatkowych parametrów; zapis ustawień modułu w EEPROM. |
+| **Ustaw flagę** | Flaga 1–8 oraz USTAW, SKASUJ albo PRZEŁĄCZ. |
 
-Dla czasu wpisuj **jedną cyfrę po przecinku**, np. `11,1` lub `11.1` sekundy. Nastawa ma krok **0,1 s**; `11,11` jest nieprawidłowe. Zakres czasu: 0,1–655,3 s. Przy otwieraniu i zamykaniu napis **krok 0,1 s** jest widoczny w nazwie funkcji, a także w nazwie pola i jego podpowiedzi. Pozycję wpisuje się w całych procentach.
+Nazwy rolet i flag pochodzą z konfiguracji drivera, również po imporcie nazw z GRYFEXPERT. W drugiej funkcji wpisz np. `11,1` lub `11.1` dla 11,1 sekundy albo `50` dla 50% otwarcia. Czas ma zakres 0,1–655,3 s, krok 0,1 s; procent jest całkowity, 0–100%. **0% oznacza zamknięcie, 100% pełne otwarcie.** Wpis `11,11` nie spełnia kroku czasu.
 
-Format drivera RTI nie udostępnia ukrywania parametru zależnie od akcji wybranej w tym samym makrze. Dlatego powyższe funkcje mają oddzielne zestawy pól. Dotychczasowe **Steruj roletą S0804** i **Komponent rolety** pozostają z dopiskiem **pełna lista — zgodność**, aby zachować zapisane makra. W tych dwóch funkcjach wspólne pole pozostaje widoczne; jest ignorowane przez akcje bez wartości. W istniejącym makrze wybierz odpowiednią nową funkcję i ponownie ustaw numer rolety oraz akcję/czas/procent. Nie usuwaj instancji drivera.
+Zmiana dotyczy wyłącznie menu poleceń S0804. Pozostałe typy modułów zachowują swoje funkcje i parametry. Z listy wyboru S0804 ukryto pełne listy zgodności, odczyt ręczny, osobne komendy otwierania/zamykania na czas i pozycję oraz polecenia komponentu. Zachowano ich identyfikatory i procedury wykonawcze dla wcześniejszych powiązań. Przy edycji makra wybierz jedną z pięciu pozycji powyżej. Po **Driver Utilities → Update Driver** sprawdź istniejące makra; nie usuwaj instancji drivera.
 
-Firmware S0804 pozostaje w wersji **38**. Ta aktualizacja zmienia interfejs funkcji drivera; nie wymaga ponownego wgrania HEX, jeżeli moduł ma już firmware 38.
+Zmienne stanu i automatyczne odczyty nadal są dostępne. Wersja firmware S0804 pozostaje **38**; jeśli moduł ma już tę wersję, nie trzeba ponownie wgrywać HEX.
 
 ## Ruch rolety przez zadany czas
 
 Dla **OTWIERAJ PRZEZ** i **ZAMYKAJ PRZEZ** wpisz czas w sekundach co **0,1 s**, w zakresie **0,1–655,3 s**, np. `0,1`, `1,2` albo `1.2`. Czas odmierza moduł S0804; po jego upływie zatrzymuje napęd. Przerwa przy zmianie kierunku nie skraca zadanego czasu ruchu. Czasy ułamkowe i dłuższe niż 255 s wymagają **firmware S0804 38 lub nowszego**. Pełne sekundy 1–255 nadal używają dotychczasowego polecenia i działają także ze starszym firmware obsługującym te akcje. Dla USTAW POZYCJĘ wpisz całkowite 0–100%.
 
-W funkcji **pełna lista — zgodność** pole **Czas [s] / pozycja [%]** przyjmuje tekst. Wpis `10` nadal oznacza 10 sekund. Po aktualizacji istniejącego projektu sprawdź wartości parametrów zapisanych makr.
+W funkcji **Steruj roletą (czas / procent)** wspólne pole wartości przyjmuje tekst. Wpis `10` nadal oznacza 10 sekund. Po aktualizacji istniejącego projektu sprawdź wartości parametrów zapisanych makr.
 
 # GRYF — jeden komponent rolety S0804
 
 <!-- RTI-METADATA:BEGIN -->
-**GRYF Driver v2.20** · Copyright: 16/11/2026 GRYF
+**GRYF Driver v2.21** · Copyright: 17/11/2026 GRYF
 <!-- RTI-METADATA:END -->
 
-Komponent jest natywnym **Viewport** w Integration Designer 11: jednym obiektem na stronie, zawierającym procent otwarcia, krótki stan oraz akcje **OTWÓRZ / STOP / ZAMKNIJ / ZAMKNIJ+STOP / OTWÓRZ+STOP / STEP / OTWIERAJ PRZEZ / ZAMYKAJ PRZEZ / USTAW POZYCJĘ**. Wnętrze edytuje się przez prawy przycisk myszy → **Edit Viewport**. Nie wymaga serwera WWW ani przeglądarki.
+Komponent jest natywnym **Viewport** w Integration Designer 11: jednym obiektem na stronie, zawierającym procent otwarcia, krótki stan oraz akcje **OTWÓRZ / STOP / ZAMKNIJ / ZAMKNIJ-STOP / OTWÓRZ-STOP / STEP / OTWIERAJ PRZEZ / ZAMYKAJ PRZEZ / USTAW POZYCJĘ**. Wnętrze edytuje się przez prawy przycisk myszy → **Edit Viewport**. Nie wymaga serwera WWW ani przeglądarki.
 
 ## Uruchomienie wzorca
 
@@ -57,11 +57,12 @@ Przycisk procentowy wykonuje zapisany cel i wyświetla go, np. **NA 70%**. Jest 
 
 Zaznacz zewnętrzny Viewport i kopiuj go jako całość na stronę docelową. Po przeniesieniu między projektami sprawdź instancję GRYF i powiązania w Tag Editor. Nie zakładaj, że numery urządzeń w dwóch projektach są takie same.
 
-Przy kopii dla **innej** rolety nadaj jej własne tagi (np. `GRYF Roleta 2: ...`), aby zmiana makra nie zmieniła również pierwszej rolety. W funkcji **ID N → Komponent rolety** wybierz numer rolety i jedną z dziewięciu akcji. Dla ruchu czasowego podaj 0,1–655,3 s co 0,1 s; akcja procentowa komponentu korzysta z celu ustawionego w Driver Properties (0–100%), a nie z końcowej liczby makra. Zaktualizuj również tagi tekstowe i zmienne widoczności:
+Przy kopii dla **innej** rolety nadaj jej własne tagi (np. `GRYF Roleta 2: ...`), aby zmiana makra nie zmieniła również pierwszej rolety. W gałęzi **ID N** wybierz **Steruj roletą** dla ruchu/STOP/STEP lub **Steruj roletą (czas / procent)** dla ruchu czasowego i pozycji. W nowej funkcji procentowej wpisz cel bezpośrednio w makrze. Starsze powiązania komponentu zachowują cel pobierany z konfiguracji. Zaktualizuj również tagi tekstowe i zmienne widoczności:
 
 | Element | Powiązanie dla rolety R, modułu ID N |
 | --- | --- |
-| OTWÓRZ / STOP / ZAMKNIJ / ZAMKNIJ+STOP / OTWÓRZ+STOP / STEP / CZAS OTWIERANIA / CZAS ZAMYKANIA / POZYCJA | `ShutterComponentN(R, 1 / 3 / 2 / 9 / 4 / 5 / 8 / 10 / 7, parametr)` |
+| OTWÓRZ / STOP / ZAMKNIJ / ZAMKNIJ-STOP / OTWÓRZ-STOP / STEP | `ShutterBasicN(R, akcja)` |
+| OTWIERAJ PRZEZ / ZAMYKAJ PRZEZ / USTAW POZYCJĘ % | `ShutterValueN(R, 8 / 10 / 7, czas_lub_procent)` |
 | Procent | `R{R}_POSITION_TEXT_ID{N}` |
 | Krótki stan | `R{R}_MOTION_TEXT_ID{N}` |
 | Etykieta NA PROCENT | `R{R}_PRESET_TEXT_ID{N}` |

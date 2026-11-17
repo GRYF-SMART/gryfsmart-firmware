@@ -1,42 +1,42 @@
-## Pola poleceń rolety — RTI 2.20
+## Menu S0804 — pięć pozycji w RTI 2.21
 
-Aby przy ruchu, STOP i STEP nie było niepotrzebnej liczby, wybierz jedną z osobnych funkcji w kategorii **ID modułu**:
+Po ustawieniu typu modułu **S0804**, w jego gałęzi ID dostępne są wyłącznie:
 
-| Funkcja | Pola widoczne w makrze |
+| Funkcja | Parametry i akcje |
 |---|---|
-| **Steruj roletą S0804 — ruch / STOP / STEP** | Roleta i akcja; bez końcowego parametru |
-| **Roleta: OTWIERAJ PRZEZ (s, krok 0,1 s)** | Roleta i czas w sekundach |
-| **Roleta: ZAMYKAJ PRZEZ (s, krok 0,1 s)** | Roleta i czas w sekundach |
-| **Roleta: USTAW POZYCJĘ (%)** | Roleta i otwarcie 0–100% |
-| **Komponent rolety: ustaw zapisaną pozycję** | Tylko roleta; procent pobierany z ustawień komponentu |
+| **Steruj roletą** | Roleta 1–4 oraz OTWÓRZ, STOP, ZAMKNIJ, ZAMKNIJ-STOP, OTWÓRZ-STOP, STEP. **Bez pola czasu/procentu.** |
+| **Steruj roletą (czas / procent)** | Roleta 1–4, akcja OTWIERAJ PRZEZ (dokładność 0,1 s), ZAMYKAJ PRZEZ (dokładność 0,1 s) albo USTAW POZYCJĘ %, oraz jedna wartość czasu/procentu. |
+| **Ustaw czasy przejazdu rolety** | Roleta 1–4 oraz czasy pełnego otwierania i zamykania w sekundach co 0,1 s. |
+| **Zapisz konfigurację do modułu** | Bez dodatkowych parametrów; zapis ustawień modułu w EEPROM. |
+| **Ustaw flagę** | Flaga 1–8 oraz USTAW, SKASUJ albo PRZEŁĄCZ. |
 
-Dla czasu wpisuj **jedną cyfrę po przecinku**, np. `11,1` lub `11.1` sekundy. Nastawa ma krok **0,1 s**; `11,11` jest nieprawidłowe. Zakres czasu: 0,1–655,3 s. Przy otwieraniu i zamykaniu napis **krok 0,1 s** jest widoczny w nazwie funkcji, a także w nazwie pola i jego podpowiedzi. Pozycję wpisuje się w całych procentach.
+Nazwy rolet i flag pochodzą z konfiguracji drivera, również po imporcie nazw z GRYFEXPERT. W drugiej funkcji wpisz np. `11,1` lub `11.1` dla 11,1 sekundy albo `50` dla 50% otwarcia. Czas ma zakres 0,1–655,3 s, krok 0,1 s; procent jest całkowity, 0–100%. **0% oznacza zamknięcie, 100% pełne otwarcie.** Wpis `11,11` nie spełnia kroku czasu.
 
-Format drivera RTI nie udostępnia ukrywania parametru zależnie od akcji wybranej w tym samym makrze. Dlatego powyższe funkcje mają oddzielne zestawy pól. Dotychczasowe **Steruj roletą S0804** i **Komponent rolety** pozostają z dopiskiem **pełna lista — zgodność**, aby zachować zapisane makra. W tych dwóch funkcjach wspólne pole pozostaje widoczne; jest ignorowane przez akcje bez wartości. W istniejącym makrze wybierz odpowiednią nową funkcję i ponownie ustaw numer rolety oraz akcję/czas/procent. Nie usuwaj instancji drivera.
+Zmiana dotyczy wyłącznie menu poleceń S0804. Pozostałe typy modułów zachowują swoje funkcje i parametry. Z listy wyboru S0804 ukryto pełne listy zgodności, odczyt ręczny, osobne komendy otwierania/zamykania na czas i pozycję oraz polecenia komponentu. Zachowano ich identyfikatory i procedury wykonawcze dla wcześniejszych powiązań. Przy edycji makra wybierz jedną z pięciu pozycji powyżej. Po **Driver Utilities → Update Driver** sprawdź istniejące makra; nie usuwaj instancji drivera.
 
-Firmware S0804 pozostaje w wersji **38**. Ta aktualizacja zmienia interfejs funkcji drivera; nie wymaga ponownego wgrania HEX, jeżeli moduł ma już firmware 38.
+Zmienne stanu i automatyczne odczyty nadal są dostępne. Wersja firmware S0804 pozostaje **38**; jeśli moduł ma już tę wersję, nie trzeba ponownie wgrywać HEX.
 
 ## Ruch rolety przez zadany czas
 
 Dla **OTWIERAJ PRZEZ** i **ZAMYKAJ PRZEZ** wpisz czas w sekundach co **0,1 s**, w zakresie **0,1–655,3 s**, np. `0,1`, `1,2` albo `1.2`. Czas odmierza moduł S0804; po jego upływie zatrzymuje napęd. Przerwa przy zmianie kierunku nie skraca zadanego czasu ruchu. Czasy ułamkowe i dłuższe niż 255 s wymagają **firmware S0804 38 lub nowszego**. Pełne sekundy 1–255 nadal używają dotychczasowego polecenia i działają także ze starszym firmware obsługującym te akcje. Dla USTAW POZYCJĘ wpisz całkowite 0–100%.
 
-W funkcji **pełna lista — zgodność** pole **Czas [s] / pozycja [%]** przyjmuje tekst. Wpis `10` nadal oznacza 10 sekund. Po aktualizacji istniejącego projektu sprawdź wartości parametrów zapisanych makr.
+W funkcji **Steruj roletą (czas / procent)** wspólne pole wartości przyjmuje tekst. Wpis `10` nadal oznacza 10 sekund. Po aktualizacji istniejącego projektu sprawdź wartości parametrów zapisanych makr.
 
-## Aktualizacja drivera 2.20
+## Aktualizacja drivera 2.21
 
 <!-- RTI-METADATA:BEGIN -->
-**GRYF Driver v2.20** · Copyright: 16/11/2026 GRYF
+**GRYF Driver v2.21** · Copyright: 17/11/2026 GRYF
 <!-- RTI-METADATA:END -->
 
 Aktualna paczka ma nazwę **GRYF Driver**. Numer wersji w polu Version i nagłówku pomocy oraz data Copyright są synchronizowane przy budowaniu wydania. Zachowano poprawkę importu z wersji 2.17 oraz dotychczasowe funkcje i identyfikatory. W Integration Designer wybierz istniejącą instancję **GRYF → Driver Utilities → Update Driver** i wskaż nowy `GRYF.rtidriver`. Nie usuwaj istniejącej instancji. Nazwa instancji zapisana wcześniej w projekcie może wymagać osobnej zmiany na **GRYF Driver**.
 
-## Konfiguracja przez GRYFEXPERT — driver RTI 2.20 / GRYFEXPERT 0.5.60
+## Konfiguracja przez GRYFEXPERT — driver RTI 2.21 / GRYFEXPERT 0.5.60
 
 Połączenie: **GRYFEXPERT → adres IP procesora RTI + port TCP → RS232 → port 0 pierwszego modułu GRYF**. Odpowiedzi wracają tą samą drogą. Moduł ETH nie jest wymagany. RTI działa jako serwer ze stałym adresem IP; GRYFEXPERT inicjuje połączenie jako klient.
 
 ### Ustawienia drivera RTI
 
-W Integration Designer zaktualizuj driver do **2.20**. Wybierz **RS-232**, port procesora połączony z GRYF i **115200, 8N1**. W osobnej sekcji **Konfiguracja przez GRYFEXPERT**:
+W Integration Designer zaktualizuj driver do **2.21**. Wybierz **RS-232**, port procesora połączony z GRYF i **115200, 8N1**. W osobnej sekcji **Konfiguracja przez GRYFEXPERT**:
 
 - włącz konfigurację przez GRYFEXPERT;
 - ustaw **Port TCP konfiguracji GRYFEXPERT**: domyślnie **4211**, z możliwością zmiany na wolny port w zakresie 1024–65535;
@@ -87,16 +87,11 @@ Brak odpowiedzi lub błąd pojedynczej transmisji nie blokuje następnych moduł
 
 [Aktualny driver i trzy ostatnie wersje](README.md)
 
-## S0804 — dziewięć akcji rolet w RTI 2.16
+## S0804 — konfiguracja i pozycja rolety
 
-W **Driver Properties** ustaw typ modułu **S0804**. W funkcjach danego ID dostępne są:
+W **Driver Properties** wybierz typ **S0804**. Pięć funkcji opisano na początku instrukcji. Czasy pełnego przejazdu ustawiaj na postoju, a następnie użyj **Zapisz konfigurację do modułu**, aby utrwalić ustawienia w EEPROM. Zapis obejmuje konfigurację całego modułu; nie utrwala bieżącej pozycji rolety.
 
-- **Steruj roletą S0804** — wybór jednej z czterech rolet, OTWÓRZ, STOP, ZAMKNIJ, ZAMKNIJ+STOP, OTWÓRZ+STOP, STEP cykliczny, OTWIERAJ PRZEZ, ZAMYKAJ PRZEZ i USTAW POZYCJĘ %. 0% oznacza zamknięcie, 100% pełne otwarcie. Pole procentu dotyczy tylko akcji procentowej.
-- **Ustaw czasy przejazdu rolety** — osobno pełne otwieranie i zamykanie, z krokiem 0,1 s, np. `20,5`. Aktualny firmware przyjmuje 0,1–655,3 s; starsze wersje mogą ograniczać czas do 600 s. Ustawiaj na postoju. Zmiana czasów unieważnia pozycję.
-- **Odczytaj stan i czasy rolety** — ręczne odświeżenie danych.
-- **Zapisz konfigurację S0804 w EEPROM** — utrwala konfigurację modułu, w tym czasy wszystkich czterech rolet. Nie utrwala bieżącej pozycji. Używaj po konfiguracji, nie w cyklicznym makrze.
-
-**Otwieranie czasowe** to pełny przejazd przez czas otwierania zapisany przez `RolTime`; analogicznie działa zamykanie. Odliczanie i zatrzymanie wykonuje S0804. Driver nie zmienia czasu kalibracji przy każdej akcji ani nie emuluje osobnego impulsu ruchu przez opóźniony STOP z XP. Do częściowego otwarcia służy pozycja procentowa. Stare makra „Ustaw wyjście” z OPEN/CLOSE/STOP/STEP pozostają zgodne.
+OTWÓRZ i ZAMKNIJ wykonują pełny przejazd według zapisanych czasów. OTWIERAJ PRZEZ i ZAMYKAJ PRZEZ wykonują ruch przez czas wpisany w makrze. Odliczanie i zatrzymanie realizuje S0804. Dla częściowego otwarcia można też użyć USTAW POZYCJĘ %.
 
 Po restarcie lub zmianie czasów wykonaj pełne otwarcie albo zamknięcie. Dopiero po jego zakończeniu moduł zna pozycję i przyjmie pośrednie 1–99%. Pozycja jest estymacją czasową, nie pomiarem czujnika. Potwierdzenie `RuleOK` oznacza przyjęcie polecenia, a nie zakończenie ruchu; błędne lub niedozwolone polecenie może zwrócić `RuleERROR` w TraceViewer.
 
@@ -135,7 +130,7 @@ Dopasowanie odbywa się według ID i typu modułu oraz numeru kanału. Ustawieni
 Aktualna wersja i SHA-256 paczki: [manifest drivera](https://github.com/GRYF-SMART/gryfsmart-firmware/blob/main/RTI/manifest.json).
 
 
-## Akcje rolet S0804 w RTI 2.20
+## Akcje rolet S0804 w RTI 2.21
 
-W funkcjach **Steruj roletą S0804** oraz **Komponent rolety** są dostępne te same akcje: OTWÓRZ (1), STOP (3), ZAMKNIJ (2), ZAMKNIJ+STOP (9), OTWÓRZ+STOP (4), STEP (5), OTWIERAJ PRZEZ (8), ZAMYKAJ PRZEZ (10) i USTAW POZYCJĘ % (7). Dla akcji 8 i 10 wpisz czas 0,1–655,3 sekundy co 0,1 s; dla akcji 7 pozycję 0–100%. Pozostałe akcje nie używają parametru. Kod 6 zostaje obsługiwany przez firmware jako starszy alias STEP, ale nie pojawia się jako nowa akcja.
+**Steruj roletą**: OTWÓRZ (1), STOP (3), ZAMKNIJ (2), ZAMKNIJ-STOP (9), OTWÓRZ-STOP (4), STEP (5). **Steruj roletą (czas / procent)**: OTWIERAJ PRZEZ (8), ZAMYKAJ PRZEZ (10), USTAW POZYCJĘ % (7). Liczby w nawiasach są kodami protokołu. Kod 6 pozostaje zgodnym aliasem STEP w starszych wywołaniach, ale nie występuje na liście wyboru.
 
