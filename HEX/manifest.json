@@ -30,10 +30,10 @@
     },
     {
       "model": "S0804",
-      "version": "38",
+      "version": "39",
       "kind": "application",
       "asset": "S0804-firmware.hex",
-      "sha256": "0f1dbaa79aba8235174535eb6a14283cf8cfb66e1d29eefc2749313b6cfb858b",
+      "sha256": "280cc7d24f2c69d283f0a9966ed0de741d9e7af3f209711dc6020641253b2131",
       "mcu": "atmega1284p",
       "clock_hz": 18432000
     },
@@ -89,11 +89,11 @@
       "kind": "bootloader",
       "clock_hz": 18432000,
       "model": "S0804",
-      "version": "v12-chain1-led-on",
+      "version": "v13-chain1-jtag-off",
       "uarts": [
         0
       ],
-      "sha256": "4792d977c6024ae7d94bd789801710bca401441c4a7268542e3310f1de07da4b"
+      "sha256": "bc2ca30ee0f7799fb990e5a1ce60608bf8e6a74b3f2f23d9ad6484b8285e978e"
     },
     {
       "model": "R0806T-OLD",

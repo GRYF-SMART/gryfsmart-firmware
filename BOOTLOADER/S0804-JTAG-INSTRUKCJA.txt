@@ -1,0 +1,59 @@
+S0804: rolety 2 i 3, JTAG i fuse bity — 17.11.2026
+
+Wydanie: firmware S0804 39, bootloader v13-chain1-jtag-off,
+GRYFSMART-Instalator / Programator 2.0.26, GRYFEXPERT 0.5.66.
+
+Przyczyna poprawki
+S0804 wykorzystuje cały PORTC do przekaźników. PC2–PC5 są jednocześnie
+pinami JTAG: R2 zasilanie PC5 / kierunek PC4, R3 zasilanie PC3 / kierunek PC2.
+Wcześniejszy instalator zachowywał JTAGEN z zastanego HFUSE. Dla fabrycznego
+99 zapisywał 98, pozostawiając JTAG włączony. Wcześniejsza aplikacja nie
+wyłączała JTAG programowo. Licznik i raporty ruchu mogły więc działać bez
+przełączenia fizycznych wyjść R2/R3. HFUSE D8 ma już JTAG wyłączony.
+
+Poprawka
+1. Firmware 39 wyłącza JTAG na początku inicjalizacji wyjść. Najpierw
+   zeruje PORTC i ustawia DDRC, następnie dwa razy zapisuje JTD w MCUCR,
+   w dwóch kolejnych instrukcjach OUT, przy zablokowanych przerwaniach.
+2. Bootloader v13 wykonuje tę samą inicjalizację przed wyborem aplikacji
+   lub trybu programowania. Nie animuje wyjść przekaźników. RUN i RX/TX
+   zachowują stałe świecenie podczas pracy bootloadera.
+   Jawny wektor resetu pomija teksty PROGMEM i uruchamia kod inicjalizacji;
+   zweryfikowano start symulatora od fizycznego adresu 0x1E000.
+3. Instalator 2.0.26 dla S0804 wymusza JTAGEN=1 (wyłączony JTAG).
+   98/99 przechodzi na D8; gdy EESAVE był zaprogramowany, wynik to D0.
+   LOW pozostaje F7 (zewnętrzny kwarc full swing, bez CKDIV8), EXTENDED
+   bez zmian. Zachowane są ISP, start z bootloadera i obszar 8 KiB.
+   Po zapisie następuje niezależny odczyt i porównanie fuse bitów.
+4. Programator 2.0.26 i GRYFEXPERT 0.5.66 rozpoznają S0804 v13,
+   zachowując obsługę wcześniejszych bootloaderów v11 i v12.
+
+Aktualizacja
+W istniejącym sterowniku z bootloaderem można wgrać aplikację 39 przez
+bezpośredni RS-232 / USART0, 115200 8N1. Sama aplikacja zwolni piny JTAG
+po uruchomieniu, także gdy HFUSE pozostanie 98. Nie zmienia fuse bitów.
+Bootloader i fuse bity aktualizuje się przez USBasp/ISP. Instalacja
+bootloadera kasuje aplikację: po niej trzeba ponownie wgrać firmware 39.
+Instalator zachowuje i weryfikuje EEPROM. Nie wykonano automatycznie
+programowania urządzenia ani testu fizycznego ruchu w ramach tego wydania.
+
+Kontrola na urządzeniu
+Każdą roletę sprawdź osobno: krótko OTWÓRZ, STOP, ZAMKNIJ, STOP.
+Oczekiwanie: ruch w górę / brak ruchu / ruch w dół / brak ruchu.
+Zielona wskazuje otwieranie, czerwona zamykanie; po STOP obie gasną.
+Raporty programu opisują stan sterowania, nie pomiar napięcia na silniku.
+Jeśli problem utrzyma się przy wersji 39, sprawdź tor przekaźników,
+zgodność wyprowadzeń zastosowanych elementów i połączenie górnej PCB.
+Przekaźnik zasilania może mieć tylko styk NO; kierunkowy wymaga NO i NC.
+Na dostarczonym schemacie górnej PCB LED9–LED12 dzielą sygnały z czerwonymi
+LED2/4/6/8: jeśli są obsadzone, podczas zamykania mogą świecić dodatkowo.
+Firmware nie steruje tymi diodami niezależnie.
+
+Weryfikacja: symulator AVR startu, testy wszystkich czterech rolet,
+kontrola kolejności instrukcji w produkcyjnych ELF, testy wszystkich
+256 wartości HIGH dla sześciu profili instalatora, odczytu zwrotnego,
+symulowane przesyłanie 480 stron S0804 i testy zgodności aktualizatorów.
+Symulator nie potwierdza elektrycznej sprawności płytki.
+
+Dokumentacja MCU:
+https://ww1.microchip.com/downloads/en/DeviceDoc/Atmel-42719-ATmega1284P_Datasheet.pdf
