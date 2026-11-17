@@ -1,16 +1,16 @@
 # 1. Aplikacja GRYFSMART
 
-**[Pobierz najnowszą wersję 0.5.66](https://github.com/GRYF-SMART/gryfsmart-firmware/releases/download/v2026.11.17-s0804-jtag/GRYFEXPERT-0.5.66-win-x64.zip)**
+**[Pobierz najnowszą wersję 0.5.67](https://github.com/GRYF-SMART/gryfsmart-firmware/releases/download/v2026.11.17-jtag-unified/GRYFEXPERT-0.5.67-win-x64.zip)**
 
-S0804 39 — zwolnienie pinów rolet 2 i 3 zajmowanych przez JTAG. Poprzedni instalator zachowywał JTAGEN; fabryczne HIGH=99 przechodziło na 98, co pozostawiało JTAG na PC2–PC5. To piny zasilania i kierunku rolet 2/3. Raporty czasu mogły działać bez sterowania fizycznymi przekaźnikami. Aplikacja S0804 39 i bootloader v13-chain1-jtag-off zerują przekaźniki i… [Pełny opis wydania](https://github.com/GRYF-SMART/gryfsmart-firmware/releases/tag/v2026.11.17-s0804-jtag).
+R0806T i R0808: ochrona przed JTAG ujednolicona z S0804. Instalator 2.0.27 wyłącza JTAGEN także dla R0806T i R0808: HIGH 98/99 → D8, albo D0 przy zaprogramowanym EESAVE. Zachowuje EESAVE i EXTENDED; sprawdza zapis ponownym odczytem. Polityka ETH0606T/OLD bez zmian. R0806T: JTAG PC2–PC5 współdzieli wyjścia WY6–WY3. R0808: JTAG PF4–PF7 współdzieli wejścia… [Pełny opis wydania](https://github.com/GRYF-SMART/gryfsmart-firmware/releases/tag/v2026.11.17-jtag-unified).
 
 ## Trzy ostatnie wersje
 
 | Wersja | Data publikacji | Pobieranie | Zmiany |
 |---|---|---|---|
+| **0.5.67** | 2026-11-17 | [Pobierz](https://github.com/GRYF-SMART/gryfsmart-firmware/releases/download/v2026.11.17-jtag-unified/GRYFEXPERT-0.5.67-win-x64.zip) | R0806T i R0808: ochrona przed JTAG ujednolicona z S0804. Instalator 2.0.27 wyłącza JTAGEN także dla R0806T i R0808: HIGH 98/99 → D8, albo D0 przy zaprogramowanym EESAVE. Zachowuje EESAVE i EXTENDED; sprawdza zapis ponownym odczytem. Polityka ETH0606T/OLD bez zmian. R0806T: JTAG PC2–PC5 współdzieli wyjścia WY6–WY3. R0808: JTAG PF4–PF7 współdzieli wejścia… [Pełny opis](https://github.com/GRYF-SMART/gryfsmart-firmware/releases/tag/v2026.11.17-jtag-unified) |
 | **0.5.66** | 2026-11-17 | [Pobierz](https://github.com/GRYF-SMART/gryfsmart-firmware/releases/download/v2026.11.17-s0804-jtag/GRYFEXPERT-0.5.66-win-x64.zip) | S0804 39 — zwolnienie pinów rolet 2 i 3 zajmowanych przez JTAG. Poprzedni instalator zachowywał JTAGEN; fabryczne HIGH=99 przechodziło na 98, co pozostawiało JTAG na PC2–PC5. To piny zasilania i kierunku rolet 2/3. Raporty czasu mogły działać bez sterowania fizycznymi przekaźnikami. Aplikacja S0804 39 i bootloader v13-chain1-jtag-off zerują przekaźniki i… [Pełny opis](https://github.com/GRYF-SMART/gryfsmart-firmware/releases/tag/v2026.11.17-s0804-jtag) |
 | **0.5.65** | 2026-11-16 | [Pobierz](https://github.com/GRYF-SMART/gryfsmart-firmware/releases/download/v2026.11.17-rti-2.21/GRYFEXPERT-0.5.65-win-x64.zip) | GRYFEXPERT 0.5.65 — szczegółowe błędy konfiguracji termostatów. Błąd wskazuje nazwę, ID i model modułu oraz numer i nazwę termostatu, także przy podglądzie zapisu całej instalacji. Oddzielne przyczyny i wskazówki dla braku wyjścia w AUTO/ON, nieprawidłowego czujnika, temperatury, histerezy i przypisania wyjść. Powtórzone wyjście wskazuje ID, numer WY i… [Pełny opis](https://github.com/GRYF-SMART/gryfsmart-firmware/releases/tag/v2026.11.17-gryfexpert-0.5.65) |
-| **0.5.64** | 2026-11-16 | [Pobierz](https://github.com/GRYF-SMART/gryfsmart-firmware/releases/download/v2026.11.16-gryfexpert-0.5.64/GRYFEXPERT-0.5.64-win-x64.zip) | GRYFEXPERT 0.5.64 — naprawa wyszukiwania sterowników RTI. Pole portu i przycisk Skanuj sieć są dostępne po otwarciu okna. Poprawiono stały atrybut disabled, który uniemożliwiał rozpoczęcie skanu. Kontrolki blokują się tylko podczas skanowania i odblokowują po jego zakończeniu. [Pełny opis](https://github.com/GRYF-SMART/gryfsmart-firmware/releases/tag/v2026.11.16-gryfexpert-0.5.64) |
 
 ## Konfiguracja przez GRYFEXPERT — driver RTI 2.14 / GRYFEXPERT 0.5.52
 
