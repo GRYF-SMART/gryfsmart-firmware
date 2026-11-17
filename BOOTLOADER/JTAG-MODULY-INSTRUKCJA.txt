@@ -1,0 +1,40 @@
+GRYFSMART — wspólna ochrona przed JTAG: R0806T, R0808 i S0804
+Wydanie 2026-11-17: instalator/programator 2.0.27, GRYFEXPERT 0.5.67
+
+1. R0806T (ATmega1284P): JTAG zajmuje PC2–PC5, czyli wyjścia WY6–WY3.
+   R0808 (ATmega2560): JTAG zajmuje PF4–PF7, czyli wejścia WE4–WE1.
+   S0804 (ATmega1284P): JTAG zajmuje PC2–PC5, czyli przekaźniki rolet 2 i 3.
+
+2. Instalator wyłącza JTAGEN we wszystkich trzech profilach. Typowy HIGH
+   98/99 zmienia na D8; jeśli EESAVE był zaprogramowany, wynik to D0.
+   Zachowuje EESAVE i EXTENDED. LOW pozostaje F7 dla używanego kwarcu.
+   Zapisane fuse bity są ponownie odczytywane przed kasowaniem Flash.
+   Profile ETH0606T i R0806T-OLD zachowują dotychczasową politykę JTAG.
+
+3. Bootloadery R0806T i R0808 mają teraz wersję v13-chain1-jtag-off,
+   tak jak S0804. Wyłączają JTAG dwiema kolejnymi instrukcjami OUT przy
+   zablokowanych przerwaniach, również przed szybkim startem aplikacji.
+   Wektor resetu prowadzi do kodu startowego, pomijając teksty PROGMEM.
+   Przekaźniki są wyłączone przed zwolnieniem pinów. R0806T pozostawia
+   PC0/PC1 jako wejścia I2C z podciąganiem i wyłącza PWM na PD5.
+   R0808 wyłącza XMEM i ADC, a PF0–PF7 ustawia jako wejścia bez wewnętrznego
+   podciągania, zgodnie z zewnętrznymi rezystorami na płytce.
+   RUN/RX-TX: R0806T/R0808 nadal migają; S0804 nadal świecą stale w bootloaderze.
+
+4. Aplikacje R0806T 39, R0808 38 i S0804 39 już wyłączają JTAG przy starcie.
+   Ich HEX-y pozostają bez zmian. Nowy bootloader rozszerza ochronę na czas
+   oczekiwania na aplikację i aktualizacji. Nowe narzędzia nadal obsługują
+   v11-chain1, a dla S0804 także v12-chain1-led-on.
+
+5. Bootloader i fuse bity instaluje się przez USBasp/ISP. RS-232 aktualizuje
+   aplikację, nie te fuse bity ani bootloader. Instalacja bootloadera kasuje
+   aplikację: po niej należy ponownie wgrać właściwy firmware modułu.
+   W tym wydaniu nie programowano fizycznych urządzeń.
+
+6. Sprawdzono gotowe ELF/HEX: skok od adresu resetu, kolejność ustawiania
+   portów i zapisów JTD, start z różnymi stanami rejestrów w symulatorze AVR,
+   rozmiary obszarów Flash, profile fuse i symulowany zapis całych aplikacji.
+   Testy programowe nie potwierdzają fizycznego okablowania ani działania LED.
+
+Bieżący instalator: GRYFSMART-Instalator.exe wraz z plikami z paczki ZIP.
+Lokalnie: F:/GRYFSMART/gryfsmart-avr/BOOTLOADER/ oraz F:/GRYFEXPERT/INSTALATOR/.

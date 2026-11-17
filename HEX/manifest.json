@@ -65,11 +65,11 @@
       "kind": "bootloader",
       "clock_hz": 18432000,
       "model": "R0808",
-      "version": "v11-chain1",
+      "version": "v13-chain1-jtag-off",
       "uarts": [
         3
       ],
-      "sha256": "7834e1f10e9c1669a4247c2a1ef54e94d8c0ccf4b80242acec1001f16b640290"
+      "sha256": "b16312b85c354c5be70179f3c2c5222c6ff1c3741d1f8f30381ec0e1fb201731"
     },
     {
       "asset": "R0806T-bootloader.hex",
@@ -77,11 +77,11 @@
       "kind": "bootloader",
       "clock_hz": 18432000,
       "model": "R0806T",
-      "version": "v11-chain1",
+      "version": "v13-chain1-jtag-off",
       "uarts": [
         0
       ],
-      "sha256": "1b669b713645dc2de27f1b6883a03da8a77f32018848567d4a05b8a61c7bfb8b"
+      "sha256": "15f8c9cc94d19cb362a304d3a80f34297407cabb7dc06d6171ec57829b4942bd"
     },
     {
       "asset": "S0804-bootloader.hex",
