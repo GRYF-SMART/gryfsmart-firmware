@@ -1,16 +1,16 @@
 # 2. GRYFSMART-Programator
 
-**[Pobierz najnowszą wersję 2.0.25](https://github.com/GRYF-SMART/gryfsmart-firmware/releases/download/v2026.11.13-s0804-compatible/GRYFSMART-Programator.exe)**
+**[Pobierz najnowszą wersję 2.0.26](https://github.com/GRYF-SMART/gryfsmart-firmware/releases/download/v2026.11.17-s0804-jtag/GRYFSMART-Programator.exe)**
 
-Programator 2.0.25 i GRYFEXPERT 0.5.53 — zgodność z bootloaderem S0804 v12-chain1-led-on. Usunięto błędne odrzucanie aktualnego bootloadera S0804 z komunikatem wymagającym v11-chain1. Zapis przez RS-232 i aktualizacja CHAIN1 akceptują dla S0804 zarówno v11-chain1, jak i v12-chain1-led-on. Lista wersji dla innych modeli i kontrola modelu, MCU oraz protokołu… [Pełny opis wydania](https://github.com/GRYF-SMART/gryfsmart-firmware/releases/tag/v2026.11.13-s0804-compatible).
+S0804 39 — zwolnienie pinów rolet 2 i 3 zajmowanych przez JTAG. Poprzedni instalator zachowywał JTAGEN; fabryczne HIGH=99 przechodziło na 98, co pozostawiało JTAG na PC2–PC5. To piny zasilania i kierunku rolet 2/3. Raporty czasu mogły działać bez sterowania fizycznymi przekaźnikami. Aplikacja S0804 39 i bootloader v13-chain1-jtag-off zerują przekaźniki i… [Pełny opis wydania](https://github.com/GRYF-SMART/gryfsmart-firmware/releases/tag/v2026.11.17-s0804-jtag).
 
 ## Trzy ostatnie wersje
 
 | Wersja | Data publikacji | Pobieranie | Zmiany |
 |---|---|---|---|
+| **2.0.26** | 2026-11-17 | [Pobierz](https://github.com/GRYF-SMART/gryfsmart-firmware/releases/download/v2026.11.17-s0804-jtag/GRYFSMART-Programator.exe) | S0804 39 — zwolnienie pinów rolet 2 i 3 zajmowanych przez JTAG. Poprzedni instalator zachowywał JTAGEN; fabryczne HIGH=99 przechodziło na 98, co pozostawiało JTAG na PC2–PC5. To piny zasilania i kierunku rolet 2/3. Raporty czasu mogły działać bez sterowania fizycznymi przekaźnikami. Aplikacja S0804 39 i bootloader v13-chain1-jtag-off zerują przekaźniki i… [Pełny opis](https://github.com/GRYF-SMART/gryfsmart-firmware/releases/tag/v2026.11.17-s0804-jtag) |
 | **2.0.25** | 2026-11-13 | [Pobierz](https://github.com/GRYF-SMART/gryfsmart-firmware/releases/download/v2026.11.13-s0804-compatible/GRYFSMART-Programator.exe) | Programator 2.0.25 i GRYFEXPERT 0.5.53 — zgodność z bootloaderem S0804 v12-chain1-led-on. Usunięto błędne odrzucanie aktualnego bootloadera S0804 z komunikatem wymagającym v11-chain1. Zapis przez RS-232 i aktualizacja CHAIN1 akceptują dla S0804 zarówno v11-chain1, jak i v12-chain1-led-on. Lista wersji dla innych modeli i kontrola modelu, MCU oraz protokołu… [Pełny opis](https://github.com/GRYF-SMART/gryfsmart-firmware/releases/tag/v2026.11.13-s0804-compatible) |
 | **2.0.21** | 2026-11-04 | [Pobierz](https://github.com/GRYF-SMART/gryfsmart-firmware/releases/download/v2026.11.04-gryfexpert-0.5.38/GRYFSMART-Programator-2.0.21.exe) | Obsługa ETH Mini GATE przez RS-232 i Ethernet, pobieranie HEX z GitHub. Czytelny log: błędy na czerwono, zakończenie weryfikacji na zielono. [Pełny opis](https://github.com/GRYF-SMART/gryfsmart-firmware/releases/tag/v2026.11.04-gryfexpert-0.5.38) |
-| **2.0.14** | 2026-10-29 | [Pobierz](https://github.com/GRYF-SMART/gryfsmart-firmware/releases/download/v2026.10.29-restarts-all-0.5.15/GRYFSMART-Programator.exe) | Wydanie narzędzi z obsługą pakietu modułów i bootloadera R0806T-OLD v13; aktualizacja przez USB/RS-232 oraz sieć CHAIN1. [Pełny opis](https://github.com/GRYF-SMART/gryfsmart-firmware/releases/tag/v2026.10.29-restarts-all-0.5.15) |
 
 ## Aktualizacja aplikacji modułu
 
