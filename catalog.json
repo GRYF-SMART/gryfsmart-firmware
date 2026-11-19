@@ -2,6 +2,14 @@
   "products": {
     "GRYFSMART": [
       {
+        "version": "0.5.68",
+        "url": "https://github.com/GRYF-SMART/gryfsmart-firmware/releases/download/v2026.11.19-gryfexpert-0.5.68/GRYFEXPERT-0.5.68-win-x64.zip",
+        "release": "https://github.com/GRYF-SMART/gryfsmart-firmware/releases/tag/v2026.11.19-gryfexpert-0.5.68",
+        "date": "2026-11-19",
+        "notes": "GRYFEXPERT 0.5.68 — komunikat o braku modułów RS232.\n\n- Gdy podczas łączenia przez COM żaden moduł nie odpowie na AT+Find, aplikacja wyświetla czerwony, pogrubiony komunikat: NIE WYKRYTO MODUŁÓW NA PORCIE RS232.\n- Komunikat wskazuje brak odpowiedzi i zaleca sprawdzenie połączenia komputera z pierwszym sterownikiem oraz zasilania modułów.\n- Pusty wynik rozpoznawania przez COM także otrzymuje ten styl; komunikat wskazuje używaną komendę AT+Find, AT+Discovery lub AT+Search. Zajęty lub nieistniejący port pozostaje osobnym błędem.\n- Zweryfikowano kompilację i testy aplikacji. Aktualizacja nie zmienia HEX-ów, bootloaderów ani RTI. Paczka zachowuje bieżący instalator 2.0.28 i programator 2.0.27.\n",
+        "digest": "sha256:51b08245ee5ecbbd03b2f47023f62c03bfa4f988978a7d953ed2df13abc0ab8c"
+      },
+      {
         "version": "0.5.67",
         "url": "https://github.com/GRYF-SMART/gryfsmart-firmware/releases/download/v2026.11.17-jtag-unified/GRYFEXPERT-0.5.67-win-x64.zip",
         "release": "https://github.com/GRYF-SMART/gryfsmart-firmware/releases/tag/v2026.11.17-jtag-unified",
@@ -16,14 +24,6 @@
         "date": "2026-11-17",
         "notes": "S0804 39 — zwolnienie pinów rolet 2 i 3 zajmowanych przez JTAG.\n\n- Poprzedni instalator zachowywał JTAGEN; fabryczne HIGH=99 przechodziło na 98, co pozostawiało JTAG na PC2–PC5. To piny zasilania i kierunku rolet 2/3. Raporty czasu mogły działać bez sterowania fizycznymi przekaźnikami.\n- Aplikacja S0804 39 i bootloader v13-chain1-jtag-off zerują przekaźniki i wyłączają JTAG dwiema kolejnymi instrukcjami OUT przy zablokowanych przerwaniach. Bootloader wykonuje to również przed szybkim przejściem do aplikacji. RUN/RX-TX zachowują stałe świecenie w bootloaderze.\n- Jawny wektor resetu S0804 pomija teksty PROGMEM i prowadzi do kodu startowego. Start od 0x1E000 sprawdzono w symulatorze z niezerowym PORTC i włączonym JTAG.\n- Instalator 2.0.26 wymusza dla S0804 wyłączony JTAG: 98/99 → D8, z zachowaniem EESAVE (D0, jeśli wcześniej zaprogramowany). LOW=F7, EXTENDED bez zmian. Zapis fuse bitów jest odczytywany i porównywany przed kasowaniem Flash.\n- W istniejącym urządzeniu wystarczy aktualizacja aplikacji do 39 przez RS-232, aby programowo zwolnić JTAG. Aktualizacja bootloadera/fuse bitów wymaga USBasp/ISP i ponownego wgrania aplikacji. W tym wydaniu nie programowano fizycznych urządzeń.\n- Programator 2.0.26 i GRYFEXPERT 0.5.66 obsługują nowy bootloader S0804 oraz zachowują obsługę v11/v12. Pozostałe firmware, bootloadery i RTI 2.21 zachowano z poprzedniego wydania.\n- Weryfikacja: 1026 sprawdzeń startu AVR, 497 sprawdzeń sterowania roletami, kontrola instrukcji obu produkcyjnych ELF, wszystkie 256 HIGH dla sześciu profili instalatora, naprawa samego JTAG, awarie zapisu/odczytu, symulowany zapis 480 stron S0804 z CRC/startem, testy GRYFEXPERT. Nie jest to pomiar elektryczny płytki.\n\nInstrukcja: S0804-JTAG-INSTRUKCJA.txt. Stały plik instalatora: GRYFSMART-Instalator.exe (wraz z zależnościami z ZIP).\n",
         "digest": "sha256:4e486e8913a59a4f4244fcabbf69edf01c8f5a281af9338834c348d3c9f3797a"
-      },
-      {
-        "version": "0.5.65",
-        "url": "https://github.com/GRYF-SMART/gryfsmart-firmware/releases/download/v2026.11.17-rti-2.21/GRYFEXPERT-0.5.65-win-x64.zip",
-        "release": "https://github.com/GRYF-SMART/gryfsmart-firmware/releases/tag/v2026.11.17-gryfexpert-0.5.65",
-        "date": "2026-11-16",
-        "notes": "GRYFEXPERT 0.5.65 — szczegółowe błędy konfiguracji termostatów.\n\n- Błąd wskazuje nazwę, ID i model modułu oraz numer i nazwę termostatu, także przy podglądzie zapisu całej instalacji.\n- Oddzielne przyczyny i wskazówki dla braku wyjścia w AUTO/ON, nieprawidłowego czujnika, temperatury, histerezy i przypisania wyjść. Powtórzone wyjście wskazuje ID, numer WY i termostat, który już go używa.\n- Błędy zgodności firmware na trasie wskazują także moduł wymagający aktualizacji.\n- Zweryfikowano testami programu plan zapisu, rozpoznawanie powtórzonych wyjść i wskazanie modułu na trasie.\n- Wersje firmware i RTI pozostają bez zmian.\n",
-        "digest": "sha256:bf035effafced87e2e8e4fc5e36d6b6f914275dcc228a7d824870167b878b3d7"
       }
     ],
     "AKTUALIZATOR": [
@@ -134,42 +134,42 @@
   "firmware": {
     "ETH Mini": {
       "version": "4",
-      "url": "https://github.com/GRYF-SMART/gryfsmart-firmware/releases/download/v2026.11.19-installer-2.0.28/ETH-Mini-GATE-firmware-v4.hex",
-      "release": "https://github.com/GRYF-SMART/gryfsmart-firmware/releases/tag/v2026.11.19-installer-2.0.28",
+      "url": "https://github.com/GRYF-SMART/gryfsmart-firmware/releases/download/v2026.11.19-gryfexpert-0.5.68/ETH-Mini-GATE-firmware-v4.hex",
+      "release": "https://github.com/GRYF-SMART/gryfsmart-firmware/releases/tag/v2026.11.19-gryfexpert-0.5.68",
       "date": "2026-11-19",
-      "notes": "Instalator 2.0.28 — instalacja bootloadera mimo blokady pamięci po potwierdzeniu.\r\nPrzycisk Wgraj bootloader przy zablokowanej pamięci otwiera pytanie Tak/Nie (domyślnie Nie). Tak oznacza zgodę na skasowanie aplikacji i wyczyszczenie EEPROM, czyli utratę konfiguracji. Nie kończy operację bez zapisu w urządzeniu.\r\nNiepewny odczyt EEPROM jest zachowany jako eeprom-untrusted.bin i nigdy nie jest przywracany. Po potwierdzeniu chip erase zwalnia blokadę, następnie instalator konfiguruje i weryfikuje fuse bity, zapisuje bootloader oraz pusty EEPROM z właściwym znacznikiem OLD/Mini i ustawia lock bits. Przy pamięci niezablokowanej zachowana jest zwykła procedura kopii i przywrócenia EEPROM.\r\nNiepełne odczyty, nieprawidłowy HEX i błędy AVRDUDE nadal zatrzymują operację. Obsługa wszystkich sześciu profili. Bootloadery, firmware, programator i GRYFEXPERT pozostają z poprzedniego wydania.\r\nWeryfikacja: kompilacja i testy sześciu profili, czterech kombinacji LB, odmowy i zgody, zachowania niepewnego odczytu, pustego EEPROM, odrzucenia niepełnego odczytu oraz istniejące testy fuse i HEX. Fizycznego urządzenia nie programowano.",
+      "notes": "GRYFEXPERT 0.5.68 — komunikat o braku modułów RS232.\n\n- Gdy podczas łączenia przez COM żaden moduł nie odpowie na AT+Find, aplikacja wyświetla czerwony, pogrubiony komunikat: NIE WYKRYTO MODUŁÓW NA PORCIE RS232.\n- Komunikat wskazuje brak odpowiedzi i zaleca sprawdzenie połączenia komputera z pierwszym sterownikiem oraz zasilania modułów.\n- Pusty wynik rozpoznawania przez COM także otrzymuje ten styl; komunikat wskazuje używaną komendę AT+Find, AT+Discovery lub AT+Search. Zajęty lub nieistniejący port pozostaje osobnym błędem.\n- Zweryfikowano kompilację i testy aplikacji. Aktualizacja nie zmienia HEX-ów, bootloaderów ani RTI. Paczka zachowuje bieżący instalator 2.0.28 i programator 2.0.27.\n",
       "digest": "sha256:89e1db083c22a39fc9ab884db6e77ae36f535a0ae060eca9570a57e5c3c073bc"
     },
     "ETH0606T": {
       "version": "37",
-      "url": "https://github.com/GRYF-SMART/gryfsmart-firmware/releases/download/v2026.11.19-installer-2.0.28/ETH0606T-firmware.hex",
-      "release": "https://github.com/GRYF-SMART/gryfsmart-firmware/releases/tag/v2026.11.19-installer-2.0.28",
+      "url": "https://github.com/GRYF-SMART/gryfsmart-firmware/releases/download/v2026.11.19-gryfexpert-0.5.68/ETH0606T-firmware.hex",
+      "release": "https://github.com/GRYF-SMART/gryfsmart-firmware/releases/tag/v2026.11.19-gryfexpert-0.5.68",
       "date": "2026-11-19",
-      "notes": "Instalator 2.0.28 — instalacja bootloadera mimo blokady pamięci po potwierdzeniu.\r\nPrzycisk Wgraj bootloader przy zablokowanej pamięci otwiera pytanie Tak/Nie (domyślnie Nie). Tak oznacza zgodę na skasowanie aplikacji i wyczyszczenie EEPROM, czyli utratę konfiguracji. Nie kończy operację bez zapisu w urządzeniu.\r\nNiepewny odczyt EEPROM jest zachowany jako eeprom-untrusted.bin i nigdy nie jest przywracany. Po potwierdzeniu chip erase zwalnia blokadę, następnie instalator konfiguruje i weryfikuje fuse bity, zapisuje bootloader oraz pusty EEPROM z właściwym znacznikiem OLD/Mini i ustawia lock bits. Przy pamięci niezablokowanej zachowana jest zwykła procedura kopii i przywrócenia EEPROM.\r\nNiepełne odczyty, nieprawidłowy HEX i błędy AVRDUDE nadal zatrzymują operację. Obsługa wszystkich sześciu profili. Bootloadery, firmware, programator i GRYFEXPERT pozostają z poprzedniego wydania.\r\nWeryfikacja: kompilacja i testy sześciu profili, czterech kombinacji LB, odmowy i zgody, zachowania niepewnego odczytu, pustego EEPROM, odrzucenia niepełnego odczytu oraz istniejące testy fuse i HEX. Fizycznego urządzenia nie programowano.",
+      "notes": "GRYFEXPERT 0.5.68 — komunikat o braku modułów RS232.\n\n- Gdy podczas łączenia przez COM żaden moduł nie odpowie na AT+Find, aplikacja wyświetla czerwony, pogrubiony komunikat: NIE WYKRYTO MODUŁÓW NA PORCIE RS232.\n- Komunikat wskazuje brak odpowiedzi i zaleca sprawdzenie połączenia komputera z pierwszym sterownikiem oraz zasilania modułów.\n- Pusty wynik rozpoznawania przez COM także otrzymuje ten styl; komunikat wskazuje używaną komendę AT+Find, AT+Discovery lub AT+Search. Zajęty lub nieistniejący port pozostaje osobnym błędem.\n- Zweryfikowano kompilację i testy aplikacji. Aktualizacja nie zmienia HEX-ów, bootloaderów ani RTI. Paczka zachowuje bieżący instalator 2.0.28 i programator 2.0.27.\n",
       "digest": "sha256:2e848581e2704dbb1448c25e7217ce5033f1f199ff35752f053e64dc60651433"
     },
     "R0808": {
       "version": "38",
-      "url": "https://github.com/GRYF-SMART/gryfsmart-firmware/releases/download/v2026.11.19-installer-2.0.28/R0808-firmware.hex",
-      "release": "https://github.com/GRYF-SMART/gryfsmart-firmware/releases/tag/v2026.11.19-installer-2.0.28",
+      "url": "https://github.com/GRYF-SMART/gryfsmart-firmware/releases/download/v2026.11.19-gryfexpert-0.5.68/R0808-firmware.hex",
+      "release": "https://github.com/GRYF-SMART/gryfsmart-firmware/releases/tag/v2026.11.19-gryfexpert-0.5.68",
       "date": "2026-11-19",
-      "notes": "Instalator 2.0.28 — instalacja bootloadera mimo blokady pamięci po potwierdzeniu.\r\nPrzycisk Wgraj bootloader przy zablokowanej pamięci otwiera pytanie Tak/Nie (domyślnie Nie). Tak oznacza zgodę na skasowanie aplikacji i wyczyszczenie EEPROM, czyli utratę konfiguracji. Nie kończy operację bez zapisu w urządzeniu.\r\nNiepewny odczyt EEPROM jest zachowany jako eeprom-untrusted.bin i nigdy nie jest przywracany. Po potwierdzeniu chip erase zwalnia blokadę, następnie instalator konfiguruje i weryfikuje fuse bity, zapisuje bootloader oraz pusty EEPROM z właściwym znacznikiem OLD/Mini i ustawia lock bits. Przy pamięci niezablokowanej zachowana jest zwykła procedura kopii i przywrócenia EEPROM.\r\nNiepełne odczyty, nieprawidłowy HEX i błędy AVRDUDE nadal zatrzymują operację. Obsługa wszystkich sześciu profili. Bootloadery, firmware, programator i GRYFEXPERT pozostają z poprzedniego wydania.\r\nWeryfikacja: kompilacja i testy sześciu profili, czterech kombinacji LB, odmowy i zgody, zachowania niepewnego odczytu, pustego EEPROM, odrzucenia niepełnego odczytu oraz istniejące testy fuse i HEX. Fizycznego urządzenia nie programowano.",
+      "notes": "GRYFEXPERT 0.5.68 — komunikat o braku modułów RS232.\n\n- Gdy podczas łączenia przez COM żaden moduł nie odpowie na AT+Find, aplikacja wyświetla czerwony, pogrubiony komunikat: NIE WYKRYTO MODUŁÓW NA PORCIE RS232.\n- Komunikat wskazuje brak odpowiedzi i zaleca sprawdzenie połączenia komputera z pierwszym sterownikiem oraz zasilania modułów.\n- Pusty wynik rozpoznawania przez COM także otrzymuje ten styl; komunikat wskazuje używaną komendę AT+Find, AT+Discovery lub AT+Search. Zajęty lub nieistniejący port pozostaje osobnym błędem.\n- Zweryfikowano kompilację i testy aplikacji. Aktualizacja nie zmienia HEX-ów, bootloaderów ani RTI. Paczka zachowuje bieżący instalator 2.0.28 i programator 2.0.27.\n",
       "digest": "sha256:17ae19995c45fa757bb24774a63472d803e98b87c4410761ecdc40adfaec4fa8"
     },
     "R0806T": {
       "version": "39",
-      "url": "https://github.com/GRYF-SMART/gryfsmart-firmware/releases/download/v2026.11.19-installer-2.0.28/R0806T-firmware.hex",
-      "release": "https://github.com/GRYF-SMART/gryfsmart-firmware/releases/tag/v2026.11.19-installer-2.0.28",
+      "url": "https://github.com/GRYF-SMART/gryfsmart-firmware/releases/download/v2026.11.19-gryfexpert-0.5.68/R0806T-firmware.hex",
+      "release": "https://github.com/GRYF-SMART/gryfsmart-firmware/releases/tag/v2026.11.19-gryfexpert-0.5.68",
       "date": "2026-11-19",
-      "notes": "Instalator 2.0.28 — instalacja bootloadera mimo blokady pamięci po potwierdzeniu.\r\nPrzycisk Wgraj bootloader przy zablokowanej pamięci otwiera pytanie Tak/Nie (domyślnie Nie). Tak oznacza zgodę na skasowanie aplikacji i wyczyszczenie EEPROM, czyli utratę konfiguracji. Nie kończy operację bez zapisu w urządzeniu.\r\nNiepewny odczyt EEPROM jest zachowany jako eeprom-untrusted.bin i nigdy nie jest przywracany. Po potwierdzeniu chip erase zwalnia blokadę, następnie instalator konfiguruje i weryfikuje fuse bity, zapisuje bootloader oraz pusty EEPROM z właściwym znacznikiem OLD/Mini i ustawia lock bits. Przy pamięci niezablokowanej zachowana jest zwykła procedura kopii i przywrócenia EEPROM.\r\nNiepełne odczyty, nieprawidłowy HEX i błędy AVRDUDE nadal zatrzymują operację. Obsługa wszystkich sześciu profili. Bootloadery, firmware, programator i GRYFEXPERT pozostają z poprzedniego wydania.\r\nWeryfikacja: kompilacja i testy sześciu profili, czterech kombinacji LB, odmowy i zgody, zachowania niepewnego odczytu, pustego EEPROM, odrzucenia niepełnego odczytu oraz istniejące testy fuse i HEX. Fizycznego urządzenia nie programowano.",
+      "notes": "GRYFEXPERT 0.5.68 — komunikat o braku modułów RS232.\n\n- Gdy podczas łączenia przez COM żaden moduł nie odpowie na AT+Find, aplikacja wyświetla czerwony, pogrubiony komunikat: NIE WYKRYTO MODUŁÓW NA PORCIE RS232.\n- Komunikat wskazuje brak odpowiedzi i zaleca sprawdzenie połączenia komputera z pierwszym sterownikiem oraz zasilania modułów.\n- Pusty wynik rozpoznawania przez COM także otrzymuje ten styl; komunikat wskazuje używaną komendę AT+Find, AT+Discovery lub AT+Search. Zajęty lub nieistniejący port pozostaje osobnym błędem.\n- Zweryfikowano kompilację i testy aplikacji. Aktualizacja nie zmienia HEX-ów, bootloaderów ani RTI. Paczka zachowuje bieżący instalator 2.0.28 i programator 2.0.27.\n",
       "digest": "sha256:49a061aecf1cb6959cb53a4989100eb886e5e96b79617cbc0aba8de1e601dbab"
     },
     "S0804": {
       "version": "39",
-      "url": "https://github.com/GRYF-SMART/gryfsmart-firmware/releases/download/v2026.11.19-installer-2.0.28/S0804-firmware.hex",
-      "release": "https://github.com/GRYF-SMART/gryfsmart-firmware/releases/tag/v2026.11.19-installer-2.0.28",
+      "url": "https://github.com/GRYF-SMART/gryfsmart-firmware/releases/download/v2026.11.19-gryfexpert-0.5.68/S0804-firmware.hex",
+      "release": "https://github.com/GRYF-SMART/gryfsmart-firmware/releases/tag/v2026.11.19-gryfexpert-0.5.68",
       "date": "2026-11-19",
-      "notes": "Instalator 2.0.28 — instalacja bootloadera mimo blokady pamięci po potwierdzeniu.\r\nPrzycisk Wgraj bootloader przy zablokowanej pamięci otwiera pytanie Tak/Nie (domyślnie Nie). Tak oznacza zgodę na skasowanie aplikacji i wyczyszczenie EEPROM, czyli utratę konfiguracji. Nie kończy operację bez zapisu w urządzeniu.\r\nNiepewny odczyt EEPROM jest zachowany jako eeprom-untrusted.bin i nigdy nie jest przywracany. Po potwierdzeniu chip erase zwalnia blokadę, następnie instalator konfiguruje i weryfikuje fuse bity, zapisuje bootloader oraz pusty EEPROM z właściwym znacznikiem OLD/Mini i ustawia lock bits. Przy pamięci niezablokowanej zachowana jest zwykła procedura kopii i przywrócenia EEPROM.\r\nNiepełne odczyty, nieprawidłowy HEX i błędy AVRDUDE nadal zatrzymują operację. Obsługa wszystkich sześciu profili. Bootloadery, firmware, programator i GRYFEXPERT pozostają z poprzedniego wydania.\r\nWeryfikacja: kompilacja i testy sześciu profili, czterech kombinacji LB, odmowy i zgody, zachowania niepewnego odczytu, pustego EEPROM, odrzucenia niepełnego odczytu oraz istniejące testy fuse i HEX. Fizycznego urządzenia nie programowano.",
+      "notes": "GRYFEXPERT 0.5.68 — komunikat o braku modułów RS232.\n\n- Gdy podczas łączenia przez COM żaden moduł nie odpowie na AT+Find, aplikacja wyświetla czerwony, pogrubiony komunikat: NIE WYKRYTO MODUŁÓW NA PORCIE RS232.\n- Komunikat wskazuje brak odpowiedzi i zaleca sprawdzenie połączenia komputera z pierwszym sterownikiem oraz zasilania modułów.\n- Pusty wynik rozpoznawania przez COM także otrzymuje ten styl; komunikat wskazuje używaną komendę AT+Find, AT+Discovery lub AT+Search. Zajęty lub nieistniejący port pozostaje osobnym błędem.\n- Zweryfikowano kompilację i testy aplikacji. Aktualizacja nie zmienia HEX-ów, bootloaderów ani RTI. Paczka zachowuje bieżący instalator 2.0.28 i programator 2.0.27.\n",
       "digest": "sha256:280cc7d24f2c69d283f0a9966ed0de741d9e7af3f209711dc6020641253b2131"
     }
   }
