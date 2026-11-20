@@ -2,7 +2,7 @@
 
 | Program / integracja | Najnowsza wersja — pobierz | Instrukcja |
 |---|---|---|
-| 1. Aplikacja GRYFSMART | [**0.5.68 — pobierz**](https://github.com/GRYF-SMART/gryfsmart-firmware/releases/download/v2026.11.19-gryfexpert-0.5.68/GRYFEXPERT-0.5.68-win-x64.zip) | [Otwórz](https://github.com/GRYF-SMART/gryfsmart-firmware/tree/main/GRYFSMART) |
+| 1. Aplikacja GRYFSMART | [**0.5.69 — pobierz**](https://github.com/GRYF-SMART/gryfsmart-firmware/releases/download/v2026.11.20-gryfexpert-0.5.69/GRYFEXPERT-0.5.69-win-x64.zip) | [Otwórz](https://github.com/GRYF-SMART/gryfsmart-firmware/tree/main/GRYFSMART) |
 | 2. GRYFSMART-Programator | [**2.0.27 — pobierz**](https://github.com/GRYF-SMART/gryfsmart-firmware/releases/download/v2026.11.17-jtag-unified/GRYFSMART-Programator.exe) | [Otwórz](https://github.com/GRYF-SMART/gryfsmart-firmware/tree/main/AKTUALIZATOR) |
 | 3. Driver Home Assistant | [**0.3.15 — pobierz**](https://github.com/GRYF-SMART/ha-gryfsmart/releases/download/v0.3.15/GRYFSMART-HomeAssistant-0.3.15.zip) | [Otwórz](https://github.com/GRYF-SMART/gryfsmart-firmware/tree/main/HOME-ASSISTANT) |
 | 4. Driver RTI | [**2.21 — pobierz**](https://github.com/GRYF-SMART/gryfsmart-firmware/releases/download/v2026.11.17-rti-2.21/GRYF.rtidriver) | [Otwórz](https://github.com/GRYF-SMART/gryfsmart-firmware/tree/main/RTI) |
