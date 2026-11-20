@@ -39,10 +39,10 @@
     },
     {
       "model": "R0806T-OLD",
-      "version": "10",
+      "version": "11",
       "kind": "application",
       "asset": "R0806T-OLD-firmware.hex",
-      "sha256": "71246636e023e2b2fa0a5acac746d713f56aff451cc78dc78a85f2f7c70ed02d",
+      "sha256": "0690c878e1b3378c97380fc7de6d2fc49852e7abbb704e5b3b7f37e7459acf76",
       "mcu": "atmega644p",
       "clock_hz": 11059200
     },
