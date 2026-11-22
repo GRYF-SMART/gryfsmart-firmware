@@ -1,16 +1,16 @@
 # 5. Instalator Bootloader
 
-**[Pobierz najnowszą wersję 2.0.28](https://github.com/GRYF-SMART/gryfsmart-firmware/releases/download/v2026.11.19-installer-2.0.28/GRYFSMART-Instalator.zip)**
+**[Pobierz najnowszą wersję 2.0.29](https://github.com/GRYF-SMART/gryfsmart-firmware/releases/download/v2026.11.22-installer-2.0.29/GRYFSMART-Instalator.zip)**
 
-Instalator 2.0.28 — instalacja bootloadera mimo blokady pamięci po potwierdzeniu. Przycisk Wgraj bootloader przy zablokowanej pamięci otwiera pytanie Tak/Nie (domyślnie Nie). Tak oznacza zgodę na skasowanie aplikacji i wyczyszczenie EEPROM, czyli utratę konfiguracji. Nie kończy operację bez zapisu w urządzeniu. Niepewny odczyt EEPROM jest zachowany jako… [Pełny opis wydania](https://github.com/GRYF-SMART/gryfsmart-firmware/releases/tag/v2026.11.19-installer-2.0.28).
+Instalator 2.0.29 — zielony, pogrubiony komunikat zakończenia. Po udanej instalacji R0806T i R0808 komunikat GOTOWE wraz z instrukcją odłączenia USBasp, resetu i wgrania aplikacji przez RS-232 jest zielony i pogrubiony. Tak samo wyróżniono komunikat ETH0606T. Weryfikacja: kompilacja, testy sześciu profili i zabezpieczeń instalatora oraz sprawdzenie… [Pełny opis wydania](https://github.com/GRYF-SMART/gryfsmart-firmware/releases/tag/v2026.11.22-installer-2.0.29).
 
 ## Trzy ostatnie wersje
 
 | Wersja | Data publikacji | Pobieranie | Zmiany |
 |---|---|---|---|
+| **2.0.29** | 2026-11-22 | [Pobierz](https://github.com/GRYF-SMART/gryfsmart-firmware/releases/download/v2026.11.22-installer-2.0.29/GRYFSMART-Instalator.zip) | Instalator 2.0.29 — zielony, pogrubiony komunikat zakończenia. Po udanej instalacji R0806T i R0808 komunikat GOTOWE wraz z instrukcją odłączenia USBasp, resetu i wgrania aplikacji przez RS-232 jest zielony i pogrubiony. Tak samo wyróżniono komunikat ETH0606T. Weryfikacja: kompilacja, testy sześciu profili i zabezpieczeń instalatora oraz sprawdzenie… [Pełny opis](https://github.com/GRYF-SMART/gryfsmart-firmware/releases/tag/v2026.11.22-installer-2.0.29) |
 | **2.0.28** | 2026-11-19 | [Pobierz](https://github.com/GRYF-SMART/gryfsmart-firmware/releases/download/v2026.11.19-installer-2.0.28/GRYFSMART-Instalator.zip) | Instalator 2.0.28 — instalacja bootloadera mimo blokady pamięci po potwierdzeniu. Przycisk Wgraj bootloader przy zablokowanej pamięci otwiera pytanie Tak/Nie (domyślnie Nie). Tak oznacza zgodę na skasowanie aplikacji i wyczyszczenie EEPROM, czyli utratę konfiguracji. Nie kończy operację bez zapisu w urządzeniu. Niepewny odczyt EEPROM jest zachowany jako… [Pełny opis](https://github.com/GRYF-SMART/gryfsmart-firmware/releases/tag/v2026.11.19-installer-2.0.28) |
 | **2.0.27** | 2026-11-17 | [Pobierz](https://github.com/GRYF-SMART/gryfsmart-firmware/releases/download/v2026.11.17-jtag-unified/GRYFSMART-Instalator.zip) | R0806T i R0808: ochrona przed JTAG ujednolicona z S0804. Instalator 2.0.27 wyłącza JTAGEN także dla R0806T i R0808: HIGH 98/99 → D8, albo D0 przy zaprogramowanym EESAVE. Zachowuje EESAVE i EXTENDED; sprawdza zapis ponownym odczytem. Polityka ETH0606T/OLD bez zmian. R0806T: JTAG PC2–PC5 współdzieli wyjścia WY6–WY3. R0808: JTAG PF4–PF7 współdzieli wejścia… [Pełny opis](https://github.com/GRYF-SMART/gryfsmart-firmware/releases/tag/v2026.11.17-jtag-unified) |
-| **2.0.26** | 2026-11-17 | [Pobierz](https://github.com/GRYF-SMART/gryfsmart-firmware/releases/download/v2026.11.17-s0804-jtag/GRYFSMART-Instalator.zip) | S0804 39 — zwolnienie pinów rolet 2 i 3 zajmowanych przez JTAG. Poprzedni instalator zachowywał JTAGEN; fabryczne HIGH=99 przechodziło na 98, co pozostawiało JTAG na PC2–PC5. To piny zasilania i kierunku rolet 2/3. Raporty czasu mogły działać bez sterowania fizycznymi przekaźnikami. Aplikacja S0804 39 i bootloader v13-chain1-jtag-off zerują przekaźniki i… [Pełny opis](https://github.com/GRYF-SMART/gryfsmart-firmware/releases/tag/v2026.11.17-s0804-jtag) |
 
 ## Pierwsza instalacja bootloadera — GRYFSMART-Instalator
 
