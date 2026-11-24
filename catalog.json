@@ -2,6 +2,14 @@
   "products": {
     "GRYFSMART": [
       {
+        "version": "0.5.80",
+        "url": "https://github.com/GRYF-SMART/gryfsmart-firmware/releases/download/v2026.11.24-gryfexpert-0.5.80/GRYFEXPERT-0.5.80-win-x64.zip",
+        "release": "https://github.com/GRYF-SMART/gryfsmart-firmware/releases/tag/v2026.11.24-gryfexpert-0.5.80",
+        "date": "2026-11-24",
+        "notes": "Przyciski Pobierz komendy AT oraz Wyślij i zapisz EEPROM znajdują się na górze podglądu, przed listą komend. Pasek pozostaje widoczny podczas przewijania i zawija przyciski na wąskim ekranie. Zachowano blokady podczas wysyłki oraz wymóg połączenia do zapisu EEPROM. Zawiera zmiany 0.5.79. Firmware i protokół bez zmian. Walidacja: kompilacja Release i testy wewnętrzne aplikacji.",
+        "digest": "sha256:90b1320c39d2579084fa151b80418d38ecd8562a58601658f0007baca09a4b49"
+      },
+      {
         "version": "0.5.79",
         "url": "https://github.com/GRYF-SMART/gryfsmart-firmware/releases/download/v2026.11.24-gryfexpert-0.5.79/GRYFEXPERT-0.5.79-win-x64.zip",
         "release": "https://github.com/GRYF-SMART/gryfsmart-firmware/releases/tag/v2026.11.24-gryfexpert-0.5.79",
@@ -16,14 +24,6 @@
         "date": "2026-11-24",
         "notes": "GRYFEXPERT 0.5.78 utrzymuje logowanie Cloud przez cały czas działania programu, również po odświeżeniu i ponownym otwarciu karty.\n\n- Opcjonalne pole „Zapamiętaj mnie na tym komputerze” zachowuje sesję po ponownym uruchomieniu aplikacji; domyślnie jest wyłączone.\n- Działa z logowaniem hasłem i Google. Ustawienie można zmienić także po zalogowaniu.\n- Token i profil sesji są szyfrowane przez Windows DPAPI dla bieżącego użytkownika i powiązane z instalacją. Hasło nie jest zapisywane; token nie trafia do pamięci przeglądarki.\n- Wylogowanie, także offline, usuwa zapis lokalny. Zmiana hasła i odrzucenie sesji przez serwer również go usuwają. Nieczytelny lub wygasły zapis nie loguje użytkownika.\n- Zachowana jest ważność sesji nadana przez serwer Cloud; po jej upływie trzeba zalogować się ponownie.\n- Wersja zawiera poprawkę panelu aktualizacji RTI z 0.5.77. Wsady, bootloadery i driver RTI pozostają bez zmian.\n\nWalidacja: kompilacja Release, 1207 kontroli, w tym szyfrowanie i odtworzenie sesji, brak zapisu hasła/tokenu w jawnej postaci, wylogowanie offline, odrzucenie sesji oraz uszkodzony plik. Bez używania rzeczywistego konta użytkownika i bez programowania modułów.\n",
         "digest": "sha256:f9bf33a7d5efc3b1b8a1fe8318faf94768f9de44d7e4e9b8c162d5f5d7353572"
-      },
-      {
-        "version": "0.5.77",
-        "url": "https://github.com/GRYF-SMART/gryfsmart-firmware/releases/download/v2026.11.24-gryfexpert-0.5.77/GRYFEXPERT-0.5.77-win-x64.zip",
-        "release": "https://github.com/GRYF-SMART/gryfsmart-firmware/releases/tag/v2026.11.24-gryfexpert-0.5.77",
-        "date": "2026-11-24",
-        "notes": "GRYFEXPERT 0.5.77 naprawia blokadę ekranu Aktualizacja firmware przy wybranej bramce RTI. Wersja 0.5.76 zawierała obsługę Flash przez RTI, lecz stary warunek w widoku głównym ukrywał panel aktualizacji.\n\n- Wspólny panel aktualizacji jest teraz dostępny dla COM, Ethernet i RTI.\n- Poprawiono nieaktualne komunikaty o braku obsługi HEX przez RTI.\n- Zachowano sprawdzanie możliwości drivera 2.22+, zgodności modułu i bootloadera, sum kontrolnych oraz trwałą blokadę sesji Flash.\n- Dodano test renderowania głównego ekranu dla wszystkich trzech połączeń.\n- Pozostałe narzędzia, driver RTI 2.22, wsady i bootloadery zachowują dotychczasowe wersje.\n\nWalidacja: kompilacja Release i 1209 kontroli GRYFEXPERT, w tym aktualizacje R0806T, S0804 i R0808 przez symulator RTI. Fizyczne urządzenia nie były programowane.\n",
-        "digest": "sha256:4c8c2894f858dc8611a8fde3b41dae97bccd87516412a2ce5afb6db34c3ca4b6"
       }
     ],
     "AKTUALIZATOR": [
@@ -134,50 +134,50 @@
   "firmware": {
     "ETH Mini": {
       "version": "4",
-      "url": "https://github.com/GRYF-SMART/gryfsmart-firmware/releases/download/v2026.11.24-gryfexpert-0.5.79/ETH-Mini-GATE-firmware-v4.hex",
-      "release": "https://github.com/GRYF-SMART/gryfsmart-firmware/releases/tag/v2026.11.24-gryfexpert-0.5.79",
+      "url": "https://github.com/GRYF-SMART/gryfsmart-firmware/releases/download/v2026.11.24-gryfexpert-0.5.80/ETH-Mini-GATE-firmware-v4.hex",
+      "release": "https://github.com/GRYF-SMART/gryfsmart-firmware/releases/tag/v2026.11.24-gryfexpert-0.5.80",
       "date": "2026-11-24",
-      "notes": "S0804 OLD firmware 2 dodaje funkcję STEP: otwieranie → stop → zamykanie → stop. Po pełnym przejeździe kolejny STEP uruchamia przeciwny kierunek. Zachowano przerwę 300 ms przy zmianie kierunku i możliwość zatrzymania podczas oczekiwania.\n\nGRYFEXPERT 0.5.79 udostępnia STEP dla S0804 OLD w sterowaniu online, regułach lokalnych i slotach zdalnych. Wymagany firmware 2 i odczyt jego wersji. Firmware 1 zachowuje dotychczasowe menu. Kod polecenia STEP: 5; obsługiwany też zgodny alias 6. EEPROM zachowuje dotychczasowy format.\n\nAktualizacja obejmuje HEX, manifesty i kopie HEX we wszystkich paczkach narzędzi. Bootloadery, inne moduły i driver RTI pozostają bez zmian. S0804 OLD aktualizuj dotychczasową metodą RS-232; to wydanie nie dodaje flashowania OLD przez RTI. Zawiera pamiętanie logowania z wersji 0.5.78.\n\nWalidacja: 13113 kontroli w symulatorze AVR, w tym STEP dla czterech rolet, zatrzymanie, zmiana kierunku, krańce czasowe, zapis EEPROM i oba UART-y. Zgodność HEX z ELF i granica aplikacji 0xE000 potwierdzone. Testy GRYFEXPERT oraz integralność wszystkich paczek potwierdzone. Modułów fizycznych nie programowano.\n",
+      "notes": "Przyciski Pobierz komendy AT oraz Wyślij i zapisz EEPROM znajdują się na górze podglądu, przed listą komend. Pasek pozostaje widoczny podczas przewijania i zawija przyciski na wąskim ekranie. Zachowano blokady podczas wysyłki oraz wymóg połączenia do zapisu EEPROM. Zawiera zmiany 0.5.79. Firmware i protokół bez zmian. Walidacja: kompilacja Release i testy wewnętrzne aplikacji.",
       "digest": "sha256:89e1db083c22a39fc9ab884db6e77ae36f535a0ae060eca9570a57e5c3c073bc"
     },
     "ETH0606T": {
       "version": "37",
-      "url": "https://github.com/GRYF-SMART/gryfsmart-firmware/releases/download/v2026.11.24-gryfexpert-0.5.79/ETH0606T-firmware.hex",
-      "release": "https://github.com/GRYF-SMART/gryfsmart-firmware/releases/tag/v2026.11.24-gryfexpert-0.5.79",
+      "url": "https://github.com/GRYF-SMART/gryfsmart-firmware/releases/download/v2026.11.24-gryfexpert-0.5.80/ETH0606T-firmware.hex",
+      "release": "https://github.com/GRYF-SMART/gryfsmart-firmware/releases/tag/v2026.11.24-gryfexpert-0.5.80",
       "date": "2026-11-24",
-      "notes": "S0804 OLD firmware 2 dodaje funkcję STEP: otwieranie → stop → zamykanie → stop. Po pełnym przejeździe kolejny STEP uruchamia przeciwny kierunek. Zachowano przerwę 300 ms przy zmianie kierunku i możliwość zatrzymania podczas oczekiwania.\n\nGRYFEXPERT 0.5.79 udostępnia STEP dla S0804 OLD w sterowaniu online, regułach lokalnych i slotach zdalnych. Wymagany firmware 2 i odczyt jego wersji. Firmware 1 zachowuje dotychczasowe menu. Kod polecenia STEP: 5; obsługiwany też zgodny alias 6. EEPROM zachowuje dotychczasowy format.\n\nAktualizacja obejmuje HEX, manifesty i kopie HEX we wszystkich paczkach narzędzi. Bootloadery, inne moduły i driver RTI pozostają bez zmian. S0804 OLD aktualizuj dotychczasową metodą RS-232; to wydanie nie dodaje flashowania OLD przez RTI. Zawiera pamiętanie logowania z wersji 0.5.78.\n\nWalidacja: 13113 kontroli w symulatorze AVR, w tym STEP dla czterech rolet, zatrzymanie, zmiana kierunku, krańce czasowe, zapis EEPROM i oba UART-y. Zgodność HEX z ELF i granica aplikacji 0xE000 potwierdzone. Testy GRYFEXPERT oraz integralność wszystkich paczek potwierdzone. Modułów fizycznych nie programowano.\n",
+      "notes": "Przyciski Pobierz komendy AT oraz Wyślij i zapisz EEPROM znajdują się na górze podglądu, przed listą komend. Pasek pozostaje widoczny podczas przewijania i zawija przyciski na wąskim ekranie. Zachowano blokady podczas wysyłki oraz wymóg połączenia do zapisu EEPROM. Zawiera zmiany 0.5.79. Firmware i protokół bez zmian. Walidacja: kompilacja Release i testy wewnętrzne aplikacji.",
       "digest": "sha256:2e848581e2704dbb1448c25e7217ce5033f1f199ff35752f053e64dc60651433"
     },
     "R0808": {
       "version": "38",
-      "url": "https://github.com/GRYF-SMART/gryfsmart-firmware/releases/download/v2026.11.24-gryfexpert-0.5.79/R0808-firmware.hex",
-      "release": "https://github.com/GRYF-SMART/gryfsmart-firmware/releases/tag/v2026.11.24-gryfexpert-0.5.79",
+      "url": "https://github.com/GRYF-SMART/gryfsmart-firmware/releases/download/v2026.11.24-gryfexpert-0.5.80/R0808-firmware.hex",
+      "release": "https://github.com/GRYF-SMART/gryfsmart-firmware/releases/tag/v2026.11.24-gryfexpert-0.5.80",
       "date": "2026-11-24",
-      "notes": "S0804 OLD firmware 2 dodaje funkcję STEP: otwieranie → stop → zamykanie → stop. Po pełnym przejeździe kolejny STEP uruchamia przeciwny kierunek. Zachowano przerwę 300 ms przy zmianie kierunku i możliwość zatrzymania podczas oczekiwania.\n\nGRYFEXPERT 0.5.79 udostępnia STEP dla S0804 OLD w sterowaniu online, regułach lokalnych i slotach zdalnych. Wymagany firmware 2 i odczyt jego wersji. Firmware 1 zachowuje dotychczasowe menu. Kod polecenia STEP: 5; obsługiwany też zgodny alias 6. EEPROM zachowuje dotychczasowy format.\n\nAktualizacja obejmuje HEX, manifesty i kopie HEX we wszystkich paczkach narzędzi. Bootloadery, inne moduły i driver RTI pozostają bez zmian. S0804 OLD aktualizuj dotychczasową metodą RS-232; to wydanie nie dodaje flashowania OLD przez RTI. Zawiera pamiętanie logowania z wersji 0.5.78.\n\nWalidacja: 13113 kontroli w symulatorze AVR, w tym STEP dla czterech rolet, zatrzymanie, zmiana kierunku, krańce czasowe, zapis EEPROM i oba UART-y. Zgodność HEX z ELF i granica aplikacji 0xE000 potwierdzone. Testy GRYFEXPERT oraz integralność wszystkich paczek potwierdzone. Modułów fizycznych nie programowano.\n",
+      "notes": "Przyciski Pobierz komendy AT oraz Wyślij i zapisz EEPROM znajdują się na górze podglądu, przed listą komend. Pasek pozostaje widoczny podczas przewijania i zawija przyciski na wąskim ekranie. Zachowano blokady podczas wysyłki oraz wymóg połączenia do zapisu EEPROM. Zawiera zmiany 0.5.79. Firmware i protokół bez zmian. Walidacja: kompilacja Release i testy wewnętrzne aplikacji.",
       "digest": "sha256:17ae19995c45fa757bb24774a63472d803e98b87c4410761ecdc40adfaec4fa8"
     },
     "R0806T": {
       "version": "39",
-      "url": "https://github.com/GRYF-SMART/gryfsmart-firmware/releases/download/v2026.11.24-gryfexpert-0.5.79/R0806T-firmware.hex",
-      "release": "https://github.com/GRYF-SMART/gryfsmart-firmware/releases/tag/v2026.11.24-gryfexpert-0.5.79",
+      "url": "https://github.com/GRYF-SMART/gryfsmart-firmware/releases/download/v2026.11.24-gryfexpert-0.5.80/R0806T-firmware.hex",
+      "release": "https://github.com/GRYF-SMART/gryfsmart-firmware/releases/tag/v2026.11.24-gryfexpert-0.5.80",
       "date": "2026-11-24",
-      "notes": "S0804 OLD firmware 2 dodaje funkcję STEP: otwieranie → stop → zamykanie → stop. Po pełnym przejeździe kolejny STEP uruchamia przeciwny kierunek. Zachowano przerwę 300 ms przy zmianie kierunku i możliwość zatrzymania podczas oczekiwania.\n\nGRYFEXPERT 0.5.79 udostępnia STEP dla S0804 OLD w sterowaniu online, regułach lokalnych i slotach zdalnych. Wymagany firmware 2 i odczyt jego wersji. Firmware 1 zachowuje dotychczasowe menu. Kod polecenia STEP: 5; obsługiwany też zgodny alias 6. EEPROM zachowuje dotychczasowy format.\n\nAktualizacja obejmuje HEX, manifesty i kopie HEX we wszystkich paczkach narzędzi. Bootloadery, inne moduły i driver RTI pozostają bez zmian. S0804 OLD aktualizuj dotychczasową metodą RS-232; to wydanie nie dodaje flashowania OLD przez RTI. Zawiera pamiętanie logowania z wersji 0.5.78.\n\nWalidacja: 13113 kontroli w symulatorze AVR, w tym STEP dla czterech rolet, zatrzymanie, zmiana kierunku, krańce czasowe, zapis EEPROM i oba UART-y. Zgodność HEX z ELF i granica aplikacji 0xE000 potwierdzone. Testy GRYFEXPERT oraz integralność wszystkich paczek potwierdzone. Modułów fizycznych nie programowano.\n",
+      "notes": "Przyciski Pobierz komendy AT oraz Wyślij i zapisz EEPROM znajdują się na górze podglądu, przed listą komend. Pasek pozostaje widoczny podczas przewijania i zawija przyciski na wąskim ekranie. Zachowano blokady podczas wysyłki oraz wymóg połączenia do zapisu EEPROM. Zawiera zmiany 0.5.79. Firmware i protokół bez zmian. Walidacja: kompilacja Release i testy wewnętrzne aplikacji.",
       "digest": "sha256:49a061aecf1cb6959cb53a4989100eb886e5e96b79617cbc0aba8de1e601dbab"
     },
     "S0804": {
       "version": "39",
-      "url": "https://github.com/GRYF-SMART/gryfsmart-firmware/releases/download/v2026.11.24-gryfexpert-0.5.79/S0804-firmware.hex",
-      "release": "https://github.com/GRYF-SMART/gryfsmart-firmware/releases/tag/v2026.11.24-gryfexpert-0.5.79",
+      "url": "https://github.com/GRYF-SMART/gryfsmart-firmware/releases/download/v2026.11.24-gryfexpert-0.5.80/S0804-firmware.hex",
+      "release": "https://github.com/GRYF-SMART/gryfsmart-firmware/releases/tag/v2026.11.24-gryfexpert-0.5.80",
       "date": "2026-11-24",
-      "notes": "S0804 OLD firmware 2 dodaje funkcję STEP: otwieranie → stop → zamykanie → stop. Po pełnym przejeździe kolejny STEP uruchamia przeciwny kierunek. Zachowano przerwę 300 ms przy zmianie kierunku i możliwość zatrzymania podczas oczekiwania.\n\nGRYFEXPERT 0.5.79 udostępnia STEP dla S0804 OLD w sterowaniu online, regułach lokalnych i slotach zdalnych. Wymagany firmware 2 i odczyt jego wersji. Firmware 1 zachowuje dotychczasowe menu. Kod polecenia STEP: 5; obsługiwany też zgodny alias 6. EEPROM zachowuje dotychczasowy format.\n\nAktualizacja obejmuje HEX, manifesty i kopie HEX we wszystkich paczkach narzędzi. Bootloadery, inne moduły i driver RTI pozostają bez zmian. S0804 OLD aktualizuj dotychczasową metodą RS-232; to wydanie nie dodaje flashowania OLD przez RTI. Zawiera pamiętanie logowania z wersji 0.5.78.\n\nWalidacja: 13113 kontroli w symulatorze AVR, w tym STEP dla czterech rolet, zatrzymanie, zmiana kierunku, krańce czasowe, zapis EEPROM i oba UART-y. Zgodność HEX z ELF i granica aplikacji 0xE000 potwierdzone. Testy GRYFEXPERT oraz integralność wszystkich paczek potwierdzone. Modułów fizycznych nie programowano.\n",
+      "notes": "Przyciski Pobierz komendy AT oraz Wyślij i zapisz EEPROM znajdują się na górze podglądu, przed listą komend. Pasek pozostaje widoczny podczas przewijania i zawija przyciski na wąskim ekranie. Zachowano blokady podczas wysyłki oraz wymóg połączenia do zapisu EEPROM. Zawiera zmiany 0.5.79. Firmware i protokół bez zmian. Walidacja: kompilacja Release i testy wewnętrzne aplikacji.",
       "digest": "sha256:280cc7d24f2c69d283f0a9966ed0de741d9e7af3f209711dc6020641253b2131"
     },
     "S0804-OLD": {
       "version": "2",
-      "url": "https://github.com/GRYF-SMART/gryfsmart-firmware/releases/download/v2026.11.24-gryfexpert-0.5.79/S0804-OLD-firmware.hex",
-      "release": "https://github.com/GRYF-SMART/gryfsmart-firmware/releases/tag/v2026.11.24-gryfexpert-0.5.79",
+      "url": "https://github.com/GRYF-SMART/gryfsmart-firmware/releases/download/v2026.11.24-gryfexpert-0.5.80/S0804-OLD-firmware.hex",
+      "release": "https://github.com/GRYF-SMART/gryfsmart-firmware/releases/tag/v2026.11.24-gryfexpert-0.5.80",
       "date": "2026-11-24",
-      "notes": "S0804 OLD firmware 2 dodaje funkcję STEP: otwieranie → stop → zamykanie → stop. Po pełnym przejeździe kolejny STEP uruchamia przeciwny kierunek. Zachowano przerwę 300 ms przy zmianie kierunku i możliwość zatrzymania podczas oczekiwania.\n\nGRYFEXPERT 0.5.79 udostępnia STEP dla S0804 OLD w sterowaniu online, regułach lokalnych i slotach zdalnych. Wymagany firmware 2 i odczyt jego wersji. Firmware 1 zachowuje dotychczasowe menu. Kod polecenia STEP: 5; obsługiwany też zgodny alias 6. EEPROM zachowuje dotychczasowy format.\n\nAktualizacja obejmuje HEX, manifesty i kopie HEX we wszystkich paczkach narzędzi. Bootloadery, inne moduły i driver RTI pozostają bez zmian. S0804 OLD aktualizuj dotychczasową metodą RS-232; to wydanie nie dodaje flashowania OLD przez RTI. Zawiera pamiętanie logowania z wersji 0.5.78.\n\nWalidacja: 13113 kontroli w symulatorze AVR, w tym STEP dla czterech rolet, zatrzymanie, zmiana kierunku, krańce czasowe, zapis EEPROM i oba UART-y. Zgodność HEX z ELF i granica aplikacji 0xE000 potwierdzone. Testy GRYFEXPERT oraz integralność wszystkich paczek potwierdzone. Modułów fizycznych nie programowano.\n",
+      "notes": "Przyciski Pobierz komendy AT oraz Wyślij i zapisz EEPROM znajdują się na górze podglądu, przed listą komend. Pasek pozostaje widoczny podczas przewijania i zawija przyciski na wąskim ekranie. Zachowano blokady podczas wysyłki oraz wymóg połączenia do zapisu EEPROM. Zawiera zmiany 0.5.79. Firmware i protokół bez zmian. Walidacja: kompilacja Release i testy wewnętrzne aplikacji.",
       "digest": "sha256:b8bba3aaf1968bf95fb9a20709f1c37631cf7c74205ce70d4f682f599a48bbf2"
     }
   }
