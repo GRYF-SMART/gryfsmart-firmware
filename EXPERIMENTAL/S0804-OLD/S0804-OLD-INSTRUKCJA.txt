@@ -1,0 +1,32 @@
+GRYF S0804 OLD — 0.1.0-skeleton (wersja eksperymentalna)
+
+Sprzęt: ATmega644PA, zewnętrzny kwarc 11,0592 MHz.
+Wyjścia zasilanie/kierunek: R1 PC0/PC1, R2 PC2/PC3,
+R3 PC4/PC5, R4 PC6/PC7. Wejścia WE1–WE8: PA7–PA0.
+
+Ten HEX jest pierwszym szkieletem aplikacji. Wszystkie przekaźniki są wyłączone.
+Wejścia nie uruchamiają rolet. RUN i PRACA migają: 500 ms ON / 500 ms OFF.
+RX/TX pozostaje zgaszona. JTAG jest wyłączany programowo przed główną pętlą.
+Timer1: CTC, preskaler 64, OCR1A=1727, takt 10 ms przy nominalnym zegarze.
+Pięć timerów programowych: jednorazowe/okresowe, 10 ms–655,35 s.
+Watchdog 250 ms, odświeżany tylko w pętli głównej.
+
+Brak komend ruchu, STEP, protokołu UART/GRYFEXPERT, AT+BOOT i zapisu EEPROM.
+Nie jest to jeszcze wsad do normalnego użytkowania ani zamiennik S0804.
+Plik aplikacji nie zawiera bootloadera ani fuse bitów. Rezerwuje 8 KiB od 0xE000.
+Wgrywanie przez RS-232 nie jest jeszcze przygotowane dla tego nowego modelu.
+Przed uruchomieniem przez ISP trzeba osobno ustalić fuse bity i sposób startu
+z uwzględnieniem istniejącego bootloadera. Nie programowano fizycznego modułu.
+
+GRYFSMART-Instalator będzie wspólnym programem, ale potrzebuje profilu S0804-OLD.
+Nie wybieraj w zastępstwie R0806T-OLD: jego bootloader inicjalizuje tylko PC2–PC7,
+ma inną identyfikację modułu i wymaga uzgodnienia adresu startu/fuse bitów.
+Dedykowanego bootloadera i aktualizacji instalatora nie ma w tej paczce.
+
+Weryfikacja: kompilacja dla atmega644pa, zgodność HEX z ELF, kontrola obszaru Flash,
+bezpiecznych instrukcji startowych oraz 1321 sprawdzeń w symulatorze AVR.
+Flash: 1012 bajtów. Statyczny RAM: 49 bajtów (bez stosu).
+Nie wykonano pomiaru czasu ani testów elektrycznych na płytce.
+
+Pliki: S0804-OLD-firmware.hex, S0804-OLD-manifest.json, S0804-OLD-build-info.txt.
+Manifest zawiera SHA-256 HEX-a i dokładne parametry wariantu.

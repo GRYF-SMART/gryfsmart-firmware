@@ -1,0 +1,31 @@
+{
+  "schema": 1,
+  "model": "S0804-OLD",
+  "displayName": "GRYF S0804 OLD",
+  "version": "0.1.0-skeleton",
+  "channel": "experimental",
+  "mcu": "atmega644pa",
+  "clockHz": 11059200,
+  "asset": "S0804-OLD-firmware.hex",
+  "sha256": "1234169d7b618921a3109409d739004b077a9587df21de70d0755045fe413435",
+  "flashBytes": 1012,
+  "staticRamBytes": 49,
+  "applicationLimit": 57344,
+  "reservedBootBytes": 8192,
+  "timerTickMs": 10,
+  "sourceSha256": "5f50af05258cc39a840b9572925de1497b0e1986489432dace9f48bcfba2b9c8",
+  "bootloaderIncluded": false,
+  "features": [
+    "safe-start",
+    "jtag-off",
+    "software-timers",
+    "heartbeat",
+    "watchdog"
+  ],
+  "limitations": [
+    "no-shutter-commands",
+    "no-uart-protocol",
+    "no-AT-BOOT",
+    "no-eeprom-writes"
+  ]
+}

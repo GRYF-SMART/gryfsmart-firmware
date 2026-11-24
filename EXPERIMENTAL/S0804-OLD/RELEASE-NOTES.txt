@@ -1,0 +1,16 @@
+GRYF S0804 OLD 0.1.0 — pierwszy szkielet firmware (wersja eksperymentalna).
+
+ATmega644PA, kwarc 11,0592 MHz. R1 PC0/PC1, R2 PC2/PC3, R3 PC4/PC5, R4 PC6/PC7;
+wejścia WE1–WE8 na PA7–PA0. Bezpieczny start z wyłączeniem JTAG i przekaźników.
+Timer1 CTC: dokładny takt 10 ms przy nominalnym kwarcu, pięć timerów programowych,
+heartbeat RUN/PRACA co 500 ms, watchdog 250 ms odświeżany w main.
+
+Wszystkie przekaźniki pozostają wyłączone. Ten etap nie ma sterowania roletami,
+STEP, protokołu UART/GRYFEXPERT, AT+BOOT ani zapisu EEPROM. HEX obejmuje samą aplikację,
+rezerwując górne 8 KiB Flash. Nie zawiera bootloadera/fuse bitów i nie jest jeszcze
+przeznaczony do wgrywania przez GRYFSMART-Programator. Nie używać profilu R0806T-OLD
+jako zamiennika: nowy model wymaga osobnego profilu i dostosowanego bootloadera.
+
+Walidacja: kompilacja AVR bez ostrzeżeń, zgodność HEX/ELF, kontrola instrukcji
+startowych i 1321 sprawdzeń w symulatorze AVR. Flash 1012 B, statyczny RAM 49 B.
+Bez programowania i testów fizycznego urządzenia. Szczegóły w instrukcji i manifeście.
