@@ -136,8 +136,9 @@ def collect(cache):
     for name, rows in result.items():
         if len(rows) != 3:
             raise ValueError(f'{name}: expected three distinct released versions, got {len(rows)}')
-    if len(hexes) != 5:
-        raise ValueError(f'Missing module firmware: {list(hexes)}')
+    required = {'R0806T', 'R0808', 'S0804', 'ETH0606T', 'ETH Mini'}
+    if missing := required - hexes.keys():
+        raise ValueError(f'Missing module firmware: {sorted(missing)}')
     return dict(products=result, firmware=hexes)
 
 def render(out, templates, catalog, mode):
