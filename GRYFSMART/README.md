@@ -1,16 +1,16 @@
 # 1. Aplikacja GRYFSMART
 
-**[Pobierz najnowszą wersję 0.5.77](https://github.com/GRYF-SMART/gryfsmart-firmware/releases/download/v2026.11.24-gryfexpert-0.5.77/GRYFEXPERT-0.5.77-win-x64.zip)**
+**[Pobierz najnowszą wersję 0.5.78](https://github.com/GRYF-SMART/gryfsmart-firmware/releases/download/v2026.11.24-gryfexpert-0.5.78/GRYFEXPERT-0.5.78-win-x64.zip)**
 
-GRYFEXPERT 0.5.77 naprawia blokadę ekranu Aktualizacja firmware przy wybranej bramce RTI. Wersja 0.5.76 zawierała obsługę Flash przez RTI, lecz stary warunek w widoku głównym ukrywał panel aktualizacji. Wspólny panel aktualizacji jest teraz dostępny dla COM, Ethernet i RTI. Poprawiono nieaktualne komunikaty o braku obsługi HEX przez RTI. [Pełny opis wydania](https://github.com/GRYF-SMART/gryfsmart-firmware/releases/tag/v2026.11.24-gryfexpert-0.5.77).
+GRYFEXPERT 0.5.78 utrzymuje logowanie Cloud przez cały czas działania programu, również po odświeżeniu i ponownym otwarciu karty. Opcjonalne pole „Zapamiętaj mnie na tym komputerze” zachowuje sesję po ponownym uruchomieniu aplikacji; domyślnie jest wyłączone. Działa z logowaniem hasłem i Google. Ustawienie można zmienić także po zalogowaniu. [Pełny opis wydania](https://github.com/GRYF-SMART/gryfsmart-firmware/releases/tag/v2026.11.24-gryfexpert-0.5.78).
 
 ## Trzy ostatnie wersje
 
 | Wersja | Data publikacji | Pobieranie | Zmiany |
 |---|---|---|---|
+| **0.5.78** | 2026-11-24 | [Pobierz](https://github.com/GRYF-SMART/gryfsmart-firmware/releases/download/v2026.11.24-gryfexpert-0.5.78/GRYFEXPERT-0.5.78-win-x64.zip) | GRYFEXPERT 0.5.78 utrzymuje logowanie Cloud przez cały czas działania programu, również po odświeżeniu i ponownym otwarciu karty. Opcjonalne pole „Zapamiętaj mnie na tym komputerze” zachowuje sesję po ponownym uruchomieniu aplikacji; domyślnie jest wyłączone. Działa z logowaniem hasłem i Google. Ustawienie można zmienić także po zalogowaniu. [Pełny opis](https://github.com/GRYF-SMART/gryfsmart-firmware/releases/tag/v2026.11.24-gryfexpert-0.5.78) |
 | **0.5.77** | 2026-11-24 | [Pobierz](https://github.com/GRYF-SMART/gryfsmart-firmware/releases/download/v2026.11.24-gryfexpert-0.5.77/GRYFEXPERT-0.5.77-win-x64.zip) | GRYFEXPERT 0.5.77 naprawia blokadę ekranu Aktualizacja firmware przy wybranej bramce RTI. Wersja 0.5.76 zawierała obsługę Flash przez RTI, lecz stary warunek w widoku głównym ukrywał panel aktualizacji. Wspólny panel aktualizacji jest teraz dostępny dla COM, Ethernet i RTI. Poprawiono nieaktualne komunikaty o braku obsługi HEX przez RTI. [Pełny opis](https://github.com/GRYF-SMART/gryfsmart-firmware/releases/tag/v2026.11.24-gryfexpert-0.5.77) |
 | **0.5.76** | 2026-11-24 | [Pobierz](https://github.com/GRYF-SMART/gryfsmart-firmware/releases/download/v2026.11.24-rti-2.22/GRYFEXPERT-0.5.76-win-x64.zip) | GRYFEXPERT 0.5.76 i GRYF Driver 2.22 dodają aktualizację Flash przez GRYFEXPERT → LAN → RTI → RS232 → moduły. Ten sam ekran Aktualizacja firmware: odczyt wersji, pobieranie z GitHub lub lokalny HEX, postęp i weryfikacja. Transport wynika z połączenia zapisanego w projekcie; nie dodano oddzielnego panelu RTI. Obsługiwane przez RTI: R0806T, R0808, S0804 z… [Pełny opis](https://github.com/GRYF-SMART/gryfsmart-firmware/releases/tag/v2026.11.24-rti-2.22) |
-| **0.5.75** | 2026-11-24 | [Pobierz](https://github.com/GRYF-SMART/gryfsmart-firmware/releases/download/v2026.11.24-s0804-old-1/GRYFEXPERT-0.5.75-win-x64.zip) | Nowy moduł GRYF S0804 OLD: ATmega644PA, kwarc 11,0592 MHz. Firmware 1: lokalnie tylko OTWÓRZ, STOP, ZAMKNIJ, ZAMKNIJ/STOP i OTWÓRZ/STOP. 16 reguł; jedna zdalna akcja SLOT na regułę. Bez STEP, zadawania procentu, ruchu czasowego i flag lokalnych. Cztery pary przekaźników zasilanie/kierunek: PC0/PC1, PC2/PC3, PC4/PC5, PC6/PC7. Bezpieczny start, wyłączenie… [Pełny opis](https://github.com/GRYF-SMART/gryfsmart-firmware/releases/tag/v2026.11.24-s0804-old-1) |
 
 ## Aktualizacja Flash przez RTI — GRYFEXPERT 0.5.76 / GRYF Driver 2.22
 
