@@ -121,7 +121,7 @@ def collect(cache):
                 remember(groups[group], version, download, r)
         for app in manifest.get('applications', []):
             model = app.get('model', app.get('name'))
-            if model in ['R0806T', 'R0808', 'S0804', 'ETH0606T'] and app['asset'] in assets:
+            if model in ['R0806T', 'R0808', 'S0804', 'S0804-OLD', 'ETH0606T'] and app['asset'] in assets:
                 hexes[model] = item(app['version'], assets[app['asset']], r)
     for r in reversed(ha):
         for a in r['assets']:
@@ -173,7 +173,8 @@ def render(out, templates, catalog, mode):
     for page in (templates / 'SYSTEM').glob('*.md'):
         write('SYSTEM/' + page.name, page.read_text(encoding='utf-8') + '\n\n' + nav())
     hextable = '# Najnowsze HEX-y aplikacji GRYFSMART\n\n**[Pobierz komplet HEX — aplikacje i bootloadery](https://raw.githubusercontent.com/GRYF-SMART/gryfsmart-firmware/main/HEX/GRYFSMART-HEX.zip)**\n\n| Moduł | Wersja | Pobierz HEX | Wydanie |\n|---|---|---|---|\n'
-    for model in ['R0806T', 'R0808', 'S0804', 'ETH0606T', 'ETH Mini']:
+    for model in ['R0806T', 'R0808', 'S0804', 'S0804-OLD', 'ETH0606T', 'ETH Mini']:
+        if model not in catalog['firmware']: continue
         row = catalog['firmware'][model]
         hextable += f"| {model} | {row['version']} | [**Pobierz HEX**]({row['url']}) | [Opis]({row['release']}) |\n"
     hextable += '\nW komplecie ZIP są osobne katalogi aplikacji i bootloaderów, również dla starszego R0806T-OLD, oraz sumy kontrolne plików. [Lista plików i wersji](manifest.json).\n'

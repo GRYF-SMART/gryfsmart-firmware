@@ -1,0 +1,46 @@
+GRYF S0804 OLD — firmware 1
+ATmega644PA, kwarc 11,0592 MHz, RS-232 115200 8N1.
+
+1. W GRYFSMART-Instalator 2.0.30 wybierz GRYF S0804 OLD.
+   Pierwsza instalacja bootloadera wymaga USBasp/ISP.
+   Nie wybieraj R0806T OLD: ten sam rozmiar pamięci nie oznacza tego samego modułu.
+   Bootloader S0804 OLD v1 zajmuje 8 KiB, od adresu bajtowego 0xE000.
+   Instalator ustawia LOW F7 oraz HIGH D8 lub D0 (zachowuje EESAVE),
+   zachowuje EXTENDED i weryfikuje zapis. JTAG jest wyłączany także programowo.
+   Zachowana kopia EEPROM nie oznacza zgodności ustawień ze starym programem IUVO.
+
+2. Odłącz programator ISP. W GRYFSMART-Programator 2.0.30 wybierz
+   GRYF S0804 OLD, właściwy COM i S0804-OLD-firmware.hex.
+   Wgrywaj przez port 0 / USART0 (RX PD0, TX PD1), 115200 8N1.
+   Po świeżej instalacji bootloader czeka na wsad. Firmware 1 obsługuje AT+BOOT.
+   Szkielet 0.1.0 nie odpowiada przez UART: naciśnij RESET, gdy program poprosi.
+   Po resecie z poprawną aplikacją bootloader czeka 3 sekundy i uruchamia program.
+
+3. W GRYFEXPERT 0.5.75 dodaj/rozpoznaj S0804-OLD. Ustaw czasy otwierania
+   i zamykania każdej rolety oraz reguły, wyślij konfigurację i zapisz ją w module.
+   Czasy przejazdu: 0,1–655,3 s. Pusty EEPROM nie uruchamia silników.
+   Dostępne są 16 reguł, cztery lokalne rolety oraz jeden slot zdalny na regułę.
+   Akcje lokalne: OTWÓRZ, STOP, ZAMKNIJ, ZAMKNIJ+STOP, OTWÓRZ+STOP.
+   Bez zmian oznacza brak działania w regule. STEP, procent i osobny ruch na czas
+   są niedostępne w tym modelu. Pełny ruch zatrzymuje się po czasie przejazdu.
+   Slot może sterować zewnętrznym modułem; dodatkowe sloty są odrzucane.
+
+Mapa sprzętu (zasilanie / kierunek): R1 PC0/PC1, R2 PC2/PC3,
+R3 PC4/PC5, R4 PC6/PC7. Zasilanie HIGH = ruch; kierunek HIGH = otwieranie.
+STOP odłącza przekaźnik zasilania. Zmiana kierunku wymaga 300 ms przerwy.
+WE1–WE8: PA7–PA0, wejścia aktywne stanem niskim.
+RUN PB3, PRACA PB4, RX/TX PB2, diody aktywne stanem niskim.
+
+Oba USART-y przekazują obce komendy i raporty, w tym polecenia konfiguracji
+S0804, R0806T, R0806T OLD, R0808 i ETH oraz CHAIN1. USART1: RX PD2, TX PD3.
+Bootloader również przekazuje ruch do dalszych modułów; adresowanie CHAIN1
+jest według pozycji fizycznej, a zwykłe komendy AT według ID.
+
+EEPROM 2 KiB: adres modułu 0x000; dwie kopie konfiguracji 0x010–0x3BD;
+nazwy i dziennik 0x400–0x535; restarty 0x600–0x77F; boot 0x7F0–0x7F4.
+Zapis CRC i znacznik zatwierdzenia chronią poprzednią konfigurację po zaniku
+zasilania. Podczas zapisu konfiguracja jest zablokowana; STOP pozostaje dostępny.
+
+Zweryfikowano kompilację, układ HEX/ELF, porty, UART-y, zegar, reguły,
+zapis EEPROM i protokół programowania w testach programowych/symulatorze AVR.
+Nie programowano ani nie testowano fizycznego modułu podczas tego wydania.

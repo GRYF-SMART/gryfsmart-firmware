@@ -116,6 +116,29 @@
       "kind": "bootloader",
       "asset": "ETH-Mini-GATE-bootloader.hex",
       "sha256": "8a6e123b618dbb6054d300a3fd9e2cbf1158d76246371de03999da8f7ba0cc8d"
+    },
+    {
+      "model": "S0804-OLD",
+      "mcu": "atmega644pa",
+      "clock_hz": 11059200,
+      "version": "1",
+      "kind": "application",
+      "asset": "S0804-OLD-firmware.hex",
+      "sha256": "1c3a9dddfe0df4bae0e4ea985089d9bbe75daa6cdb5a30c2429f8de84605a7a5"
+    },
+    {
+      "model": "S0804-OLD",
+      "mcu": "atmega644pa",
+      "clock_hz": 11059200,
+      "version": "v1-s0804-old",
+      "kind": "bootloader",
+      "asset": "S0804-OLD-bootloader.hex",
+      "sha256": "ffceb10f03ae6889dcfe8aa4eebebd684e990d29a7525872d6f8ace376276361",
+      "uarts": [
+        0
+      ],
+      "forward_uart": 1,
+      "application_limit": 57344
     }
   ]
 }
