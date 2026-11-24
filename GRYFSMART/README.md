@@ -1,16 +1,16 @@
 # 1. Aplikacja GRYFSMART
 
-**[Pobierz najnowszą wersję 0.5.75](https://github.com/GRYF-SMART/gryfsmart-firmware/releases/download/v2026.11.24-s0804-old-1/GRYFEXPERT-0.5.75-win-x64.zip)**
+**[Pobierz najnowszą wersję 0.5.76](https://github.com/GRYF-SMART/gryfsmart-firmware/releases/download/v2026.11.24-rti-2.22/GRYFEXPERT-0.5.76-win-x64.zip)**
 
-Nowy moduł GRYF S0804 OLD: ATmega644PA, kwarc 11,0592 MHz. Firmware 1: lokalnie tylko OTWÓRZ, STOP, ZAMKNIJ, ZAMKNIJ/STOP i OTWÓRZ/STOP. 16 reguł; jedna zdalna akcja SLOT na regułę. Bez STEP, zadawania procentu, ruchu czasowego i flag lokalnych. Cztery pary przekaźników zasilanie/kierunek: PC0/PC1, PC2/PC3, PC4/PC5, PC6/PC7. Bezpieczny start, wyłączenie… [Pełny opis wydania](https://github.com/GRYF-SMART/gryfsmart-firmware/releases/tag/v2026.11.24-s0804-old-1).
+GRYFEXPERT 0.5.76 i GRYF Driver 2.22 dodają aktualizację Flash przez GRYFEXPERT → LAN → RTI → RS232 → moduły. Ten sam ekran Aktualizacja firmware: odczyt wersji, pobieranie z GitHub lub lokalny HEX, postęp i weryfikacja. Transport wynika z połączenia zapisanego w projekcie; nie dodano oddzielnego panelu RTI. Obsługiwane przez RTI: R0806T, R0808, S0804 z… [Pełny opis wydania](https://github.com/GRYF-SMART/gryfsmart-firmware/releases/tag/v2026.11.24-rti-2.22).
 
 ## Trzy ostatnie wersje
 
 | Wersja | Data publikacji | Pobieranie | Zmiany |
 |---|---|---|---|
+| **0.5.76** | 2026-11-24 | [Pobierz](https://github.com/GRYF-SMART/gryfsmart-firmware/releases/download/v2026.11.24-rti-2.22/GRYFEXPERT-0.5.76-win-x64.zip) | GRYFEXPERT 0.5.76 i GRYF Driver 2.22 dodają aktualizację Flash przez GRYFEXPERT → LAN → RTI → RS232 → moduły. Ten sam ekran Aktualizacja firmware: odczyt wersji, pobieranie z GitHub lub lokalny HEX, postęp i weryfikacja. Transport wynika z połączenia zapisanego w projekcie; nie dodano oddzielnego panelu RTI. Obsługiwane przez RTI: R0806T, R0808, S0804 z… [Pełny opis](https://github.com/GRYF-SMART/gryfsmart-firmware/releases/tag/v2026.11.24-rti-2.22) |
 | **0.5.75** | 2026-11-24 | [Pobierz](https://github.com/GRYF-SMART/gryfsmart-firmware/releases/download/v2026.11.24-s0804-old-1/GRYFEXPERT-0.5.75-win-x64.zip) | Nowy moduł GRYF S0804 OLD: ATmega644PA, kwarc 11,0592 MHz. Firmware 1: lokalnie tylko OTWÓRZ, STOP, ZAMKNIJ, ZAMKNIJ/STOP i OTWÓRZ/STOP. 16 reguł; jedna zdalna akcja SLOT na regułę. Bez STEP, zadawania procentu, ruchu czasowego i flag lokalnych. Cztery pary przekaźników zasilanie/kierunek: PC0/PC1, PC2/PC3, PC4/PC5, PC6/PC7. Bezpieczny start, wyłączenie… [Pełny opis](https://github.com/GRYF-SMART/gryfsmart-firmware/releases/tag/v2026.11.24-s0804-old-1) |
 | **0.5.71** | 2026-11-22 | [Pobierz](https://github.com/GRYF-SMART/gryfsmart-firmware/releases/download/v2026.11.22-gryfexpert-0.5.71/GRYFEXPERT-0.5.71-win-x64.zip) | GRYFEXPERT 0.5.71 — Cloud w programie lokalnym Rejestracja i logowanie loginem lub e-mailem w oknie GRYFEXPERT; potwierdzanie adresu przez link w e-mailu. Opcjonalne logowanie Google przez systemową przeglądarkę. Nowy klient wybiera własny login i potwierdza e-mail; istniejące konto można świadomie połączyć z Google po zalogowaniu. [Pełny opis](https://github.com/GRYF-SMART/gryfsmart-firmware/releases/tag/v2026.11.22-gryfexpert-0.5.71) |
-| **0.5.70** | 2026-11-20 | [Pobierz](https://github.com/GRYF-SMART/gryfsmart-firmware/releases/download/v2026.11.20-r0806t-old-11/GRYFEXPERT-0.5.70-win-x64.zip) | GRYFEXPERT 0.5.70 — zerowanie reguły i wyszukiwanie obwodu. Wyzeruj regułę obok pola jej włączenia: wszystkie modele z regułami, w tym OLD. Czyści nazwę, zdarzenia, akcje lokalne, sloty, parametry, flagi i wyzwalacz temperatury; zachowuje inne reguły oraz czasy wejść i rolet. Dla połączenia online okno Tak / Nie pozwala natychmiast wysłać pustą regułę i… [Pełny opis](https://github.com/GRYF-SMART/gryfsmart-firmware/releases/tag/v2026.11.20-gryfexpert-0.5.70) |
 
 ## Aktualizacja Flash przez RTI — GRYFEXPERT 0.5.76 / GRYF Driver 2.22
 
