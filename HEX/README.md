@@ -4,11 +4,11 @@
 
 | Moduł | Wersja | Pobierz HEX | Wydanie |
 |---|---|---|---|
-| R0806T | 39 | [**Pobierz HEX**](https://github.com/GRYF-SMART/gryfsmart-firmware/releases/download/v2026.11.22-installer-2.0.29/R0806T-firmware.hex) | [Opis](https://github.com/GRYF-SMART/gryfsmart-firmware/releases/tag/v2026.11.22-installer-2.0.29) |
-| R0808 | 38 | [**Pobierz HEX**](https://github.com/GRYF-SMART/gryfsmart-firmware/releases/download/v2026.11.22-installer-2.0.29/R0808-firmware.hex) | [Opis](https://github.com/GRYF-SMART/gryfsmart-firmware/releases/tag/v2026.11.22-installer-2.0.29) |
-| S0804 | 39 | [**Pobierz HEX**](https://github.com/GRYF-SMART/gryfsmart-firmware/releases/download/v2026.11.22-installer-2.0.29/S0804-firmware.hex) | [Opis](https://github.com/GRYF-SMART/gryfsmart-firmware/releases/tag/v2026.11.22-installer-2.0.29) |
-| ETH0606T | 37 | [**Pobierz HEX**](https://github.com/GRYF-SMART/gryfsmart-firmware/releases/download/v2026.11.22-installer-2.0.29/ETH0606T-firmware.hex) | [Opis](https://github.com/GRYF-SMART/gryfsmart-firmware/releases/tag/v2026.11.22-installer-2.0.29) |
-| ETH Mini | 4 | [**Pobierz HEX**](https://github.com/GRYF-SMART/gryfsmart-firmware/releases/download/v2026.11.22-installer-2.0.29/ETH-Mini-GATE-firmware-v4.hex) | [Opis](https://github.com/GRYF-SMART/gryfsmart-firmware/releases/tag/v2026.11.22-installer-2.0.29) |
+| R0806T | 39 | [**Pobierz HEX**](https://github.com/GRYF-SMART/gryfsmart-firmware/releases/download/untagged-a55c7622042688435979/R0806T-firmware.hex) | [Opis](https://github.com/GRYF-SMART/gryfsmart-firmware/releases/tag/untagged-a55c7622042688435979) |
+| R0808 | 38 | [**Pobierz HEX**](https://github.com/GRYF-SMART/gryfsmart-firmware/releases/download/untagged-a55c7622042688435979/R0808-firmware.hex) | [Opis](https://github.com/GRYF-SMART/gryfsmart-firmware/releases/tag/untagged-a55c7622042688435979) |
+| S0804 | 39 | [**Pobierz HEX**](https://github.com/GRYF-SMART/gryfsmart-firmware/releases/download/untagged-a55c7622042688435979/S0804-firmware.hex) | [Opis](https://github.com/GRYF-SMART/gryfsmart-firmware/releases/tag/untagged-a55c7622042688435979) |
+| ETH0606T | 37 | [**Pobierz HEX**](https://github.com/GRYF-SMART/gryfsmart-firmware/releases/download/untagged-a55c7622042688435979/ETH0606T-firmware.hex) | [Opis](https://github.com/GRYF-SMART/gryfsmart-firmware/releases/tag/untagged-a55c7622042688435979) |
+| ETH Mini | 4 | [**Pobierz HEX**](https://github.com/GRYF-SMART/gryfsmart-firmware/releases/download/untagged-a55c7622042688435979/ETH-Mini-GATE-firmware-v4.hex) | [Opis](https://github.com/GRYF-SMART/gryfsmart-firmware/releases/tag/untagged-a55c7622042688435979) |
 
 W komplecie ZIP są osobne katalogi aplikacji i bootloaderów, również dla starszego R0806T-OLD, oraz sumy kontrolne plików. [Lista plików i wersji](manifest.json).
 
