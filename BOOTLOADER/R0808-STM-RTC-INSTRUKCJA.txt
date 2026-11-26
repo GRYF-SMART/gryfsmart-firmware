@@ -1,0 +1,22 @@
+R0808 STM — RTC, firmware 2 / GRYFEXPERT 0.5.83
+
+Wgraj R0808-STM-firmware.hex przez dotychczasowy bootloader STM v1.
+Ponowna instalacja bootloadera przez ST-LINK nie jest wymagana.
+
+Połącz GRYFEXPERT z modułem, wybierz R0808 STM i zakładkę Czas.
+1. Pobierz czas z modułu — odczytasz stan, datę i godzinę do sekundy.
+2. Włącz zegar. Uruchomienie kwarcu może potrwać kilka sekund.
+3. Ustaw aktualny czas komputera albo wpisz datę i godzinę ręcznie.
+4. Program zapisze czas i sprawdzi go ponownym odczytem.
+
+Kalendarz uwzględnia lata przestępne i strefę komputera, a w module czas
+jest przechowywany jako UTC. Zegar działa bez połączenia z komputerem.
+Po wyłączeniu zegara trzeba ponownie ustawić datę i godzinę.
+Zwykły restart nie kasuje poprawnego czasu przy działającym podtrzymaniu.
+Po rozładowaniu superkondensatora zegar zgłasza czas nieustawiony.
+
+Rozdzielczość to jedna sekunda; rzeczywista dokładność zależy od kwarcu.
+Wyświetlana data to ostatni potwierdzony odczyt (przycisk Pobierz czas z modułu).
+Zapis projektu i reguł nie przestawia zegara na zapamiętaną dawną godzinę.
+Wydanie nie zmienia działania przekaźników i nie dodaje odtwarzania ich
+stanów po zaniku zasilania. Weryfikacja programowa; płytki nie programowano.
