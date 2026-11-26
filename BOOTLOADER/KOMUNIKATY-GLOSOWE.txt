@@ -1,0 +1,23 @@
+GRYFSMART — aktualizator modułów 2.0.32
+
+Po poprawnym zapisie i weryfikacji aplikacji program odczytuje komunikat:
+„Moduł R0806T został zaprogramowany”. Nazwa odpowiada wybranemu modelowi.
+Obsługiwane są ETH0606T, ETH Mini GATE, R0808, R0806T, S0804,
+R0806T-OLD, S0804-OLD oraz R0808 STM.
+
+Komunikaty głosowe można wyłączyć polem „Komunikaty głosowe”.
+W oknie „Sieć — do 35 modułów” dodatkowe pole
+„Komunikat po każdym zaprogramowanym module” włącza potwierdzenie
+każdego ukończonego zapisu, z nazwą modelu i pozycją w sieci.
+Po odznaczeniu tego pola odczytywane jest tylko zakończenie całej serii.
+Oba ustawienia są zapamiętywane dla użytkownika Windows, wspólnie
+dla okien programatora. Wyłączenie głosu przerywa też kolejkę komunikatów.
+
+Test połączenia, pominięcie aktualnego modułu, przerwanie operacji
+lub błąd weryfikacji nie powodują komunikatu o zaprogramowaniu.
+Błąd dźwięku nie zmienia wyniku programowania — szczegóły trafiają do logu.
+
+Mowa jest generowana lokalnie przez Windows. Internet nie jest potrzebny.
+Program wybiera zainstalowany polski głos; jeśli go nie ma, używa
+domyślnego głosu Windows. Głośność zależy od ustawień systemu.
+Nie jest wymagana zmiana HEX ani bootloadera modułu.
