@@ -1,0 +1,42 @@
+GRYF R0808 STM — pierwsze wydanie
+STM32F103RET6, zewnętrzny kwarc 12 MHz. Firmware 1; bootloader v1-stm32-chain1.
+GRYFEXPERT 0.5.81; GRYFSMART-Instalator i GRYFSMART-Programator 2.0.31.
+
+JEDEN INSTALATOR AVR I STM
+Rozpakuj całą paczkę GRYFSMART-Instalator.zip. Uruchom GRYFSMART-Instalator.exe.
+AVR nadal używa USBasp/ISP. Wybór R0808 STM uruchamia obsługę ST-LINK/SWD.
+Zainstaluj STM32CubeProgrammer firmy ST (obsługiwany również CLI z CubeIDE).
+Opcjonalnie zmienna GRYF_STM32_PROGRAMMER wskazuje STM32_Programmer_CLI.exe.
+Podłącz SWDIO PA13, SWCLK PA14, GND, NRST i odniesienie 3,3 V według schematu.
+Zapewnij zasilanie płytki; BOOT0 ma być w stanie 0, start z Flash.
+Instalator kontroluje MCU/512 KiB Flash, wykonuje kopię całej pamięci w Dokumentach
+GRYFSMART/Kopie-bootloadera i weryfikuje zapis oraz zachowanie aplikacji/konfiguracji.
+Wgraj R0808-STM-bootloader.hex profilem R0808 STM. Nie wybieraj profilu R0808 AVR.
+
+APLIKACJA PRZEZ RS232
+Odłącz ST-LINK, zresetuj moduł. Podłącz komputer przez właściwy interfejs RS232
+do J5 (port 0, UART4; TX/RX skrzyżowane, wspólna masa). 115200, 8N1.
+W GRYFSMART-Programator wybierz R0808 STM i port COM, następnie Wgraj aplikację.
+Plik R0808-STM-firmware.hex jest aplikacją dla nowego bootloadera.
+Przy pierwszym starcie pustej aplikacji bootloader oczekuje na transfer.
+Później wchodzi komendą AT+BOOT=1; zwykły RESET uruchamia poprawną aplikację.
+Ten sam model i aktualizacja przez COM są dostępne w GRYFEXPERT.
+Aktualizacja STM przez obecną bramkę RTI nie jest jeszcze obsługiwana.
+
+KONFIGURACJA
+W GRYFEXPERT wybierz R0808 STM. Obsługa jak R0808: 8 wejść, 8 przekaźników,
+16 reguł, 4 SLOT-y na regułę, timery, flagi, temperatury DS18B20, termostaty,
+Online, nazwy i zapis konfiguracji. Komendy AT mają format R0808.
+W eksporcie nazw do RTI stosowany jest zgodny profil R0808 (8 wyjść).
+
+RUN I NTC
+RUN na panelu J9 miga 1 s / 1 s, RX/TX pokazuje komunikację.
+Lokalna RUN1 na dolnej płytce jest połączona z zasilaniem i nie może migać programowo.
+NTC1 przyjęto jako 10 kΩ / 25°C. Do przeliczenia temperatury ustaw rzeczywistą stałą B:
+AT+BoardNTC=1,3950 — tylko jeśli użyty NTC ma B=3950 K. Zakres 2000–6000; 0 wyłącza.
+AT+Board=1 — surowy ADC, temperatura w 0,1°C, jej ważność i napięcie zasilania.
+Bez ustawionej B temperatura NTC jest nieważna; czujniki DS18B20 pracują niezależnie.
+
+Wydanie sprawdzono kompilacją, testami programów i emulacją produkcyjnego kodu ARM.
+Fizyczna płytka nie była programowana ani testowana. Pierwsze uruchomienie wymaga
+sprawdzenia IO, panelu, UART, DS18B20 i NTC na docelowym sprzęcie.

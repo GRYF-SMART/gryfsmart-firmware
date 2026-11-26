@@ -121,7 +121,7 @@ def collect(cache):
                 remember(groups[group], version, download, r)
         for app in manifest.get('applications', []):
             model = app.get('model', app.get('name'))
-            if model in ['R0806T', 'R0808', 'S0804', 'S0804-OLD', 'ETH0606T'] and app['asset'] in assets:
+            if model in ['R0806T', 'R0808', 'R0808-STM', 'S0804', 'S0804-OLD', 'ETH0606T'] and app['asset'] in assets:
                 hexes[model] = item(app['version'], assets[app['asset']], r)
     for r in reversed(ha):
         for a in r['assets']:
@@ -136,7 +136,7 @@ def collect(cache):
     for name, rows in result.items():
         if len(rows) != 3:
             raise ValueError(f'{name}: expected three distinct released versions, got {len(rows)}')
-    required = {'R0806T', 'R0808', 'S0804', 'ETH0606T', 'ETH Mini'}
+    required = {'R0806T', 'R0808', 'R0808-STM', 'S0804', 'ETH0606T', 'ETH Mini'}
     if missing := required - hexes.keys():
         raise ValueError(f'Missing module firmware: {sorted(missing)}')
     return dict(products=result, firmware=hexes)
@@ -174,7 +174,7 @@ def render(out, templates, catalog, mode):
     for page in (templates / 'SYSTEM').glob('*.md'):
         write('SYSTEM/' + page.name, page.read_text(encoding='utf-8') + '\n\n' + nav())
     hextable = '# Najnowsze HEX-y aplikacji GRYFSMART\n\n**[Pobierz komplet HEX — aplikacje i bootloadery](https://raw.githubusercontent.com/GRYF-SMART/gryfsmart-firmware/main/HEX/GRYFSMART-HEX.zip)**\n\n| Moduł | Wersja | Pobierz HEX | Wydanie |\n|---|---|---|---|\n'
-    for model in ['R0806T', 'R0808', 'S0804', 'S0804-OLD', 'ETH0606T', 'ETH Mini']:
+    for model in ['R0806T', 'R0808', 'R0808-STM', 'S0804', 'S0804-OLD', 'ETH0606T', 'ETH Mini']:
         if model not in catalog['firmware']: continue
         row = catalog['firmware'][model]
         hextable += f"| {model} | {row['version']} | [**Pobierz HEX**]({row['url']}) | [Opis]({row['release']}) |\n"

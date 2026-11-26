@@ -139,6 +139,30 @@
       ],
       "forward_uart": 1,
       "application_limit": 57344
+    },
+    {
+      "model": "R0808-STM",
+      "mcu": "stm32f103re",
+      "clock_hz": 12000000,
+      "version": "1",
+      "kind": "application",
+      "asset": "R0808-STM-firmware.hex",
+      "sha256": "b8f59dfb683580c9ccca675fcd0a440f3023ceb9ec8ef963736dc4e6b2c1c814"
+    },
+    {
+      "model": "R0808-STM",
+      "mcu": "stm32f103re",
+      "clock_hz": 12000000,
+      "version": "v1-stm32-chain1",
+      "kind": "bootloader",
+      "asset": "R0808-STM-bootloader.hex",
+      "sha256": "69b31bf7d004dba0c1932b92abe9154ad80e24fd02d544707bf2558e4b58a6d7",
+      "uarts": [
+        4
+      ],
+      "forward_uart": 5,
+      "application_base": 134250496,
+      "application_limit": 458752
     }
   ]
 }
