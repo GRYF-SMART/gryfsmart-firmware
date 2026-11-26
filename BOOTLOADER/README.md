@@ -22,6 +22,10 @@ Bootloader umożliwia późniejsze wgrywanie najnowszych wersji oprogramowania m
 
 Paczka ZIP z linku na górze zawiera instalator, AVRDUDE i wsady bootloaderów. Rozpakuj całą paczkę, zachowując strukturę katalogów. Sam plik EXE może nie zawierać potrzebnych plików towarzyszących.
 
+### R0808 STM — w tym samym instalatorze
+
+Wybierz **R0808 STM**. Pierwsze wgranie wymaga **ST-LINK / SWD** oraz zainstalowanego STM32CubeProgrammer; AVR nadal używa USBasp / ISP. Instalator kontroluje STM32F103RE i 512 KiB Flash, zapisuje kopię pamięci i weryfikuje bootloader. Późniejsze aplikacje wgrywa ten sam GRYFSMART-Programator lub GRYFEXPERT przez RS232 J5. [Instrukcja STM](R0808-STM-v1-INSTRUKCJA.txt).
+
 ### Podłączenie programatora — przykład R0806T
 
 ![Podłączenie USBasp do dolnego złącza ISP modułu GRYF R0806T](../docs/assets/GRYF-R0806T-podlaczenie-USBasp.png)
@@ -41,6 +45,7 @@ Strzałka wskazuje złącze ISP na dole modułu, pomiędzy zaciskami **12V DC** 
 | ETH0606T | ATmega2560 | 16 MHz | 8 KiB |
 | R0808 | ATmega2560 | 18,432 MHz | 8 KiB |
 | R0806T / S0804 | ATmega1284P | 18,432 MHz | 8 KiB |
+| R0808 STM | STM32F103RET6 | HSE 12 MHz / CPU 72 MHz | 32 KiB, SWD |
 | ETH Mini GATE | ATmega328P | 16 MHz | 4 KiB |
 
 Dla Mini użyj ICSP J5 i zasilania płytki przez XS1; wyłącz zasilanie celu z USBasp i połącz masy. Inne płytki mają własny układ złączy — nie przenoś pinów Mini na inny model.

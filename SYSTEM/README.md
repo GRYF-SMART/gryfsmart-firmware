@@ -48,6 +48,8 @@ Kliknij nazwę, aby zobaczyć zdjęcie, zastosowanie, opis peryferiów, złączy
 
 | **[R0808](R0808.md)** | Osiem obwodów ON/OFF | 8 | 8 przekaźników | 1 × DS18B20 | 2 × RS-232; sprzętowo 2 × RS-485 |
 
+| **[R0808 STM](R0808-STM.md)** | Wariant STM32: te same funkcje i obsługa co R0808 | 8 | 8 przekaźników | 2 × DS18B20; NTC PCB | 2 × RS-232, 2 × RS-485 |
+
 | **[S0804](S0804.md)** | Rolety, żaluzje, markizy | 8 | 4 kanały napędów, każdy góra/dół | — | 2 × RS-232 |
 
 | **[S0804 OLD](S0804-OLD.md)** | Starszy sterownik rolet: 16 reguł, 1 slot, 5 akcji | 8 | 4 pary zasilanie/kierunek | — | 2 × RS-232 |
@@ -56,7 +58,7 @@ Kliknij nazwę, aby zobaczyć zdjęcie, zastosowanie, opis peryferiów, złączy
 
 
 
-Wszystkie cztery moduły wymagają zasilania **12 V DC**. Zasilanie odbiorników, LED i napędów opisano na poszczególnych stronach. Funkcjonalność RS-485 zależy od wgranego oprogramowania; obecność złącza nie oznacza automatycznie obsługi dowolnego protokołu.
+Moduły wymagają zasilania **12 V DC**. Zasilanie odbiorników, LED i napędów opisano na poszczególnych stronach. Funkcjonalność RS-485 zależy od wgranego oprogramowania; obecność złącza nie oznacza automatycznie obsługi dowolnego protokołu.
 
 
 
