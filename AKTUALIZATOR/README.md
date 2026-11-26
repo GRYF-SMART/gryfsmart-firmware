@@ -1,16 +1,16 @@
 # 2. GRYFSMART-Programator
 
-**[Pobierz najnowszą wersję 2.0.31](https://github.com/GRYF-SMART/gryfsmart-firmware/releases/download/v2026.11.26-r0808-stm-1/GRYFSMART-Programator.exe)**
+**[Pobierz najnowszą wersję 2.0.32](https://github.com/GRYF-SMART/gryfsmart-firmware/releases/download/v2026.11.26-programator-2.0.32/GRYFSMART-Programator.exe)**
 
-R0808 STM — pierwszy firmware dla STM32F103RET6, kwarc 12 MHz, CPU 72 MHz. Takie same funkcje i obsługa w GRYFEXPERT jak R0808: 8 wejść, 8 przekaźników, 16 reguł, 4 SLOT-y na regułę, timery, flagi, nazwy, 2 czujniki DS18B20, 4 regulatory i Online. Komendy AT zachowują format R0808; osobna identyfikacja sprzętu chroni przed pomyleniem wsadów AVR/STM. Kod… [Pełny opis wydania](https://github.com/GRYF-SMART/gryfsmart-firmware/releases/tag/v2026.11.26-r0808-stm-1).
+Programator / aktualizator modułów GRYFSMART 2.0.32. Po poprawnym zapisie i weryfikacji firmware komunikat głosowy „Moduł R0806T został zaprogramowany”, z nazwą rzeczywistego modelu. Wszystkie osiem obsługiwanych modeli: ETH0606T, ETH Mini GATE, R0808, R0806T, S0804, R0806T-OLD, S0804-OLD i R0808 STM. Pole „Komunikaty głosowe” wyłącza mowę i przerywa… [Pełny opis wydania](https://github.com/GRYF-SMART/gryfsmart-firmware/releases/tag/v2026.11.26-programator-2.0.32).
 
 ## Trzy ostatnie wersje
 
 | Wersja | Data publikacji | Pobieranie | Zmiany |
 |---|---|---|---|
+| **2.0.32** | 2026-11-26 | [Pobierz](https://github.com/GRYF-SMART/gryfsmart-firmware/releases/download/v2026.11.26-programator-2.0.32/GRYFSMART-Programator.exe) | Programator / aktualizator modułów GRYFSMART 2.0.32. Po poprawnym zapisie i weryfikacji firmware komunikat głosowy „Moduł R0806T został zaprogramowany”, z nazwą rzeczywistego modelu. Wszystkie osiem obsługiwanych modeli: ETH0606T, ETH Mini GATE, R0808, R0806T, S0804, R0806T-OLD, S0804-OLD i R0808 STM. Pole „Komunikaty głosowe” wyłącza mowę i przerywa… [Pełny opis](https://github.com/GRYF-SMART/gryfsmart-firmware/releases/tag/v2026.11.26-programator-2.0.32) |
 | **2.0.31** | 2026-11-26 | [Pobierz](https://github.com/GRYF-SMART/gryfsmart-firmware/releases/download/v2026.11.26-r0808-stm-1/GRYFSMART-Programator.exe) | R0808 STM — pierwszy firmware dla STM32F103RET6, kwarc 12 MHz, CPU 72 MHz. Takie same funkcje i obsługa w GRYFEXPERT jak R0808: 8 wejść, 8 przekaźników, 16 reguł, 4 SLOT-y na regułę, timery, flagi, nazwy, 2 czujniki DS18B20, 4 regulatory i Online. Komendy AT zachowują format R0808; osobna identyfikacja sprzętu chroni przed pomyleniem wsadów AVR/STM. Kod… [Pełny opis](https://github.com/GRYF-SMART/gryfsmart-firmware/releases/tag/v2026.11.26-r0808-stm-1) |
 | **2.0.30** | 2026-11-24 | [Pobierz](https://github.com/GRYF-SMART/gryfsmart-firmware/releases/download/v2026.11.24-s0804-old-1/GRYFSMART-Programator.exe) | Nowy moduł GRYF S0804 OLD: ATmega644PA, kwarc 11,0592 MHz. Firmware 1: lokalnie tylko OTWÓRZ, STOP, ZAMKNIJ, ZAMKNIJ/STOP i OTWÓRZ/STOP. 16 reguł; jedna zdalna akcja SLOT na regułę. Bez STEP, zadawania procentu, ruchu czasowego i flag lokalnych. Cztery pary przekaźników zasilanie/kierunek: PC0/PC1, PC2/PC3, PC4/PC5, PC6/PC7. Bezpieczny start, wyłączenie… [Pełny opis](https://github.com/GRYF-SMART/gryfsmart-firmware/releases/tag/v2026.11.24-s0804-old-1) |
-| **2.0.27** | 2026-11-17 | [Pobierz](https://github.com/GRYF-SMART/gryfsmart-firmware/releases/download/v2026.11.17-jtag-unified/GRYFSMART-Programator.exe) | R0806T i R0808: ochrona przed JTAG ujednolicona z S0804. Instalator 2.0.27 wyłącza JTAGEN także dla R0806T i R0808: HIGH 98/99 → D8, albo D0 przy zaprogramowanym EESAVE. Zachowuje EESAVE i EXTENDED; sprawdza zapis ponownym odczytem. Polityka ETH0606T/OLD bez zmian. R0806T: JTAG PC2–PC5 współdzieli wyjścia WY6–WY3. R0808: JTAG PF4–PF7 współdzieli wejścia… [Pełny opis](https://github.com/GRYF-SMART/gryfsmart-firmware/releases/tag/v2026.11.17-jtag-unified) |
 
 ## Aktualizacja aplikacji modułu
 
