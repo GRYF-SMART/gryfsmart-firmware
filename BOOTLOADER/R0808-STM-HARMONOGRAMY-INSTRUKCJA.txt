@@ -1,6 +1,6 @@
-GRYFEXPERT 0.5.85 / R0808 STM firmware 3
+GRYFEXPERT 0.5.86 / R0808 STM firmware 4
 
-1. Wgraj aplikację firmware 3 do R0808 STM, używając zainstalowanego bootloadera.
+1. Wgraj aplikację firmware 4 do R0808 STM, używając zainstalowanego bootloadera.
 2. W zakładce Czas włącz RTC i ustaw aktualną datę/godzinę.
 3. W sekcji Zegar astronomiczny wpisz współrzędne instalacji lub użyj
    Pobierz moją lokalizację. Przeglądarka zapyta o zgodę; wynik dotyczy komputera.
