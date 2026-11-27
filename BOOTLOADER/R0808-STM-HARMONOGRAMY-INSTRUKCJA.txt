@@ -1,0 +1,27 @@
+GRYFEXPERT 0.5.85 / R0808 STM firmware 3
+
+1. Wgraj aplikację firmware 3 do R0808 STM, używając zainstalowanego bootloadera.
+2. W zakładce Czas włącz RTC i ustaw aktualną datę/godzinę.
+3. W sekcji Zegar astronomiczny wpisz współrzędne instalacji lub użyj
+   Pobierz moją lokalizację. Przeglądarka zapyta o zgodę; wynik dotyczy komputera.
+   Przy konfiguracji zdalnej wpisz współrzędne obiektu klienta.
+4. Ustaw strefę (Polska: UTC+1 i automatyczna zmiana czasu UE).
+   Zapisz ustawienia w module. Podgląd pokazuje wschód/zachód dla wybranej daty.
+5. Reguły → Wyzwalanie czasem: wybierz codziennie, dni tygodnia albo datę.
+   Zdarzenie: godzina:minuta:sekunda, wschód lub zachód słońca.
+   Przesunięcie astronomiczne: minus = przed, plus = po, w minutach.
+6. Ustaw akcje lokalne/zdalne i ewentualne warunki flag. Włącz regułę.
+   Podgląd i wyślij zapisuje ją do modułu po odczycie kontrolnym.
+7. Zapisz projekt na dysku, aby zachować także harmonogram i lokalizację.
+
+Harmonogram działa bez komputera i internetu. Zdarzenia z czasu wyłączenia
+modułu są pomijane. Czas i wejście mogą uruchamiać tę samą regułę niezależnie.
+Wschód/zachód to wyzwalacz dotychczasowych akcji i nie zajmuje slotu zdalnego.
+Przy nieustawionym RTC harmonogram nie działa. Podtrzymanie zależy od VBAT.
+Współrzędne i strefa są wspólne dla wszystkich reguł danego modułu.
+Nie ma automatycznej zmiany DST poza regułami UE — wybierz stały UTC dla obiektu.
+W dni bez wschodu/zachodu zdarzenie jest pomijane. Godziny są obliczeniowe.
+
+W tym wydaniu zmieniono HEX R0808 STM. Pozostałe bieżące modele oraz RTI
+przeszły testy przekazywania nowych komend i nie wymagają zmiany wsadów.
+Nie zaprogramowano automatycznie żadnego fizycznego modułu.
