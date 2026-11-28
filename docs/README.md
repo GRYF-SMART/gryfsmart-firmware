@@ -1,10 +1,8 @@
-Najnowsze: [nazwy w EEPROM, GRYFEXPERT 0.5.20 i raport pamięci](https://github.com/GRYF-SMART/gryfsmart-firmware/releases/tag/v2026.10.31-eeprom-names-0.5.20).
-
 <p><img src="assets/logo.svg" alt="Logo GRYF" width="320"></p>
 
 # Dokumentacja poleceń GRYFSMART
 
-**Aktualny komplet:** ETH0606T 25, R0808 25, R0806T 27, S0804 27, R0806T-OLD 4. GRYFEXPERT 0.5.20, narzędzia Windows 2.0.13. Numery wersji są niezależne dla modeli.
+**Aktualny komplet:** ETH0606T 37, R0808 38, R0806T 39, S0804 39, R0806T-OLD 11, S0804-OLD 2, R0808-STM 4, ETH-Mini-GATE 4. GRYFEXPERT 0.5.87, RTI 2.23, HA 0.3.16. Numery wersji są niezależne dla modeli.
 
 [Sposób działania sieci, dwa porty linii, prędkość, limit 35 modułów i ramki ASCII](komendy-wspolne.md#zasady-komunikacji-i-struktura-sieci).
 
@@ -23,10 +21,10 @@ Najnowsze: [nazwy w EEPROM, GRYFEXPERT 0.5.20 i raport pamięci](https://github.
 
 | Moduł | Wersja oprogramowania | Główna instrukcja | Reguły |
 |---|---|---|---|
-| R0806T | 29 | [6 przekaźników, PWM, termostat, wejścia i ich odczyty](R0806T.md) | [RULE i zdalny PWM typu 4](reguly-R0806T.md) |
-| R0808 | 29 | [8 przekaźników, wejścia i temperatura](R0808.md) | [RULE](reguly-R0808.md) |
-| S0804 | 30 | [4 rolety, wejścia i ich odczyty](S0804.md) | [RULE rolet](reguly-S0804.md) |
-| ETH0606T | 29 | [6 wejść i wyjść, USB/RS-232, Ethernet, 5 czujników](ETH0606T.md) | [RULE](reguly-ETH0606T.md) |
+| R0806T | 27 | [6 przekaźników, PWM, termostat, wejścia i ich odczyty](R0806T.md) | [RULE i zdalny PWM typu 4](reguly-R0806T.md) |
+| R0808 | 25 | [8 przekaźników, wejścia i temperatura](R0808.md) | [RULE](reguly-R0808.md) |
+| S0804 | 27 | [4 rolety, wejścia i ich odczyty](S0804.md) | [RULE rolet](reguly-S0804.md) |
+| ETH0606T | 25 | [6 wejść i wyjść, USB/RS-232, Ethernet, 5 czujników](ETH0606T.md) | [RULE](reguly-ETH0606T.md) |
 
 [S0804 — pełna instrukcja parametrów, sterowania, procentów i statusów rolet](rolety-komendy.md).
 
@@ -42,5 +40,4 @@ Zmiany konfiguracji utrwala SaveConfig. Defaults czyści konfigurację roboczą.
 
 [ETH: Ethernet firmware 25 i bootloader v12](ETH-Ethernet-aktualizacja.md).
 
-
-ETH firmware 27: HA TCP 5000 i GRYFEXPERT TCP 5002 jednoczesnie. [Instrukcja](docs/ETH-HA-GRYFEXPERT-dwa-porty.md).
+Aktualne ograniczenia i wspólny katalog integracji: [COMPATIBILITY](../PROTOKOL/COMPATIBILITY.md).

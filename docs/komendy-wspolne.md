@@ -1,6 +1,6 @@
 # Wspólne komendy GRYFSMART — sieć, stan i identyfikacja
 
-Dokumentacja dotyczy oprogramowania w wersji **21** wszystkich modułów. Przykładowe odpowiedzi nie są odczytem fizycznych urządzeń.
+Przykłady bazują na protokole wersji 21; aktualne wersje i rozszerzenia opisuje [tabela zgodności](../PROTOKOL/COMPATIBILITY.md). Przykładowe odpowiedzi nie są odczytem fizycznych urządzeń.
 
 
 ## Zasady komunikacji i struktura sieci
@@ -56,7 +56,7 @@ AT+Search=1,5<CR>
 
 `Loop` pokazuje liczbę obiegów oraz minimum, średnią i maksimum czasu pętli w mikrosekundach, a także licznik nasycenia: `LOOP=ID,N=...,MIN_US=...,AVG_US=...,MAX_US=...,SAT=0`. `LoopReset` zeruje pomiar i odpowiada `LoopOK=ID`. ID=0 oznacza moduł lokalny. `ResetStats` odczytuje liczbę startów, przyczyny resetów i stan zapisu diagnostyki; nie zeruje tych liczników.
 
-`Discovery` i `ModuleInfo` odczytują informacje bez zapisu EEPROM w R0808, R0806T i S0804. Format parametryzowany to `HOPS_HEX,SEKWENCJA_HEX`: pozycja 5 wymaga hops=4; przykład `4,05` używa sekwencji 05. Odpowiedź `Chain=SEKWENCJA,OK,MODEL;FW;ID;APP;MCU;UNKNOWN;WEJŚCIA;WYJŚCIA;CHAIN1` zawiera model, wersję, ID, MCU i maski IO. **ETH0606T nie implementuje Discovery/ModuleInfo/CHAIN1**; używa Info i osobnych zasad bramkowania opisanych poniżej.
+`Discovery` i `ModuleInfo` odczytują informacje bez zapisu EEPROM w R0808, R0806T i S0804. Format parametryzowany to `HOPS_HEX,SEKWENCJA_HEX`: pozycja 5 wymaga hops=4; przykład `4,05` używa sekwencji 05. Odpowiedź `Chain=SEKWENCJA,OK,MODEL;FW;ID;APP;MCU;UNKNOWN;WEJŚCIA;WYJŚCIA;CHAIN1` zawiera model, wersję, ID, MCU i maski IO. Aktualne ETH0606T przekazuje Discovery/ModuleInfo/CHAIN1 do magistrali. Sama bramka nie jest hopem CHAIN1; identyfikację lokalną odczytuje się przez Find/Info.
 
 **Search nadaje ID jednej wskazanej pozycji i zapisuje je do EEPROM.** W zapisie `AT+Search=LICZNIK,ILE` drugie pole jest docelową pozycją i nowym ID, a nie liczbą modułów numerowanych jednym wywołaniem. Z początku linii wysyłaj `AT+Search=0,N`. W ramce `AT+Search=1,5` licznik uwzględnia już jedną pozycję; taka ramka występuje przy przekazywaniu wewnątrz linii. Aby nadać ID całej linii, wykonaj osobne wywołanie dla każdej pozycji. Search służy wyłącznie do celowego nadawania ID, nie do skanowania.
 
@@ -73,7 +73,7 @@ Liczby Search i Info są dziesiętne, a HOPS i SEQ w Discovery — szesnastkowe.
 | `AT+Discovery=HOPS,SEQ` | Identyfikacja modułu w linii | Liczba przejść do kolejnych modułów | Nie |
 | `AT+Info=ID` | Szczegółowa identyfikacja | Zapisane ID; 0 oznacza moduł lokalny | Nie |
 
-Discovery opisane tutaj obsługują aplikacje R0808, R0806T i S0804 z włączonym `CHAIN_SERVICE`. Aktualna aplikacja ETH0606T nie implementuje tego protokołu. Info jest dostępne również w ETH0606T; jego bramka ma osobne zasady przekazywania, opisane na końcu.
+Discovery obsługują moduły z CHAIN1, w tym aktualne OLD i STM. ETH0606T przekazuje zapytania do następnych modułów bez zwiększania liczby hopów; lokalną tożsamość bramki odczytuje się przez Find/Info.
 
 ## 2. AT+Search — wyszukanie pozycji i trwałe nadanie ID
 
@@ -251,7 +251,9 @@ CRC w przykładach jest policzone dla dokładnie podanych danych. Zmiana ID, wer
 
 Sterownik pyta kolejno `AT+Discovery=0,01`, `AT+Discovery=1,02`, `AT+Discovery=2,03`, itd., za każdym razem czekając na odpowiedź. Wynik daje pozycję, model i dotychczasowe ID bez ich zmiany. Brak odpowiedzi może oznaczać koniec linii, ale też przerwę albo urządzenie bez CHAIN1.
 
-Discovery nie modyfikuje konfiguracji ani wyjść, lecz aktywuje czasowe wyciszanie zwykłych ramek nadawczych przez mechanizm serwisowy `chain_quiet()`. Nie używaj go jako częstego odpytywania podczas sterowania: „bez zapisu EEPROM” nie oznacza braku wpływu na bieżącą komunikację.
+Od firmware **23** w R0808, R0806T i S0804 zapytania Discovery, ModuleInfo oraz informacyjna operacja CHAIN I nie uruchamiają ciszy serwisowej. Ich odpowiedzi również nie uruchamiają ani nie przedłużają ciszy. Można po nich od razu wysyłać zwykłe komendy sterujące, w tym Pulse. Wykrywanie nadal korzysta z przepustowości UART i nie zapisuje EEPROM.
+
+Ciszę rezerwują wyłącznie operacje serwisowe AT+Chain (poza I) oraz wejście AT+BOOT. Jest ona liczona niezależnym licznikiem przerwania Timer2: 1000 taktów po 2 ms. Licznik odlicza do zera, zatrzymuje się na zerze i nie zawija. Kolejne operacje serwisowe odnawiają czas. Zakończona sesja nie wraca przy przepełnieniu zegarów pracy urządzenia. Przekazywanie odpowiedzi Chain nie odnawia sesji. W wersji 22 i wcześniejszych samo Discovery aktywowało wyciszanie; wszystkie moduły pośrednie wymagają aktualizacji, aby skorzystać z nowego zachowania.
 
 ## 4. AT+Info — szczegółowe informacje bez zmiany konfiguracji
 
@@ -307,7 +309,7 @@ Przykłady linii M1–M3 dotyczą bezpośredniego podłączenia do R0808/R0806T/
 - Lokalny parser ETH przyjmuje Search i zapisuje ID tylko wtedy, gdy LICZNIK+1 jest równy DOCELOWE_ID; nie realizuje przekazywania Search jak moduł liniowy.
 - W ścieżce bramki TCP ETH jest pozycją/ID 1. `AT+Search=0,1` wykonuje odczyt Find urządzenia ETH. Dla kolejnych pozycji bramka przekazuje przez RS-232 np. `AT+Search=1,3` po odebraniu z TCP `AT+Search=0,3`.
 - Bramka TCP kieruje adresowane zapytania `AT+Info=2..35` do RS-232. Odczyt lokalny Info dotyczy ETH.
-- Aktualne ETH nie obsługuje Discovery/CHAIN1. Nie przenoś przykładu Discovery przez tę bramkę bez osobnego potwierdzenia obsługi w danym oprogramowaniu.
+- ETH0606T 37 przekazuje Discovery/CHAIN1. Pierwszy moduł za bramką ma hop 0; adresy modułów i pozycje/hopy są odrębnymi wartościami.
 
 ## 6. Podstawa opisu
 

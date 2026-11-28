@@ -40,17 +40,17 @@ Dla **OTWIERAJ PRZEZ** i **ZAMYKAJ PRZEZ** wpisz czas w sekundach co **0,1 s**, 
 
 W funkcji **Steruj roletą (czas / procent)** wspólne pole wartości przyjmuje tekst. Wpis `10` nadal oznacza 10 sekund. Po aktualizacji istniejącego projektu sprawdź wartości parametrów zapisanych makr.
 
-## Konfiguracja przez GRYFEXPERT — driver RTI 2.22 / GRYFEXPERT 0.5.76 lub nowszy
+## Konfiguracja przez GRYFEXPERT — driver RTI 2.23 / GRYFEXPERT 0.5.76 lub nowszy
 
 <!-- RTI-METADATA:BEGIN -->
-**GRYF Driver v2.22** · Copyright: 24/11/2026 GRYF
+**GRYF Driver v2.23** · Copyright: 28/11/2026 GRYF
 <!-- RTI-METADATA:END -->
 
 Połączenie: **GRYFEXPERT → adres IP procesora RTI + port TCP → RS232 → port 0 pierwszego modułu GRYF**. Odpowiedzi wracają tą samą drogą. Moduł ETH nie jest wymagany. RTI działa jako serwer ze stałym adresem IP; GRYFEXPERT inicjuje połączenie jako klient.
 
 ### Ustawienia drivera RTI
 
-W Integration Designer zaktualizuj driver do **2.22**. Wybierz **RS-232**, port procesora połączony z GRYF i **115200, 8N1**. W osobnej sekcji **Konfiguracja przez GRYFEXPERT**:
+W Integration Designer zaktualizuj driver do **2.23**. Wybierz **RS-232**, port procesora połączony z GRYF i **115200, 8N1**. W osobnej sekcji **Konfiguracja przez GRYFEXPERT**:
 
 - włącz konfigurację przez GRYFEXPERT;
 - ustaw **Port TCP konfiguracji GRYFEXPERT**: domyślnie **4211**, z możliwością zmiany na wolny port w zakresie 1024–65535;
@@ -72,7 +72,7 @@ Zmienne **Status bramki** oraz **Trwa konfiguracja GRYFEXPERT** można umieści�
 
 **Zmiana względem 0.5.51 / 2.13:** kierunek zestawiania połączenia został odwrócony na GRYFEXPERT → RTI. Zaktualizuj obie strony. Stary klucz i numer portu można zachować, ale w projekcie GRYFEXPERT trzeba podać adres RTI i ponownie potwierdzić przypisanie modułów do połączenia. Testy obejmują symulację RTI i rzeczywiste połączenia TCP na komputerze; test instalacyjny na fizycznym RTI pozostaje do wykonania.
 
-## Akcje rolet S0804 — RTI 2.22
+## Akcje rolet S0804 — RTI 2.23
 
 Driver RTI oferuje dziewięć wspólnych akcji: OTWÓRZ, STOP, ZAMKNIJ, ZAMKNIJ-STOP, OTWÓRZ-STOP, STEP (OTWÓRZ → STOP → ZAMKNIJ → STOP), OTWIERAJ PRZEZ, ZAMYKAJ PRZEZ oraz USTAW POZYCJĘ %. Czas obu akcji czasowych podaje się w sekundach co 0,1 s (0,1–655,3 s). Pełny przejazd i STEP zatrzymują się po czasie ustawionym w S0804; STOP i ponowne wywołanie kierunku podczas ruchu zatrzymują napęd. Kod 6 jest zachowany jako zgodny alias STEP.
 
@@ -125,3 +125,8 @@ Obsługiwane moduły: R0806T, R0808, ETH0606T i S0804. Dostępne są osobne funk
 [Pełna instrukcja: nazwy, stany S0804, komunikacja i diagnostyka](INSTRUKCJA.md).
 
 
+
+
+## Zgodność integracji — 2026-11-28
+
+RTI 2.23, HA 0.3.16 i GRYFEXPERT 0.5.87 obsługują osiem modeli i adresy 1–35. Poprawiono RulePulse w HA, odczyt histerezy 0 i walidację mieszanej magistrali. Firmware pozostaje bez zmian. [Pełna tabela komend, ograniczenia i instrukcja aktualizacji](https://github.com/GRYF-SMART/gryfsmart-firmware/blob/main/PROTOKOL/COMPATIBILITY.md).

@@ -40,21 +40,21 @@ Dla **OTWIERAJ PRZEZ** i **ZAMYKAJ PRZEZ** wpisz czas w sekundach co **0,1 s**, 
 
 W funkcji **Steruj roletą (czas / procent)** wspólne pole wartości przyjmuje tekst. Wpis `10` nadal oznacza 10 sekund. Po aktualizacji istniejącego projektu sprawdź wartości parametrów zapisanych makr.
 
-## Aktualizacja drivera 2.22
+## Aktualizacja drivera 2.23
 
 <!-- RTI-METADATA:BEGIN -->
-**GRYF Driver v2.22** · Copyright: 24/11/2026 GRYF
+**GRYF Driver v2.23** · Copyright: 28/11/2026 GRYF
 <!-- RTI-METADATA:END -->
 
 Aktualna paczka ma nazwę **GRYF Driver**. Numer wersji w polu Version i nagłówku pomocy oraz data Copyright są synchronizowane przy budowaniu wydania. Zachowano poprawkę importu z wersji 2.17 oraz dotychczasowe funkcje i identyfikatory. W Integration Designer wybierz istniejącą instancję **GRYF → Driver Utilities → Update Driver** i wskaż nowy `GRYF.rtidriver`. Nie usuwaj istniejącej instancji. Nazwa instancji zapisana wcześniej w projekcie może wymagać osobnej zmiany na **GRYF Driver**.
 
-## Konfiguracja przez GRYFEXPERT — driver RTI 2.22 / GRYFEXPERT 0.5.76
+## Konfiguracja przez GRYFEXPERT — driver RTI 2.23 / GRYFEXPERT 0.5.76
 
 Połączenie: **GRYFEXPERT → adres IP procesora RTI + port TCP → RS232 → port 0 pierwszego modułu GRYF**. Odpowiedzi wracają tą samą drogą. Moduł ETH nie jest wymagany. RTI działa jako serwer ze stałym adresem IP; GRYFEXPERT inicjuje połączenie jako klient.
 
 ### Ustawienia drivera RTI
 
-W Integration Designer zaktualizuj driver do **2.22**. Wybierz **RS-232**, port procesora połączony z GRYF i **115200, 8N1**. W osobnej sekcji **Konfiguracja przez GRYFEXPERT**:
+W Integration Designer zaktualizuj driver do **2.23**. Wybierz **RS-232**, port procesora połączony z GRYF i **115200, 8N1**. W osobnej sekcji **Konfiguracja przez GRYFEXPERT**:
 
 - włącz konfigurację przez GRYFEXPERT;
 - ustaw **Port TCP konfiguracji GRYFEXPERT**: domyślnie **4211**, z możliwością zmiany na wolny port w zakresie 1024–65535;
@@ -148,7 +148,10 @@ Dopasowanie odbywa się według ID i typu modułu oraz numeru kanału. Ustawieni
 Aktualna wersja i SHA-256 paczki: [manifest drivera](https://github.com/GRYF-SMART/gryfsmart-firmware/blob/main/RTI/manifest.json).
 
 
-## Akcje rolet S0804 w RTI 2.22
+## Akcje rolet S0804 w RTI 2.23
 
 **Steruj roletą**: OTWÓRZ (1), STOP (3), ZAMKNIJ (2), ZAMKNIJ-STOP (9), OTWÓRZ-STOP (4), STEP (5). **Steruj roletą (czas / procent)**: OTWIERAJ PRZEZ (8), ZAMYKAJ PRZEZ (10), USTAW POZYCJĘ % (7). Liczby w nawiasach są kodami protokołu. Kod 6 pozostaje zgodnym aliasem STEP w starszych wywołaniach, ale nie występuje na liście wyboru.
 
+
+
+Zgodność 2026-11-28: GRYF Driver 2.23 / HA 0.3.16 / GRYFEXPERT 0.5.87. Obsługa modeli OLD, STM, Mini i ID 1–35. Szczegóły ograniczeń i komend: RTI/COMPATIBILITY.md oraz command_catalog.json. Firmware modułów pozostaje bez zmian.

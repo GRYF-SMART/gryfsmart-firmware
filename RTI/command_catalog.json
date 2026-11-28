@@ -1,0 +1,891 @@
+{
+  "schema": 1,
+  "current_firmware": {
+    "R0806T": 39,
+    "R0808": 38,
+    "S0804": 39,
+    "ETH0606T": 37,
+    "R0806T-OLD": 11,
+    "S0804-OLD": 2,
+    "R0808-STM": 4,
+    "ETH-Mini-GATE": 4
+  },
+  "max_id": 35,
+  "max_line": 199,
+  "commands": {
+    "Find": {
+      "models": [
+        "R0806T",
+        "R0808",
+        "S0804",
+        "ETH0606T",
+        "R0806T-OLD",
+        "S0804-OLD",
+        "R0808-STM",
+        "ETH-Mini-GATE"
+      ],
+      "checksum": "none",
+      "parameters": [
+        0,
+        0
+      ],
+      "reply": "AT+Find",
+      "mutation": false,
+      "arguments": "brak"
+    },
+    "RST": {
+      "models": [
+        "R0806T",
+        "R0808",
+        "S0804",
+        "ETH0606T",
+        "R0806T-OLD",
+        "S0804-OLD",
+        "R0808-STM"
+      ],
+      "checksum": "none",
+      "parameters": [
+        0,
+        0
+      ],
+      "reply": "ResetOK",
+      "mutation": true,
+      "arguments": "brak"
+    },
+    "ResetStats": {
+      "models": [
+        "R0806T",
+        "R0808",
+        "S0804",
+        "ETH0606T",
+        "R0806T-OLD",
+        "S0804-OLD",
+        "R0808-STM"
+      ],
+      "checksum": "none",
+      "parameters": [
+        0,
+        0
+      ],
+      "reply": "RESET",
+      "mutation": false,
+      "arguments": "brak"
+    },
+    "Info": {
+      "models": [
+        "R0806T",
+        "R0808",
+        "S0804",
+        "ETH0606T",
+        "S0804-OLD",
+        "R0808-STM"
+      ],
+      "checksum": "none",
+      "parameters": [
+        0,
+        0
+      ],
+      "reply": "INFO",
+      "mutation": false,
+      "arguments": "brak"
+    },
+    "Factory": {
+      "models": [
+        "R0806T",
+        "R0808",
+        "S0804",
+        "ETH0606T",
+        "S0804-OLD",
+        "R0808-STM"
+      ],
+      "checksum": "none",
+      "parameters": [
+        0,
+        0
+      ],
+      "reply": "FACTORY",
+      "mutation": false,
+      "arguments": "brak"
+    },
+    "Loop": {
+      "models": [
+        "R0806T",
+        "R0808",
+        "S0804",
+        "ETH0606T",
+        "S0804-OLD",
+        "R0808-STM"
+      ],
+      "checksum": "none",
+      "parameters": [
+        0,
+        0
+      ],
+      "reply": "LOOP",
+      "mutation": false,
+      "arguments": "brak"
+    },
+    "LoopReset": {
+      "models": [
+        "R0806T",
+        "R0808",
+        "S0804",
+        "ETH0606T",
+        "S0804-OLD",
+        "R0808-STM"
+      ],
+      "checksum": "none",
+      "parameters": [
+        0,
+        0
+      ],
+      "reply": "LoopOK",
+      "mutation": true,
+      "arguments": "brak"
+    },
+    "GetOut": {
+      "models": [
+        "R0806T",
+        "R0808",
+        "ETH0606T",
+        "R0806T-OLD",
+        "R0808-STM"
+      ],
+      "checksum": "none",
+      "parameters": [
+        0,
+        0
+      ],
+      "reply": "O",
+      "mutation": false,
+      "arguments": "brak"
+    },
+    "GetInputs": {
+      "models": [
+        "R0806T",
+        "R0808",
+        "S0804",
+        "ETH0606T",
+        "S0804-OLD",
+        "R0808-STM"
+      ],
+      "checksum": "none",
+      "parameters": [
+        0,
+        0
+      ],
+      "reply": "I",
+      "mutation": false,
+      "arguments": "brak"
+    },
+    "SetOut": {
+      "models": [
+        "R0806T",
+        "R0808",
+        "ETH0606T",
+        "R0806T-OLD",
+        "R0808-STM"
+      ],
+      "checksum": "none",
+      "parameters": [
+        6,
+        8
+      ],
+      "reply": "RuleOK",
+      "mutation": true,
+      "arguments": "akcja1,…,akcja6 lub akcja8 (0 bez zmian, 1 ON, 2 OFF, 3 toggle)"
+    },
+    "Pulse": {
+      "models": [
+        "R0806T",
+        "R0808",
+        "ETH0606T",
+        "R0806T-OLD",
+        "R0808-STM"
+      ],
+      "checksum": "none",
+      "parameters": [
+        2,
+        3
+      ],
+      "reply": "RuleOK",
+      "mutation": true,
+      "arguments": "wyjście,ticks_0.1s[,restart]"
+    },
+    "Timed": {
+      "models": [
+        "R0806T",
+        "R0808",
+        "R0808-STM"
+      ],
+      "checksum": "none",
+      "parameters": [
+        5,
+        5
+      ],
+      "reply": "RuleOK",
+      "mutation": true,
+      "arguments": "wyjście,tryb,opóźnienie_0.1s,czas_ON_0.1s,restart"
+    },
+    "Rule": {
+      "models": [
+        "R0806T",
+        "R0808",
+        "S0804",
+        "ETH0606T",
+        "R0806T-OLD",
+        "S0804-OLD",
+        "R0808-STM"
+      ],
+      "checksum": "sum",
+      "parameters": [
+        14,
+        18
+      ],
+      "reply": "RuleOK",
+      "mutation": true,
+      "arguments": "nr_reguły,włączona,zdarzenia_wejść…,akcje_lokalne… (roleta: akcja,parametr)"
+    },
+    "GetRule": {
+      "models": [
+        "R0806T",
+        "R0808",
+        "S0804",
+        "ETH0606T",
+        "S0804-OLD",
+        "R0808-STM"
+      ],
+      "checksum": "sum",
+      "parameters": [
+        1,
+        1
+      ],
+      "reply": "Rule",
+      "mutation": false,
+      "arguments": "nr_reguły"
+    },
+    "RuleRemote": {
+      "models": [
+        "R0806T",
+        "R0808",
+        "S0804",
+        "ETH0606T",
+        "R0806T-OLD",
+        "S0804-OLD",
+        "R0808-STM"
+      ],
+      "checksum": "sum",
+      "parameters": [
+        4,
+        12
+      ],
+      "reply": "RuleOK",
+      "mutation": true,
+      "arguments": "nr_reguły,slot,ID_celu,typ,dane…"
+    },
+    "GetRuleRemote": {
+      "models": [
+        "R0806T",
+        "R0808",
+        "S0804",
+        "ETH0606T",
+        "S0804-OLD",
+        "R0808-STM"
+      ],
+      "checksum": "sum",
+      "parameters": [
+        2,
+        2
+      ],
+      "reply": "RuleRemote",
+      "mutation": false,
+      "arguments": "nr_reguły,slot"
+    },
+    "RulePWM": {
+      "models": [
+        "R0806T"
+      ],
+      "checksum": "sum",
+      "parameters": [
+        4,
+        4
+      ],
+      "reply": "RuleOK",
+      "mutation": true,
+      "arguments": "nr_reguły,akcja,procent,rampa_0.1s"
+    },
+    "GetRulePWM": {
+      "models": [
+        "R0806T"
+      ],
+      "checksum": "sum",
+      "parameters": [
+        1,
+        1
+      ],
+      "reply": "RulePWM",
+      "mutation": false,
+      "arguments": "nr_reguły"
+    },
+    "RuleTemp": {
+      "models": [
+        "R0806T",
+        "R0808",
+        "R0808-STM"
+      ],
+      "checksum": "sum",
+      "parameters": [
+        8,
+        8
+      ],
+      "reply": "RuleOK",
+      "mutation": true,
+      "arguments": "nr_reguły,tryb,źródło,czujnik,kierunek,próg_0.1C,histereza_0.1C,okres_0.1s"
+    },
+    "GetRuleTemp": {
+      "models": [
+        "R0806T",
+        "R0808",
+        "R0808-STM"
+      ],
+      "checksum": "sum",
+      "parameters": [
+        1,
+        1
+      ],
+      "reply": "RuleTemp",
+      "mutation": false,
+      "arguments": "nr_reguły"
+    },
+    "RuleFlags": {
+      "models": [
+        "R0806T",
+        "R0808",
+        "S0804",
+        "ETH0606T",
+        "R0808-STM"
+      ],
+      "checksum": "sum",
+      "parameters": [
+        16,
+        16
+      ],
+      "reply": "RuleOK",
+      "mutation": true,
+      "arguments": "nr_reguły,tryb_AND_OR,flaga1,stan1,flaga2,stan2,flaga3,stan3,akcje_flag_1…8"
+    },
+    "GetRuleFlags": {
+      "models": [
+        "R0806T",
+        "R0808",
+        "S0804",
+        "ETH0606T",
+        "R0808-STM"
+      ],
+      "checksum": "sum",
+      "parameters": [
+        1,
+        1
+      ],
+      "reply": "RuleFlags",
+      "mutation": false,
+      "arguments": "nr_reguły"
+    },
+    "RuleTime": {
+      "models": [
+        "R0808-STM"
+      ],
+      "checksum": "sum16",
+      "parameters": [
+        11,
+        11
+      ],
+      "reply": "RuleOK",
+      "mutation": true,
+      "arguments": "nr_reguły,tryb,zdarzenie,maska_dni,rok,miesiąc,dzień,godzina,minuta,sekunda,offset_min+720"
+    },
+    "GetRuleTime": {
+      "models": [
+        "R0808-STM"
+      ],
+      "checksum": "sum",
+      "parameters": [
+        1,
+        1
+      ],
+      "reply": "RuleTime",
+      "mutation": false,
+      "arguments": "nr_reguły"
+    },
+    "RulePulse": {
+      "models": [
+        "R0806T",
+        "R0808",
+        "S0804",
+        "ETH0606T",
+        "R0806T-OLD",
+        "S0804-OLD",
+        "R0808-STM"
+      ],
+      "checksum": "none",
+      "parameters": [
+        5,
+        6
+      ],
+      "reply": "RuleOK",
+      "mutation": true,
+      "arguments": "nr_reguły,slot,ID_celu,wyjście,ticks_0.1s[,restart]"
+    },
+    "GetRulePulse": {
+      "models": [
+        "R0806T",
+        "R0808",
+        "S0804",
+        "ETH0606T",
+        "S0804-OLD",
+        "R0808-STM"
+      ],
+      "checksum": "none",
+      "parameters": [
+        2,
+        2
+      ],
+      "reply": "RulePulse",
+      "mutation": false,
+      "arguments": "nr_reguły,slot"
+    },
+    "PWM": {
+      "models": [
+        "R0806T"
+      ],
+      "checksum": "sum",
+      "parameters": [
+        2,
+        3
+      ],
+      "reply": "RuleOK",
+      "mutation": true,
+      "arguments": "akcja,procent[,rampa_0.1s]"
+    },
+    "GetPWM": {
+      "models": [
+        "R0806T"
+      ],
+      "checksum": "none",
+      "parameters": [
+        0,
+        0
+      ],
+      "reply": "PWM",
+      "mutation": false,
+      "arguments": "brak"
+    },
+    "StanRol": {
+      "models": [
+        "S0804",
+        "S0804-OLD"
+      ],
+      "checksum": "none",
+      "parameters": [
+        0,
+        0
+      ],
+      "reply": "R",
+      "mutation": false,
+      "arguments": "brak"
+    },
+    "RolAct": {
+      "models": [
+        "S0804",
+        "S0804-OLD"
+      ],
+      "checksum": "sum",
+      "parameters": [
+        3,
+        3
+      ],
+      "reply": "RuleOK",
+      "mutation": true,
+      "arguments": "roleta,akcja,parametr (7: procent; 8/10: sekundy; inne: 0)"
+    },
+    "RolTime": {
+      "models": [
+        "S0804",
+        "S0804-OLD"
+      ],
+      "checksum": "sum",
+      "parameters": [
+        3,
+        3
+      ],
+      "reply": "RuleOK",
+      "mutation": true,
+      "arguments": "roleta,otwieranie_0.1s,zamykanie_0.1s"
+    },
+    "GetRolTime": {
+      "models": [
+        "S0804",
+        "S0804-OLD"
+      ],
+      "checksum": "sum",
+      "parameters": [
+        1,
+        1
+      ],
+      "reply": "RolTime",
+      "mutation": false,
+      "arguments": "roleta"
+    },
+    "GetRolState": {
+      "models": [
+        "S0804",
+        "S0804-OLD"
+      ],
+      "checksum": "sum",
+      "parameters": [
+        1,
+        1
+      ],
+      "reply": "RolState",
+      "mutation": false,
+      "arguments": "roleta"
+    },
+    "RolTimed": {
+      "models": [
+        "S0804"
+      ],
+      "checksum": "sum",
+      "parameters": [
+        3,
+        3
+      ],
+      "reply": "RuleOK",
+      "mutation": true,
+      "arguments": "roleta,kierunek_1_open_2_close,ticks_0.1s"
+    },
+    "KeyTime": {
+      "models": [
+        "R0806T",
+        "R0808",
+        "S0804",
+        "ETH0606T",
+        "R0806T-OLD",
+        "S0804-OLD",
+        "R0808-STM"
+      ],
+      "checksum": "sum",
+      "parameters": [
+        3,
+        3
+      ],
+      "reply": "RuleOK",
+      "mutation": true,
+      "arguments": "wejście,krótko_0.1s,długo_0.1s"
+    },
+    "GetKeyTime": {
+      "models": [
+        "R0806T",
+        "R0808",
+        "S0804",
+        "ETH0606T",
+        "S0804-OLD",
+        "R0808-STM"
+      ],
+      "checksum": "sum",
+      "parameters": [
+        1,
+        1
+      ],
+      "reply": "KeyTime",
+      "mutation": false,
+      "arguments": "wejście"
+    },
+    "SaveConfig": {
+      "models": [
+        "R0806T",
+        "R0808",
+        "S0804",
+        "ETH0606T",
+        "R0806T-OLD",
+        "S0804-OLD",
+        "R0808-STM"
+      ],
+      "checksum": "sum",
+      "parameters": [
+        0,
+        0
+      ],
+      "reply": "SaveOK",
+      "mutation": true,
+      "arguments": "brak"
+    },
+    "Defaults": {
+      "models": [
+        "R0806T",
+        "R0808",
+        "S0804",
+        "ETH0606T",
+        "R0806T-OLD",
+        "S0804-OLD",
+        "R0808-STM"
+      ],
+      "checksum": "sum",
+      "parameters": [
+        0,
+        0
+      ],
+      "reply": "RuleOK",
+      "mutation": true,
+      "arguments": "brak"
+    },
+    "SetFlag": {
+      "models": [
+        "R0806T",
+        "R0808",
+        "S0804",
+        "ETH0606T",
+        "R0808-STM"
+      ],
+      "checksum": "sum",
+      "parameters": [
+        2,
+        2
+      ],
+      "reply": "RuleOK",
+      "mutation": true,
+      "arguments": "flaga,akcja_0_nic_1_set_2_clear_3_toggle"
+    },
+    "GetFlags": {
+      "models": [
+        "R0806T",
+        "R0808",
+        "S0804",
+        "ETH0606T",
+        "R0808-STM"
+      ],
+      "checksum": "sum",
+      "parameters": [
+        0,
+        0
+      ],
+      "reply": "Flags",
+      "mutation": false,
+      "arguments": "brak"
+    },
+    "ReadTemp": {
+      "models": [
+        "R0808",
+        "R0808-STM"
+      ],
+      "checksum": "sum",
+      "parameters": [
+        1,
+        1
+      ],
+      "reply": "T",
+      "mutation": false,
+      "arguments": "czujnik"
+    },
+    "TempScan": {
+      "models": [
+        "R0808",
+        "R0808-STM"
+      ],
+      "checksum": "sum",
+      "parameters": [
+        0,
+        0
+      ],
+      "reply": "RuleOK",
+      "mutation": true,
+      "arguments": "brak"
+    },
+    "SetTemp": {
+      "models": [
+        "R0806T",
+        "R0808",
+        "R0808-STM"
+      ],
+      "checksum": "sum",
+      "parameters": [
+        8,
+        20
+      ],
+      "reply": "RuleOK",
+      "mutation": true,
+      "arguments": "termostat,tryb,chłodzenie,źródło,czujnik,zadana_0.1C,histereza_0.1C,liczba_wyjść,[ID,typ,nr_wyjścia]…"
+    },
+    "GetTemp": {
+      "models": [
+        "R0806T",
+        "R0808",
+        "R0808-STM"
+      ],
+      "checksum": "sum",
+      "parameters": [
+        1,
+        1
+      ],
+      "reply": "THERM",
+      "mutation": false,
+      "arguments": "termostat"
+    },
+    "GetTempCfg": {
+      "models": [
+        "R0806T",
+        "R0808",
+        "R0808-STM"
+      ],
+      "checksum": "sum",
+      "parameters": [
+        1,
+        1
+      ],
+      "reply": "TEMP",
+      "mutation": false,
+      "arguments": "termostat"
+    },
+    "NameGet": {
+      "models": [
+        "R0806T",
+        "R0808",
+        "S0804",
+        "ETH0606T",
+        "R0806T-OLD",
+        "S0804-OLD",
+        "R0808-STM"
+      ],
+      "checksum": "none",
+      "parameters": [
+        1,
+        1
+      ],
+      "reply": "Name",
+      "mutation": false,
+      "arguments": "slot_etykiety"
+    },
+    "NameSet": {
+      "models": [
+        "R0806T",
+        "R0808",
+        "S0804",
+        "ETH0606T",
+        "R0806T-OLD",
+        "S0804-OLD",
+        "R0808-STM"
+      ],
+      "checksum": "crc16",
+      "parameters": [
+        2,
+        2
+      ],
+      "reply": "NameOK",
+      "mutation": true,
+      "arguments": "slot_etykiety,tekst_HEX"
+    },
+    "RTC": {
+      "models": [
+        "R0808-STM"
+      ],
+      "checksum": "none",
+      "parameters": [
+        0,
+        0
+      ],
+      "reply": "RTC",
+      "mutation": false,
+      "arguments": "brak"
+    },
+    "RTCEnable": {
+      "models": [
+        "R0808-STM"
+      ],
+      "checksum": "none",
+      "parameters": [
+        1,
+        1
+      ],
+      "reply": "RTC",
+      "mutation": true,
+      "arguments": "0 lub 1"
+    },
+    "RTCSet": {
+      "models": [
+        "R0808-STM"
+      ],
+      "checksum": "none",
+      "parameters": [
+        1,
+        1
+      ],
+      "reply": "RTCSetOK",
+      "mutation": true,
+      "arguments": "sekundy_UNIX_UTC"
+    },
+    "Board": {
+      "models": [
+        "R0808-STM"
+      ],
+      "checksum": "none",
+      "parameters": [
+        0,
+        0
+      ],
+      "reply": "BOARD",
+      "mutation": false,
+      "arguments": "brak"
+    },
+    "BoardNTC": {
+      "models": [
+        "R0808-STM"
+      ],
+      "checksum": "none",
+      "parameters": [
+        1,
+        1
+      ],
+      "reply": "BoardNTC",
+      "mutation": true,
+      "arguments": "beta (0 lub 2000–6000)"
+    },
+    "Astro": {
+      "models": [
+        "R0808-STM"
+      ],
+      "checksum": "sum16",
+      "parameters": [
+        6,
+        6
+      ],
+      "reply": "RuleOK",
+      "mutation": true,
+      "arguments": "lokalizacja_aktywna,szerokość_e4+900000,długość_e4+1800000,UTC_min+720,EU_DST,0"
+    },
+    "GetAstro": {
+      "models": [
+        "R0808-STM"
+      ],
+      "checksum": "sum",
+      "parameters": [
+        0,
+        0
+      ],
+      "reply": "Astro",
+      "mutation": false,
+      "arguments": "brak"
+    }
+  },
+  "dedicated_session": {
+    "Search": "GRYFEXPERT: assigns IDs by physical position",
+    "Discovery": "HA setup / GRYFEXPERT: CHAIN1 hop, not module ID",
+    "ModuleInfo": "GRYFEXPERT: CHAIN1 identity by physical position",
+    "Chain": "GRYFEXPERT: CRC-protected bootloader session",
+    "BOOT": "GRYFEXPERT: firmware update / single direct gateway",
+    "Net": "GRYFEXPERT network settings / HA gateway identity",
+    "NetFind": "GRYFEXPERT gateway discovery",
+    "NetSet": "GRYFEXPERT: network change / reconnect verification",
+    "NetMAC": "GRYFEXPERT: network identity change",
+    "NetPorts": "GRYFEXPERT: port change / reconnect verification",
+    "NetSave": "GRYFEXPERT: network persistence"
+  }
+}

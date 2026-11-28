@@ -25,7 +25,7 @@ W funkcji **Steruj roletą (czas / procent)** wspólne pole wartości przyjmuje 
 # GRYF — jeden komponent rolety S0804
 
 <!-- RTI-METADATA:BEGIN -->
-**GRYF Driver v2.22** · Copyright: 24/11/2026 GRYF
+**GRYF Driver v2.23** · Copyright: 28/11/2026 GRYF
 <!-- RTI-METADATA:END -->
 
 Komponent jest natywnym **Viewport** w Integration Designer 11: jednym obiektem na stronie, zawierającym procent otwarcia, krótki stan oraz akcje **OTWÓRZ / STOP / ZAMKNIJ / ZAMKNIJ-STOP / OTWÓRZ-STOP / STEP / OTWIERAJ PRZEZ / ZAMYKAJ PRZEZ / USTAW POZYCJĘ**. Wnętrze edytuje się przez prawy przycisk myszy → **Edit Viewport**. Nie wymaga serwera WWW ani przeglądarki.

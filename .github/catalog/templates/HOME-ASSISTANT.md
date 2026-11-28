@@ -23,3 +23,8 @@ S0804: góra, dół, STOP, pozycja procentowa. **0% to zamknięcie, 100% otwarci
 Karta `custom:gryfsmart-home-card` prezentuje urządzenia i pokoje; zasób JavaScript rejestrowany jest przez integrację. Zaimportuj nazwy/grupy z projektu, wybierz układ i dodaj kartę do pulpitu. Edytor reguł i akcji czasowych wymaga firmware obsługującego daną funkcję. Najpierw odczytaj konfigurację, a po zmianach zapisz ją do właściwego modułu.
 
 [Protokół oraz znaczenie raportów](https://github.com/GRYF-SMART/gryfsmart-firmware/tree/main/PROTOKOL) · [Najnowsze HEX-y](https://github.com/GRYF-SMART/gryfsmart-firmware/tree/main/HEX)
+
+
+## Zgodność integracji — 2026-11-28
+
+RTI 2.23, HA 0.3.16 i GRYFEXPERT 0.5.87 obsługują osiem modeli i adresy 1–35. Poprawiono RulePulse w HA, odczyt histerezy 0 i walidację mieszanej magistrali. Firmware pozostaje bez zmian. [Pełna tabela komend, ograniczenia i instrukcja aktualizacji](https://github.com/GRYF-SMART/gryfsmart-firmware/blob/main/PROTOKOL/COMPATIBILITY.md).

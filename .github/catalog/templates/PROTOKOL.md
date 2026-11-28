@@ -353,3 +353,8 @@ Diagnostyka: `AT+Info=ID`, `AT+Loop=ID`, `AT+ResetStats=ID`. Loop podaje minimum
 - [R0808](../docs/R0808.md), [ETH0606T](../docs/ETH0606T.md), [S0804](../docs/S0804.md)
 
 Starsze rozdziały szczegółowe wskazują wersję, dla której opisano daną funkcję. Nie traktuj ich starych numerów jako numerów najnowszego wydania; [bieżące HEX-y i wersje](../HEX) są zestawione osobno. Nową funkcję sprawdzaj w module docelowym i modułach pośrednich.
+
+
+## Zgodność integracji — 2026-11-28
+
+RTI 2.23, HA 0.3.16 i GRYFEXPERT 0.5.87 obsługują osiem modeli i adresy 1–35. Poprawiono RulePulse w HA, odczyt histerezy 0 i walidację mieszanej magistrali. Firmware pozostaje bez zmian. [Pełna tabela komend, ograniczenia i instrukcja aktualizacji](https://github.com/GRYF-SMART/gryfsmart-firmware/blob/main/PROTOKOL/COMPATIBILITY.md).
