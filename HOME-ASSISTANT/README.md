@@ -1,16 +1,16 @@
 # 3. Driver Home Assistant
 
-**[Pobierz najnowszą wersję 0.3.15](https://github.com/GRYF-SMART/ha-gryfsmart/releases/download/v0.3.15/GRYFSMART-HomeAssistant-0.3.15.zip)**
+**[Pobierz najnowszą wersję 0.3.16](https://github.com/GRYF-SMART/ha-gryfsmart/releases/download/v0.3.16/GRYFSMART-HomeAssistant-0.3.16.zip)**
 
-GRYFSMART Home Assistant 0.3.15 Komplet dziewięciu akcji rolet: OTWÓRZ, STOP, ZAMKNIJ, oba kierunkowe STEP, STEP cykliczny, otwieranie i zamykanie na czas oraz pozycja procentowa. Usługa gryfsmart.shutter_action przyjmuje czas w sekundach dla obu akcji czasowych. Parametry walidowane są przed wysłaniem. Zgodne z protokołem modułów GRYF i GRYFEXPERT 0.5.60.… [Pełny opis wydania](https://github.com/GRYF-SMART/ha-gryfsmart/releases/tag/v0.3.15).
+Naprawiono zapis RulePulse (bez nieobsługiwanej sumy), odczyt termostatu z histerezą 0 i walidację tras przez mieszaną magistralę. Dodano modele R0808-STM, S0804-OLD i ETH-Mini-GATE, poprawiono możliwości modeli OLD oraz akcje rolet. Flagi mają osobne encje; edytor reguł zachowuje warunki flag i harmonogramy STM. Akcja administratora… [Pełny opis wydania](https://github.com/GRYF-SMART/ha-gryfsmart/releases/tag/v0.3.16).
 
 ## Trzy ostatnie wersje
 
 | Wersja | Data publikacji | Pobieranie | Zmiany |
 |---|---|---|---|
+| **0.3.16** | 2026-11-28 | [Pobierz](https://github.com/GRYF-SMART/ha-gryfsmart/releases/download/v0.3.16/GRYFSMART-HomeAssistant-0.3.16.zip) | Naprawiono zapis RulePulse (bez nieobsługiwanej sumy), odczyt termostatu z histerezą 0 i walidację tras przez mieszaną magistralę. Dodano modele R0808-STM, S0804-OLD i ETH-Mini-GATE, poprawiono możliwości modeli OLD oraz akcje rolet. Flagi mają osobne encje; edytor reguł zachowuje warunki flag i harmonogramy STM. Akcja administratora… [Pełny opis](https://github.com/GRYF-SMART/ha-gryfsmart/releases/tag/v0.3.16) |
 | **0.3.15** | 2026-11-13 | [Pobierz](https://github.com/GRYF-SMART/ha-gryfsmart/releases/download/v0.3.15/GRYFSMART-HomeAssistant-0.3.15.zip) | GRYFSMART Home Assistant 0.3.15 Komplet dziewięciu akcji rolet: OTWÓRZ, STOP, ZAMKNIJ, oba kierunkowe STEP, STEP cykliczny, otwieranie i zamykanie na czas oraz pozycja procentowa. Usługa gryfsmart.shutter_action przyjmuje czas w sekundach dla obu akcji czasowych. Parametry walidowane są przed wysłaniem. Zgodne z protokołem modułów GRYF i GRYFEXPERT 0.5.60.… [Pełny opis](https://github.com/GRYF-SMART/ha-gryfsmart/releases/tag/v0.3.15) |
 | **0.3.14** | 2026-11-05 | [Pobierz](https://github.com/GRYF-SMART/ha-gryfsmart/releases/download/v0.3.14/GRYFSMART-HomeAssistant-0.3.14.zip) | R0806T FW35: nowa akcja Włącz po czasie i pozostaw włączone. Stan wyjścia zachowany podczas opóźnienia, po terminie ON. Zdalna akcja wymaga R0806T FW35 na całej drodze. Pozostałe modele bez zmian. Po zakończeniu aktualizacji sprzętu zaktualizuj integrację, zrestartuj HA i odśwież przeglądarkę. [Pełny opis](https://github.com/GRYF-SMART/ha-gryfsmart/releases/tag/v0.3.14) |
-| **0.3.13** | 2026-11-04 | [Pobierz](https://github.com/GRYF-SMART/ha-gryfsmart/releases/download/v0.3.13/GRYFSMART-HomeAssistant-0.3.13.zip) | Sloty pomijają moduły wybrane w innych slotach. R0808/R0806T FW33: wyłącz po czasie, impuls po opóźnieniu na czas, histereza termostatów od 0. Zdalne timery wymagają zgodnych modułów FW33 na drodze do celu. Po aktualizacji zrestartuj HA i odśwież przeglądarkę. [Pełny opis](https://github.com/GRYF-SMART/ha-gryfsmart/releases/tag/v0.3.13) |
 
 ## Instalacja przez HACS
 
@@ -37,6 +37,11 @@ S0804: góra, dół, STOP, pozycja procentowa. **0% to zamknięcie, 100% otwarci
 Karta `custom:gryfsmart-home-card` prezentuje urządzenia i pokoje; zasób JavaScript rejestrowany jest przez integrację. Zaimportuj nazwy/grupy z projektu, wybierz układ i dodaj kartę do pulpitu. Edytor reguł i akcji czasowych wymaga firmware obsługującego daną funkcję. Najpierw odczytaj konfigurację, a po zmianach zapisz ją do właściwego modułu.
 
 [Protokół oraz znaczenie raportów](https://github.com/GRYF-SMART/gryfsmart-firmware/tree/main/PROTOKOL) · [Najnowsze HEX-y](https://github.com/GRYF-SMART/gryfsmart-firmware/tree/main/HEX)
+
+
+## Zgodność integracji — 2026-11-28
+
+RTI 2.23, HA 0.3.16 i GRYFEXPERT 0.5.87 obsługują osiem modeli i adresy 1–35. Poprawiono RulePulse w HA, odczyt histerezy 0 i walidację mieszanej magistrali. Firmware pozostaje bez zmian. [Pełna tabela komend, ograniczenia i instrukcja aktualizacji](https://github.com/GRYF-SMART/gryfsmart-firmware/blob/main/PROTOKOL/COMPATIBILITY.md).
 
 
 [1. Aplikacja GRYFSMART](https://github.com/GRYF-SMART/gryfsmart-firmware/tree/main/GRYFSMART) · [2. GRYFSMART-Programator](https://github.com/GRYF-SMART/gryfsmart-firmware/tree/main/AKTUALIZATOR) · [3. Driver Home Assistant](https://github.com/GRYF-SMART/gryfsmart-firmware/tree/main/HOME-ASSISTANT) · [4. Driver RTI](https://github.com/GRYF-SMART/gryfsmart-firmware/tree/main/RTI) · [5. Instalator Bootloader](https://github.com/GRYF-SMART/gryfsmart-firmware/tree/main/BOOTLOADER) · [6. Protokół GRYFSMART](https://github.com/GRYF-SMART/gryfsmart-firmware/tree/main/PROTOKOL) · [7. System i moduły GRYFSMART](https://github.com/GRYF-SMART/gryfsmart-firmware/tree/main/SYSTEM)

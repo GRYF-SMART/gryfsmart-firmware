@@ -1,16 +1,16 @@
 # 1. Aplikacja GRYFSMART
 
-**[Pobierz najnowszą wersję 0.5.86](https://github.com/GRYF-SMART/gryfsmart-firmware/releases/download/v2026.11.27-stm-schedules-4/GRYFEXPERT-0.5.86-win-x64.zip)**
+**[Pobierz najnowszą wersję 0.5.87](https://github.com/GRYF-SMART/gryfsmart-firmware/releases/download/v2026.11.28-rti-2.23/GRYFEXPERT-0.5.87-win-x64.zip)**
 
-GRYFEXPERT 0.5.86 / R0808 STM firmware 4 — harmonogramy i zegar astronomiczny. Reguły → Wyzwalanie czasem: godzina:minuta:sekunda, codziennie, wybrane dni tygodnia albo konkretna data. Niezależne od wejścia; wspólne akcje lokalne/zdalne i warunki flag, bez zajmowania slotu. Wschód i zachód słońca według współrzędnych, z przesunięciem −720…720 minut.… [Pełny opis wydania](https://github.com/GRYF-SMART/gryfsmart-firmware/releases/tag/v2026.11.27-stm-schedules-4).
+GRYFEXPERT 0.5.87 / GRYF Driver 2.23 / zgodność z HA 0.3.16 Naprawiono niezgodności integracji: RulePulse bez sumy kontrolnej, termostat z histerezą 0, walidację mieszanej magistrali, obsługę modeli OLD/STM/Mini i slotów 31–35 w RTI. Dodano wspólny katalog 54 komend aplikacyjnych i uzupełniono dokumentację serwisu. GRYFEXPERT eksportuje nowe modele oraz ID… [Pełny opis wydania](https://github.com/GRYF-SMART/gryfsmart-firmware/releases/tag/v2026.11.28-rti-2.23).
 
 ## Trzy ostatnie wersje
 
 | Wersja | Data publikacji | Pobieranie | Zmiany |
 |---|---|---|---|
+| **0.5.87** | 2026-11-28 | [Pobierz](https://github.com/GRYF-SMART/gryfsmart-firmware/releases/download/v2026.11.28-rti-2.23/GRYFEXPERT-0.5.87-win-x64.zip) | GRYFEXPERT 0.5.87 / GRYF Driver 2.23 / zgodność z HA 0.3.16 Naprawiono niezgodności integracji: RulePulse bez sumy kontrolnej, termostat z histerezą 0, walidację mieszanej magistrali, obsługę modeli OLD/STM/Mini i slotów 31–35 w RTI. Dodano wspólny katalog 54 komend aplikacyjnych i uzupełniono dokumentację serwisu. GRYFEXPERT eksportuje nowe modele oraz ID… [Pełny opis](https://github.com/GRYF-SMART/gryfsmart-firmware/releases/tag/v2026.11.28-rti-2.23) |
 | **0.5.86** | 2026-11-27 | [Pobierz](https://github.com/GRYF-SMART/gryfsmart-firmware/releases/download/v2026.11.27-stm-schedules-4/GRYFEXPERT-0.5.86-win-x64.zip) | GRYFEXPERT 0.5.86 / R0808 STM firmware 4 — harmonogramy i zegar astronomiczny. Reguły → Wyzwalanie czasem: godzina:minuta:sekunda, codziennie, wybrane dni tygodnia albo konkretna data. Niezależne od wejścia; wspólne akcje lokalne/zdalne i warunki flag, bez zajmowania slotu. Wschód i zachód słońca według współrzędnych, z przesunięciem −720…720 minut.… [Pełny opis](https://github.com/GRYF-SMART/gryfsmart-firmware/releases/tag/v2026.11.27-stm-schedules-4) |
 | **0.5.84** | 2026-11-26 | [Pobierz](https://github.com/GRYF-SMART/gryfsmart-firmware/releases/download/v2026.11.27-gryfexpert-0.5.84/GRYFEXPERT-0.5.84-win-x64.zip) | GRYFEXPERT 0.5.84 — pomiary płytki R0808 STM w zakładce Informacje. Napięcie zasilania w V oraz temperatura płytki z termistora TDK B57330V2103F260, NTC 10 kΩ przy 25°C, B25/100 = 3455 K. Temperatura jest liczona w aplikacji z surowego ADC według przybliżenia beta dla potwierdzonego elementu; wcześniejsze założenie B3950 nie dotyczy tego modelu. Pomiar po… [Pełny opis](https://github.com/GRYF-SMART/gryfsmart-firmware/releases/tag/v2026.11.27-gryfexpert-0.5.84) |
-| **0.5.83** | 2026-11-26 | [Pobierz](https://github.com/GRYF-SMART/gryfsmart-firmware/releases/download/v2026.11.26-r0808-stm-rtc-2/GRYFEXPERT-0.5.83-win-x64.zip) | R0808 STM firmware 2 / GRYFEXPERT 0.5.83 — zegar RTC. Zakładka Czas dla R0808 STM: włączanie/wyłączanie RTC, odczyt daty i godziny, ustawienie czasu komputera lub ręczne, z potwierdzeniem odczytem. Rok, miesiąc, dzień, godzina, minuta i sekunda. Kalendarz gregoriański uwzględnia lata przestępne, również wyjątek roku 2100. Moduł przechowuje UTC, aplikacja… [Pełny opis](https://github.com/GRYF-SMART/gryfsmart-firmware/releases/tag/v2026.11.26-r0808-stm-rtc-2) |
 
 ## Aktualizacja Flash przez RTI — GRYFEXPERT 0.5.76 / GRYF Driver 2.22
 
