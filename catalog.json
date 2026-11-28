@@ -55,11 +55,11 @@
     "BOOTLOADER": [
       {
         "version": "2.0.32",
-        "url": "https://github.com/GRYF-SMART/gryfsmart-firmware/releases/download/v2026.11.27-stm-schedules-4/GRYFSMART-Instalator.zip",
+        "url": "https://github.com/GRYF-SMART/gryfsmart-firmware/releases/download/v2026.11.28-rti-2.23/GRYFSMART-Instalator.zip",
         "release": "https://github.com/GRYF-SMART/gryfsmart-firmware/releases/tag/v2026.11.26-programator-2.0.32",
         "date": "2026-11-26",
         "notes": "Programator / aktualizator modułów GRYFSMART 2.0.32.\n\n- Po poprawnym zapisie i weryfikacji firmware komunikat głosowy „Moduł R0806T został zaprogramowany”, z nazwą rzeczywistego modelu. Wszystkie osiem obsługiwanych modeli: ETH0606T, ETH Mini GATE, R0808, R0806T, S0804, R0806T-OLD, S0804-OLD i R0808 STM.\n- Pole „Komunikaty głosowe” wyłącza mowę i przerywa oczekujące komunikaty. Ustawienie jest zapamiętywane dla użytkownika Windows.\n- Aktualizacja sieci: osobna opcja „Komunikat po każdym zaprogramowanym module”. Domyślnie po każdym potwierdzonym zapisie odczytywane są model i pozycja. Po wyłączeniu tej opcji pozostaje komunikat po zakończeniu całej serii.\n- Brak komunikatu o sukcesie po błędzie, anulowaniu, samym sprawdzeniu połączenia albo pominięciu aktualnego modułu. Błąd dźwięku nie przerywa programowania. Synteza działa w tle i lokalnie, bez internetu; preferowany jest zainstalowany polski głos Windows.\n- Instalator 2.0.32 zawiera tę samą opcję w oknie aktualizacji aplikacji ETH przez Ethernet. GRYFEXPERT pozostaje w wersji 0.5.81; jego paczka zawiera zaktualizowane narzędzia.\n\nWeryfikacja: 48427 sprawdzeń programatora, symulowane błędy zapisu/startu i anulowanie sieci, kolejka/wyciszanie oraz synteza wszystkich ośmiu nazw do pamięci bez odtwarzania. Testy instalatora ośmiu modeli. Urządzeń nie programowano. HEX-y, bootloadery, GRYFEXPERT i RTI zachowane z poprzedniego wydania.\n",
-        "digest": "sha256:d2317f62a3febdf1e9087fcfe43816ee7c9cf033eac50a3471fdab147786ff14"
+        "digest": "sha256:44567b2e2e5fe287b60f57ce6d223654f47e2825ffbc34e34b766a96b5fed510"
       },
       {
         "version": "2.0.31",
